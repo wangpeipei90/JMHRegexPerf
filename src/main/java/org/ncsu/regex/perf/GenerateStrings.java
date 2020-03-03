@@ -27,12 +27,12 @@ public class GenerateStrings {
 				 .build();
 	}
 	
-	public static String[] generateStrings(RandomStringGenerator g, int count, int maxLen){
-		String[] strs=new String[count];
-		for(int i=0;i<count;i++){
-			strs[i]=g.generate(1,maxLen);
-		}
-		return strs;
-	}
+//	public static String[] generateStrings(RandomStringGenerator g, int count, int maxLen){
+//		String[] strs=new String[count];
+//		for(int i=0;i<count;i++){
+//			strs[i]=g.generate(1,maxLen);
+//		}
+//		return strs;
+//	}
 
 }

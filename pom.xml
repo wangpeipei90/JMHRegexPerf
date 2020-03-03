@@ -31,7 +31,9 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<jmh.version>1.19</jmh.version>
-	</properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <uberjar.name>regexbenchmarks</uberjar.name>
+    </properties>
 
 	<build>
 		<plugins>
@@ -48,12 +50,35 @@
 			<!-- self-contained jar -->
 			<plugin>
                 <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <finalName>${uberjar.name}</finalName>
+                            <transformers>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <mainClass>org.openjdk.jmh.Main</mainClass>
+                                </transformer>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+                            </transformers>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            
+			<!-- self-contained jar
+			<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <version>2.4</version>
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>org.ncsu.jmh.examples.BenchmarkLoop</mainClass>
+                            <mainClass>org.ncsu.regex.perf.JavaContainsBenchmark</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
@@ -70,8 +95,9 @@
                     </execution>
                 </executions>
             </plugin>
+            -->
             
-			<!-- Jar with MetaInf main class -->
+			<!-- Jar with MetaInf main class
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
@@ -80,11 +106,12 @@
 					<archive>
 						<manifest>
 							<addClasspath>true</addClasspath>
-							<mainClass>org.ncsu.jmh.examples.BenchmarkLoop</mainClass>
+							<mainClass>org.ncsu.regex.perf.JavaContainsBenchmark</mainClass>
 						</manifest>
 					</archive>
 				</configuration>
 			</plugin>
+			-->
 			
 			<!-- Sources generation -->
 			<plugin>
