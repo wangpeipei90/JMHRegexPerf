@@ -62,11 +62,11 @@ public class JavaStartsWith {
 		System.out.println(System.getProperty("java.io.tmpdir") + "/jmh.lock");
 		Options opt = new OptionsBuilder()
 				.include(JavaStartsWith.class.getSimpleName()) //// .include("JMHF.*") 可支持正则
-				.forks(1)
-				.warmupIterations(1)
-				.measurementIterations(3)		
-				.resultFormat(ResultFormatType.CSV)
-				.result(StringUtils.logDir + Instant.now().getEpochSecond()+".csv")
+//				.forks(1)
+//				.warmupIterations(1)
+//				.measurementIterations(3)		
+//				.resultFormat(ResultFormatType.CSV)
+//				.result(StringUtils.logDir + Instant.now().getEpochSecond()+".csv")
 //				.output(StringUtils.logDir + Instant.now().getEpochSecond())
 //				.shouldDoGC(false)
 				.build();
