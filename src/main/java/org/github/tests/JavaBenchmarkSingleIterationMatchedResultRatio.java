@@ -38,7 +38,7 @@ import org.openjdk.jmh.runner.options.OptionsBuilder;
 @Warmup(iterations = 5, batchSize = 5000)
 @Measurement(iterations = 1000, batchSize = 5000)
 
-public class JavaBenchmarkSingleIteration {
+public class JavaBenchmarkSingleIterationMatchedResultRatio {
 	@Param("c")
 	private String regex;
 	@Param("c")
@@ -52,8 +52,11 @@ public class JavaBenchmarkSingleIteration {
 	
 	@Setup(Level.Iteration)
 	public void setup(){
-		testString=g.generate(strLen);
 		compiledRegex = Pattern.compile(regex);
+		testString=g.generate(strLen);
+		while(compiledRegex.matcher(testString).matches()){
+			testString=g.generate(strLen);
+		}
 	}
 	
 	@TearDown(Level.Iteration)
@@ -63,7 +66,7 @@ public class JavaBenchmarkSingleIteration {
 	
 	public static void main(String[] args) throws RunnerException {
 		Options opt = new OptionsBuilder()
-				.include(JavaBenchmarkSingleIteration.class.getSimpleName()) //// .include("JMHF.*") 可支持正则
+				.include(JavaBenchmarkSingleIterationMatchedResultRatio.class.getSimpleName()) //// .include("JMHF.*") 可支持正则
 //				.forks(1)
 //				.warmupIterations(5)
 //				.measurementIterations(1000)

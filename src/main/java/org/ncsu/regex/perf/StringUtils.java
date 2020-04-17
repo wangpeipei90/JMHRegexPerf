@@ -1,5 +1,7 @@
+/***
+ * this is for testing performance between regex and startsWith with random generated strings
+ */
 package org.ncsu.regex.perf;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;

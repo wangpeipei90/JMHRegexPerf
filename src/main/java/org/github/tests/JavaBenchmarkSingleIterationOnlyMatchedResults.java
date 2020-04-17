@@ -1,9 +1,7 @@
 package org.github.tests;
-import java.time.Instant;
-import java.util.Collection;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
-import org.ncsu.regex.perf.StringUtils;
 
 import org.apache.commons.text.RandomStringGenerator;
 import org.ncsu.regex.perf.GenerateStrings;
@@ -21,10 +19,6 @@ import org.openjdk.jmh.annotations.State;
 import org.openjdk.jmh.annotations.TearDown;
 import org.openjdk.jmh.annotations.Warmup;
 import org.openjdk.jmh.infra.Blackhole;
-import org.openjdk.jmh.results.BenchmarkResult;
-import org.openjdk.jmh.results.IterationResult;
-import org.openjdk.jmh.results.RunResult;
-import org.openjdk.jmh.results.format.ResultFormatType;
 import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
@@ -38,22 +32,29 @@ import org.openjdk.jmh.runner.options.OptionsBuilder;
 @Warmup(iterations = 5, batchSize = 5000)
 @Measurement(iterations = 1000, batchSize = 5000)
 
-public class JavaBenchmarkSingleIteration {
+public class JavaBenchmarkSingleIterationOnlyMatchedResults {
 	@Param("c")
 	private String regex;
 	@Param("c")
 	private String str;
 	@Param("1")
 	private int strLen;
+	@Param("0.5")
+	private float matchingRatio;
 	
 	RandomStringGenerator g=GenerateStrings.getGeneratorAlphaNumeric();
+	Random rand=new Random();
 	private String testString;
 	private Pattern compiledRegex;
 	
 	@Setup(Level.Iteration)
 	public void setup(){
-		testString=g.generate(strLen);
 		compiledRegex = Pattern.compile(regex);
+		testString=g.generate(strLen);
+		if(rand.nextFloat()<matchingRatio)
+			while(compiledRegex.matcher(testString).matches()){
+				testString=g.generate(strLen);
+			}
 	}
 	
 	@TearDown(Level.Iteration)
@@ -63,7 +64,7 @@ public class JavaBenchmarkSingleIteration {
 	
 	public static void main(String[] args) throws RunnerException {
 		Options opt = new OptionsBuilder()
-				.include(JavaBenchmarkSingleIteration.class.getSimpleName()) //// .include("JMHF.*") 可支持正则
+				.include(JavaBenchmarkSingleIterationOnlyMatchedResults.class.getSimpleName()) //// .include("JMHF.*") 可支持正则
 //				.forks(1)
 //				.warmupIterations(5)
 //				.measurementIterations(1000)
