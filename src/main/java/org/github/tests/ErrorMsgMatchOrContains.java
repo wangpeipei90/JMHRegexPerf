@@ -38,7 +38,7 @@ public class ErrorMsgMatchOrContains {
 	@Param({"error"})
 	private String errorString;
 	
-	@Param({"shortError.log","cloud-intergration-test-failure.log.txt"})
+	@Param({"shortError.log","cloud-intergration-test-failure.log"})
 	private String fileName;
 	
 	private String testString;
