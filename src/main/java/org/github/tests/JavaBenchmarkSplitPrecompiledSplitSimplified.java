@@ -1,9 +1,10 @@
 package org.github.tests;
-import java.time.Instant;
+import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
 
 import org.apache.commons.text.RandomStringGenerator;
+import org.github.tests.utils.StringUtils;
 import org.ncsu.regex.perf.GenerateStrings;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.BenchmarkMode;
@@ -24,19 +25,25 @@ import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 
+/**
+ * 1) performance single character
+ * 2) performance >3 character
+ * 3) performance 2 characters, special 2 characters
+ * 
+ * @author peipei
+ *
+ */
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.MICROSECONDS) 
 @State(Scope.Benchmark)
 
 @Fork(value = 1, jvmArgs = { "-Xms2G", "-Xmx2G" }) // heap size
-@Warmup(iterations = 5, batchSize = 5000)
-@Measurement(iterations = 1000, batchSize = 5000)
+@Warmup(iterations = 5, batchSize = 500)
+@Measurement(iterations = 1000, batchSize = 500)
 
-public class JavaBenchmarkSingleIteration {
-	@Param("c")
+public class JavaBenchmarkSplitPrecompiledSplitSimplified {
+	@Param({",",";","="," ","/","&","\\."})
 	private String regex;
-	@Param("c")
-	private String str;
 	@Param("1")
 	private int strLen;
 	
@@ -63,19 +70,19 @@ public class JavaBenchmarkSingleIteration {
 //				.measurementIterations(1000)
 //				.resultFormat(ResultFormatType.CSV)
 //				.result(StringUtils.logDir + Instant.now().getEpochSecond()+".csv")
-				.shouldDoGC(true)
+				.shouldDoGC(false)
 				.build();
 
 		new Runner(opt).run();
 	}
 	
 	@Benchmark
-	public void testRegexFilter(Blackhole bh){
-		bh.consume(compiledRegex.matcher(testString).matches());	
+	public void testPrecompiledRegexSplit(Blackhole bh){
+		bh.consume(compiledRegex.split(testString));	
 	}
 	
 	@Benchmark
-	public void testPrefixFilter(Blackhole bh){
-		bh.consume(testString.startsWith(regex));	
+	public void testStringSplit(Blackhole bh){
+		bh.consume(testString.split(regex));	
 	}
 }

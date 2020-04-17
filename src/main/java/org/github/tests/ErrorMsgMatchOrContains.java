@@ -1,10 +1,12 @@
 package org.github.tests;
-import java.time.Instant;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
 
-import org.apache.commons.text.RandomStringGenerator;
-import org.ncsu.regex.perf.GenerateStrings;
+import org.ncsu.regex.perf.StringUtils;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.BenchmarkMode;
 import org.openjdk.jmh.annotations.Fork;
@@ -29,30 +31,28 @@ import org.openjdk.jmh.runner.options.OptionsBuilder;
 @State(Scope.Benchmark)
 
 @Fork(value = 1, jvmArgs = { "-Xms2G", "-Xmx2G" }) // heap size
-@Warmup(iterations = 5, batchSize = 5000)
-@Measurement(iterations = 1000, batchSize = 5000)
+@Warmup(iterations = 5, batchSize = 50)
+@Measurement(iterations = 100, batchSize = 50)
 
-public class JavaBenchmarkSingleIteration {
-	@Param("c")
-	private String regex;
-	@Param("c")
-	private String str;
-	@Param("1")
-	private int strLen;
+public class ErrorMsgMatchOrContains {
+	@Param({"error"})
+	private String errorString;
 	
-	RandomStringGenerator g=GenerateStrings.getGeneratorAlphaNumeric();
+	@Param({"shortError.log","cloud-intergration-test-failure.log.txt"})
+	private String fileName;
+	
 	private String testString;
 	private Pattern compiledRegex;
 	
-	@Setup(Level.Iteration)
-	public void setup(){
-		testString=g.generate(strLen);
-		compiledRegex = Pattern.compile(regex);
+	@Setup(Level.Trial)
+	public void setup() throws FileNotFoundException, IOException{
+		testString = new String(Files.readAllBytes(Paths.get(StringUtils.directory+fileName)));
+		compiledRegex=Pattern.compile(".*" + errorString + ".*", Pattern.DOTALL);
 	}
 	
-	@TearDown(Level.Iteration)
+	@TearDown(Level.Trial)
 	public void reset(){
-		System.out.println(testString);
+		System.out.println(fileName);
 	}
 	
 	public static void main(String[] args) throws RunnerException {
@@ -70,12 +70,13 @@ public class JavaBenchmarkSingleIteration {
 	}
 	
 	@Benchmark
-	public void testRegexFilter(Blackhole bh){
+	public void testPrecompiledRegexMatches(Blackhole bh){
 		bh.consume(compiledRegex.matcher(testString).matches());	
 	}
 	
 	@Benchmark
-	public void testPrefixFilter(Blackhole bh){
-		bh.consume(testString.startsWith(regex));	
+	public void testStringSplit(Blackhole bh){
+		bh.consume(testString.contains(errorString));	
 	}
+	
 }
