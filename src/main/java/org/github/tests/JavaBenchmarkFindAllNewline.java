@@ -27,7 +27,7 @@ import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 
 @BenchmarkMode(Mode.AverageTime)
-@OutputTimeUnit(TimeUnit.MICROSECONDS) 
+@OutputTimeUnit(TimeUnit.MILLISECONDS) 
 @State(Scope.Benchmark)
 
 @Fork(value = 1, jvmArgs = { "-Xms2G", "-Xmx2G" }) // heap size
