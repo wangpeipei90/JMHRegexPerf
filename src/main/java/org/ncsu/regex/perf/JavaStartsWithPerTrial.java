@@ -35,7 +35,7 @@ import org.openjdk.jmh.runner.options.OptionsBuilder;
 @Fork(value = 1, jvmArgs = { "-Xms2G", "-Xmx2G" }) // heap size
 @Warmup(iterations = 1)
 @Measurement(iterations = 3)
-public class JavaStartsWith {
+public class JavaStartsWithPerTrial {
 
 	@Param("AlphaNumeric_str10000_len20_randomLen_genericStrs.txt")
 	private String filename;
@@ -61,7 +61,7 @@ public class JavaStartsWith {
 	public static void main(String[] args) throws RunnerException {
 		System.out.println(System.getProperty("java.io.tmpdir") + "/jmh.lock");
 		Options opt = new OptionsBuilder()
-				.include(JavaStartsWith.class.getSimpleName()) //// .include("JMHF.*") 可支持正则
+				.include(JavaStartsWithPerTrial.class.getSimpleName()) //// .include("JMHF.*") 可支持正则
 //				.forks(1)
 //				.warmupIterations(1)
 //				.measurementIterations(3)		
