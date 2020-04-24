@@ -33,11 +33,12 @@ import org.openjdk.jmh.runner.options.OptionsBuilder;
 @State(Scope.Benchmark)
 
 @Fork(value = 1, jvmArgs = { "-Xms2G", "-Xmx2G" }) // heap size
-@Warmup(iterations = 1)
-@Measurement(iterations = 3)
+@Warmup(iterations = 5)
+@Measurement(iterations = 500)
 public class JavaStartsWithPerTrial {
 
-	@Param("AlphaNumeric_str10000_len20_randomLen_genericStrs.txt")
+	//@Param("AlphaNumeric_str10000_len20_randomLen_genericStrs.txt")
+	@Param("input/startsWithPerInter_iter1000_batch500_genStr")
 	private String filename;
 
 	@Param("abc.*")

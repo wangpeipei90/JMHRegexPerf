@@ -17,10 +17,10 @@ public class StringUtils {
 	static{
 		String os_version=System.getProperty("os.name");
 		if(os_version.startsWith("Mac OS")){
-			directory="/Users/peipei/workspace/JMHRegexPerf/generatedStrs/";
+			directory="/Users/peipei/workspace/JMHRegexPerf/input/";
 			logDir="/Users/peipei/workspace/JMHRegexPerf/log/";
 		}else{
-			directory="/home/pwang7/JMHRegexPerf/generatedStrs/";
+			directory="/home/pwang7/JMHRegexPerf/input/";
 			logDir="/home/pwang7/JMHRegexPerf/log/";
 		}
 	}

@@ -42,7 +42,7 @@ public class JavaStartsWithPerIteration {
 	@Param("abc.*")
 	private String regex;
 	@Param("abc")
-	private String strOP;
+	private String str;
 	@Param("10")
 	private int strLen;
 	
@@ -66,7 +66,7 @@ public class JavaStartsWithPerIteration {
 		 * commands:
 		 * java -jar target/regexbenchmarks.jar org.ncsu.regex.perf.JavaStartsWithPerIteration 
 		 * -f 1 -gc true -wi 5 -i 1000 -p regex="abc.*" -p str="abc" -p strLen=10
-		 * -rf csv -rff startsWithPerInter_iter1000_batch500.csv -o log/startsWithPerInter_iter1000_batch500.log >output/startsWithPerInter_iter1000_batch500_genStr
+		 * -rf csv -rff startsWithPerInter_iter1000_batch500.csv -o log/startsWithPerInter_iter1000_batch500.log >input/startsWithPerInter_iter1000_batch500_genStr
 		 */
 
 //		System.out.println(System.getProperty("java.io.tmpdir") + "/jmh.lock");
@@ -105,11 +105,11 @@ public class JavaStartsWithPerIteration {
 	
 	@Benchmark
 	public void stringStartsWith(Blackhole bh){
-		bh.consume(testString.startsWith(regex));	
+		bh.consume(testString.startsWith(str));	
 	}
 	
 	@Benchmark
 	public void stringIndexOf(Blackhole bh){
-		bh.consume(testString.indexOf(regex));	
+		bh.consume(testString.indexOf(str));	
 	}
 }
