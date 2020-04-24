@@ -66,10 +66,8 @@ public class JavaStartsWithPerIteration {
 		 * commands:
 		 * java -jar target/regexbenchmarks.jar org.ncsu.regex.perf.JavaStartsWithPerIteration 
 		 * -f 1 -gc true -wi 5 -i 1000 -p regex="abc.*" -p str="abc" -p strLen=10
-		 * -rf csv -rff startsWithPerInter_iter1000_batch500.csv -o log/startsWithPerInter_iter1000_batch500.log >input/startsWithPerInter_iter1000_batch500_genStr
+		 * -rf csv -rff startsWithPerIter_iter1000_batch500.csv -o log/startsWithPerIter_iter1000_batch500.log >input/startsWithPerIter_iter1000_batch500_genStr
 		 */
-
-//		System.out.println(System.getProperty("java.io.tmpdir") + "/jmh.lock");
 		Options opt = new OptionsBuilder()
 				.include(JavaStartsWithPerIteration.class.getSimpleName()) //// .include("JMHF.*") 可支持正则
 //				.forks(1)
