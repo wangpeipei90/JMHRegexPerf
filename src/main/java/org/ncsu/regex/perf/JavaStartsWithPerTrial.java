@@ -38,7 +38,7 @@ import org.openjdk.jmh.runner.options.OptionsBuilder;
 public class JavaStartsWithPerTrial {
 
 	//@Param("AlphaNumeric_str10000_len20_randomLen_genericStrs.txt")
-	@Param("input/startsWithPerIter_iter1000_batch500_genStr")
+	@Param("startsWithPerIter_iter1000_batch500_genStr")
 	private String filename;
 
 	@Param("abc.*")
