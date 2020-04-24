@@ -34,8 +34,8 @@ import org.openjdk.jmh.runner.options.OptionsBuilder;
 @State(Scope.Benchmark)
 
 @Fork(value = 1, jvmArgs = { "-Xms2G", "-Xmx2G" }) // heap size
-@Warmup(iterations = 5, batchSize = 500)
-@Measurement(iterations = 1000, batchSize = 500)
+@Warmup(iterations = 5, batchSize = 50)
+@Measurement(iterations = 100, batchSize = 50)
 
 public class JavaStartsWithPerIteration {
 	
