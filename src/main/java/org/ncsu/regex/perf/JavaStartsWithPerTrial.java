@@ -38,20 +38,21 @@ import org.openjdk.jmh.runner.options.OptionsBuilder;
 public class JavaStartsWithPerTrial {
 
 	//@Param("AlphaNumeric_str10000_len20_randomLen_genericStrs.txt")
-	@Param("input/startsWithPerInter_iter1000_batch500_genStr")
+	@Param("input/startsWithPerIter_iter1000_batch500_genStr")
 	private String filename;
 
 	@Param("abc.*")
 	private String regex;
 	@Param("abc")
-	private String strOP;
+	private String str;
 	
 	private List<String> DATA_FOR_TESTING;
+	private Pattern compiledRegex;
 	
 	@Setup(Level.Trial) //setup is done once when the benchmark code initializes
 	public void setup() throws FileNotFoundException, IOException {
 		DATA_FOR_TESTING = StringUtils.readData(filename);
-		System.out.println(filename);
+		compiledRegex = Pattern.compile(regex);
 	}
 
 	@TearDown(Level.Trial)
@@ -60,7 +61,12 @@ public class JavaStartsWithPerTrial {
 	}
 	
 	public static void main(String[] args) throws RunnerException {
-		System.out.println(System.getProperty("java.io.tmpdir") + "/jmh.lock");
+		/**
+		 * commands:
+		 * java -jar target/regexbenchmarks.jar org.ncsu.regex.perf.JavaStartsWithPerTrial
+		 * -f 1 -gc true -wi 5 -i 1000 -p regex="abc.*" -p str="abc" -p strLen=10
+		 * -rf csv -rff startsWithPerTrial_iter500_str1000.csv -o log/startsWithPerTrial_iter500_str1000
+		 */
 		Options opt = new OptionsBuilder()
 				.include(JavaStartsWithPerTrial.class.getSimpleName()) //// .include("JMHF.*") 可支持正则
 //				.forks(1)
@@ -68,51 +74,53 @@ public class JavaStartsWithPerTrial {
 //				.measurementIterations(3)		
 //				.resultFormat(ResultFormatType.CSV)
 //				.result(StringUtils.logDir + Instant.now().getEpochSecond()+".csv")
-//				.output(StringUtils.logDir + Instant.now().getEpochSecond())
-//				.shouldDoGC(false)
+				.output(StringUtils.logDir + Instant.now().getEpochSecond())
+				.shouldDoGC(false)
 				.build();
 
 		 new Runner(opt).run();
-//		Collection<RunResult> results = new Runner(opt).run();
-//		System.out.println("-----customized results---");
-//		for (RunResult result : results) {
-//			System.out.println(result.getParams());
-//			System.out.println(result.getAggregatedResult());
-//		}
 	}
-//	public void testRegexFirstMatch(String s){
-//		Pattern.matches(regex, s);	
-//	}
-//	
-//	public void testStringFirstMatch(String s){
-//		s.matches(regex);	
-//	}
-//	
-//	public void testStringStartsWith(String s){
-//		s.startsWith(strOP);	
-//	}
-	
-	@Benchmark
-	public void testRegexFirstMatch(Blackhole bh){
-		for(String s:DATA_FOR_TESTING){
-			bh.consume(Pattern.matches(regex, s));	
-		}
-	}
-	
-	@Benchmark
-	public void testStringFirstMatch(Blackhole bh){
-		for(String s:DATA_FOR_TESTING){
-			bh.consume(s.matches(regex));	
-		}
-			
-	}
-	
-	@Benchmark
-	public void testStringStartsWith(Blackhole bh){
-		for(String s:DATA_FOR_TESTING){
-			bh.consume(s.startsWith(strOP));	
-		}	
-	}
-	
 
+	
+	@Benchmark
+	public void compiledRegexFullMatching(Blackhole bh){
+		for(String testString:DATA_FOR_TESTING) {
+			bh.consume(compiledRegex.matcher(testString).matches());	
+		}
+	}
+	
+	@Benchmark
+	public void notCompiledRegexFullMatching(Blackhole bh){
+		for(String testString:DATA_FOR_TESTING){
+			bh.consume(Pattern.matches(regex,testString));	
+		}
+	}
+	
+	@Benchmark
+	public void compiledRegexFind(Blackhole bh){
+		for(String testString:DATA_FOR_TESTING){
+			bh.consume(compiledRegex.matcher(testString).find());	
+		}
+	}
+	
+	@Benchmark
+	public void stringFullMatching(Blackhole bh){
+		for(String testString:DATA_FOR_TESTING){
+			bh.consume(testString.matches(regex));		
+		}
+	}
+	
+	@Benchmark
+	public void stringStartsWith(Blackhole bh){
+		for(String testString:DATA_FOR_TESTING){
+			bh.consume(testString.startsWith(str));	
+		}
+	}
+	
+	@Benchmark
+	public void stringIndexOf(Blackhole bh){
+		for(String testString:DATA_FOR_TESTING){
+			bh.consume(testString.indexOf(str));	
+		}
+	}
 }
