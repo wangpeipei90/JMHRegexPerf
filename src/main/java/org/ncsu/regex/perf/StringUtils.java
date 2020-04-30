@@ -61,7 +61,9 @@ public class StringUtils {
 	}
 	
 	public static void main(String[] args) throws FileNotFoundException, IOException {
-		// TODO Auto-generated method stub
+		/**
+		 * commands: 
+		 */
 		String method_name=args[0];
 		String file_name=args[1];
 		List<String> data=StringUtils.readData(file_name);

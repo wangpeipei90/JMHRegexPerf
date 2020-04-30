@@ -35,7 +35,7 @@ import org.openjdk.jmh.runner.options.OptionsBuilder;
 
 @Fork(value = 1, jvmArgs = { "-Xms2G", "-Xmx2G" }) // heap size
 @Warmup(iterations = 5, batchSize = 50)
-@Measurement(iterations = 100, batchSize = 50)
+@Measurement(iterations = 10, batchSize = 5)
 
 public class JavaStartsWithPerIteration {
 	
@@ -83,31 +83,37 @@ public class JavaStartsWithPerIteration {
 	
 	@Benchmark
 	public void compiledRegexFullMatching(Blackhole bh){
+		System.out.println("compiledRegexFullMatching: "+testString);
 		bh.consume(compiledRegex.matcher(testString).matches());	
 	}
 	
 	@Benchmark
 	public void notCompiledRegexFullMatching(Blackhole bh){
+		System.out.println("notCompiledRegexFullMatching: "+testString);
 		bh.consume(Pattern.matches(regex,testString));	
 	}
 	
 	@Benchmark
 	public void compiledRegexFind(Blackhole bh){
+		System.out.println("compiledRegexFind: "+testString);
 		bh.consume(compiledRegex.matcher(testString).find());	
 	}
 	
 	@Benchmark
 	public void stringFullMatching(Blackhole bh){
+		System.out.println("stringFullMatching: "+testString);
 		bh.consume(testString.matches(regex));		
 	}
 	
 	@Benchmark
 	public void stringStartsWith(Blackhole bh){
+		System.out.println("stringStartsWith: "+testString);
 		bh.consume(testString.startsWith(str));	
 	}
 	
 	@Benchmark
 	public void stringIndexOf(Blackhole bh){
+		System.out.println("stringIndexOf: "+testString);
 		bh.consume(testString.indexOf(str));	
 	}
 }
