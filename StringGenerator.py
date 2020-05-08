@@ -134,18 +134,18 @@ if __name__ == "__main__":
     # t = generate(10, "AlphaNumeric")
     # print(t,t=="")
 
-    res=genStartsWith("abc",100,0,20)
+    res=genStartsWith("abc",1000000,0,1024)
     asserted(res,lambda x: x[:3]=="abc")
-    save_to_file(res,"test.csv")
+    save_to_file(res,"startsWith_abc_iter50_match.csv")
+    #
+    # res2=genNotStartsWith("abc",1000000,0,1024)
+    # asserted(res2, lambda x: x[:3] != "abc")
+    # save_to_file(res2, "startsWith_abc_iter50_not_match.csv")
 
-    res2=genNotStartsWith("abc",100,0,20)
-    asserted(res2, lambda x: x[:3] != "abc")
-    save_to_file(res2, "test2.csv")
-
-    res3 = genContains("error", 100, 0, 20)
-    asserted(res3, lambda x: "error" in x)
-    save_to_file2(res3, "test3.csv")
-
-    res4 = genNotContains("error", 100, 0, 20)
-    asserted(res4, lambda x: "error" not in x)
-    save_to_file(res4, "test4.csv")
+    # res3 = genContains("error", 100, 0, 20)
+    # asserted(res3, lambda x: "error" in x)
+    # save_to_file2(res3, "test3.csv")
+    #
+    # res4 = genNotContains("error", 100, 0, 20)
+    # asserted(res4, lambda x: "error" not in x)
+    # save_to_file(res4, "test4.csv")
