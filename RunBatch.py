@@ -14,16 +14,21 @@ if __name__ == "__main__":
     not_matches = pickle.load(open("test4.p", "rb"))
 
     cmd=[
-        "java -jar target/regexbenchmarks.jar",benchmark_class,"-f 1 -gc true -wi 10 -i 50 -rf csv",
-         '-p regex="'+regex+'"', '-p str="'+contain_str+'"'
+        "java", "-jar" "target/regexbenchmarks.jar",benchmark_class,
+        "-f", "1", "-gc", "true" "-wi", "10", "-i", "50", "-rf", "csv",
+         '-p', 'regex="'+regex+'"', '-p', 'str="'+contain_str+'"'
          ]
 
     for idx,(match,*rest) in enumerate(matches):
         cmd2=list(cmd)
-        cmd2.append('-p testString="'+match+'"')
-        cmd2.append('-p expectation="true"')
-        cmd2.append("-rff contains_error_iter50_match_"+str(idx)+".csv")
-        cmd2.append("-o log/contains_error_iter50_match_"+str(idx) + ".log")
+        cmd2.append('-p')
+        cmd2.append('testString="'+match+'"')
+        cmd2.append('-p')
+        cmd2.append('expectation="true"')
+        cmd2.append("-rff")
+        cmd2.append("result/contains_error_iter50_match_"+str(idx)+".csv")
+        cmd2.append("-o")
+        cmd2.append("log/contains_error_iter50_match_"+str(idx) + ".log")
 
         print(' '.join(cmd2))
         # subprocess.run(cmd2)
