@@ -58,7 +58,7 @@ public class JavaContains {
 	
 	public static void main(String[] args) throws RunnerException {
 		Options opt = new OptionsBuilder()
-				.include(JavaBenchmarkSingleIteration.class.getSimpleName()) //// .include("JMHF.*") 可支持正则
+				.include(JavaContains.class.getSimpleName()) //// .include("JMHF.*") 可支持正则
 //				.forks(1)
 //				.warmupIterations(5)
 //				.measurementIterations(1000)
