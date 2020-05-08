@@ -36,48 +36,53 @@ import org.openjdk.jmh.runner.options.OptionsBuilder;
 
 
 public class JavaContains {
+	@Param({".*error.*"})
+	private String regex;
+	
 	@Param({"error"})
 	private String errorString;
 	
-	@Param({"shortError.log","cloud-intergration-test-failure.log"})
-	private String fileName;
-	
+	@Param({"abcccerrordefg"})
 	private String testString;
-	private Pattern compiledRegex;
 	
-	@Setup(Level.Trial)
-	public void setup() throws FileNotFoundException, IOException{
-		testString = new String(Files.readAllBytes(Paths.get(StringUtils.directory+fileName)));
-		compiledRegex=Pattern.compile(".*" + errorString + ".*", Pattern.DOTALL);
+	@Param("true")
+	private boolean expectation;
+	
+	boolean result;
+	
+	@TearDown(Level.Invocation)
+	public void check(){
+		assert result==expectation: "Wrong String Ops of Regex matching";
 	}
 	
-	@TearDown(Level.Trial)
-	public void reset(){
-		System.out.println(fileName);
+	@Benchmark
+    public void wellHelloThere() {
+        // this method was intentionally left blank to measure the infrastructure overheads
+		result=expectation;
+    }
+	
+	@Benchmark
+	public void notCompiledRegexFullMatching(){
+		result=Pattern.matches(regex,testString);	
+	}
+	
+	@Benchmark
+	public void stringContains(){
+		result=testString.contains(errorString);	
 	}
 	
 	public static void main(String[] args) throws RunnerException {
+		/**
+		 * commands:
+		 * java -jar target/regexbenchmarks.jar org.ncsu.regex.perf2.JavaContains
+		 * -f 1 -gc true -wi 10 -i 50 -p regex=".*error.*" -p str="error" -p testString="abcccerrordefg" -p expectation="true"
+		 * -rf csv -rff contains_error_iter50.csv -o log/contains_error_iter50.log
+		 */
 		Options opt = new OptionsBuilder()
 				.include(JavaContains.class.getSimpleName()) //// .include("JMHF.*") 可支持正则
-//				.forks(1)
-//				.warmupIterations(5)
-//				.measurementIterations(1000)
-//				.resultFormat(ResultFormatType.CSV)
-//				.result(StringUtils.logDir + Instant.now().getEpochSecond()+".csv")
 				.shouldDoGC(true)
 				.build();
 
 		new Runner(opt).run();
 	}
-	
-	@Benchmark
-	public void testPrecompiledRegexMatches(Blackhole bh){
-		bh.consume(compiledRegex.matcher(testString).matches());	
-	}
-	
-	@Benchmark
-	public void testStringSplit(Blackhole bh){
-		bh.consume(testString.contains(errorString));	
-	}
-	
 }

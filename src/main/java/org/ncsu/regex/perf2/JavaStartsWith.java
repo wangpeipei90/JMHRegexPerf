@@ -65,17 +65,17 @@ public class JavaStartsWith{
     }
 	
 	@Benchmark
-	public void notCompiledRegexFullMatching(Blackhole bh){
+	public void notCompiledRegexFullMatching(){
 		result=Pattern.matches(regex,testString);	
 	}
 	
 	@Benchmark
-	public void stringFullMatching(Blackhole bh){
+	public void stringFullMatching(){
 		result=testString.matches(regex);		
 	}
 	
 	@Benchmark
-	public void stringStartsWith(Blackhole bh){
+	public void stringStartsWith(){
 		result=testString.startsWith(str);	
 	}
 	
@@ -84,8 +84,8 @@ public class JavaStartsWith{
 		/**
 		 * commands:
 		 * java -jar target/regexbenchmarks.jar org.ncsu.regex.perf2.JavaStartsWith
-		 * -f 1 -gc true -wi 5 -i 20 -p regex="abc.*" -p str="abc" -p testString="abcccc" -p expectation="true"
-		 * -rf csv -rff startsWith_abc_iter20.csv -o log/startsWith_abc_iter20.log
+		 * -f 1 -gc true -wi 10 -i 50 -p regex="abc.*" -p str="abc" -p testString="abcccc" -p expectation="true"
+		 * -rf csv -rff startsWith_abc_iter50.csv -o log/startsWith_abc_iter50.log
 		 */
 		Options opt = new OptionsBuilder()
 				.include(JavaStartsWith.class.getSimpleName()) //// .include("JMHF.*") 可支持正则
