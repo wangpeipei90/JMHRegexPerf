@@ -40,7 +40,7 @@ public class JavaContains {
 	private String regex;
 	
 	@Param({"error"})
-	private String errorString;
+	private String str;
 	
 	@Param({"abcccerrordefg"})
 	private String testString;
