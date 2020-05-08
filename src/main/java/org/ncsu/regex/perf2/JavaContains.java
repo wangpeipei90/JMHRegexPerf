@@ -68,7 +68,7 @@ public class JavaContains {
 	
 	@Benchmark
 	public void stringContains(){
-		result=testString.contains(errorString);	
+		result=testString.contains(str);	
 	}
 	
 	public static void main(String[] args) throws RunnerException {
