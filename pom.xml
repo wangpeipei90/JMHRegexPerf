@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.ncsu.jmh.perf</groupId>
@@ -16,19 +17,19 @@
 			<version>${jmh.version}</version>
 		</dependency>
 		<dependency>
-		    <groupId>org.apache.commons</groupId>
-		    <artifactId>commons-lang3</artifactId>
-		    <version>3.7</version>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.7</version>
 		</dependency>
 		<dependency>
-		    <groupId>org.apache.commons</groupId>
-		    <artifactId>commons-text</artifactId>
-		    <version>1.2</version>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-text</artifactId>
+			<version>1.2</version>
 		</dependency>
 		<dependency>
-		    <groupId>com.googlecode.json-simple</groupId>
-		    <artifactId>json-simple</artifactId>
-		    <version>1.1.1</version>
+			<groupId>com.googlecode.json-simple</groupId>
+			<artifactId>json-simple</artifactId>
+			<version>1.1.1</version>
 		</dependency>
 		<dependency>
 			<groupId>com.github.mifmif</groupId>
@@ -45,9 +46,9 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<jmh.version>1.19</jmh.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <uberjar.name>regexbenchmarks</uberjar.name>
-    </properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<uberjar.name>regexbenchmarks</uberjar.name>
+	</properties>
 
 	<build>
 		<plugins>
@@ -60,73 +61,56 @@
 					<skipTests>true</skipTests>
 				</configuration>
 			</plugin>
+
+			<!-- generate javadoc with cmd:  mvn javadoc:javadoc -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>3.0.0</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
 			
 			<!-- self-contained jar -->
 			<plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-shade-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>shade</goal>
-                        </goals>
-                        <configuration>
-                            <finalName>${uberjar.name}</finalName>
-                            <transformers>
-                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>org.openjdk.jmh.Main</mainClass>
-                                </transformer>
-                                <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
-                            </transformers>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            
-			<!-- self-contained jar
-			<plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <version>2.4</version>
-                <configuration>
-                    <archive>
-                        <manifest>
-                            <mainClass>org.ncsu.regex.perf.JavaContainsBenchmark</mainClass>
-                        </manifest>
-                    </archive>
-                    <descriptorRefs>
-                        <descriptorRef>jar-with-dependencies</descriptorRef>
-                    </descriptorRefs>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>make-jar-with-dependencies</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>single</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            -->
-            
-			<!-- Jar with MetaInf main class
-			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-				<version>2.4</version>
-				<configuration>
-					<archive>
-						<manifest>
-							<addClasspath>true</addClasspath>
-							<mainClass>org.ncsu.regex.perf.JavaContainsBenchmark</mainClass>
-						</manifest>
-					</archive>
-				</configuration>
+				<artifactId>maven-shade-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+						<configuration>
+							<finalName>${uberjar.name}</finalName>
+							<transformers>
+								<transformer
+									implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+									<mainClass>org.openjdk.jmh.Main</mainClass>
+								</transformer>
+								<transformer
+									implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer" />
+							</transformers>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
-			-->
-			
+
+			<!-- self-contained jar <plugin> <groupId>org.apache.maven.plugins</groupId> 
+				<artifactId>maven-assembly-plugin</artifactId> <version>2.4</version> <configuration> 
+				<archive> <manifest> <mainClass>org.ncsu.regex.perf.JavaContainsBenchmark</mainClass> 
+				</manifest> </archive> <descriptorRefs> <descriptorRef>jar-with-dependencies</descriptorRef> 
+				</descriptorRefs> </configuration> <executions> <execution> <id>make-jar-with-dependencies</id> 
+				<phase>package</phase> <goals> <goal>single</goal> </goals> </execution> 
+				</executions> </plugin> -->
+
+			<!-- Jar with MetaInf main class <plugin> <groupId>org.apache.maven.plugins</groupId> 
+				<artifactId>maven-jar-plugin</artifactId> <version>2.4</version> <configuration> 
+				<archive> <manifest> <addClasspath>true</addClasspath> <mainClass>org.ncsu.regex.perf.JavaContainsBenchmark</mainClass> 
+				</manifest> </archive> </configuration> </plugin> -->
+
 			<!-- Sources generation -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
