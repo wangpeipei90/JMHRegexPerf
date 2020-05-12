@@ -26,7 +26,7 @@ import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 
-@BenchmarkMode({Mode.AverageTime,Mode.SingleShotTime})
+@BenchmarkMode({Mode.AverageTime})
 @OutputTimeUnit(TimeUnit.NANOSECONDS) 
 @State(Scope.Thread)
 
@@ -50,10 +50,10 @@ public class JavaContains {
 	
 	boolean result;
 	
-	@TearDown(Level.Invocation)
+	/*@TearDown(Level.Invocation)
 	public void check(){
 		assert result==expectation: "Wrong String Ops of Regex matching";
-	}
+	}*/
 	
 	@Benchmark
     public void wellHelloThere() {
@@ -80,7 +80,7 @@ public class JavaContains {
 		 */
 		Options opt = new OptionsBuilder()
 				.include(JavaContains.class.getSimpleName()) //// .include("JMHF.*") 可支持正则
-				.shouldDoGC(true)
+				.shouldDoGC(false)
 				.build();
 
 		new Runner(opt).run();

@@ -205,7 +205,8 @@ def parseFile(file_path):
     # file_path = os.path.join('..', 'Artifacts', 'druid benchmark', 'out.out')
     print('Parsing file %s' % file_path)
 
-    with open(file_path, "r", encoding='utf-8') as f:
+    #with open(file_path, "r", encoding='utf-8') as f:
+    with open(file_path, "r") as f:
         lines = f.readlines()
         trial = parseTrial(file_path)
         df = parselines(lines)
