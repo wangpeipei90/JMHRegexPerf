@@ -1,38 +1,30 @@
 package org.ncsu.regex.perf2;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
 
-import org.ncsu.regex.perf.StringUtils;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.BenchmarkMode;
 import org.openjdk.jmh.annotations.Fork;
-import org.openjdk.jmh.annotations.Level;
 import org.openjdk.jmh.annotations.Measurement;
 import org.openjdk.jmh.annotations.Mode;
 import org.openjdk.jmh.annotations.OutputTimeUnit;
 import org.openjdk.jmh.annotations.Param;
 import org.openjdk.jmh.annotations.Scope;
-import org.openjdk.jmh.annotations.Setup;
 import org.openjdk.jmh.annotations.State;
-import org.openjdk.jmh.annotations.TearDown;
 import org.openjdk.jmh.annotations.Warmup;
-import org.openjdk.jmh.infra.Blackhole;
 import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
+import org.openjdk.jmh.runner.options.TimeValue;
 
 @BenchmarkMode({Mode.AverageTime})
 @OutputTimeUnit(TimeUnit.NANOSECONDS) 
 @State(Scope.Thread)
 
-@Fork(value = 1, jvmArgs = { "-Xms2G", "-Xmx2G" }) // heap size
-@Warmup(iterations = 5)
-@Measurement(iterations = 20)
+@Fork(value = 1, jvmArgs = { "-server", "-Xms2G", "-Xmx2G" }) // heap size
+@Warmup(iterations = 10,time=1)
+@Measurement(iterations = 50,time=1)
 
 
 public class JavaContains {
@@ -48,39 +40,40 @@ public class JavaContains {
 	@Param("true")
 	private boolean expectation;
 	
-	boolean result;
-	
-	/*@TearDown(Level.Invocation)
-	public void check(){
-		assert result==expectation: "Wrong String Ops of Regex matching";
-	}*/
+//	boolean result;
 	
 	@Benchmark
-    public void wellHelloThere() {
+    public boolean wellHelloThere() {
+		return expectation;
         // this method was intentionally left blank to measure the infrastructure overheads
-		result=expectation;
+		//assert result==expectation: "Wrong String Ops of Regex matching";
     }
 	
 	@Benchmark
-	public void notCompiledRegexFullMatching(){
-		result=Pattern.matches(regex,testString);	
+	public boolean notCompiledRegexFullMatching(){
+		return Pattern.matches(regex,testString);
+		//result=Pattern.matches(regex,testString);
+		//assert result==expectation: "Wrong String Ops of Regex matching";
 	}
 	
 	@Benchmark
-	public void stringContains(){
-		result=testString.contains(str);	
+	public boolean stringContains(){
+		return testString.contains(str);	
+//		result=testString.contains(str);
+		//assert result==expectation: "Wrong String Ops of Regex matching";
 	}
 	
 	public static void main(String[] args) throws RunnerException {
 		/**
 		 * commands:
 		 * java -jar target/regexbenchmarks.jar org.ncsu.regex.perf2.JavaContains
-		 * -f 1 -gc true -wi 10 -i 50 -p regex=".*error.*" -p str="error" -p testString="abcccerrordefg" -p expectation="true"
+		 * -f 1 -gc true -wi 10 -i 50 -r 100ms -p regex=".*error.*" -p str="error" -p testString="abcccerrordefg" -p expectation="true"
 		 * -rf csv -rff contains_error_iter50.csv -o log/contains_error_iter50.log
 		 */
 		Options opt = new OptionsBuilder()
 				.include(JavaContains.class.getSimpleName()) //// .include("JMHF.*") 可支持正则
-				.shouldDoGC(false)
+				.shouldDoGC(true)
+				.measurementTime(TimeValue.milliseconds(100))
 				.build();
 
 		new Runner(opt).run();
