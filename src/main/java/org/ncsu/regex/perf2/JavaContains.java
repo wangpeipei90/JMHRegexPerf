@@ -73,7 +73,8 @@ public class JavaContains {
 		Options opt = new OptionsBuilder()
 				.include(JavaContains.class.getSimpleName()) //// .include("JMHF.*") 可支持正则
 				.shouldDoGC(true)
-				.measurementTime(TimeValue.milliseconds(100))
+				.warmupTime(TimeValue.milliseconds(10))
+				.measurementTime(TimeValue.milliseconds(10))
 				.build();
 
 		new Runner(opt).run();
