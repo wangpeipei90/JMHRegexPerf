@@ -1,6 +1,7 @@
 import pandas as pd
 import os
 import re
+import sys
 import argparse
 
 # Benchmark Modes
@@ -182,75 +183,51 @@ def parselines(lines):
     return df
 
 
-def readable_dir(prospective_dir):
-    if not os.path.isdir(prospective_dir):
-        raise argparse.ArgumentTypeError("readable_dir:{0} is not a valid path".format(prospective_dir))
-    if os.access(prospective_dir, os.R_OK):
-        return prospective_dir
-    else:
-        raise argparse.ArgumentTypeError("readable_dir:{0} is not a readable dir".format(prospective_dir))
-
-
-def parseTrial(file_path):
-    trialext = file_path.split('_trial')[1]
-    trial_token = re.findall(r"[-+]?\d*\.\d+|\d+", trialext)
-    trial = 1
-    if len(trial_token) == 1:
-        trial = trial_token[0]
-    return trial
-
 
 def parseFile(file_path):
-
+    '''https://github.com/DiegoEliasCosta/badJMHpractices-study/RQ2. Impact of bad JMH practices/scripts/jmh_parser.py '''
     # file_path = os.path.join('..', 'Artifacts', 'druid benchmark', 'out.out')
     print('Parsing file %s' % file_path)
 
     #with open(file_path, "r", encoding='utf-8') as f:
     with open(file_path, "r") as f:
         lines = f.readlines()
-        trial = parseTrial(file_path)
         df = parselines(lines)
-        df['Trial'] = trial
 
     # Save to disk
-    new_file_path = file_path.replace('.out', '_parsed.csv')
+    new_file_path = file_path.replace('.log', '_parsed.csv')
     print('Saving the parsed jmh results in file = %s' % new_file_path)
     df.to_csv(new_file_path)
     return df
 
 
-def parseFolder(folder_path):
+def extractStringAndExecutionTimeFromIterations(df_expertment_time,file_str_gen,csv_output):
+    print(type(df_expertment_time))
+    df_measurement = df_expertment_time.drop(
+        columns=['Benchmark Mode', 'Class', 'Fork', 'Full Bench', 'Full params', 'Method', 'Package', 'Threads',
+                 'Total Fork'])[10:]
 
-    joint_df = pd.DataFrame()
+    df = pd.read_csv(file_str_gen)
+    result=df[:len(df_measurement)]
 
-    for file in os.listdir(folder_path):
-        if file.endswith(".out"):
-            df = parseFile(os.path.join(folder_path, file))
-            joint_df = df if joint_df.empty else joint_df.append(df)
-
-    return joint_df
-
+    result["Score"] = df_measurement["Score"].to_numpy()
+    result["Unit"] = df_measurement["Measurement Unit"].to_numpy()
+    # print(result[:10])
+    result.to_csv(csv_output)
+    return result
 
 if __name__ == '__main__':
-
-    parser = argparse.ArgumentParser(description='Parse JMH output files (.out) into structured csv files.')
-    parser.add_argument('--file', type=argparse.FileType('r'))
-    parser.add_argument('--folder', type=readable_dir)
-    parser.add_argument('--aggregatedFile', type=argparse.FileType('w'), help='Aggregate every generated '
-                                                                         'parsed file into one single .csv.'
-                                                                         'Only works when a folder is passed as parameter.')
+    parser = argparse.ArgumentParser(description='Parse JMH output files (.out) into structured csv file '
+                                                 'and extract the measured time to generated strings.')
+    parser.add_argument('--log')
+    parser.add_argument('--file')
+    parser.add_argument('--output')
 
     args = parser.parse_args()
 
-    file = args.file
-    folder = args.folder
+    file_genStr,result_log,csv_output=args.file,args.log,args.output
 
-    if file:
-        parseFile(file)
-
-    elif folder:
-        print('Running the parser in the folder %s' % folder)
-        aggregated_df = parseFolder(folder)
-
-        if args.aggregatedFile:
-            aggregated_df.to_csv(args.aggregatedFile)
+    # csv_output="out.csv"
+    # file_genStr="test3.csv"
+    # result_log="log/regex_precompiled_warm10_iter100.log"
+    extractStringAndExecutionTimeFromIterations(parseFile(result_log),file_genStr,csv_output)
