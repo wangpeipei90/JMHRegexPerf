@@ -1,4 +1,4 @@
-package org.ncsu.regex.perf2;
+package org.ncsu.regex.perf3;
 import java.util.Collection;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
@@ -24,6 +24,7 @@ import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 import org.openjdk.jmh.runner.options.TimeValue;
 
+
 @BenchmarkMode({Mode.AverageTime})
 @OutputTimeUnit(TimeUnit.NANOSECONDS) 
 @State(Scope.Thread)
@@ -31,9 +32,7 @@ import org.openjdk.jmh.runner.options.TimeValue;
 @Fork(value = 1, jvmArgs = { "-server", "-Xms2G", "-Xmx2G" }) // heap size
 @Warmup(iterations = 10)
 @Measurement(iterations = 50)
-
-
-public class JavaContains {
+public class StringContainsMethod {
 	@Param({".*error.*"})
 	private String regex;
 	
@@ -90,18 +89,10 @@ public class JavaContains {
 		 * -rf csv -rff contains_error_iter50.csv -o log/contains_error_iter50.log
 		 */
 		Options opt = new OptionsBuilder()
-				.include(JavaContains.class.getSimpleName()) //// .include("JMHF.*") 可支持正则
+				.include(StringContainsMethod.class.getSimpleName()) //// .include("JMHF.*") 可支持正则
 				.shouldDoGC(true)
 				.warmupTime(TimeValue.milliseconds(10))
 				.measurementTime(TimeValue.milliseconds(10))
 				.build();
-
-//		new Runner(opt).run();
-		Collection<RunResult> res=new Runner(opt).run();
-		for(RunResult run_res:res) {
-			BenchmarkResult bench_res=run_res.getAggregatedResult();
-//			Collection<BenchmarkResult> data=run_res.getBenchmarkResults();
-			System.out.println(bench_res.getPrimaryResult());
-		}
 	}
 }
