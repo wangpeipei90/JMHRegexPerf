@@ -1,0 +1,138 @@
+# JMH version: 1.19
+# VM version: JDK 1.8.0_251, VM 25.251-b08
+# VM invoker: /opt/jdk/jdk1.8.0_251/jre/bin/java
+# VM options: -server -Xms2G -Xmx2G
+# Warmup: 10 iterations, 1 s each, 10 calls per op
+# Measurement: 100 iterations, 1 s each, 10 calls per op
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: org.ncsu.regex.perf3.RegexPreCompiledMethod.compiledRegexFullMatching
+# Parameters: (expectation = true, filename = test3.csv, regex = .*error.*, str = error)
+
+# Run progress: 0.00% complete, ETA 00:01:50
+# Fork: 1 of 1
+# Warmup Iteration   1: 40044.218 ns/op
+# Warmup Iteration   2: 6658.135 ns/op
+# Warmup Iteration   3: 3673.674 ns/op
+# Warmup Iteration   4: 33045.495 ns/op
+# Warmup Iteration   5: 76392.437 ns/op
+# Warmup Iteration   6: 18195.241 ns/op
+# Warmup Iteration   7: 49110.930 ns/op
+# Warmup Iteration   8: 48914.530 ns/op
+# Warmup Iteration   9: 13998.189 ns/op
+# Warmup Iteration  10: 9762.397 ns/op
+Iteration   1: 2970.612 ns/op
+Iteration   2: 3034.640 ns/op
+Iteration   3: 3057.030 ns/op
+Iteration   4: 3345.668 ns/op
+Iteration   5: 3444.772 ns/op
+Iteration   6: 3753.602 ns/op
+Iteration   7: 3907.410 ns/op
+Iteration   8: 4382.917 ns/op
+Iteration   9: 4286.442 ns/op
+Iteration  10: 4600.052 ns/op
+Iteration  11: 4728.390 ns/op
+Iteration  12: 5029.049 ns/op
+Iteration  13: 5133.822 ns/op
+Iteration  14: 5514.214 ns/op
+Iteration  15: 5606.251 ns/op
+Iteration  16: 6462.291 ns/op
+Iteration  17: 2574.846 ns/op
+Iteration  18: 2875.122 ns/op
+Iteration  19: 3192.593 ns/op
+Iteration  20: 3385.439 ns/op
+Iteration  21: 3660.220 ns/op
+Iteration  22: 3843.035 ns/op
+Iteration  23: 3968.226 ns/op
+Iteration  24: 4430.400 ns/op
+Iteration  25: 4476.656 ns/op
+Iteration  26: 4968.280 ns/op
+Iteration  27: 4671.193 ns/op
+Iteration  28: 5035.880 ns/op
+Iteration  29: 5225.748 ns/op
+Iteration  30: 5462.032 ns/op
+Iteration  31: 5608.191 ns/op
+Iteration  32: 2948.490 ns/op
+Iteration  33: 2920.973 ns/op
+Iteration  34: 3269.999 ns/op
+Iteration  35: 3276.641 ns/op
+Iteration  36: 3495.013 ns/op
+Iteration  37: 3809.477 ns/op
+Iteration  38: 4053.319 ns/op
+Iteration  39: 4174.099 ns/op
+Iteration  40: 4394.218 ns/op
+Iteration  41: 4953.592 ns/op
+Iteration  42: 4730.099 ns/op
+Iteration  43: 5078.516 ns/op
+Iteration  44: 5195.364 ns/op
+Iteration  45: 5715.312 ns/op
+Iteration  46: 2769.378 ns/op
+Iteration  47: 2832.955 ns/op
+Iteration  48: 3258.677 ns/op
+Iteration  49: 3468.198 ns/op
+Iteration  50: 3669.522 ns/op
+Iteration  51: 3825.320 ns/op
+Iteration  52: 3980.996 ns/op
+Iteration  53: 4211.840 ns/op
+Iteration  54: 4427.525 ns/op
+Iteration  55: 4714.186 ns/op
+Iteration  56: 5104.024 ns/op
+Iteration  57: 5062.418 ns/op
+Iteration  58: 5319.612 ns/op
+Iteration  59: 2688.028 ns/op
+Iteration  60: 2796.949 ns/op
+Iteration  61: 3217.073 ns/op
+Iteration  62: 3527.773 ns/op
+Iteration  63: 3711.264 ns/op
+Iteration  64: 3807.436 ns/op
+Iteration  65: 4014.495 ns/op
+Iteration  66: 4667.920 ns/op
+Iteration  67: 4644.960 ns/op
+Iteration  68: 4679.479 ns/op
+Iteration  69: 5055.257 ns/op
+Iteration  70: 5092.334 ns/op
+Iteration  71: 2653.179 ns/op
+Iteration  72: 2976.695 ns/op
+Iteration  73: 3358.464 ns/op
+Iteration  74: 3551.982 ns/op
+Iteration  75: 3608.070 ns/op
+Iteration  76: 3995.725 ns/op
+Iteration  77: 4043.735 ns/op
+Iteration  78: 4390.088 ns/op
+Iteration  79: 4492.356 ns/op
+Iteration  80: 4687.283 ns/op
+Iteration  81: 5011.424 ns/op
+Iteration  82: 2639.486 ns/op
+Iteration  83: 2852.769 ns/op
+Iteration  84: 3267.569 ns/op
+Iteration  85: 4015.906 ns/op
+Iteration  86: 3684.715 ns/op
+Iteration  87: 3917.998 ns/op
+Iteration  88: 4329.979 ns/op
+Iteration  89: 4556.673 ns/op
+Iteration  90: 5014.595 ns/op
+Iteration  91: 4834.788 ns/op
+Iteration  92: 2687.047 ns/op
+Iteration  93: 2963.413 ns/op
+Iteration  94: 3367.621 ns/op
+Iteration  95: 3507.767 ns/op
+Iteration  96: 3680.820 ns/op
+Iteration  97: 3948.604 ns/op
+Iteration  98: 4162.538 ns/op
+Iteration  99: 4615.703 ns/op
+Iteration 100: 4640.942 ns/op
+
+
+Result "org.ncsu.regex.perf3.RegexPreCompiledMethod.compiledRegexFullMatching":
+  4066.557 ±(99.9%) 293.733 ns/op [Average]
+  (min, avg, max) = (2574.846, 4066.557, 6462.291), stdev = 866.080
+  CI (99.9%): [3772.823, 4360.290] (assumes normal distribution)
+
+
+# Run complete. Total time: 00:03:00
+
+Benchmark                                         (expectation)  (filename)    (regex)  (str)  Mode  Cnt     Score     Error  Units
+RegexPreCompiledMethod.compiledRegexFullMatching           true   test3.csv  .*error.*  error  avgt  100  4066.557 ± 293.733  ns/op
+
+Benchmark result is saved to regexPrecompiledMethod_warm10_iter100_batch10.csv
