@@ -52,8 +52,8 @@ import org.openjdk.jmh.runner.options.OptionsBuilder;
 @State(Scope.Thread)
 
 @Fork(value = 1, jvmArgs = { "-server", "-Xms2G", "-Xmx2G" }) // heap size
-@Warmup(iterations = 10, time=10)
-@Measurement(iterations = 50, time=10)
+@Warmup(iterations = 10, batchSize=10)
+@Measurement(iterations = 50, batchSize=10)
 
 public class BaseLineMethod {
 
