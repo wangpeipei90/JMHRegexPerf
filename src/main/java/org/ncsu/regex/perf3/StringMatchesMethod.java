@@ -27,7 +27,7 @@ import org.openjdk.jmh.runner.options.OptionsBuilder;
 @Fork(value = 1, jvmArgs = { "-server", "-Xms2G", "-Xmx2G" }) // heap size
 @Warmup(iterations = 10,batchSize=10)
 @Measurement(iterations = 100,batchSize=10)
-public class StringContainsMethod {
+public class StringMatchesMethod {
 	@Param({".*error.*"})
 	private String regex;
 	
@@ -68,8 +68,8 @@ public class StringContainsMethod {
     }
 	
 	@Benchmark
-	public boolean stringContains(StringState state){
-		return state.testString.contains(str);	
+	public boolean stringMatches(StringState state){
+		return state.testString.matches(regex);	
 //		result=testString.contains(str);
 		//assert result==expectation: "Wrong String Ops of Regex matching";
 	}
@@ -81,7 +81,7 @@ public class StringContainsMethod {
 		 * -rf csv -rff contains_error_iter50.csv -o log/contains_error_iter50.log
 		 */
 		Options opt = new OptionsBuilder()
-				.include(StringContainsMethod.class.getSimpleName()) //// .include("JMHF.*") 可支持正则
+				.include(StringMatchesMethod.class.getSimpleName()) //// .include("JMHF.*") 可支持正则
 				.shouldDoGC(true)
 				.build();
 	}
