@@ -27,7 +27,7 @@ import org.openjdk.jmh.runner.options.OptionsBuilder;
 @Fork(value = 1, jvmArgs = { "-server", "-Xms2G", "-Xmx2G" }) // heap size
 @Warmup(iterations = 10,batchSize=10)
 @Measurement(iterations = 100,batchSize=10)
-public class RegexNotCompiledMethod {
+public class RegexNotCompiledFullMatchingMethod {
 	@Param({".*error.*"})
 	private String regex;
 	
@@ -80,7 +80,7 @@ public class RegexNotCompiledMethod {
 		 * -rf csv -rff contains_error_iter50.csv -o log/contains_error_iter50.log
 		 */
 		Options opt = new OptionsBuilder()
-				.include(RegexNotCompiledMethod.class.getSimpleName()) //// .include("JMHF.*") 可支持正则
+				.include(RegexNotCompiledFullMatchingMethod.class.getSimpleName()) //// .include("JMHF.*") 可支持正则
 				.shouldDoGC(true)
 				.build();
 	}

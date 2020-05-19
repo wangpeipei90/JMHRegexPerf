@@ -54,6 +54,12 @@ public class Utils {
 		return data;
 	}
 	
+	public static List<String> readData(String filename, int pos, int warmupIterations){
+		/**
+		 * to fill
+		 */
+		return null;
+	}
 	static void readData(String filename, FileType type, boolean isMatch,List<String> data) {
 		switch (type) {
 		case CSV:

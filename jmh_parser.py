@@ -201,7 +201,7 @@ def parseFile(file_path):
     return df
 
 
-def extractStringAndExecutionTimeFromIterations(df_expertment_time,file_str_gen,csv_output):
+def extractStringAndExecutionTimeFromIterations(df_expertment_time,file_str_gen,csv_output,batch_size):
     print(type(df_expertment_time))
     df_measurement = df_expertment_time.drop(
         columns=['Benchmark Mode', 'Class', 'Fork', 'Full Bench', 'Full params', 'Method', 'Package', 'Threads',
@@ -212,7 +212,8 @@ def extractStringAndExecutionTimeFromIterations(df_expertment_time,file_str_gen,
 
     result["Score"] = df_measurement["Score"].to_numpy()
     result["Unit"] = df_measurement["Measurement Unit"].to_numpy()
-    # print(result[:10])
+    result['Batch']= batch_size
+    print(result[:10])
     result.to_csv(csv_output)
     return result
 
@@ -222,12 +223,13 @@ if __name__ == '__main__':
     parser.add_argument('--log')
     parser.add_argument('--file')
     parser.add_argument('--output')
+    parser.add_argument('--batchsize')
 
     args = parser.parse_args()
 
-    file_genStr,result_log,csv_output=args.file,args.log,args.output
+    file_genStr,result_log,csv_output,batch_size=args.file,args.log,args.output,args.batchsize
 
     # csv_output="out.csv"
     # file_genStr="test3.csv"
     # result_log="log/regex_precompiled_warm10_iter100.log"
-    extractStringAndExecutionTimeFromIterations(parseFile(result_log),file_genStr,csv_output)
+    extractStringAndExecutionTimeFromIterations(parseFile(result_log),file_genStr,csv_output,batch_size)

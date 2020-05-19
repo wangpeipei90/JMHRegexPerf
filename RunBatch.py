@@ -1,6 +1,18 @@
 import pickle
 import subprocess
 import os
+from sklearn.model_selection import train_test_split
+import pandas as pd
+import numpy as np
+import math
+
+def stratifiedSampling(file,percentage,total):
+
+    Meta = pd.read_csv('test3.csv', sep=', ')
+    y = Meta.pop('length')
+    X = Meta
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=math.floor(total*percentage), random_state=42,stratify=y)
+    print(X_test,y_test)
 
 if __name__ == "__main__":
     print(os. getcwd())
