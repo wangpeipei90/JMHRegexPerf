@@ -30,51 +30,6 @@ def stratifiedSampling(csv_filename, output_filename, percentage, rand=1):
     print(sampling.columns)
     sampling.to_csv(output_filename, sep=",", index=False, header=True, encoding='utf-8')
 
-
-def perString():
-    print(os.getcwd())
-    assert os.path.exists("target/regexbenchmarks.jar"), "jmh jar file not found!!"
-
-    benchmark_class = "org.ncsu.regex.perf2.JavaContains"
-    regex = ".*error.*"
-    contain_str = "error"
-
-    matches = pickle.load(open("test3.p", "rb"))
-    not_matches = pickle.load(open("test4.p", "rb"))
-
-    cmd = [
-        "java", "-jar target/regexbenchmarks.jar", benchmark_class,
-        "-f", "1", "-gc", "true" "-wi", "10", "-i", "50", "-rf", "csv",
-        '-p', 'regex="' + regex + '"', '-p', 'str="' + contain_str + '"'
-    ]
-
-    for idx, (match, *rest) in enumerate(matches):
-        cmd2 = list(cmd)
-        cmd2.append('-p')
-        cmd2.append('testString="' + match + '"')
-        cmd2.append('-p')
-        cmd2.append('expectation="true"')
-        cmd2.append("-rff")
-        cmd2.append("result/contains_error_iter50_match_" + str(idx) + ".csv")
-        cmd2.append("-o")
-        cmd2.append("log/contains_error_iter50_match_" + str(idx) + ".log")
-
-        print(' '.join(cmd2))
-        os.system(' '.join(cmd2))
-        # subprocess.run(cmd2)
-
-    for idx, (not_match, *rest) in enumerate(not_matches):
-        cmd2 = list(cmd)
-        cmd2.append('-p testString="' + not_match + '"')
-        cmd2.append('-p expectation="false"')
-        cmd2.append("-rff result/contains_error_iter50_not_match_" + str(idx) + ".csv")
-        cmd2.append("-o log/contains_error_iter50_not_match_" + str(idx) + ".log")
-
-        print(' '.join(cmd2))
-        os.system(' '.join(cmd2))
-        # subprocess.call(cmd2)
-
-
 def generateString():
     options=[]
 
@@ -86,12 +41,13 @@ def generateString():
                 3 ASCII;
                 4 Unicode;
                 ''')
-    options.append(cmd_opt)
     cmd_opt = int(cmd_opt)
     if cmd_opt>2:
         raise Exception('Not supported characterset yet!!!')
     character_type=character_set[cmd_opt]
+    options.append(character_type)
 
+    matching_types=["startsWith", "notStartsWith", "contains", "notContains"]
     cmd_opt = input('''Enter the matching type for string generation:  
                     0 startsWith; 
                     1 notStartsWith; 
@@ -99,22 +55,27 @@ def generateString():
                     3 notContains;
                     4 other;
                     ''')
-    options.append(cmd_opt)
     cmd_opt = int(cmd_opt)
     if cmd_opt > 3:
         raise Exception('Not supported matching type yet!!!')
+    options.append(matching_types[cmd_opt])
 
     substring=input('''Enter the string used for string generation: ''')
-    print(substring)
     options.append(substring)
+    print(substring)
 
-    genSize = int(input('''Enter the number of strings to be generated: '''))
-    print(genSize)
+
+    genSize = input('''Enter the number of strings to be generated: ''')
     options.append(genSize)
+    genSize=int(genSize)
+    print(genSize)
 
-    maxLen = int(input('''Enter the maximum length of strings to be generated: '''))
-    print(maxLen)
+
+    maxLen = input('''Enter the maximum length of strings to be generated: ''')
     options.append(maxLen)
+    maxLen=int(maxLen)
+    print(maxLen)
+
 
     default_filename="_".join(options)+".csv"
     output_filename=input('''Enter the csv filename where generated strings to be stored ( 
@@ -133,6 +94,7 @@ def generateString():
         3: lambda x: substring not in x
     }
 
+    print("-----Starting----------")
     res = genFuncs[cmd_opt](substring, genSize, 0, maxLen, character_type)
     StringGenerator.asserted(res,assertion_funcs[cmd_opt])
     if cmd_opt%2==0: ## match options
@@ -143,14 +105,102 @@ def generateString():
     print("-----Finished----------")
 
 def stringSampling():
-    print("You typed two")
-    pass
+    genStr_filename = input('''Enter the csv filename for stratified sampling: ''')
+    sampling_percentage = input('''Enter the sampling percentage in float (1% is 0.01): ''')
+    sampling_rand = input('''Enter a random number for sampling random seed: (integer 0, 1, 2, ...): ''')
+
+    default_sampling_output=genStr_filename[:-4]+"_sampling"+sampling_percentage+"_rand"+str(sampling_rand)+".csv"
+    sampling_csv_output = input("Enter the output csv filename of stratified ampling results (default output file name is"
+                                + default_sampling_output+"): ")
+
+    print("-----Starting----------")
+    stratifiedSampling(genStr_filename, sampling_csv_output, float(sampling_percentage), int(sampling_rand))
+    print("-----Finished----------")
+
+    # parser = argparse.ArgumentParser(description='Stratified sampling of generated strings.')
+    # parser.add_argument('--file')
+    # parser.add_argument('--output')
+    # parser.add_argument('--samplingPercent')
+    # parser.add_argument('--randomSeed')
+    #
+    # args = parser.parse_args()
+    #
+    # file_genStr, sampling_csv_output, sampling_percentage, sampling_rand = args.file, args.output, float(
+    #     args.samplingPercent), int(args.randomSeed)
+    # print(file_genStr, sampling_csv_output, sampling_percentage)
+    #
+    # stratifiedSampling(file_genStr, sampling_csv_output, sampling_percentage, sampling_rand)
+
 def runExperiment():
-    print("You typed three")
-    pass
+    print(os.getcwd())
+    assert os.path.exists("target/regexbenchmarks.jar"), "jmh jar file not found!!"
+
+    package = "org.ncsu.regex.perf3."
+    class_methods = ["BaseLineMethod", "JavaIndexOf", "RegexNotCompiledFullMatchingMethod",
+                     "RegexPreCompiledFullMatchingMethod", "StringContainsMethod", "StringIndexOf",
+                     "StringMatchesMethod", "StringStartsWith"]
+    for idx, classMethod in enumerate(class_methods):
+        print(idx,classMethod)
+    cmd_opt = input("Enter the index from the above methods:")
+    benchmark_class = package+class_methods[int(cmd_opt)]
+    print(class_methods[int(cmd_opt)])
+
+    regex = input("Enter the regex for performance measurement:")
+    print(regex)
+
+    substring = input("Enter the string which have equivalent operations of regex matching")
+    print(substring)
+
+    genStr_filename = input("Enter the csv filename for performance measurement:")
+    print(substring)
+
+    expectation = input("Enter the expectation of the method is true or false (lowercase required): ")
+    print(expectation)
+
+    iterations = input("Enter the number of strings been used from input file or the measurement iterations: ")
+    print(iterations)
+    iterations = int(iterations)
+
+    log_filename="log/"+genStr_filename[:-4]+".log"
+    print("output log name: "+log_filename)
+
+    result_filename="result/"+genStr_filename
+    print("result csv filename: "+result_filename)
+    cmd = [
+        "java", "-jar", "target/regexbenchmarks.jar", benchmark_class,
+        "-f", "1", "-gc", "true" "-wi", "10", "-i", iterations, "-wbs", 20, "-bs", 20,
+        '-p', 'regex="' + regex + '"', '-p', 'str="' + substring + '"',
+        "-p", 'expectation="' + expectation + '"', "-p", 'filename="' + genStr_filename + '"'
+        "-rf", "csv", "-rff", result_filename, "-o", log_filename
+    ]
+
+    command=(' '.join(cmd))
+    print(command)
+
+    print("-----Starting----------")
+    os.system(command)
+    print("-----Finished----------")
+
+
 def performAnalysis():
     print("You typed four")
     pass
+
+    parser = argparse.ArgumentParser(description='Parse JMH output files (.out) into structured csv file '
+                                                 'and extract the measured time to generated strings.')
+    parser.add_argument('--log')
+    parser.add_argument('--file')
+    parser.add_argument('--output')
+    parser.add_argument('--batchsize')
+
+    args = parser.parse_args()
+
+    file_genStr,result_log,csv_output,batch_size=args.file,args.log,args.output,args.batchsize
+
+    # csv_output="out.csv"
+    # file_genStr="test3.csv"
+    # result_log="log/regex_precompiled_warm10_iter100.log"
+    extractStringAndExecutionTimeFromIterations(parseFile(result_log),file_genStr,csv_output,batch_size)
 
 def batchProcess():
     try:
@@ -177,16 +227,4 @@ if __name__ == "__main__":
     batchProcess()
     sys.exit(0)
 
-    parser = argparse.ArgumentParser(description='Stratified sampling of generated strings.')
-    parser.add_argument('--file')
-    parser.add_argument('--output')
-    parser.add_argument('--samplingPercent')
-    parser.add_argument('--randomSeed')
 
-    args = parser.parse_args()
-
-    file_genStr, sampling_csv_output, sampling_percentage, sampling_rand = args.file, args.output, float(
-        args.samplingPercent), int(args.randomSeed)
-    print(file_genStr, sampling_csv_output, sampling_percentage)
-
-    stratifiedSampling(file_genStr, sampling_csv_output, sampling_percentage, sampling_rand)
