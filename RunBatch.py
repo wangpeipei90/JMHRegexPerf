@@ -5,17 +5,20 @@ from sklearn.model_selection import train_test_split
 import pandas as pd
 import numpy as np
 import math
+import argparse
 
-def stratifiedSampling(file,percentage,total):
+def stratifiedSampling(csv_filename,percentage):
 
-    Meta = pd.read_csv('test3.csv', sep=', ')
+    Meta = pd.read_csv(csv_filename, sep=', ')
+    rows,cols=Meta.shape
+    print(rows,cols)
     y = Meta.pop('length')
     X = Meta
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=math.floor(total*percentage), random_state=42,stratify=y)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=math.floor(rows*percentage), random_state=42,stratify=y)
     print(X_test,y_test)
 
-if __name__ == "__main__":
-    print(os. getcwd())
+def perString():
+    print(os.getcwd())
     assert os.path.exists("target/regexbenchmarks.jar"), "jmh jar file not found!!"
 
     benchmark_class="org.ncsu.regex.perf2.JavaContains"
@@ -56,3 +59,16 @@ if __name__ == "__main__":
         print(' '.join(cmd2))
         os.system(' '.join(cmd2))
         #subprocess.call(cmd2)
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description='Stratified sampling of generated strings.')
+    parser.add_argument('--file')
+    parser.add_argument('--output')
+    parser.add_argument('--samplingPercent')
+
+    args = parser.parse_args()
+
+    file_genStr, sampling_csv_output, sampling_percentage = args.file, args.output, float(args.samplingPercent)
+    print(file_genStr,sampling_csv_output,sampling_percentage)
+    stratifiedSampling(file_genStr,sampling_percentage)
