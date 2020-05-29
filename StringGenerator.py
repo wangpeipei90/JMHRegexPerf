@@ -4,7 +4,7 @@ import math
 import pickle
 import time
 
-character_set=["AlphaNumeric","Printable"] #"ASCII","Unicode"]
+character_set=["AlphaNumeric","Printable","ASCII","Unicode"]
 
 def generate(length: int, type: str):
     if length==0:
@@ -13,6 +13,8 @@ def generate(length: int, type: str):
         return ''.join([random.choice(string.ascii_letters + string.digits) for _ in range(length)])
     elif type == "Printable":
         return ''.join([random.choice(string.printable) for _ in range(length)])
+    else:
+        raise Exception('Not supported characterset yet!!!')
 
 def generate_batch(size: int, length: int, type: str, exclude):
     # print(size,length,type)
@@ -33,7 +35,7 @@ def genStartsWith(start_str: str, size:int, len_lb=0, len_hb=1024, type="AlphaNu
     cur_len=0
     while len(res)<size:
         # print(step,cur_len,len(res))
-        res.append((start_str+generate(cur_len,type),matchLen+cur_len))
+        res.append((start_str+generate(cur_len,type), matchLen+cur_len, 0)) #firstMatchPos 0
         if len(res)%step==0:
             cur_len+=1
 
@@ -110,19 +112,19 @@ def genNotContains(contain_str: str, size:int, len_lb=0, len_hb=1024, type="Alph
 
 
 def save_to_file(obj: list, filename: str) -> None: #for starts with
-    pickle.dump(obj, open(filename[:-4]+".p", "wb" ))
+    # pickle.dump(obj, open(filename[:-4]+".p", "wb" ))
     with open(filename, mode='wt', encoding='utf-8') as myfile:
         myfile.write("string, length\n")
-        for gen_str,length in obj:
-            myfile.write(gen_str+", "+str(length)+"\n")
+        for gen_str, length in obj:
+            myfile.write(gen_str+","+str(length)+"\n")
         myfile.write('\n')
 
 def save_to_file2(obj: list, filename: str) -> None: #for starts with
-    pickle.dump(obj, open(filename[:-4]+".p", "wb"))
+    # pickle.dump(obj, open(filename[:-4]+".p", "wb"))
     with open(filename, mode='wt', encoding='utf-8') as myfile:
         myfile.write("string, length, firstMatchPos\n")
-        for gen_str,length, firstMatch_pos in obj:
-            myfile.write(gen_str +", " + str(length) +", " + str(firstMatch_pos) + '\n')
+        for gen_str, length, firstMatch_pos in obj:
+            myfile.write(gen_str + "," + str(length) + "," + str(firstMatch_pos) + '\n')
         myfile.write('\n')
 
 def asserted(obj: list, verify):
