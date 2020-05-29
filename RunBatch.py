@@ -1,11 +1,13 @@
 import pickle
 import subprocess
 import os
+import sys
 from sklearn.model_selection import train_test_split
 import pandas as pd
 import numpy as np
 import math
 import argparse
+import StringGenerator
 
 
 def stratifiedSampling(csv_filename, output_filename, percentage, rand=1):
@@ -73,7 +75,108 @@ def perString():
         # subprocess.call(cmd2)
 
 
+def generateString():
+    options=[]
+
+    character_set=["AlphaNumeric","Printable","ASCII","Unicode"]
+    cmd_opt = input('''Enter the characterset number for string generation:  
+                0 AlphaNumeric; 
+                1 Printable; 
+                2 string sampling; 
+                3 ASCII;
+                4 Unicode;
+                ''')
+    options.append(cmd_opt)
+    cmd_opt = int(cmd_opt)
+    if cmd_opt>2:
+        raise Exception('Not supported characterset yet!!!')
+    character_type=character_set[cmd_opt]
+
+    cmd_opt = input('''Enter the matching type for string generation:  
+                    0 startsWith; 
+                    1 notStartsWith; 
+                    2 contains; 
+                    3 notContains;
+                    4 other;
+                    ''')
+    options.append(cmd_opt)
+    cmd_opt = int(cmd_opt)
+    if cmd_opt > 3:
+        raise Exception('Not supported matching type yet!!!')
+
+    substring=input('''Enter the string used for string generation: ''')
+    print(substring)
+    options.append(substring)
+
+    genSize = int(input('''Enter the number of strings to be generated: '''))
+    print(genSize)
+    options.append(genSize)
+
+    maxLen = int(input('''Enter the maximum length of strings to be generated: '''))
+    print(maxLen)
+    options.append(maxLen)
+
+    default_filename="_".join(options)+".csv"
+    output_filename=input('''Enter the csv filename where generated strings to be stored ( 
+    default name is '''+default_filename+'''):''')
+    print(output_filename)
+
+    genFuncs = {
+        0: StringGenerator.genStartsWith,
+        1: StringGenerator.genNotStartsWith,
+        2: StringGenerator.genContains,
+        3: StringGenerator.genNotContains}
+    assertion_funcs = {
+        0: lambda x: x[:len(substring)] == substring,
+        1: lambda x: x[:len(substring)] != substring,
+        2: lambda x: substring in x,
+        3: lambda x: substring not in x
+    }
+
+    res = genFuncs[cmd_opt](substring, genSize, 0, maxLen, character_type)
+    StringGenerator.asserted(res,assertion_funcs[cmd_opt])
+    if cmd_opt%2==0: ## match options
+        StringGenerator.save_to_file2(res, output_filename)
+    else:
+        StringGenerator.save_to_file(res, output_filename)
+
+    print("-----Finished----------")
+
+def stringSampling():
+    print("You typed two")
+    pass
+def runExperiment():
+    print("You typed three")
+    pass
+def performAnalysis():
+    print("You typed four")
+    pass
+
+def batchProcess():
+    try:
+        options={1:generateString, 2:stringSampling, 3:runExperiment, 4:performAnalysis}
+        while True:
+            cmd_opt = input('''Enter the option number to perform a task:  
+            0 exit; 
+            1 generate string; 
+            2 string sampling; 
+            3 run a measurement experiment; 
+            4 process experiment result
+            ''')
+
+            cmd_opt=int(cmd_opt)
+            if cmd_opt == 0:
+                break
+            else:
+                options[cmd_opt]()
+    except KeyboardInterrupt:
+        print('interrupted!')
+
+
 if __name__ == "__main__":
+    batchProcess()
+    sys.exit(0)
+
     parser = argparse.ArgumentParser(description='Stratified sampling of generated strings.')
     parser.add_argument('--file')
     parser.add_argument('--output')
