@@ -30,56 +30,51 @@ def stratifiedSampling(csv_filename, output_filename, percentage, rand=1):
     print(sampling.columns)
     sampling.to_csv(output_filename, sep=",", index=False, header=True, encoding='utf-8')
 
-def generateString():
-    options=[]
 
-    character_set=["AlphaNumeric","Printable","ASCII","Unicode"]
-    cmd_opt = input('''Enter the characterset number for string generation:  
-                0 AlphaNumeric; 
-                1 Printable; 
-                2 string sampling; 
-                3 ASCII;
-                4 Unicode;
-                ''')
+def generateString():
+    options = []
+    file_dir = "generatedStrs/"
+    character_set = ["AlphaNumeric", "Printable", "ASCII", "Unicode"]
+    cmd_opt = input('Enter the characterset number for string generation:  \n'
+                    '0 AlphaNumeric; \n'
+                    '1 Printable; \n'
+                    '2 ASCII;\n'
+                    '3 Unicode;\n')
     cmd_opt = int(cmd_opt)
-    if cmd_opt>2:
+    if cmd_opt > 2:
         raise Exception('Not supported characterset yet!!!')
-    character_type=character_set[cmd_opt]
+    character_type = character_set[cmd_opt]
     options.append(character_type)
 
-    matching_types=["startsWith", "notStartsWith", "contains", "notContains"]
-    cmd_opt = input('''Enter the matching type for string generation:  
-                    0 startsWith; 
-                    1 notStartsWith; 
-                    2 contains; 
-                    3 notContains;
-                    4 other;
-                    ''')
+    matching_types = ["startsWith", "notStartsWith", "contains", "notContains"]
+    cmd_opt = input("Enter the matching type for string generation:  \n"
+                    "0 startsWith; \n"
+                    "1 notStartsWith; \n"
+                    "2 contains; \n"
+                    "3 notContains;\n"
+                    "4 other;\n")
     cmd_opt = int(cmd_opt)
     if cmd_opt > 3:
         raise Exception('Not supported matching type yet!!!')
     options.append(matching_types[cmd_opt])
 
-    substring=input('''Enter the string used for string generation: ''')
+    substring = input('''Enter the string used for string generation: ''')
     options.append(substring)
     print(substring)
 
-
     genSize = input('''Enter the number of strings to be generated: ''')
     options.append(genSize)
-    genSize=int(genSize)
+    genSize = int(genSize)
     print(genSize)
-
 
     maxLen = input('''Enter the maximum length of strings to be generated: ''')
     options.append(maxLen)
-    maxLen=int(maxLen)
+    maxLen = int(maxLen)
     print(maxLen)
 
-
-    default_filename="_".join(options)+".csv"
-    output_filename=input('''Enter the csv filename where generated strings to be stored ( 
-    default name is '''+default_filename+'''):''')
+    default_filename = file_dir+"_".join(options) + ".csv"
+    output_filename = input('''Enter the csv filename where generated strings to be stored ( 
+    default name is ''' + default_filename + '''):''')
     print(output_filename)
 
     genFuncs = {
@@ -96,22 +91,25 @@ def generateString():
 
     print("-----Starting----------")
     res = genFuncs[cmd_opt](substring, genSize, 0, maxLen, character_type)
-    StringGenerator.asserted(res,assertion_funcs[cmd_opt])
-    if cmd_opt%2==0: ## match options
+    StringGenerator.asserted(res, assertion_funcs[cmd_opt])
+    if cmd_opt % 2 == 0:  ## match options
         StringGenerator.save_to_file2(res, output_filename)
     else:
         StringGenerator.save_to_file(res, output_filename)
 
     print("-----Finished----------")
 
+
 def stringSampling():
     genStr_filename = input('''Enter the csv filename for stratified sampling: ''')
     sampling_percentage = input('''Enter the sampling percentage in float (1% is 0.01): ''')
     sampling_rand = input('''Enter a random number for sampling random seed: (integer 0, 1, 2, ...): ''')
 
-    default_sampling_output=genStr_filename[:-4]+"_sampling"+sampling_percentage+"_rand"+str(sampling_rand)+".csv"
-    sampling_csv_output = input("Enter the output csv filename of stratified ampling results (default output file name is"
-                                + default_sampling_output+"): ")
+    default_sampling_output = genStr_filename[:-4] + "_sampling" + sampling_percentage + "_rand" + str(
+        sampling_rand) + ".csv"
+    sampling_csv_output = input(
+        "Enter the output csv filename of stratified ampling results (default output file name is"
+        + default_sampling_output + "): ")
 
     print("-----Starting----------")
     stratifiedSampling(genStr_filename, sampling_csv_output, float(sampling_percentage), int(sampling_rand))
@@ -131,6 +129,7 @@ def stringSampling():
     #
     # stratifiedSampling(file_genStr, sampling_csv_output, sampling_percentage, sampling_rand)
 
+
 def runExperiment():
     print(os.getcwd())
     assert os.path.exists("target/regexbenchmarks.jar"), "jmh jar file not found!!"
@@ -140,9 +139,9 @@ def runExperiment():
                      "RegexPreCompiledFullMatchingMethod", "StringContainsMethod", "StringIndexOf",
                      "StringMatchesMethod", "StringStartsWith"]
     for idx, classMethod in enumerate(class_methods):
-        print(idx,classMethod)
+        print(idx, classMethod)
     cmd_opt = input("Enter the index from the above methods:")
-    benchmark_class = package+class_methods[int(cmd_opt)]
+    benchmark_class = package + class_methods[int(cmd_opt)]
     print(class_methods[int(cmd_opt)])
 
     regex = input("Enter the regex for performance measurement:")
@@ -161,20 +160,21 @@ def runExperiment():
     print(iterations)
     iterations = int(iterations)
 
-    log_filename="log/"+genStr_filename[:-4]+".log"
-    print("output log name: "+log_filename)
+    log_filename = "log/" + genStr_filename[:-4] + ".log"
+    print("output log name: " + log_filename)
 
-    result_filename="result/"+genStr_filename
-    print("result csv filename: "+result_filename)
+    result_filename = "result/" + genStr_filename
+    print("result csv filename: " + result_filename)
     cmd = [
         "java", "-jar", "target/regexbenchmarks.jar", benchmark_class,
         "-f", "1", "-gc", "true" "-wi", "10", "-i", iterations, "-wbs", 20, "-bs", 20,
         '-p', 'regex="' + regex + '"', '-p', 'str="' + substring + '"',
         "-p", 'expectation="' + expectation + '"', "-p", 'filename="' + genStr_filename + '"'
-        "-rf", "csv", "-rff", result_filename, "-o", log_filename
+                                                                                          "-rf", "csv", "-rff",
+        result_filename, "-o", log_filename
     ]
 
-    command=(' '.join(cmd))
+    command = (' '.join(cmd))
     print(command)
 
     print("-----Starting----------")
@@ -195,16 +195,17 @@ def performAnalysis():
 
     args = parser.parse_args()
 
-    file_genStr,result_log,csv_output,batch_size=args.file,args.log,args.output,args.batchsize
+    file_genStr, result_log, csv_output, batch_size = args.file, args.log, args.output, args.batchsize
 
     # csv_output="out.csv"
     # file_genStr="test3.csv"
     # result_log="log/regex_precompiled_warm10_iter100.log"
-    extractStringAndExecutionTimeFromIterations(parseFile(result_log),file_genStr,csv_output,batch_size)
+    extractStringAndExecutionTimeFromIterations(parseFile(result_log), file_genStr, csv_output, batch_size)
+
 
 def batchProcess():
     try:
-        options={1:generateString, 2:stringSampling, 3:runExperiment, 4:performAnalysis}
+        options = {1: generateString, 2: stringSampling, 3: runExperiment, 4: performAnalysis}
         while True:
             cmd_opt = input('''Enter the option number to perform a task:  
             0 exit; 
@@ -214,7 +215,7 @@ def batchProcess():
             4 process experiment result
             ''')
 
-            cmd_opt=int(cmd_opt)
+            cmd_opt = int(cmd_opt)
             if cmd_opt == 0:
                 break
             else:
@@ -226,5 +227,3 @@ def batchProcess():
 if __name__ == "__main__":
     batchProcess()
     sys.exit(0)
-
-

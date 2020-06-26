@@ -1,0 +1,13 @@
+https://github.com/google/graphicsfuzz/pull/167
+
+fileJudge = new ValidatorErrorShaderFileJudge(errorString.isEmpty() ? null	          fileJudge = new ValidatorErrorShaderFileJudge(errorString.isEmpty() ? null : errorString);
+                : Pattern.compile(".*" + errorString + ".*", Pattern.DOTALL));
+
+public ValidatorErrorShaderFileJudge(Pattern pattern) {	  public ValidatorErrorShaderFileJudge(String errorString) {
+  this.pattern = pattern;	    this.errorString = errorString;
+}
+
+if (pattern.matcher(res.stderr).matches()) {	      if (res.stderr.contains(errorString)) {
+        LOGGER.info("Regex matched. Interesting");	        LOGGER.info("Error string was found. Interesting");
+        return true;	        return true;
+      }	      }
