@@ -1,3 +1,5 @@
+package org.ncsu.jmh.examples;
+
 import org.openjdk.jmh.annotations.*;
 
 import java.util.concurrent.TimeUnit;
