@@ -50,12 +50,14 @@ def produce(regex_lens:list, file_name:str):
     pickle.dump(cases, open(file_name, "wb"))
     
 def get_cmd(regex_index:int, string_character:str, regex:str, str_exec:str) -> list:
-    return ['java', '-jar', '/Users/pw/eclipse-workspace/JMHRegexPerf/target/regexbenchmarks.jar', 
+    return ['java', '-jar', 'target/regexbenchmarks.jar', 
             "benchmark.StringContains", "-rf", "csv", 
             "-rff", str(regex_index)+"_"+string_character+".csv",
             "-o", str(regex_index)+"_"+string_character+".log",
             "-p", "regex={}".format(regex).encode('utf-8'),
             "-p", "str={}".format(str_exec).encode('utf-8'),
+            "-f", "1",
+            "-gc","true"
             ]
     
 if __name__ == '__main__':
@@ -63,10 +65,12 @@ if __name__ == '__main__':
 #     produce([5, 10, 50, 100, 500, 1000], file_name)
     cases = pickle.load(open(file_name, "rb"))
     for case in cases:
+        string_count = 0
         for s, (mis_rm, mis_edit) in case.str_to_match.items():
-            for cmd in [get_cmd(case.index, "matching", case.escaped_regex, s),
-                        get_cmd(case.index, "dismatching_rm", case.escaped_regex, mis_rm),
-                        get_cmd(case.index, "dismatching_edit", case.escaped_regex, mis_edit)
+            for cmd in [get_cmd(case.index, str(string_count)+"_matching", case.escaped_regex, s),
+                        get_cmd(case.index, str(string_count)+"_dismatching_rm", case.escaped_regex, mis_rm),
+                        get_cmd(case.index, str(string_count)+"_dismatching_edit", case.escaped_regex, mis_edit)
                     ]:
                 print("verifying matching in Java Benchmark:", cmd)
-#                 result = subprocess.run(cmd, stdout=subprocess.PIPE)
+                result = subprocess.run(cmd, stdout=subprocess.PIPE)
+                string_count += 1
