@@ -14,7 +14,23 @@ import exrex
 from dataclasses import dataclass
 import pickle
 import os.path
+import os
 
+cur_path, home_path = os.getcwd(), os.getenv("HOME")
+class_path = ":".join([cur_path+"/target/classes",
+                      home_path+"/.m2/repository/org/apache/commons/commons-csv/1.8/commons-csv-1.8.jar",
+                      home_path+"/.m2/repository/org/openjdk/jmh/jmh-core/1.26/jmh-core-1.26.jar",
+                      home_path+"/.m2/repository/net/sf/jopt-simple/jopt-simple/4.6/jopt-simple-4.6.jar",
+                      home_path+"/.m2/repository/org/apache/commons/commons-math3/3.2/commons-math3-3.2.jar",
+                      home_path+"/.m2/repository/org/openjdk/jmh/jmh-generator-annprocess/1.26/jmh-generator-annprocess-1.26.jar",
+                      home_path+"/.m2/repository/org/apache/commons/commons-lang3/3.7/commons-lang3-3.7.jar",
+                      home_path+"/.m2/repository/org/apache/commons/commons-text/1.2/commons-text-1.2.jar",
+                      home_path+"/.m2/repository/com/googlecode/json-simple/json-simple/1.1.1/json-simple-1.1.1.jar",
+                      home_path+"/.m2/repository/junit/junit/4.10/junit-4.10.jar",
+                      home_path+".m2/repository/org/hamcrest/hamcrest-core/1.1/hamcrest-core-1.1.jar",
+                      home_path+"/.m2/repository/com/github/mifmif/generex/1.0.2/generex-1.0.2.jar",
+                      home_path+"/.m2/repository/dk/brics/automaton/automaton/1.11-8/automaton-1.11-8.jar",
+                      home_path+"/.m2/repository/commons-cli/commons-cli/1.4/commons-cli-1.4.jar"])
 @dataclass
 class ContainedStringCase:
     index: int
@@ -50,16 +66,12 @@ def produce(regex_lens:list, file_name:str):
     cases = [produce_case(idx, regex_len) for idx, regex_len in enumerate(regex_lens)]
     pickle.dump(cases, open(file_name, "wb"))
     
-def str(case.index)+"_"+str(string_count)+get_cmd(regex_index:int, string_character:str, regex:str, str_exec:str) -> list:
-    return ['java', '-jar', 'target/regexbenchmarks.jar', 
-            "benchmark.StringContains", "-rf", "csv", 
-            "-rff", str(regex_index)+"_"+string_character+".csv",
-            "-o", str(regex_index)+"_"+string_character+".log",
-            "-p", "regex={}".format(regex).encode('utf-8'),
-            "-p", "str={}".format(str_exec).encode('utf-8'),
-            "-f", "1",
-            "-gc","true"
-            ]
+def get_cmd(regex_index:int, string_character:str, regex:str, str_exec:str) -> list:
+    return ["java", "-Dfile.encoding=UTF-8", "-classpath", class_path, "benchmark.StringContains", 
+            str(regex_index)+"_"+string_character+".csv",
+            str(regex_index)+"_"+string_character+".log",
+            regex.encode('utf-8'),
+            str_exec.encode('utf-8')]
 
 def get_result(regex_count:int, case: ContainedStringCase):
     string_count = 0
@@ -74,6 +86,7 @@ def get_result(regex_count:int, case: ContainedStringCase):
             csv_names.append(csv_name)
         df = pd.concat(map(pd.read_csv, glob.glob(os.path.join('', "my_files*.csv"))))
 if __name__ == '__main__':
+    print(cur_path, home_path)
     file_name = "string_contains.input"
 #     produce([5, 10, 50, 100, 500, 1000], file_name)
     cases = pickle.load(open(file_name, "rb"))
