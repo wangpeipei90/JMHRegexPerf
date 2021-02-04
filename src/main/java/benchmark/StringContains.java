@@ -1,4 +1,5 @@
 package benchmark;
+import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
 
@@ -15,6 +16,7 @@ import org.openjdk.jmh.annotations.Setup;
 import org.openjdk.jmh.annotations.State;
 import org.openjdk.jmh.annotations.Warmup;
 import org.openjdk.jmh.infra.Blackhole;
+import org.openjdk.jmh.results.format.ResultFormatType;
 import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.options.ChainedOptionsBuilder;
 import org.openjdk.jmh.runner.options.CommandLineOptions;
@@ -65,45 +67,21 @@ public class StringContains {
 	}
 	
 	public static void main(String[] args) throws Exception {
-//		/**
-//		 * commands:
-//		 * java -jar target/regexbenchmarks.jar benchmark.StringContains -rf csv -rff stringcontains.csv -o stringcontains.log
-//		 * -f 1 -gc true -wi 10 -w 100ms -i 50 -r 100ms -p regex=".*error.*" -p str="error" -p testString="abcccerrordefg" -p expectation="true"
-//		 * -rf csv -rff contains_error_iter50.csv -o log/contains_error_iter50.log
-//		 */
-		System.out.println("Running the custom jmh runner.");
-		CommandLineOptions cmdOptions = new CommandLineOptions(args);
+		String regex = args[args.length-2];
+		String str = args[args.length-1];
+		String csv_filename = args[args.length-4];
+		String log_filename = args[args.length-3];
+		CommandLineOptions cmdOptions = new CommandLineOptions(Arrays.copyOfRange(args, 0, args.length-4));
 		ChainedOptionsBuilder optBuilder = new OptionsBuilder()
 				.parent(cmdOptions)
 				.include(StringContains.class.getSimpleName()) //// .include("JMHF.*") 可支持正则
 				.shouldDoGC(true)
-				.param("regex","abcde")
-				.param("str","abc,efg,hij")
+				.param("regex",regex)
+				.param("str", str)
+				.resultFormat(ResultFormatType.CSV)
+				.result(csv_filename)
+				.output(log_filename)
 				.shouldFailOnError(true);
-////		List regex_values = (List) ((OptionsBuilder) optBuilder).getParameter("regex");
-////		List str_values = (List) ((OptionsBuilder) optBuilder).getParameter("str");
-////		if(regex_values.size() > 1) {
-////			String v1 = (String) regex_values.get(0);
-////			StringBuffer s =  new StringBuffer(v1);
-////			for(int i = 1; i < regex_values.size(); i++) {
-////				s.append(",");
-////				s.append(regex_values.get(i));
-////			}
-////			optBuilder = optBuilder.param("regex", s.toString());
-////		}
-////		
-////		if(str_values.size() > 1) {
-////
-////		}
-////		
-////		if(((List) ((OptionsBuilder) optBuilder).getParameter("regex")).size()>1) {
-////			throw new Exception("Unexpected parameter regex");
-////		}
-////		
-////		if(((List) ((OptionsBuilder) optBuilder).getParameter("str")).size()>1) {
-////			throw new Exception("Unexpected parameter str");
-////		}
-//		
 		new Runner(optBuilder.build()).run();
 	}
 

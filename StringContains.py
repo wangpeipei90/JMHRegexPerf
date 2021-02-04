@@ -13,6 +13,7 @@ import subprocess
 import exrex
 from dataclasses import dataclass
 import pickle
+import os.path
 
 @dataclass
 class ContainedStringCase:
@@ -49,7 +50,7 @@ def produce(regex_lens:list, file_name:str):
     cases = [produce_case(idx, regex_len) for idx, regex_len in enumerate(regex_lens)]
     pickle.dump(cases, open(file_name, "wb"))
     
-def get_cmd(regex_index:int, string_character:str, regex:str, str_exec:str) -> list:
+def str(case.index)+"_"+str(string_count)+get_cmd(regex_index:int, string_character:str, regex:str, str_exec:str) -> list:
     return ['java', '-jar', 'target/regexbenchmarks.jar', 
             "benchmark.StringContains", "-rf", "csv", 
             "-rff", str(regex_index)+"_"+string_character+".csv",
@@ -59,7 +60,19 @@ def get_cmd(regex_index:int, string_character:str, regex:str, str_exec:str) -> l
             "-f", "1",
             "-gc","true"
             ]
+
+def get_result(regex_count:int, case: ContainedStringCase):
+    string_count = 0
+#     str(case.index)+"_"+str(string_count)+"_dismatching_rm.csv", 
+#     str(case.index)+"_"+str(string_count)+"_dismatching_edit.csv",
     
+    csv_names = []
+    for s, (mis_rm, mis_edit) in case.str_to_match.items():
+        csv_name = str(case.index)+"_"+str(string_count)+"_matching.csv"
+        string_count += 1
+        if os.path.exists(csv_name):
+            csv_names.append(csv_name)
+        df = pd.concat(map(pd.read_csv, glob.glob(os.path.join('', "my_files*.csv"))))
 if __name__ == '__main__':
     file_name = "string_contains.input"
 #     produce([5, 10, 50, 100, 500, 1000], file_name)
@@ -73,4 +86,4 @@ if __name__ == '__main__':
                     ]:
                 print("verifying matching in Java Benchmark:", cmd)
                 result = subprocess.run(cmd, stdout=subprocess.PIPE)
-                string_count += 1
+            string_count += 1
