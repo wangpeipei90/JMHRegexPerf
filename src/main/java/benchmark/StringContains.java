@@ -67,10 +67,10 @@ public class StringContains {
 	}
 	
 	public static void main(String[] args) throws Exception {
-		String regex = args[args.length-2];
-		String str = args[args.length-1];
 		String csv_filename = args[args.length-4];
 		String log_filename = args[args.length-3];
+		String regex = args[args.length-2];
+		String str = args[args.length-1];
 		CommandLineOptions cmdOptions = new CommandLineOptions(Arrays.copyOfRange(args, 0, args.length-4));
 		ChainedOptionsBuilder optBuilder = new OptionsBuilder()
 				.parent(cmdOptions)
@@ -82,6 +82,8 @@ public class StringContains {
 				.result(csv_filename)
 				.output(log_filename)
 				.shouldFailOnError(true);
+		System.out.println("output file: "+((OptionsBuilder)optBuilder).getOutput());
+		System.out.println("result file: "+((OptionsBuilder)optBuilder).getResult());
 		new Runner(optBuilder.build()).run();
 	}
 
