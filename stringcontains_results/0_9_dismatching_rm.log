@@ -1,0 +1,2667 @@
+# JMH version: 1.26
+# VM version: JDK 11.0.9.1, OpenJDK 64-Bit Server VM, 11.0.9.1+1-Ubuntu-0ubuntu1.18.04
+# VM invoker: /usr/lib/jvm/java-11-openjdk-amd64/bin/java
+# VM options: -server -Xms2G -Xmx2G
+# Warmup: 10 iterations, 1 s each
+# Measurement: 50 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: benchmark.StringContains.regexMatches
+# Parameters: (regex = \+D_NJ, str = e\YHI5Mg[?Fe9.q4tck%pd)v^R_81x$JZ'-0#bc*7D;` YK>yPi9ZVKY/p[EXuGxjWiia9)
+
+# Run progress: 0.00% complete, ETA 00:32:00
+# Fork: 1 of 1
+# Warmup Iteration   1: 283.169 ns/op
+# Warmup Iteration   2: 210.412 ns/op
+# Warmup Iteration   3: 183.289 ns/op
+# Warmup Iteration   4: 174.608 ns/op
+# Warmup Iteration   5: 171.373 ns/op
+# Warmup Iteration   6: 170.109 ns/op
+# Warmup Iteration   7: 169.701 ns/op
+# Warmup Iteration   8: 169.602 ns/op
+# Warmup Iteration   9: 169.538 ns/op
+# Warmup Iteration  10: 169.483 ns/op
+Iteration   1: 169.452 ns/op
+Iteration   2: 169.439 ns/op
+Iteration   3: 169.371 ns/op
+Iteration   4: 169.445 ns/op
+Iteration   5: 169.904 ns/op
+Iteration   6: 169.339 ns/op
+Iteration   7: 169.344 ns/op
+Iteration   8: 169.397 ns/op
+Iteration   9: 169.377 ns/op
+Iteration  10: 169.325 ns/op
+Iteration  11: 169.317 ns/op
+Iteration  12: 169.352 ns/op
+Iteration  13: 169.349 ns/op
+Iteration  14: 169.320 ns/op
+Iteration  15: 169.280 ns/op
+Iteration  16: 169.297 ns/op
+Iteration  17: 169.282 ns/op
+Iteration  18: 169.412 ns/op
+Iteration  19: 169.247 ns/op
+Iteration  20: 169.272 ns/op
+Iteration  21: 169.354 ns/op
+Iteration  22: 169.457 ns/op
+Iteration  23: 169.334 ns/op
+Iteration  24: 169.325 ns/op
+Iteration  25: 169.358 ns/op
+Iteration  26: 169.314 ns/op
+Iteration  27: 169.303 ns/op
+Iteration  28: 169.353 ns/op
+Iteration  29: 169.277 ns/op
+Iteration  30: 169.303 ns/op
+Iteration  31: 169.220 ns/op
+Iteration  32: 169.232 ns/op
+Iteration  33: 169.304 ns/op
+Iteration  34: 169.263 ns/op
+Iteration  35: 169.264 ns/op
+Iteration  36: 169.301 ns/op
+Iteration  37: 169.279 ns/op
+Iteration  38: 169.414 ns/op
+Iteration  39: 169.240 ns/op
+Iteration  40: 169.224 ns/op
+Iteration  41: 169.385 ns/op
+Iteration  42: 169.314 ns/op
+Iteration  43: 169.426 ns/op
+Iteration  44: 169.519 ns/op
+Iteration  45: 169.462 ns/op
+Iteration  46: 169.277 ns/op
+Iteration  47: 169.205 ns/op
+Iteration  48: 169.198 ns/op
+Iteration  49: 169.245 ns/op
+Iteration  50: 169.185 ns/op
+
+
+Result "benchmark.StringContains.regexMatches":
+  169.337 ±(99.9%) 0.055 ns/op [Average]
+  (min, avg, max) = (169.185, 169.337, 169.904), stdev = 0.112
+  CI (99.9%): [169.282, 169.392] (assumes normal distribution)
+
+
+# JMH version: 1.26
+# VM version: JDK 11.0.9.1, OpenJDK 64-Bit Server VM, 11.0.9.1+1-Ubuntu-0ubuntu1.18.04
+# VM invoker: /usr/lib/jvm/java-11-openjdk-amd64/bin/java
+# VM options: -server -Xms2G -Xmx2G
+# Warmup: 10 iterations, 1 s each
+# Measurement: 50 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: benchmark.StringContains.regexMatches
+# Parameters: (regex = \+D_NJ, str = Yck:&a^[)
+
+# Run progress: 3.13% complete, ETA 00:50:19
+# Fork: 1 of 1
+# Warmup Iteration   1: 190.059 ns/op
+# Warmup Iteration   2: 122.105 ns/op
+# Warmup Iteration   3: 101.164 ns/op
+# Warmup Iteration   4: 100.602 ns/op
+# Warmup Iteration   5: 99.522 ns/op
+# Warmup Iteration   6: 100.144 ns/op
+# Warmup Iteration   7: 101.375 ns/op
+# Warmup Iteration   8: 98.765 ns/op
+# Warmup Iteration   9: 97.739 ns/op
+# Warmup Iteration  10: 97.762 ns/op
+Iteration   1: 97.718 ns/op
+Iteration   2: 97.740 ns/op
+Iteration   3: 97.853 ns/op
+Iteration   4: 97.836 ns/op
+Iteration   5: 97.774 ns/op
+Iteration   6: 97.748 ns/op
+Iteration   7: 98.017 ns/op
+Iteration   8: 97.764 ns/op
+Iteration   9: 97.733 ns/op
+Iteration  10: 97.775 ns/op
+Iteration  11: 97.732 ns/op
+Iteration  12: 97.745 ns/op
+Iteration  13: 97.803 ns/op
+Iteration  14: 97.787 ns/op
+Iteration  15: 97.917 ns/op
+Iteration  16: 97.766 ns/op
+Iteration  17: 97.820 ns/op
+Iteration  18: 98.587 ns/op
+Iteration  19: 98.018 ns/op
+Iteration  20: 97.831 ns/op
+Iteration  21: 97.871 ns/op
+Iteration  22: 98.285 ns/op
+Iteration  23: 97.878 ns/op
+Iteration  24: 98.089 ns/op
+Iteration  25: 98.150 ns/op
+Iteration  26: 97.854 ns/op
+Iteration  27: 97.777 ns/op
+Iteration  28: 98.193 ns/op
+Iteration  29: 97.752 ns/op
+Iteration  30: 97.766 ns/op
+Iteration  31: 97.887 ns/op
+Iteration  32: 97.956 ns/op
+Iteration  33: 97.734 ns/op
+Iteration  34: 97.748 ns/op
+Iteration  35: 97.945 ns/op
+Iteration  36: 97.966 ns/op
+Iteration  37: 97.745 ns/op
+Iteration  38: 97.821 ns/op
+Iteration  39: 97.784 ns/op
+Iteration  40: 97.789 ns/op
+Iteration  41: 97.830 ns/op
+Iteration  42: 97.766 ns/op
+Iteration  43: 97.774 ns/op
+Iteration  44: 97.806 ns/op
+Iteration  45: 97.791 ns/op
+Iteration  46: 97.812 ns/op
+Iteration  47: 97.813 ns/op
+Iteration  48: 97.943 ns/op
+Iteration  49: 97.822 ns/op
+Iteration  50: 97.997 ns/op
+
+
+Result "benchmark.StringContains.regexMatches":
+  97.866 ±(99.9%) 0.081 ns/op [Average]
+  (min, avg, max) = (97.718, 97.866, 98.587), stdev = 0.163
+  CI (99.9%): [97.785, 97.947] (assumes normal distribution)
+
+
+# JMH version: 1.26
+# VM version: JDK 11.0.9.1, OpenJDK 64-Bit Server VM, 11.0.9.1+1-Ubuntu-0ubuntu1.18.04
+# VM invoker: /usr/lib/jvm/java-11-openjdk-amd64/bin/java
+# VM options: -server -Xms2G -Xmx2G
+# Warmup: 10 iterations, 1 s each
+# Measurement: 50 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: benchmark.StringContains.regexMatches
+# Parameters: (regex = \+D_NJ, str = (#r%'-G*W)
+
+# Run progress: 6.25% complete, ETA 00:48:41
+# Fork: 1 of 1
+# Warmup Iteration   1: 180.028 ns/op
+# Warmup Iteration   2: 107.185 ns/op
+# Warmup Iteration   3: 93.491 ns/op
+# Warmup Iteration   4: 93.696 ns/op
+# Warmup Iteration   5: 93.494 ns/op
+# Warmup Iteration   6: 93.367 ns/op
+# Warmup Iteration   7: 93.341 ns/op
+# Warmup Iteration   8: 93.351 ns/op
+# Warmup Iteration   9: 93.297 ns/op
+# Warmup Iteration  10: 93.291 ns/op
+Iteration   1: 93.527 ns/op
+Iteration   2: 93.318 ns/op
+Iteration   3: 93.496 ns/op
+Iteration   4: 93.521 ns/op
+Iteration   5: 93.329 ns/op
+Iteration   6: 93.452 ns/op
+Iteration   7: 93.484 ns/op
+Iteration   8: 93.405 ns/op
+Iteration   9: 93.358 ns/op
+Iteration  10: 93.496 ns/op
+Iteration  11: 93.464 ns/op
+Iteration  12: 93.416 ns/op
+Iteration  13: 93.425 ns/op
+Iteration  14: 94.132 ns/op
+Iteration  15: 94.325 ns/op
+Iteration  16: 96.296 ns/op
+Iteration  17: 96.528 ns/op
+Iteration  18: 96.599 ns/op
+Iteration  19: 95.203 ns/op
+Iteration  20: 94.782 ns/op
+Iteration  21: 96.428 ns/op
+Iteration  22: 94.283 ns/op
+Iteration  23: 93.407 ns/op
+Iteration  24: 93.483 ns/op
+Iteration  25: 93.338 ns/op
+Iteration  26: 93.405 ns/op
+Iteration  27: 93.572 ns/op
+Iteration  28: 93.576 ns/op
+Iteration  29: 93.500 ns/op
+Iteration  30: 93.438 ns/op
+Iteration  31: 93.363 ns/op
+Iteration  32: 93.553 ns/op
+Iteration  33: 93.375 ns/op
+Iteration  34: 93.360 ns/op
+Iteration  35: 93.572 ns/op
+Iteration  36: 93.442 ns/op
+Iteration  37: 93.376 ns/op
+Iteration  38: 93.369 ns/op
+Iteration  39: 93.433 ns/op
+Iteration  40: 93.345 ns/op
+Iteration  41: 93.369 ns/op
+Iteration  42: 93.528 ns/op
+Iteration  43: 93.505 ns/op
+Iteration  44: 93.450 ns/op
+Iteration  45: 93.414 ns/op
+Iteration  46: 93.390 ns/op
+Iteration  47: 93.500 ns/op
+Iteration  48: 93.395 ns/op
+Iteration  49: 93.417 ns/op
+Iteration  50: 93.457 ns/op
+
+
+Result "benchmark.StringContains.regexMatches":
+  93.792 ±(99.9%) 0.433 ns/op [Average]
+  (min, avg, max) = (93.318, 93.792, 96.599), stdev = 0.875
+  CI (99.9%): [93.359, 94.225] (assumes normal distribution)
+
+
+# JMH version: 1.26
+# VM version: JDK 11.0.9.1, OpenJDK 64-Bit Server VM, 11.0.9.1+1-Ubuntu-0ubuntu1.18.04
+# VM invoker: /usr/lib/jvm/java-11-openjdk-amd64/bin/java
+# VM options: -server -Xms2G -Xmx2G
+# Warmup: 10 iterations, 1 s each
+# Measurement: 50 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: benchmark.StringContains.regexMatches
+# Parameters: (regex = \+D_NJ, str = )`j7Pq#;g.:$%v9v]RHGgpZpMR#:DUG+[vejb=rvTo#(edqo=>gwXUu[w^Flk-?p^MWOei8Emyl8P]L'AB2hlP>rZ"m[('DOFQqzzvPo8%bu8e<15ZIznE\]$f6UNaA2n@5p_=#ReVywLc+Cc$^^*Hzx;87kdYqa-?T4cof@!\Yy^rv^[M$Xmvk5eIU"8>1yY(jQMB[)
+
+# Run progress: 9.38% complete, ETA 00:47:03
+# Fork: 1 of 1
+# Warmup Iteration   1: 1416.958 ns/op
+# Warmup Iteration   2: 1259.541 ns/op
+# Warmup Iteration   3: 1231.449 ns/op
+# Warmup Iteration   4: 1229.396 ns/op
+# Warmup Iteration   5: 1229.417 ns/op
+# Warmup Iteration   6: 1229.395 ns/op
+# Warmup Iteration   7: 1229.460 ns/op
+# Warmup Iteration   8: 1229.038 ns/op
+# Warmup Iteration   9: 1229.659 ns/op
+# Warmup Iteration  10: 1229.281 ns/op
+Iteration   1: 1229.814 ns/op
+Iteration   2: 1229.333 ns/op
+Iteration   3: 1228.996 ns/op
+Iteration   4: 1229.331 ns/op
+Iteration   5: 1229.236 ns/op
+Iteration   6: 1229.425 ns/op
+Iteration   7: 1229.278 ns/op
+Iteration   8: 1229.825 ns/op
+Iteration   9: 1229.034 ns/op
+Iteration  10: 1229.654 ns/op
+Iteration  11: 1229.754 ns/op
+Iteration  12: 1229.278 ns/op
+Iteration  13: 1229.442 ns/op
+Iteration  14: 1229.263 ns/op
+Iteration  15: 1229.628 ns/op
+Iteration  16: 1229.331 ns/op
+Iteration  17: 1229.824 ns/op
+Iteration  18: 1230.875 ns/op
+Iteration  19: 1229.481 ns/op
+Iteration  20: 1229.403 ns/op
+Iteration  21: 1229.250 ns/op
+Iteration  22: 1229.563 ns/op
+Iteration  23: 1229.319 ns/op
+Iteration  24: 1229.244 ns/op
+Iteration  25: 1229.393 ns/op
+Iteration  26: 1229.825 ns/op
+Iteration  27: 1229.200 ns/op
+Iteration  28: 1229.250 ns/op
+Iteration  29: 1229.628 ns/op
+Iteration  30: 1230.521 ns/op
+Iteration  31: 1229.782 ns/op
+Iteration  32: 1229.824 ns/op
+Iteration  33: 1229.940 ns/op
+Iteration  34: 1229.872 ns/op
+Iteration  35: 1229.632 ns/op
+Iteration  36: 1229.860 ns/op
+Iteration  37: 1230.181 ns/op
+Iteration  38: 1230.090 ns/op
+Iteration  39: 1232.093 ns/op
+Iteration  40: 1238.133 ns/op
+Iteration  41: 1233.826 ns/op
+Iteration  42: 1231.849 ns/op
+Iteration  43: 1231.016 ns/op
+Iteration  44: 1230.759 ns/op
+Iteration  45: 1231.112 ns/op
+Iteration  46: 1231.223 ns/op
+Iteration  47: 1229.422 ns/op
+Iteration  48: 1229.384 ns/op
+Iteration  49: 1229.168 ns/op
+Iteration  50: 1229.311 ns/op
+
+
+Result "benchmark.StringContains.regexMatches":
+  1230.037 ±(99.9%) 0.731 ns/op [Average]
+  (min, avg, max) = (1228.996, 1230.037, 1238.133), stdev = 1.476
+  CI (99.9%): [1229.307, 1230.768] (assumes normal distribution)
+
+
+# JMH version: 1.26
+# VM version: JDK 11.0.9.1, OpenJDK 64-Bit Server VM, 11.0.9.1+1-Ubuntu-0ubuntu1.18.04
+# VM invoker: /usr/lib/jvm/java-11-openjdk-amd64/bin/java
+# VM options: -server -Xms2G -Xmx2G
+# Warmup: 10 iterations, 1 s each
+# Measurement: 50 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: benchmark.StringContains.regexMatches
+# Parameters: (regex = \+D_NJ, str = [DC"139h=0!F/7u.1ZKSXK#$^c-jcd]Fc#w;"^i24M]KF2@vb^i73`7`+u!&vd(-'dq%7q8`P'y *)
+
+# Run progress: 12.50% complete, ETA 00:45:24
+# Fork: 1 of 1
+# Warmup Iteration   1: 592.617 ns/op
+# Warmup Iteration   2: 531.850 ns/op
+# Warmup Iteration   3: 501.090 ns/op
+# Warmup Iteration   4: 496.686 ns/op
+# Warmup Iteration   5: 495.371 ns/op
+# Warmup Iteration   6: 496.862 ns/op
+# Warmup Iteration   7: 496.323 ns/op
+# Warmup Iteration   8: 496.300 ns/op
+# Warmup Iteration   9: 496.914 ns/op
+# Warmup Iteration  10: 495.117 ns/op
+Iteration   1: 495.621 ns/op
+Iteration   2: 495.754 ns/op
+Iteration   3: 496.477 ns/op
+Iteration   4: 496.518 ns/op
+Iteration   5: 496.247 ns/op
+Iteration   6: 495.728 ns/op
+Iteration   7: 497.061 ns/op
+Iteration   8: 498.107 ns/op
+Iteration   9: 497.221 ns/op
+Iteration  10: 498.411 ns/op
+Iteration  11: 496.358 ns/op
+Iteration  12: 496.475 ns/op
+Iteration  13: 495.398 ns/op
+Iteration  14: 495.138 ns/op
+Iteration  15: 496.296 ns/op
+Iteration  16: 496.963 ns/op
+Iteration  17: 495.333 ns/op
+Iteration  18: 495.539 ns/op
+Iteration  19: 497.148 ns/op
+Iteration  20: 497.701 ns/op
+Iteration  21: 498.001 ns/op
+Iteration  22: 495.399 ns/op
+Iteration  23: 495.276 ns/op
+Iteration  24: 496.141 ns/op
+Iteration  25: 495.963 ns/op
+Iteration  26: 495.712 ns/op
+Iteration  27: 495.811 ns/op
+Iteration  28: 495.356 ns/op
+Iteration  29: 495.222 ns/op
+Iteration  30: 494.887 ns/op
+Iteration  31: 495.874 ns/op
+Iteration  32: 495.211 ns/op
+Iteration  33: 496.144 ns/op
+Iteration  34: 496.238 ns/op
+Iteration  35: 494.927 ns/op
+Iteration  36: 496.917 ns/op
+Iteration  37: 494.756 ns/op
+Iteration  38: 494.774 ns/op
+Iteration  39: 496.176 ns/op
+Iteration  40: 495.732 ns/op
+Iteration  41: 496.622 ns/op
+Iteration  42: 495.411 ns/op
+Iteration  43: 497.094 ns/op
+Iteration  44: 495.544 ns/op
+Iteration  45: 495.782 ns/op
+Iteration  46: 495.371 ns/op
+Iteration  47: 497.681 ns/op
+Iteration  48: 495.821 ns/op
+Iteration  49: 496.975 ns/op
+Iteration  50: 495.873 ns/op
+
+
+Result "benchmark.StringContains.regexMatches":
+  496.124 ±(99.9%) 0.446 ns/op [Average]
+  (min, avg, max) = (494.756, 496.124, 498.411), stdev = 0.902
+  CI (99.9%): [495.677, 496.570] (assumes normal distribution)
+
+
+# JMH version: 1.26
+# VM version: JDK 11.0.9.1, OpenJDK 64-Bit Server VM, 11.0.9.1+1-Ubuntu-0ubuntu1.18.04
+# VM invoker: /usr/lib/jvm/java-11-openjdk-amd64/bin/java
+# VM options: -server -Xms2G -Xmx2G
+# Warmup: 10 iterations, 1 s each
+# Measurement: 50 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: benchmark.StringContains.regexMatches
+# Parameters: (regex = \+D_NJ, str = )kp9OPQ!'_eH4Q@+T+'2*JB.4@"/7]P<"3._yIfd6X\PyYa=h64JO&N_$h'SOJ]bbvZm)Ryy>!)#lNY0@/ha1LE)
+
+# Run progress: 15.63% complete, ETA 00:43:46
+# Fork: 1 of 1
+# Warmup Iteration   1: 642.800 ns/op
+# Warmup Iteration   2: 588.224 ns/op
+# Warmup Iteration   3: 554.597 ns/op
+# Warmup Iteration   4: 550.215 ns/op
+# Warmup Iteration   5: 551.431 ns/op
+# Warmup Iteration   6: 549.832 ns/op
+# Warmup Iteration   7: 549.441 ns/op
+# Warmup Iteration   8: 549.372 ns/op
+# Warmup Iteration   9: 549.360 ns/op
+# Warmup Iteration  10: 549.514 ns/op
+Iteration   1: 549.302 ns/op
+Iteration   2: 550.658 ns/op
+Iteration   3: 552.369 ns/op
+Iteration   4: 557.103 ns/op
+Iteration   5: 554.367 ns/op
+Iteration   6: 551.866 ns/op
+Iteration   7: 551.534 ns/op
+Iteration   8: 550.985 ns/op
+Iteration   9: 551.485 ns/op
+Iteration  10: 550.751 ns/op
+Iteration  11: 549.782 ns/op
+Iteration  12: 549.768 ns/op
+Iteration  13: 549.517 ns/op
+Iteration  14: 549.526 ns/op
+Iteration  15: 549.533 ns/op
+Iteration  16: 549.644 ns/op
+Iteration  17: 549.945 ns/op
+Iteration  18: 549.655 ns/op
+Iteration  19: 549.595 ns/op
+Iteration  20: 549.853 ns/op
+Iteration  21: 549.719 ns/op
+Iteration  22: 549.600 ns/op
+Iteration  23: 549.931 ns/op
+Iteration  24: 549.649 ns/op
+Iteration  25: 549.785 ns/op
+Iteration  26: 551.059 ns/op
+Iteration  27: 550.669 ns/op
+Iteration  28: 549.389 ns/op
+Iteration  29: 549.280 ns/op
+Iteration  30: 549.317 ns/op
+Iteration  31: 549.583 ns/op
+Iteration  32: 549.714 ns/op
+Iteration  33: 549.670 ns/op
+Iteration  34: 549.499 ns/op
+Iteration  35: 550.254 ns/op
+Iteration  36: 549.229 ns/op
+Iteration  37: 549.215 ns/op
+Iteration  38: 549.229 ns/op
+Iteration  39: 549.466 ns/op
+Iteration  40: 549.372 ns/op
+Iteration  41: 549.910 ns/op
+Iteration  42: 550.209 ns/op
+Iteration  43: 549.626 ns/op
+Iteration  44: 549.661 ns/op
+Iteration  45: 549.555 ns/op
+Iteration  46: 549.714 ns/op
+Iteration  47: 549.514 ns/op
+Iteration  48: 549.370 ns/op
+Iteration  49: 549.513 ns/op
+Iteration  50: 549.403 ns/op
+
+
+Result "benchmark.StringContains.regexMatches":
+  550.147 ±(99.9%) 0.686 ns/op [Average]
+  (min, avg, max) = (549.215, 550.147, 557.103), stdev = 1.386
+  CI (99.9%): [549.461, 550.833] (assumes normal distribution)
+
+
+# JMH version: 1.26
+# VM version: JDK 11.0.9.1, OpenJDK 64-Bit Server VM, 11.0.9.1+1-Ubuntu-0ubuntu1.18.04
+# VM invoker: /usr/lib/jvm/java-11-openjdk-amd64/bin/java
+# VM options: -server -Xms2G -Xmx2G
+# Warmup: 10 iterations, 1 s each
+# Measurement: 50 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: benchmark.StringContains.regexMatches
+# Parameters: (regex = \+D_NJ, str = S`qysoJmb_DYYLv_ovbrFmv%u/r@))`Z>\GD)s)`$(XiG!6/m=:Sw(3U-ddXzBPi)
+
+# Run progress: 18.75% complete, ETA 00:42:08
+# Fork: 1 of 1
+# Warmup Iteration   1: 279.268 ns/op
+# Warmup Iteration   2: 220.476 ns/op
+# Warmup Iteration   3: 196.859 ns/op
+# Warmup Iteration   4: 189.333 ns/op
+# Warmup Iteration   5: 186.933 ns/op
+# Warmup Iteration   6: 186.228 ns/op
+# Warmup Iteration   7: 185.893 ns/op
+# Warmup Iteration   8: 185.772 ns/op
+# Warmup Iteration   9: 185.729 ns/op
+# Warmup Iteration  10: 185.749 ns/op
+Iteration   1: 186.467 ns/op
+Iteration   2: 186.269 ns/op
+Iteration   3: 185.744 ns/op
+Iteration   4: 185.654 ns/op
+Iteration   5: 185.684 ns/op
+Iteration   6: 185.667 ns/op
+Iteration   7: 186.376 ns/op
+Iteration   8: 186.429 ns/op
+Iteration   9: 186.607 ns/op
+Iteration  10: 186.450 ns/op
+Iteration  11: 186.434 ns/op
+Iteration  12: 186.334 ns/op
+Iteration  13: 186.573 ns/op
+Iteration  14: 186.556 ns/op
+Iteration  15: 186.582 ns/op
+Iteration  16: 186.444 ns/op
+Iteration  17: 186.460 ns/op
+Iteration  18: 186.628 ns/op
+Iteration  19: 186.489 ns/op
+Iteration  20: 186.465 ns/op
+Iteration  21: 186.475 ns/op
+Iteration  22: 186.507 ns/op
+Iteration  23: 186.584 ns/op
+Iteration  24: 186.496 ns/op
+Iteration  25: 186.500 ns/op
+Iteration  26: 187.012 ns/op
+Iteration  27: 189.044 ns/op
+Iteration  28: 191.628 ns/op
+Iteration  29: 192.345 ns/op
+Iteration  30: 189.509 ns/op
+Iteration  31: 189.540 ns/op
+Iteration  32: 189.309 ns/op
+Iteration  33: 189.700 ns/op
+Iteration  34: 188.295 ns/op
+Iteration  35: 186.725 ns/op
+Iteration  36: 186.486 ns/op
+Iteration  37: 186.404 ns/op
+Iteration  38: 186.394 ns/op
+Iteration  39: 186.442 ns/op
+Iteration  40: 186.444 ns/op
+Iteration  41: 186.558 ns/op
+Iteration  42: 186.497 ns/op
+Iteration  43: 186.418 ns/op
+Iteration  44: 186.486 ns/op
+Iteration  45: 186.478 ns/op
+Iteration  46: 186.527 ns/op
+Iteration  47: 186.473 ns/op
+Iteration  48: 186.467 ns/op
+Iteration  49: 186.662 ns/op
+Iteration  50: 186.428 ns/op
+
+
+Result "benchmark.StringContains.regexMatches":
+  186.983 ±(99.9%) 0.701 ns/op [Average]
+  (min, avg, max) = (185.654, 186.983, 192.345), stdev = 1.415
+  CI (99.9%): [186.282, 187.683] (assumes normal distribution)
+
+
+# JMH version: 1.26
+# VM version: JDK 11.0.9.1, OpenJDK 64-Bit Server VM, 11.0.9.1+1-Ubuntu-0ubuntu1.18.04
+# VM invoker: /usr/lib/jvm/java-11-openjdk-amd64/bin/java
+# VM options: -server -Xms2G -Xmx2G
+# Warmup: 10 iterations, 1 s each
+# Measurement: 50 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: benchmark.StringContains.regexMatches
+# Parameters: (regex = \+D_NJ, str = -BSo !d`WxJb+KLYBgLuziRY]vgVagF[m4j\-nx"w3t65TBq6Q`$QT#7P)
+
+# Run progress: 21.88% complete, ETA 00:40:31
+# Fork: 1 of 1
+# Warmup Iteration   1: 442.237 ns/op
+# Warmup Iteration   2: 384.647 ns/op
+# Warmup Iteration   3: 361.478 ns/op
+# Warmup Iteration   4: 357.260 ns/op
+# Warmup Iteration   5: 356.568 ns/op
+# Warmup Iteration   6: 356.211 ns/op
+# Warmup Iteration   7: 356.103 ns/op
+# Warmup Iteration   8: 356.083 ns/op
+# Warmup Iteration   9: 356.546 ns/op
+# Warmup Iteration  10: 356.306 ns/op
+Iteration   1: 356.191 ns/op
+Iteration   2: 356.241 ns/op
+Iteration   3: 356.280 ns/op
+Iteration   4: 356.500 ns/op
+Iteration   5: 356.454 ns/op
+Iteration   6: 356.088 ns/op
+Iteration   7: 356.101 ns/op
+Iteration   8: 356.129 ns/op
+Iteration   9: 356.159 ns/op
+Iteration  10: 356.058 ns/op
+Iteration  11: 356.124 ns/op
+Iteration  12: 356.689 ns/op
+Iteration  13: 355.977 ns/op
+Iteration  14: 356.015 ns/op
+Iteration  15: 355.896 ns/op
+Iteration  16: 355.902 ns/op
+Iteration  17: 357.801 ns/op
+Iteration  18: 355.935 ns/op
+Iteration  19: 356.095 ns/op
+Iteration  20: 355.876 ns/op
+Iteration  21: 356.744 ns/op
+Iteration  22: 355.876 ns/op
+Iteration  23: 355.902 ns/op
+Iteration  24: 356.111 ns/op
+Iteration  25: 356.125 ns/op
+Iteration  26: 355.936 ns/op
+Iteration  27: 356.044 ns/op
+Iteration  28: 356.086 ns/op
+Iteration  29: 356.813 ns/op
+Iteration  30: 356.207 ns/op
+Iteration  31: 356.113 ns/op
+Iteration  32: 356.111 ns/op
+Iteration  33: 356.144 ns/op
+Iteration  34: 356.367 ns/op
+Iteration  35: 356.426 ns/op
+Iteration  36: 356.308 ns/op
+Iteration  37: 356.120 ns/op
+Iteration  38: 355.979 ns/op
+Iteration  39: 356.038 ns/op
+Iteration  40: 356.565 ns/op
+Iteration  41: 356.444 ns/op
+Iteration  42: 356.362 ns/op
+Iteration  43: 356.158 ns/op
+Iteration  44: 356.102 ns/op
+Iteration  45: 356.049 ns/op
+Iteration  46: 356.001 ns/op
+Iteration  47: 355.905 ns/op
+Iteration  48: 355.986 ns/op
+Iteration  49: 356.036 ns/op
+Iteration  50: 357.349 ns/op
+
+
+Result "benchmark.StringContains.regexMatches":
+  356.218 ±(99.9%) 0.179 ns/op [Average]
+  (min, avg, max) = (355.876, 356.218, 357.801), stdev = 0.361
+  CI (99.9%): [356.039, 356.397] (assumes normal distribution)
+
+
+# JMH version: 1.26
+# VM version: JDK 11.0.9.1, OpenJDK 64-Bit Server VM, 11.0.9.1+1-Ubuntu-0ubuntu1.18.04
+# VM invoker: /usr/lib/jvm/java-11-openjdk-amd64/bin/java
+# VM options: -server -Xms2G -Xmx2G
+# Warmup: 10 iterations, 1 s each
+# Measurement: 50 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: benchmark.StringContains.regexMatches
+# Parameters: (regex = \+D_NJ, str = MH>c:L%0Zwl"INTyaI0'mzt`nLt<RTQN\cTtR^#l0>Cwd'<B)
+
+# Run progress: 25.00% complete, ETA 00:38:54
+# Fork: 1 of 1
+# Warmup Iteration   1: 231.608 ns/op
+# Warmup Iteration   2: 176.667 ns/op
+# Warmup Iteration   3: 157.779 ns/op
+# Warmup Iteration   4: 147.241 ns/op
+# Warmup Iteration   5: 146.001 ns/op
+# Warmup Iteration   6: 144.406 ns/op
+# Warmup Iteration   7: 143.217 ns/op
+# Warmup Iteration   8: 142.874 ns/op
+# Warmup Iteration   9: 141.975 ns/op
+# Warmup Iteration  10: 141.482 ns/op
+Iteration   1: 141.568 ns/op
+Iteration   2: 142.070 ns/op
+Iteration   3: 141.550 ns/op
+Iteration   4: 141.520 ns/op
+Iteration   5: 141.540 ns/op
+Iteration   6: 141.605 ns/op
+Iteration   7: 141.567 ns/op
+Iteration   8: 141.620 ns/op
+Iteration   9: 141.470 ns/op
+Iteration  10: 141.483 ns/op
+Iteration  11: 141.449 ns/op
+Iteration  12: 141.701 ns/op
+Iteration  13: 141.491 ns/op
+Iteration  14: 141.543 ns/op
+Iteration  15: 141.462 ns/op
+Iteration  16: 141.515 ns/op
+Iteration  17: 141.600 ns/op
+Iteration  18: 141.468 ns/op
+Iteration  19: 141.441 ns/op
+Iteration  20: 141.496 ns/op
+Iteration  21: 141.427 ns/op
+Iteration  22: 141.449 ns/op
+Iteration  23: 141.449 ns/op
+Iteration  24: 141.434 ns/op
+Iteration  25: 141.510 ns/op
+Iteration  26: 141.480 ns/op
+Iteration  27: 141.537 ns/op
+Iteration  28: 141.485 ns/op
+Iteration  29: 141.426 ns/op
+Iteration  30: 141.473 ns/op
+Iteration  31: 141.794 ns/op
+Iteration  32: 141.495 ns/op
+Iteration  33: 141.526 ns/op
+Iteration  34: 141.517 ns/op
+Iteration  35: 141.403 ns/op
+Iteration  36: 141.532 ns/op
+Iteration  37: 141.423 ns/op
+Iteration  38: 141.513 ns/op
+Iteration  39: 141.440 ns/op
+Iteration  40: 141.669 ns/op
+Iteration  41: 141.495 ns/op
+Iteration  42: 141.689 ns/op
+Iteration  43: 141.510 ns/op
+Iteration  44: 141.435 ns/op
+Iteration  45: 141.693 ns/op
+Iteration  46: 141.480 ns/op
+Iteration  47: 141.407 ns/op
+Iteration  48: 142.456 ns/op
+Iteration  49: 141.388 ns/op
+Iteration  50: 141.390 ns/op
+
+
+Result "benchmark.StringContains.regexMatches":
+  141.542 ±(99.9%) 0.087 ns/op [Average]
+  (min, avg, max) = (141.388, 141.542, 142.456), stdev = 0.176
+  CI (99.9%): [141.454, 141.629] (assumes normal distribution)
+
+
+# JMH version: 1.26
+# VM version: JDK 11.0.9.1, OpenJDK 64-Bit Server VM, 11.0.9.1+1-Ubuntu-0ubuntu1.18.04
+# VM invoker: /usr/lib/jvm/java-11-openjdk-amd64/bin/java
+# VM options: -server -Xms2G -Xmx2G
+# Warmup: 10 iterations, 1 s each
+# Measurement: 50 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: benchmark.StringContains.regexMatches
+# Parameters: (regex = \+D_NJ, str = <q5S2!1\8VVW=xSw0t y=;TKJUbD.z].oV;k9ne rH8?)Sr^QM`_O+YZgKK8vQycML/ay*b!yG4<&Nw_>BuoG_Isz#J.^U3cO'a"CsT0GMVnj!kvU)
+
+# Run progress: 28.13% complete, ETA 00:37:16
+# Fork: 1 of 1
+# Warmup Iteration   1: 786.887 ns/op
+# Warmup Iteration   2: 723.574 ns/op
+# Warmup Iteration   3: 684.687 ns/op
+# Warmup Iteration   4: 680.829 ns/op
+# Warmup Iteration   5: 679.802 ns/op
+# Warmup Iteration   6: 679.299 ns/op
+# Warmup Iteration   7: 679.285 ns/op
+# Warmup Iteration   8: 679.316 ns/op
+# Warmup Iteration   9: 679.323 ns/op
+# Warmup Iteration  10: 679.435 ns/op
+Iteration   1: 679.052 ns/op
+Iteration   2: 679.430 ns/op
+Iteration   3: 679.932 ns/op
+Iteration   4: 679.225 ns/op
+Iteration   5: 679.366 ns/op
+Iteration   6: 679.370 ns/op
+Iteration   7: 679.475 ns/op
+Iteration   8: 679.874 ns/op
+Iteration   9: 679.609 ns/op
+Iteration  10: 679.632 ns/op
+Iteration  11: 679.591 ns/op
+Iteration  12: 679.388 ns/op
+Iteration  13: 679.309 ns/op
+Iteration  14: 682.139 ns/op
+Iteration  15: 681.423 ns/op
+Iteration  16: 684.513 ns/op
+Iteration  17: 715.396 ns/op
+Iteration  18: 682.457 ns/op
+Iteration  19: 682.033 ns/op
+Iteration  20: 681.281 ns/op
+Iteration  21: 681.082 ns/op
+Iteration  22: 680.997 ns/op
+Iteration  23: 679.861 ns/op
+Iteration  24: 679.753 ns/op
+Iteration  25: 679.551 ns/op
+Iteration  26: 679.504 ns/op
+Iteration  27: 679.624 ns/op
+Iteration  28: 679.990 ns/op
+Iteration  29: 680.278 ns/op
+Iteration  30: 679.591 ns/op
+Iteration  31: 679.663 ns/op
+Iteration  32: 679.419 ns/op
+Iteration  33: 679.345 ns/op
+Iteration  34: 680.507 ns/op
+Iteration  35: 680.294 ns/op
+Iteration  36: 680.339 ns/op
+Iteration  37: 681.281 ns/op
+Iteration  38: 680.495 ns/op
+Iteration  39: 680.392 ns/op
+Iteration  40: 680.120 ns/op
+Iteration  41: 680.516 ns/op
+Iteration  42: 680.362 ns/op
+Iteration  43: 679.899 ns/op
+Iteration  44: 680.766 ns/op
+Iteration  45: 680.507 ns/op
+Iteration  46: 680.320 ns/op
+Iteration  47: 679.830 ns/op
+Iteration  48: 680.077 ns/op
+Iteration  49: 679.785 ns/op
+Iteration  50: 680.113 ns/op
+
+
+Result "benchmark.StringContains.regexMatches":
+  680.935 ±(99.9%) 2.510 ns/op [Average]
+  (min, avg, max) = (679.052, 680.935, 715.396), stdev = 5.071
+  CI (99.9%): [678.425, 683.446] (assumes normal distribution)
+
+
+# JMH version: 1.26
+# VM version: JDK 11.0.9.1, OpenJDK 64-Bit Server VM, 11.0.9.1+1-Ubuntu-0ubuntu1.18.04
+# VM invoker: /usr/lib/jvm/java-11-openjdk-amd64/bin/java
+# VM options: -server -Xms2G -Xmx2G
+# Warmup: 10 iterations, 1 s each
+# Measurement: 50 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: benchmark.StringContains.regexMatches
+# Parameters: (regex = \+D_NJ, str = LHoXf`D:n@@vC7oDg)019gUyF)@K/k^BmYUR].Ol*GS?krar/Zf[lLi2SS_h9lDvg;3+uo^7=5e#Zp63K6;ul.gsk$N@)2s-v?.YZd!6dm<=p)MPxhG=ex)'LIol5%?0P/qC6Ra5hUSO.hwIlWkX#[;eo0v7UEu#OIFiCsDA=9s;.8Ohwj^"L6qeYar;V1QWbGF1g3Rl+3IBpY` P^Y5[$\EFkDF9&wb6^jzQ34il?3KB)
+
+# Run progress: 31.25% complete, ETA 00:35:39
+# Fork: 1 of 1
+# Warmup Iteration   1: 1651.350 ns/op
+# Warmup Iteration   2: 1465.517 ns/op
+# Warmup Iteration   3: 1446.691 ns/op
+# Warmup Iteration   4: 1444.318 ns/op
+# Warmup Iteration   5: 1444.010 ns/op
+# Warmup Iteration   6: 1441.622 ns/op
+# Warmup Iteration   7: 1441.220 ns/op
+# Warmup Iteration   8: 1442.559 ns/op
+# Warmup Iteration   9: 1442.016 ns/op
+# Warmup Iteration  10: 1442.093 ns/op
+Iteration   1: 1442.259 ns/op
+Iteration   2: 1442.603 ns/op
+Iteration   3: 1442.904 ns/op
+Iteration   4: 1442.002 ns/op
+Iteration   5: 1441.609 ns/op
+Iteration   6: 1441.025 ns/op
+Iteration   7: 1444.469 ns/op
+Iteration   8: 1445.126 ns/op
+Iteration   9: 1441.414 ns/op
+Iteration  10: 1441.490 ns/op
+Iteration  11: 1441.304 ns/op
+Iteration  12: 1440.884 ns/op
+Iteration  13: 1441.033 ns/op
+Iteration  14: 1441.290 ns/op
+Iteration  15: 1440.906 ns/op
+Iteration  16: 1441.076 ns/op
+Iteration  17: 1440.905 ns/op
+Iteration  18: 1441.256 ns/op
+Iteration  19: 1441.089 ns/op
+Iteration  20: 1441.096 ns/op
+Iteration  21: 1440.517 ns/op
+Iteration  22: 1440.934 ns/op
+Iteration  23: 1441.519 ns/op
+Iteration  24: 1441.314 ns/op
+Iteration  25: 1441.669 ns/op
+Iteration  26: 1441.439 ns/op
+Iteration  27: 1441.917 ns/op
+Iteration  28: 1441.954 ns/op
+Iteration  29: 1441.241 ns/op
+Iteration  30: 1441.159 ns/op
+Iteration  31: 1441.223 ns/op
+Iteration  32: 1441.218 ns/op
+Iteration  33: 1441.051 ns/op
+Iteration  34: 1441.251 ns/op
+Iteration  35: 1441.428 ns/op
+Iteration  36: 1441.171 ns/op
+Iteration  37: 1441.128 ns/op
+Iteration  38: 1442.398 ns/op
+Iteration  39: 1443.193 ns/op
+Iteration  40: 1445.566 ns/op
+Iteration  41: 1445.322 ns/op
+Iteration  42: 1444.076 ns/op
+Iteration  43: 1442.640 ns/op
+Iteration  44: 1442.700 ns/op
+Iteration  45: 1444.812 ns/op
+Iteration  46: 1443.244 ns/op
+Iteration  47: 1445.010 ns/op
+Iteration  48: 1441.913 ns/op
+Iteration  49: 1441.615 ns/op
+Iteration  50: 1441.929 ns/op
+
+
+Result "benchmark.StringContains.regexMatches":
+  1442.046 ±(99.9%) 0.659 ns/op [Average]
+  (min, avg, max) = (1440.517, 1442.046, 1445.566), stdev = 1.331
+  CI (99.9%): [1441.387, 1442.705] (assumes normal distribution)
+
+
+# JMH version: 1.26
+# VM version: JDK 11.0.9.1, OpenJDK 64-Bit Server VM, 11.0.9.1+1-Ubuntu-0ubuntu1.18.04
+# VM invoker: /usr/lib/jvm/java-11-openjdk-amd64/bin/java
+# VM options: -server -Xms2G -Xmx2G
+# Warmup: 10 iterations, 1 s each
+# Measurement: 50 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: benchmark.StringContains.regexMatches
+# Parameters: (regex = \+D_NJ, str = \"D5Rd2/;GAfh8hY/zmv\'yD?i<.I;-Z'4T8AGfl"E[[;0earOE *#Q\5C/z`/Oxv9[EDyzYuP)
+
+# Run progress: 34.38% complete, ETA 00:34:02
+# Fork: 1 of 1
+# Warmup Iteration   1: 280.747 ns/op
+# Warmup Iteration   2: 267.787 ns/op
+# Warmup Iteration   3: 200.318 ns/op
+# Warmup Iteration   4: 183.159 ns/op
+# Warmup Iteration   5: 177.563 ns/op
+# Warmup Iteration   6: 175.691 ns/op
+# Warmup Iteration   7: 175.024 ns/op
+# Warmup Iteration   8: 174.910 ns/op
+# Warmup Iteration   9: 174.808 ns/op
+# Warmup Iteration  10: 174.724 ns/op
+Iteration   1: 174.661 ns/op
+Iteration   2: 174.649 ns/op
+Iteration   3: 174.654 ns/op
+Iteration   4: 174.673 ns/op
+Iteration   5: 174.822 ns/op
+Iteration   6: 174.795 ns/op
+Iteration   7: 174.766 ns/op
+Iteration   8: 174.670 ns/op
+Iteration   9: 174.668 ns/op
+Iteration  10: 174.968 ns/op
+Iteration  11: 174.686 ns/op
+Iteration  12: 174.690 ns/op
+Iteration  13: 174.686 ns/op
+Iteration  14: 174.651 ns/op
+Iteration  15: 174.625 ns/op
+Iteration  16: 174.900 ns/op
+Iteration  17: 174.803 ns/op
+Iteration  18: 174.819 ns/op
+Iteration  19: 174.656 ns/op
+Iteration  20: 174.648 ns/op
+Iteration  21: 174.672 ns/op
+Iteration  22: 174.653 ns/op
+Iteration  23: 174.589 ns/op
+Iteration  24: 174.661 ns/op
+Iteration  25: 174.644 ns/op
+Iteration  26: 174.624 ns/op
+Iteration  27: 174.589 ns/op
+Iteration  28: 174.638 ns/op
+Iteration  29: 174.574 ns/op
+Iteration  30: 174.577 ns/op
+Iteration  31: 174.574 ns/op
+Iteration  32: 174.569 ns/op
+Iteration  33: 174.562 ns/op
+Iteration  34: 174.578 ns/op
+Iteration  35: 174.611 ns/op
+Iteration  36: 174.548 ns/op
+Iteration  37: 174.615 ns/op
+Iteration  38: 174.557 ns/op
+Iteration  39: 174.586 ns/op
+Iteration  40: 174.837 ns/op
+Iteration  41: 174.726 ns/op
+Iteration  42: 174.770 ns/op
+Iteration  43: 174.595 ns/op
+Iteration  44: 174.598 ns/op
+Iteration  45: 174.591 ns/op
+Iteration  46: 174.540 ns/op
+Iteration  47: 174.564 ns/op
+Iteration  48: 174.622 ns/op
+Iteration  49: 174.560 ns/op
+Iteration  50: 174.708 ns/op
+
+
+Result "benchmark.StringContains.regexMatches":
+  174.661 ±(99.9%) 0.047 ns/op [Average]
+  (min, avg, max) = (174.540, 174.661, 174.968), stdev = 0.096
+  CI (99.9%): [174.613, 174.708] (assumes normal distribution)
+
+
+# JMH version: 1.26
+# VM version: JDK 11.0.9.1, OpenJDK 64-Bit Server VM, 11.0.9.1+1-Ubuntu-0ubuntu1.18.04
+# VM invoker: /usr/lib/jvm/java-11-openjdk-amd64/bin/java
+# VM options: -server -Xms2G -Xmx2G
+# Warmup: 10 iterations, 1 s each
+# Measurement: 50 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: benchmark.StringContains.regexMatches
+# Parameters: (regex = \+D_NJ, str = &HfnW9!)
+
+# Run progress: 37.50% complete, ETA 00:32:25
+# Fork: 1 of 1
+# Warmup Iteration   1: 182.865 ns/op
+# Warmup Iteration   2: 111.009 ns/op
+# Warmup Iteration   3: 94.317 ns/op
+# Warmup Iteration   4: 94.377 ns/op
+# Warmup Iteration   5: 94.242 ns/op
+# Warmup Iteration   6: 94.313 ns/op
+# Warmup Iteration   7: 94.387 ns/op
+# Warmup Iteration   8: 94.361 ns/op
+# Warmup Iteration   9: 94.407 ns/op
+# Warmup Iteration  10: 94.261 ns/op
+Iteration   1: 94.246 ns/op
+Iteration   2: 95.620 ns/op
+Iteration   3: 96.658 ns/op
+Iteration   4: 95.013 ns/op
+Iteration   5: 96.700 ns/op
+Iteration   6: 97.154 ns/op
+Iteration   7: 97.294 ns/op
+Iteration   8: 97.125 ns/op
+Iteration   9: 95.434 ns/op
+Iteration  10: 94.883 ns/op
+Iteration  11: 95.329 ns/op
+Iteration  12: 94.370 ns/op
+Iteration  13: 94.764 ns/op
+Iteration  14: 94.303 ns/op
+Iteration  15: 94.211 ns/op
+Iteration  16: 94.214 ns/op
+Iteration  17: 94.183 ns/op
+Iteration  18: 94.272 ns/op
+Iteration  19: 95.071 ns/op
+Iteration  20: 94.229 ns/op
+Iteration  21: 94.233 ns/op
+Iteration  22: 94.283 ns/op
+Iteration  23: 95.069 ns/op
+Iteration  24: 94.353 ns/op
+Iteration  25: 94.473 ns/op
+Iteration  26: 94.289 ns/op
+Iteration  27: 94.385 ns/op
+Iteration  28: 94.661 ns/op
+Iteration  29: 94.198 ns/op
+Iteration  30: 94.298 ns/op
+Iteration  31: 94.315 ns/op
+Iteration  32: 94.258 ns/op
+Iteration  33: 94.198 ns/op
+Iteration  34: 94.181 ns/op
+Iteration  35: 94.217 ns/op
+Iteration  36: 94.184 ns/op
+Iteration  37: 94.201 ns/op
+Iteration  38: 94.305 ns/op
+Iteration  39: 94.201 ns/op
+Iteration  40: 94.384 ns/op
+Iteration  41: 94.356 ns/op
+Iteration  42: 94.393 ns/op
+Iteration  43: 94.320 ns/op
+Iteration  44: 94.443 ns/op
+Iteration  45: 94.334 ns/op
+Iteration  46: 94.216 ns/op
+Iteration  47: 94.238 ns/op
+Iteration  48: 94.352 ns/op
+Iteration  49: 94.270 ns/op
+Iteration  50: 94.471 ns/op
+
+
+Result "benchmark.StringContains.regexMatches":
+  94.703 ±(99.9%) 0.418 ns/op [Average]
+  (min, avg, max) = (94.181, 94.703, 97.294), stdev = 0.845
+  CI (99.9%): [94.285, 95.121] (assumes normal distribution)
+
+
+# JMH version: 1.26
+# VM version: JDK 11.0.9.1, OpenJDK 64-Bit Server VM, 11.0.9.1+1-Ubuntu-0ubuntu1.18.04
+# VM invoker: /usr/lib/jvm/java-11-openjdk-amd64/bin/java
+# VM options: -server -Xms2G -Xmx2G
+# Warmup: 10 iterations, 1 s each
+# Measurement: 50 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: benchmark.StringContains.regexMatches
+# Parameters: (regex = \+D_NJ, str = 7ynz :s.&LjFiAjMNmWkEbur(G(S)cu]&/TR&__vi56'RAm#hsXs.O4^+*#FV?8^XBtA3SSj[st)
+
+# Run progress: 40.63% complete, ETA 00:30:47
+# Fork: 1 of 1
+# Warmup Iteration   1: 561.662 ns/op
+# Warmup Iteration   2: 516.795 ns/op
+# Warmup Iteration   3: 486.304 ns/op
+# Warmup Iteration   4: 482.035 ns/op
+# Warmup Iteration   5: 481.362 ns/op
+# Warmup Iteration   6: 481.350 ns/op
+# Warmup Iteration   7: 481.273 ns/op
+# Warmup Iteration   8: 481.317 ns/op
+# Warmup Iteration   9: 481.149 ns/op
+# Warmup Iteration  10: 481.258 ns/op
+Iteration   1: 481.186 ns/op
+Iteration   2: 481.267 ns/op
+Iteration   3: 481.102 ns/op
+Iteration   4: 481.323 ns/op
+Iteration   5: 481.187 ns/op
+Iteration   6: 481.183 ns/op
+Iteration   7: 481.203 ns/op
+Iteration   8: 481.143 ns/op
+Iteration   9: 481.342 ns/op
+Iteration  10: 481.353 ns/op
+Iteration  11: 481.269 ns/op
+Iteration  12: 481.294 ns/op
+Iteration  13: 482.034 ns/op
+Iteration  14: 481.275 ns/op
+Iteration  15: 481.375 ns/op
+Iteration  16: 481.229 ns/op
+Iteration  17: 481.411 ns/op
+Iteration  18: 481.338 ns/op
+Iteration  19: 481.531 ns/op
+Iteration  20: 481.421 ns/op
+Iteration  21: 481.538 ns/op
+Iteration  22: 481.585 ns/op
+Iteration  23: 481.468 ns/op
+Iteration  24: 481.095 ns/op
+Iteration  25: 481.135 ns/op
+Iteration  26: 484.263 ns/op
+Iteration  27: 484.789 ns/op
+Iteration  28: 484.556 ns/op
+Iteration  29: 484.335 ns/op
+Iteration  30: 484.499 ns/op
+Iteration  31: 483.494 ns/op
+Iteration  32: 483.187 ns/op
+Iteration  33: 482.291 ns/op
+Iteration  34: 482.234 ns/op
+Iteration  35: 482.554 ns/op
+Iteration  36: 481.159 ns/op
+Iteration  37: 481.043 ns/op
+Iteration  38: 481.698 ns/op
+Iteration  39: 481.125 ns/op
+Iteration  40: 481.021 ns/op
+Iteration  41: 480.991 ns/op
+Iteration  42: 480.980 ns/op
+Iteration  43: 481.919 ns/op
+Iteration  44: 480.991 ns/op
+Iteration  45: 480.904 ns/op
+Iteration  46: 481.021 ns/op
+Iteration  47: 482.057 ns/op
+Iteration  48: 481.574 ns/op
+Iteration  49: 481.758 ns/op
+Iteration  50: 481.509 ns/op
+
+
+Result "benchmark.StringContains.regexMatches":
+  481.785 ±(99.9%) 0.521 ns/op [Average]
+  (min, avg, max) = (480.904, 481.785, 484.789), stdev = 1.052
+  CI (99.9%): [481.264, 482.305] (assumes normal distribution)
+
+
+# JMH version: 1.26
+# VM version: JDK 11.0.9.1, OpenJDK 64-Bit Server VM, 11.0.9.1+1-Ubuntu-0ubuntu1.18.04
+# VM invoker: /usr/lib/jvm/java-11-openjdk-amd64/bin/java
+# VM options: -server -Xms2G -Xmx2G
+# Warmup: 10 iterations, 1 s each
+# Measurement: 50 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: benchmark.StringContains.regexMatches
+# Parameters: (regex = \+D_NJ, str = QoV-/(LJ=%EaQGTU$n@Xh" )oiv$JiTWcl sj>m"@x7n5_$\oZfu=IWp7aXqT`4eQP#HCuc^QDe>mS0]6<\Ebs1#%iW_%NY;;%0(Dq+D&9)
+
+# Run progress: 43.75% complete, ETA 00:29:10
+# Fork: 1 of 1
+# Warmup Iteration   1: 788.159 ns/op
+# Warmup Iteration   2: 743.498 ns/op
+# Warmup Iteration   3: 708.130 ns/op
+# Warmup Iteration   4: 704.509 ns/op
+# Warmup Iteration   5: 703.994 ns/op
+# Warmup Iteration   6: 703.796 ns/op
+# Warmup Iteration   7: 704.170 ns/op
+# Warmup Iteration   8: 703.934 ns/op
+# Warmup Iteration   9: 703.952 ns/op
+# Warmup Iteration  10: 704.217 ns/op
+Iteration   1: 706.405 ns/op
+Iteration   2: 704.168 ns/op
+Iteration   3: 703.847 ns/op
+Iteration   4: 703.879 ns/op
+Iteration   5: 704.795 ns/op
+Iteration   6: 703.808 ns/op
+Iteration   7: 703.937 ns/op
+Iteration   8: 704.065 ns/op
+Iteration   9: 703.774 ns/op
+Iteration  10: 704.056 ns/op
+Iteration  11: 703.774 ns/op
+Iteration  12: 703.582 ns/op
+Iteration  13: 703.889 ns/op
+Iteration  14: 704.098 ns/op
+Iteration  15: 703.831 ns/op
+Iteration  16: 703.742 ns/op
+Iteration  17: 704.178 ns/op
+Iteration  18: 704.108 ns/op
+Iteration  19: 704.160 ns/op
+Iteration  20: 703.909 ns/op
+Iteration  21: 706.652 ns/op
+Iteration  22: 703.642 ns/op
+Iteration  23: 704.066 ns/op
+Iteration  24: 704.334 ns/op
+Iteration  25: 703.952 ns/op
+Iteration  26: 703.881 ns/op
+Iteration  27: 703.962 ns/op
+Iteration  28: 703.963 ns/op
+Iteration  29: 705.810 ns/op
+Iteration  30: 703.951 ns/op
+Iteration  31: 704.105 ns/op
+Iteration  32: 704.175 ns/op
+Iteration  33: 703.962 ns/op
+Iteration  34: 704.043 ns/op
+Iteration  35: 703.891 ns/op
+Iteration  36: 703.832 ns/op
+Iteration  37: 703.785 ns/op
+Iteration  38: 704.069 ns/op
+Iteration  39: 704.274 ns/op
+Iteration  40: 704.025 ns/op
+Iteration  41: 704.253 ns/op
+Iteration  42: 704.525 ns/op
+Iteration  43: 704.293 ns/op
+Iteration  44: 703.709 ns/op
+Iteration  45: 703.891 ns/op
+Iteration  46: 704.073 ns/op
+Iteration  47: 704.092 ns/op
+Iteration  48: 703.668 ns/op
+Iteration  49: 703.723 ns/op
+Iteration  50: 706.480 ns/op
+
+
+Result "benchmark.StringContains.regexMatches":
+  704.182 ±(99.9%) 0.339 ns/op [Average]
+  (min, avg, max) = (703.582, 704.182, 706.652), stdev = 0.685
+  CI (99.9%): [703.842, 704.521] (assumes normal distribution)
+
+
+# JMH version: 1.26
+# VM version: JDK 11.0.9.1, OpenJDK 64-Bit Server VM, 11.0.9.1+1-Ubuntu-0ubuntu1.18.04
+# VM invoker: /usr/lib/jvm/java-11-openjdk-amd64/bin/java
+# VM options: -server -Xms2G -Xmx2G
+# Warmup: 10 iterations, 1 s each
+# Measurement: 50 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: benchmark.StringContains.regexMatches
+# Parameters: (regex = \+D_NJ, str = CP.lww`![WejWUpp`$Tuvx[(hNuA#p.e^;iq>0z%Ryz>V\)
+
+# Run progress: 46.88% complete, ETA 00:27:33
+# Fork: 1 of 1
+# Warmup Iteration   1: 256.859 ns/op
+# Warmup Iteration   2: 194.694 ns/op
+# Warmup Iteration   3: 171.602 ns/op
+# Warmup Iteration   4: 164.106 ns/op
+# Warmup Iteration   5: 162.203 ns/op
+# Warmup Iteration   6: 161.161 ns/op
+# Warmup Iteration   7: 159.427 ns/op
+# Warmup Iteration   8: 157.957 ns/op
+# Warmup Iteration   9: 157.806 ns/op
+# Warmup Iteration  10: 157.059 ns/op
+Iteration   1: 156.769 ns/op
+Iteration   2: 156.559 ns/op
+Iteration   3: 156.489 ns/op
+Iteration   4: 156.372 ns/op
+Iteration   5: 156.344 ns/op
+Iteration   6: 156.312 ns/op
+Iteration   7: 156.279 ns/op
+Iteration   8: 156.701 ns/op
+Iteration   9: 156.375 ns/op
+Iteration  10: 156.369 ns/op
+Iteration  11: 156.391 ns/op
+Iteration  12: 156.309 ns/op
+Iteration  13: 156.347 ns/op
+Iteration  14: 156.365 ns/op
+Iteration  15: 156.413 ns/op
+Iteration  16: 156.333 ns/op
+Iteration  17: 156.384 ns/op
+Iteration  18: 156.420 ns/op
+Iteration  19: 156.448 ns/op
+Iteration  20: 156.556 ns/op
+Iteration  21: 156.540 ns/op
+Iteration  22: 156.429 ns/op
+Iteration  23: 156.521 ns/op
+Iteration  24: 156.269 ns/op
+Iteration  25: 156.276 ns/op
+Iteration  26: 156.541 ns/op
+Iteration  27: 159.040 ns/op
+Iteration  28: 156.495 ns/op
+Iteration  29: 156.302 ns/op
+Iteration  30: 156.258 ns/op
+Iteration  31: 156.389 ns/op
+Iteration  32: 156.361 ns/op
+Iteration  33: 156.251 ns/op
+Iteration  34: 156.239 ns/op
+Iteration  35: 156.248 ns/op
+Iteration  36: 156.408 ns/op
+Iteration  37: 156.401 ns/op
+Iteration  38: 156.365 ns/op
+Iteration  39: 156.267 ns/op
+Iteration  40: 156.308 ns/op
+Iteration  41: 156.285 ns/op
+Iteration  42: 156.342 ns/op
+Iteration  43: 156.433 ns/op
+Iteration  44: 156.305 ns/op
+Iteration  45: 156.254 ns/op
+Iteration  46: 156.205 ns/op
+Iteration  47: 156.322 ns/op
+Iteration  48: 156.333 ns/op
+Iteration  49: 156.391 ns/op
+Iteration  50: 156.300 ns/op
+
+
+Result "benchmark.StringContains.regexMatches":
+  156.432 ±(99.9%) 0.195 ns/op [Average]
+  (min, avg, max) = (156.205, 156.432, 159.040), stdev = 0.393
+  CI (99.9%): [156.238, 156.627] (assumes normal distribution)
+
+
+# JMH version: 1.26
+# VM version: JDK 11.0.9.1, OpenJDK 64-Bit Server VM, 11.0.9.1+1-Ubuntu-0ubuntu1.18.04
+# VM invoker: /usr/lib/jvm/java-11-openjdk-amd64/bin/java
+# VM options: -server -Xms2G -Xmx2G
+# Warmup: 10 iterations, 1 s each
+# Measurement: 50 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: benchmark.StringContains.stringContains
+# Parameters: (regex = \+D_NJ, str = e\YHI5Mg[?Fe9.q4tck%pd)v^R_81x$JZ'-0#bc*7D;` YK>yPi9ZVKY/p[EXuGxjWiia9)
+
+# Run progress: 50.00% complete, ETA 00:25:55
+# Fork: 1 of 1
+# Warmup Iteration   1: 17.795 ns/op
+# Warmup Iteration   2: 18.291 ns/op
+# Warmup Iteration   3: 18.271 ns/op
+# Warmup Iteration   4: 18.261 ns/op
+# Warmup Iteration   5: 18.259 ns/op
+# Warmup Iteration   6: 18.259 ns/op
+# Warmup Iteration   7: 18.261 ns/op
+# Warmup Iteration   8: 18.259 ns/op
+# Warmup Iteration   9: 18.260 ns/op
+# Warmup Iteration  10: 18.260 ns/op
+Iteration   1: 18.257 ns/op
+Iteration   2: 18.271 ns/op
+Iteration   3: 18.261 ns/op
+Iteration   4: 18.261 ns/op
+Iteration   5: 18.260 ns/op
+Iteration   6: 18.264 ns/op
+Iteration   7: 18.267 ns/op
+Iteration   8: 18.262 ns/op
+Iteration   9: 18.301 ns/op
+Iteration  10: 18.264 ns/op
+Iteration  11: 18.266 ns/op
+Iteration  12: 18.261 ns/op
+Iteration  13: 18.262 ns/op
+Iteration  14: 18.259 ns/op
+Iteration  15: 18.270 ns/op
+Iteration  16: 18.256 ns/op
+Iteration  17: 18.262 ns/op
+Iteration  18: 18.259 ns/op
+Iteration  19: 18.284 ns/op
+Iteration  20: 18.288 ns/op
+Iteration  21: 18.260 ns/op
+Iteration  22: 18.261 ns/op
+Iteration  23: 18.266 ns/op
+Iteration  24: 18.272 ns/op
+Iteration  25: 18.265 ns/op
+Iteration  26: 18.267 ns/op
+Iteration  27: 18.278 ns/op
+Iteration  28: 18.271 ns/op
+Iteration  29: 18.261 ns/op
+Iteration  30: 18.264 ns/op
+Iteration  31: 18.265 ns/op
+Iteration  32: 18.260 ns/op
+Iteration  33: 18.268 ns/op
+Iteration  34: 18.275 ns/op
+Iteration  35: 18.276 ns/op
+Iteration  36: 18.273 ns/op
+Iteration  37: 18.282 ns/op
+Iteration  38: 18.262 ns/op
+Iteration  39: 18.264 ns/op
+Iteration  40: 18.265 ns/op
+Iteration  41: 18.278 ns/op
+Iteration  42: 18.277 ns/op
+Iteration  43: 18.279 ns/op
+Iteration  44: 18.269 ns/op
+Iteration  45: 18.260 ns/op
+Iteration  46: 18.262 ns/op
+Iteration  47: 18.263 ns/op
+Iteration  48: 18.261 ns/op
+Iteration  49: 18.268 ns/op
+Iteration  50: 18.593 ns/op
+
+
+Result "benchmark.StringContains.stringContains":
+  18.274 ±(99.9%) 0.023 ns/op [Average]
+  (min, avg, max) = (18.256, 18.274, 18.593), stdev = 0.047
+  CI (99.9%): [18.251, 18.297] (assumes normal distribution)
+
+
+# JMH version: 1.26
+# VM version: JDK 11.0.9.1, OpenJDK 64-Bit Server VM, 11.0.9.1+1-Ubuntu-0ubuntu1.18.04
+# VM invoker: /usr/lib/jvm/java-11-openjdk-amd64/bin/java
+# VM options: -server -Xms2G -Xmx2G
+# Warmup: 10 iterations, 1 s each
+# Measurement: 50 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: benchmark.StringContains.stringContains
+# Parameters: (regex = \+D_NJ, str = Yck:&a^[)
+
+# Run progress: 53.13% complete, ETA 00:24:18
+# Fork: 1 of 1
+# Warmup Iteration   1: 9.476 ns/op
+# Warmup Iteration   2: 8.983 ns/op
+# Warmup Iteration   3: 9.005 ns/op
+# Warmup Iteration   4: 9.003 ns/op
+# Warmup Iteration   5: 9.001 ns/op
+# Warmup Iteration   6: 8.997 ns/op
+# Warmup Iteration   7: 8.975 ns/op
+# Warmup Iteration   8: 8.986 ns/op
+# Warmup Iteration   9: 8.976 ns/op
+# Warmup Iteration  10: 8.982 ns/op
+Iteration   1: 8.978 ns/op
+Iteration   2: 8.983 ns/op
+Iteration   3: 8.991 ns/op
+Iteration   4: 8.990 ns/op
+Iteration   5: 8.980 ns/op
+Iteration   6: 8.996 ns/op
+Iteration   7: 8.977 ns/op
+Iteration   8: 8.978 ns/op
+Iteration   9: 8.981 ns/op
+Iteration  10: 8.981 ns/op
+Iteration  11: 8.977 ns/op
+Iteration  12: 8.977 ns/op
+Iteration  13: 8.976 ns/op
+Iteration  14: 8.980 ns/op
+Iteration  15: 8.983 ns/op
+Iteration  16: 8.979 ns/op
+Iteration  17: 8.983 ns/op
+Iteration  18: 8.977 ns/op
+Iteration  19: 8.980 ns/op
+Iteration  20: 8.976 ns/op
+Iteration  21: 8.982 ns/op
+Iteration  22: 8.984 ns/op
+Iteration  23: 8.980 ns/op
+Iteration  24: 8.983 ns/op
+Iteration  25: 8.982 ns/op
+Iteration  26: 8.982 ns/op
+Iteration  27: 8.983 ns/op
+Iteration  28: 8.984 ns/op
+Iteration  29: 8.983 ns/op
+Iteration  30: 9.181 ns/op
+Iteration  31: 8.980 ns/op
+Iteration  32: 8.983 ns/op
+Iteration  33: 8.978 ns/op
+Iteration  34: 8.986 ns/op
+Iteration  35: 8.979 ns/op
+Iteration  36: 8.981 ns/op
+Iteration  37: 8.980 ns/op
+Iteration  38: 8.982 ns/op
+Iteration  39: 8.983 ns/op
+Iteration  40: 8.996 ns/op
+Iteration  41: 8.994 ns/op
+Iteration  42: 8.998 ns/op
+Iteration  43: 9.002 ns/op
+Iteration  44: 9.001 ns/op
+Iteration  45: 8.986 ns/op
+Iteration  46: 8.983 ns/op
+Iteration  47: 8.989 ns/op
+Iteration  48: 8.988 ns/op
+Iteration  49: 8.993 ns/op
+Iteration  50: 8.978 ns/op
+
+
+Result "benchmark.StringContains.stringContains":
+  8.988 ±(99.9%) 0.014 ns/op [Average]
+  (min, avg, max) = (8.976, 8.988, 9.181), stdev = 0.029
+  CI (99.9%): [8.974, 9.002] (assumes normal distribution)
+
+
+# JMH version: 1.26
+# VM version: JDK 11.0.9.1, OpenJDK 64-Bit Server VM, 11.0.9.1+1-Ubuntu-0ubuntu1.18.04
+# VM invoker: /usr/lib/jvm/java-11-openjdk-amd64/bin/java
+# VM options: -server -Xms2G -Xmx2G
+# Warmup: 10 iterations, 1 s each
+# Measurement: 50 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: benchmark.StringContains.stringContains
+# Parameters: (regex = \+D_NJ, str = (#r%'-G*W)
+
+# Run progress: 56.25% complete, ETA 00:22:41
+# Fork: 1 of 1
+# Warmup Iteration   1: 9.481 ns/op
+# Warmup Iteration   2: 8.989 ns/op
+# Warmup Iteration   3: 8.980 ns/op
+# Warmup Iteration   4: 8.983 ns/op
+# Warmup Iteration   5: 8.985 ns/op
+# Warmup Iteration   6: 8.987 ns/op
+# Warmup Iteration   7: 8.996 ns/op
+# Warmup Iteration   8: 8.982 ns/op
+# Warmup Iteration   9: 8.987 ns/op
+# Warmup Iteration  10: 8.981 ns/op
+Iteration   1: 8.993 ns/op
+Iteration   2: 8.986 ns/op
+Iteration   3: 8.984 ns/op
+Iteration   4: 8.985 ns/op
+Iteration   5: 8.988 ns/op
+Iteration   6: 8.981 ns/op
+Iteration   7: 8.981 ns/op
+Iteration   8: 8.981 ns/op
+Iteration   9: 8.983 ns/op
+Iteration  10: 8.990 ns/op
+Iteration  11: 8.983 ns/op
+Iteration  12: 8.972 ns/op
+Iteration  13: 8.977 ns/op
+Iteration  14: 8.976 ns/op
+Iteration  15: 8.978 ns/op
+Iteration  16: 8.990 ns/op
+Iteration  17: 8.979 ns/op
+Iteration  18: 8.984 ns/op
+Iteration  19: 8.978 ns/op
+Iteration  20: 8.982 ns/op
+Iteration  21: 8.974 ns/op
+Iteration  22: 8.983 ns/op
+Iteration  23: 8.978 ns/op
+Iteration  24: 8.984 ns/op
+Iteration  25: 8.987 ns/op
+Iteration  26: 8.983 ns/op
+Iteration  27: 8.987 ns/op
+Iteration  28: 8.982 ns/op
+Iteration  29: 8.983 ns/op
+Iteration  30: 8.986 ns/op
+Iteration  31: 8.985 ns/op
+Iteration  32: 8.982 ns/op
+Iteration  33: 8.984 ns/op
+Iteration  34: 8.981 ns/op
+Iteration  35: 8.982 ns/op
+Iteration  36: 8.987 ns/op
+Iteration  37: 9.030 ns/op
+Iteration  38: 8.984 ns/op
+Iteration  39: 8.981 ns/op
+Iteration  40: 8.983 ns/op
+Iteration  41: 8.987 ns/op
+Iteration  42: 8.988 ns/op
+Iteration  43: 8.981 ns/op
+Iteration  44: 9.011 ns/op
+Iteration  45: 8.985 ns/op
+Iteration  46: 8.985 ns/op
+Iteration  47: 8.981 ns/op
+Iteration  48: 9.025 ns/op
+Iteration  49: 8.987 ns/op
+Iteration  50: 8.984 ns/op
+
+
+Result "benchmark.StringContains.stringContains":
+  8.985 ±(99.9%) 0.005 ns/op [Average]
+  (min, avg, max) = (8.972, 8.985, 9.030), stdev = 0.010
+  CI (99.9%): [8.980, 8.991] (assumes normal distribution)
+
+
+# JMH version: 1.26
+# VM version: JDK 11.0.9.1, OpenJDK 64-Bit Server VM, 11.0.9.1+1-Ubuntu-0ubuntu1.18.04
+# VM invoker: /usr/lib/jvm/java-11-openjdk-amd64/bin/java
+# VM options: -server -Xms2G -Xmx2G
+# Warmup: 10 iterations, 1 s each
+# Measurement: 50 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: benchmark.StringContains.stringContains
+# Parameters: (regex = \+D_NJ, str = )`j7Pq#;g.:$%v9v]RHGgpZpMR#:DUG+[vejb=rvTo#(edqo=>gwXUu[w^Flk-?p^MWOei8Emyl8P]L'AB2hlP>rZ"m[('DOFQqzzvPo8%bu8e<15ZIznE\]$f6UNaA2n@5p_=#ReVywLc+Cc$^^*Hzx;87kdYqa-?T4cof@!\Yy^rv^[M$Xmvk5eIU"8>1yY(jQMB[)
+
+# Run progress: 59.38% complete, ETA 00:21:03
+# Fork: 1 of 1
+# Warmup Iteration   1: 35.209 ns/op
+# Warmup Iteration   2: 36.199 ns/op
+# Warmup Iteration   3: 36.168 ns/op
+# Warmup Iteration   4: 36.141 ns/op
+# Warmup Iteration   5: 36.138 ns/op
+# Warmup Iteration   6: 36.226 ns/op
+# Warmup Iteration   7: 36.158 ns/op
+# Warmup Iteration   8: 36.149 ns/op
+# Warmup Iteration   9: 36.202 ns/op
+# Warmup Iteration  10: 36.120 ns/op
+Iteration   1: 36.203 ns/op
+Iteration   2: 36.178 ns/op
+Iteration   3: 36.139 ns/op
+Iteration   4: 36.188 ns/op
+Iteration   5: 36.181 ns/op
+Iteration   6: 36.152 ns/op
+Iteration   7: 36.335 ns/op
+Iteration   8: 36.221 ns/op
+Iteration   9: 36.220 ns/op
+Iteration  10: 36.199 ns/op
+Iteration  11: 36.176 ns/op
+Iteration  12: 36.215 ns/op
+Iteration  13: 36.303 ns/op
+Iteration  14: 36.130 ns/op
+Iteration  15: 36.165 ns/op
+Iteration  16: 36.162 ns/op
+Iteration  17: 36.244 ns/op
+Iteration  18: 36.121 ns/op
+Iteration  19: 36.156 ns/op
+Iteration  20: 36.133 ns/op
+Iteration  21: 36.145 ns/op
+Iteration  22: 36.137 ns/op
+Iteration  23: 36.154 ns/op
+Iteration  24: 36.147 ns/op
+Iteration  25: 36.164 ns/op
+Iteration  26: 36.152 ns/op
+Iteration  27: 36.202 ns/op
+Iteration  28: 36.174 ns/op
+Iteration  29: 36.166 ns/op
+Iteration  30: 36.151 ns/op
+Iteration  31: 36.137 ns/op
+Iteration  32: 36.141 ns/op
+Iteration  33: 36.123 ns/op
+Iteration  34: 36.129 ns/op
+Iteration  35: 36.128 ns/op
+Iteration  36: 36.153 ns/op
+Iteration  37: 36.181 ns/op
+Iteration  38: 36.170 ns/op
+Iteration  39: 36.290 ns/op
+Iteration  40: 36.143 ns/op
+Iteration  41: 36.143 ns/op
+Iteration  42: 36.238 ns/op
+Iteration  43: 36.174 ns/op
+Iteration  44: 36.229 ns/op
+Iteration  45: 36.195 ns/op
+Iteration  46: 36.172 ns/op
+Iteration  47: 36.189 ns/op
+Iteration  48: 36.194 ns/op
+Iteration  49: 36.156 ns/op
+Iteration  50: 36.181 ns/op
+
+
+Result "benchmark.StringContains.stringContains":
+  36.178 ±(99.9%) 0.023 ns/op [Average]
+  (min, avg, max) = (36.121, 36.178, 36.335), stdev = 0.046
+  CI (99.9%): [36.155, 36.200] (assumes normal distribution)
+
+
+# JMH version: 1.26
+# VM version: JDK 11.0.9.1, OpenJDK 64-Bit Server VM, 11.0.9.1+1-Ubuntu-0ubuntu1.18.04
+# VM invoker: /usr/lib/jvm/java-11-openjdk-amd64/bin/java
+# VM options: -server -Xms2G -Xmx2G
+# Warmup: 10 iterations, 1 s each
+# Measurement: 50 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: benchmark.StringContains.stringContains
+# Parameters: (regex = \+D_NJ, str = [DC"139h=0!F/7u.1ZKSXK#$^c-jcd]Fc#w;"^i24M]KF2@vb^i73`7`+u!&vd(-'dq%7q8`P'y *)
+
+# Run progress: 62.50% complete, ETA 00:19:26
+# Fork: 1 of 1
+# Warmup Iteration   1: 17.748 ns/op
+# Warmup Iteration   2: 19.684 ns/op
+# Warmup Iteration   3: 18.892 ns/op
+# Warmup Iteration   4: 18.892 ns/op
+# Warmup Iteration   5: 18.903 ns/op
+# Warmup Iteration   6: 18.914 ns/op
+# Warmup Iteration   7: 18.895 ns/op
+# Warmup Iteration   8: 18.931 ns/op
+# Warmup Iteration   9: 18.906 ns/op
+# Warmup Iteration  10: 18.871 ns/op
+Iteration   1: 19.026 ns/op
+Iteration   2: 18.929 ns/op
+Iteration   3: 18.909 ns/op
+Iteration   4: 18.914 ns/op
+Iteration   5: 18.850 ns/op
+Iteration   6: 18.943 ns/op
+Iteration   7: 18.946 ns/op
+Iteration   8: 18.931 ns/op
+Iteration   9: 18.951 ns/op
+Iteration  10: 18.900 ns/op
+Iteration  11: 18.902 ns/op
+Iteration  12: 18.897 ns/op
+Iteration  13: 18.895 ns/op
+Iteration  14: 18.941 ns/op
+Iteration  15: 18.863 ns/op
+Iteration  16: 18.868 ns/op
+Iteration  17: 18.906 ns/op
+Iteration  18: 18.869 ns/op
+Iteration  19: 18.895 ns/op
+Iteration  20: 18.882 ns/op
+Iteration  21: 18.889 ns/op
+Iteration  22: 18.875 ns/op
+Iteration  23: 18.908 ns/op
+Iteration  24: 18.883 ns/op
+Iteration  25: 18.891 ns/op
+Iteration  26: 18.891 ns/op
+Iteration  27: 18.900 ns/op
+Iteration  28: 18.915 ns/op
+Iteration  29: 18.895 ns/op
+Iteration  30: 18.898 ns/op
+Iteration  31: 18.937 ns/op
+Iteration  32: 18.913 ns/op
+Iteration  33: 18.864 ns/op
+Iteration  34: 18.938 ns/op
+Iteration  35: 18.912 ns/op
+Iteration  36: 18.871 ns/op
+Iteration  37: 18.922 ns/op
+Iteration  38: 18.878 ns/op
+Iteration  39: 18.942 ns/op
+Iteration  40: 18.898 ns/op
+Iteration  41: 18.860 ns/op
+Iteration  42: 18.901 ns/op
+Iteration  43: 18.887 ns/op
+Iteration  44: 18.874 ns/op
+Iteration  45: 18.913 ns/op
+Iteration  46: 18.908 ns/op
+Iteration  47: 18.895 ns/op
+Iteration  48: 18.907 ns/op
+Iteration  49: 18.901 ns/op
+Iteration  50: 18.950 ns/op
+
+
+Result "benchmark.StringContains.stringContains":
+  18.905 ±(99.9%) 0.015 ns/op [Average]
+  (min, avg, max) = (18.850, 18.905, 19.026), stdev = 0.031
+  CI (99.9%): [18.890, 18.920] (assumes normal distribution)
+
+
+# JMH version: 1.26
+# VM version: JDK 11.0.9.1, OpenJDK 64-Bit Server VM, 11.0.9.1+1-Ubuntu-0ubuntu1.18.04
+# VM invoker: /usr/lib/jvm/java-11-openjdk-amd64/bin/java
+# VM options: -server -Xms2G -Xmx2G
+# Warmup: 10 iterations, 1 s each
+# Measurement: 50 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: benchmark.StringContains.stringContains
+# Parameters: (regex = \+D_NJ, str = )kp9OPQ!'_eH4Q@+T+'2*JB.4@"/7]P<"3._yIfd6X\PyYa=h64JO&N_$h'SOJ]bbvZm)Ryy>!)#lNY0@/ha1LE)
+
+# Run progress: 65.63% complete, ETA 00:17:49
+# Fork: 1 of 1
+# Warmup Iteration   1: 19.383 ns/op
+# Warmup Iteration   2: 20.542 ns/op
+# Warmup Iteration   3: 20.503 ns/op
+# Warmup Iteration   4: 20.503 ns/op
+# Warmup Iteration   5: 20.497 ns/op
+# Warmup Iteration   6: 20.508 ns/op
+# Warmup Iteration   7: 20.508 ns/op
+# Warmup Iteration   8: 20.494 ns/op
+# Warmup Iteration   9: 20.499 ns/op
+# Warmup Iteration  10: 20.516 ns/op
+Iteration   1: 20.501 ns/op
+Iteration   2: 20.492 ns/op
+Iteration   3: 20.495 ns/op
+Iteration   4: 20.496 ns/op
+Iteration   5: 20.496 ns/op
+Iteration   6: 20.506 ns/op
+Iteration   7: 20.493 ns/op
+Iteration   8: 20.493 ns/op
+Iteration   9: 20.499 ns/op
+Iteration  10: 20.502 ns/op
+Iteration  11: 20.493 ns/op
+Iteration  12: 20.504 ns/op
+Iteration  13: 20.497 ns/op
+Iteration  14: 20.501 ns/op
+Iteration  15: 20.506 ns/op
+Iteration  16: 20.494 ns/op
+Iteration  17: 20.494 ns/op
+Iteration  18: 20.494 ns/op
+Iteration  19: 20.503 ns/op
+Iteration  20: 20.495 ns/op
+Iteration  21: 20.503 ns/op
+Iteration  22: 20.498 ns/op
+Iteration  23: 20.495 ns/op
+Iteration  24: 20.497 ns/op
+Iteration  25: 20.500 ns/op
+Iteration  26: 20.495 ns/op
+Iteration  27: 20.504 ns/op
+Iteration  28: 20.497 ns/op
+Iteration  29: 20.499 ns/op
+Iteration  30: 20.497 ns/op
+Iteration  31: 20.498 ns/op
+Iteration  32: 20.490 ns/op
+Iteration  33: 20.494 ns/op
+Iteration  34: 20.498 ns/op
+Iteration  35: 20.492 ns/op
+Iteration  36: 20.509 ns/op
+Iteration  37: 20.493 ns/op
+Iteration  38: 20.503 ns/op
+Iteration  39: 20.489 ns/op
+Iteration  40: 20.491 ns/op
+Iteration  41: 20.489 ns/op
+Iteration  42: 20.505 ns/op
+Iteration  43: 20.508 ns/op
+Iteration  44: 20.509 ns/op
+Iteration  45: 20.488 ns/op
+Iteration  46: 20.493 ns/op
+Iteration  47: 20.486 ns/op
+Iteration  48: 20.485 ns/op
+Iteration  49: 20.491 ns/op
+Iteration  50: 20.494 ns/op
+
+
+Result "benchmark.StringContains.stringContains":
+  20.497 ±(99.9%) 0.003 ns/op [Average]
+  (min, avg, max) = (20.485, 20.497, 20.509), stdev = 0.006
+  CI (99.9%): [20.494, 20.500] (assumes normal distribution)
+
+
+# JMH version: 1.26
+# VM version: JDK 11.0.9.1, OpenJDK 64-Bit Server VM, 11.0.9.1+1-Ubuntu-0ubuntu1.18.04
+# VM invoker: /usr/lib/jvm/java-11-openjdk-amd64/bin/java
+# VM options: -server -Xms2G -Xmx2G
+# Warmup: 10 iterations, 1 s each
+# Measurement: 50 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: benchmark.StringContains.stringContains
+# Parameters: (regex = \+D_NJ, str = S`qysoJmb_DYYLv_ovbrFmv%u/r@))`Z>\GD)s)`$(XiG!6/m=:Sw(3U-ddXzBPi)
+
+# Run progress: 68.75% complete, ETA 00:16:11
+# Fork: 1 of 1
+# Warmup Iteration   1: 17.027 ns/op
+# Warmup Iteration   2: 15.778 ns/op
+# Warmup Iteration   3: 16.123 ns/op
+# Warmup Iteration   4: 16.122 ns/op
+# Warmup Iteration   5: 16.116 ns/op
+# Warmup Iteration   6: 16.121 ns/op
+# Warmup Iteration   7: 16.154 ns/op
+# Warmup Iteration   8: 16.160 ns/op
+# Warmup Iteration   9: 16.154 ns/op
+# Warmup Iteration  10: 16.151 ns/op
+Iteration   1: 16.156 ns/op
+Iteration   2: 16.155 ns/op
+Iteration   3: 16.153 ns/op
+Iteration   4: 16.153 ns/op
+Iteration   5: 16.158 ns/op
+Iteration   6: 16.153 ns/op
+Iteration   7: 16.152 ns/op
+Iteration   8: 16.153 ns/op
+Iteration   9: 16.157 ns/op
+Iteration  10: 16.157 ns/op
+Iteration  11: 16.157 ns/op
+Iteration  12: 16.154 ns/op
+Iteration  13: 16.169 ns/op
+Iteration  14: 16.153 ns/op
+Iteration  15: 16.145 ns/op
+Iteration  16: 16.150 ns/op
+Iteration  17: 16.153 ns/op
+Iteration  18: 16.147 ns/op
+Iteration  19: 16.179 ns/op
+Iteration  20: 16.158 ns/op
+Iteration  21: 16.156 ns/op
+Iteration  22: 16.156 ns/op
+Iteration  23: 16.148 ns/op
+Iteration  24: 16.153 ns/op
+Iteration  25: 16.146 ns/op
+Iteration  26: 16.159 ns/op
+Iteration  27: 16.158 ns/op
+Iteration  28: 16.153 ns/op
+Iteration  29: 16.158 ns/op
+Iteration  30: 16.153 ns/op
+Iteration  31: 16.149 ns/op
+Iteration  32: 16.153 ns/op
+Iteration  33: 16.153 ns/op
+Iteration  34: 16.156 ns/op
+Iteration  35: 16.158 ns/op
+Iteration  36: 16.156 ns/op
+Iteration  37: 16.157 ns/op
+Iteration  38: 16.157 ns/op
+Iteration  39: 16.164 ns/op
+Iteration  40: 16.157 ns/op
+Iteration  41: 16.158 ns/op
+Iteration  42: 16.155 ns/op
+Iteration  43: 16.156 ns/op
+Iteration  44: 16.153 ns/op
+Iteration  45: 16.155 ns/op
+Iteration  46: 16.151 ns/op
+Iteration  47: 16.149 ns/op
+Iteration  48: 16.170 ns/op
+Iteration  49: 16.169 ns/op
+Iteration  50: 16.154 ns/op
+
+
+Result "benchmark.StringContains.stringContains":
+  16.156 ±(99.9%) 0.003 ns/op [Average]
+  (min, avg, max) = (16.145, 16.156, 16.179), stdev = 0.006
+  CI (99.9%): [16.153, 16.159] (assumes normal distribution)
+
+
+# JMH version: 1.26
+# VM version: JDK 11.0.9.1, OpenJDK 64-Bit Server VM, 11.0.9.1+1-Ubuntu-0ubuntu1.18.04
+# VM invoker: /usr/lib/jvm/java-11-openjdk-amd64/bin/java
+# VM options: -server -Xms2G -Xmx2G
+# Warmup: 10 iterations, 1 s each
+# Measurement: 50 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: benchmark.StringContains.stringContains
+# Parameters: (regex = \+D_NJ, str = -BSo !d`WxJb+KLYBgLuziRY]vgVagF[m4j\-nx"w3t65TBq6Q`$QT#7P)
+
+# Run progress: 71.88% complete, ETA 00:14:34
+# Fork: 1 of 1
+# Warmup Iteration   1: 16.407 ns/op
+# Warmup Iteration   2: 16.368 ns/op
+# Warmup Iteration   3: 16.590 ns/op
+# Warmup Iteration   4: 16.582 ns/op
+# Warmup Iteration   5: 16.580 ns/op
+# Warmup Iteration   6: 16.580 ns/op
+# Warmup Iteration   7: 16.577 ns/op
+# Warmup Iteration   8: 16.578 ns/op
+# Warmup Iteration   9: 16.580 ns/op
+# Warmup Iteration  10: 16.581 ns/op
+Iteration   1: 16.583 ns/op
+Iteration   2: 16.584 ns/op
+Iteration   3: 16.579 ns/op
+Iteration   4: 16.583 ns/op
+Iteration   5: 16.578 ns/op
+Iteration   6: 16.579 ns/op
+Iteration   7: 16.582 ns/op
+Iteration   8: 16.580 ns/op
+Iteration   9: 16.584 ns/op
+Iteration  10: 16.674 ns/op
+Iteration  11: 16.581 ns/op
+Iteration  12: 16.581 ns/op
+Iteration  13: 16.592 ns/op
+Iteration  14: 16.583 ns/op
+Iteration  15: 16.589 ns/op
+Iteration  16: 16.588 ns/op
+Iteration  17: 16.582 ns/op
+Iteration  18: 16.578 ns/op
+Iteration  19: 16.581 ns/op
+Iteration  20: 16.600 ns/op
+Iteration  21: 16.599 ns/op
+Iteration  22: 16.597 ns/op
+Iteration  23: 16.580 ns/op
+Iteration  24: 16.590 ns/op
+Iteration  25: 16.609 ns/op
+Iteration  26: 16.586 ns/op
+Iteration  27: 16.586 ns/op
+Iteration  28: 16.582 ns/op
+Iteration  29: 16.578 ns/op
+Iteration  30: 16.580 ns/op
+Iteration  31: 16.580 ns/op
+Iteration  32: 16.579 ns/op
+Iteration  33: 16.582 ns/op
+Iteration  34: 16.583 ns/op
+Iteration  35: 16.579 ns/op
+Iteration  36: 16.584 ns/op
+Iteration  37: 16.581 ns/op
+Iteration  38: 16.579 ns/op
+Iteration  39: 16.586 ns/op
+Iteration  40: 16.594 ns/op
+Iteration  41: 16.578 ns/op
+Iteration  42: 16.596 ns/op
+Iteration  43: 16.585 ns/op
+Iteration  44: 16.583 ns/op
+Iteration  45: 16.579 ns/op
+Iteration  46: 16.576 ns/op
+Iteration  47: 16.589 ns/op
+Iteration  48: 16.590 ns/op
+Iteration  49: 16.580 ns/op
+Iteration  50: 16.584 ns/op
+
+
+Result "benchmark.StringContains.stringContains":
+  16.586 ±(99.9%) 0.007 ns/op [Average]
+  (min, avg, max) = (16.576, 16.586, 16.674), stdev = 0.014
+  CI (99.9%): [16.579, 16.593] (assumes normal distribution)
+
+
+# JMH version: 1.26
+# VM version: JDK 11.0.9.1, OpenJDK 64-Bit Server VM, 11.0.9.1+1-Ubuntu-0ubuntu1.18.04
+# VM invoker: /usr/lib/jvm/java-11-openjdk-amd64/bin/java
+# VM options: -server -Xms2G -Xmx2G
+# Warmup: 10 iterations, 1 s each
+# Measurement: 50 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: benchmark.StringContains.stringContains
+# Parameters: (regex = \+D_NJ, str = MH>c:L%0Zwl"INTyaI0'mzt`nLt<RTQN\cTtR^#l0>Cwd'<B)
+
+# Run progress: 75.00% complete, ETA 00:12:57
+# Fork: 1 of 1
+# Warmup Iteration   1: 13.297 ns/op
+# Warmup Iteration   2: 13.489 ns/op
+# Warmup Iteration   3: 13.677 ns/op
+# Warmup Iteration   4: 13.671 ns/op
+# Warmup Iteration   5: 13.679 ns/op
+# Warmup Iteration   6: 13.678 ns/op
+# Warmup Iteration   7: 13.690 ns/op
+# Warmup Iteration   8: 13.694 ns/op
+# Warmup Iteration   9: 13.694 ns/op
+# Warmup Iteration  10: 13.693 ns/op
+Iteration   1: 13.692 ns/op
+Iteration   2: 13.652 ns/op
+Iteration   3: 13.670 ns/op
+Iteration   4: 13.662 ns/op
+Iteration   5: 13.652 ns/op
+Iteration   6: 13.655 ns/op
+Iteration   7: 13.671 ns/op
+Iteration   8: 13.682 ns/op
+Iteration   9: 13.662 ns/op
+Iteration  10: 13.677 ns/op
+Iteration  11: 13.687 ns/op
+Iteration  12: 13.684 ns/op
+Iteration  13: 13.676 ns/op
+Iteration  14: 13.677 ns/op
+Iteration  15: 13.653 ns/op
+Iteration  16: 13.671 ns/op
+Iteration  17: 13.661 ns/op
+Iteration  18: 13.684 ns/op
+Iteration  19: 13.668 ns/op
+Iteration  20: 13.693 ns/op
+Iteration  21: 13.673 ns/op
+Iteration  22: 13.677 ns/op
+Iteration  23: 13.700 ns/op
+Iteration  24: 13.675 ns/op
+Iteration  25: 13.676 ns/op
+Iteration  26: 13.677 ns/op
+Iteration  27: 13.678 ns/op
+Iteration  28: 13.688 ns/op
+Iteration  29: 13.675 ns/op
+Iteration  30: 13.678 ns/op
+Iteration  31: 13.680 ns/op
+Iteration  32: 13.669 ns/op
+Iteration  33: 13.660 ns/op
+Iteration  34: 13.680 ns/op
+Iteration  35: 13.671 ns/op
+Iteration  36: 13.665 ns/op
+Iteration  37: 13.671 ns/op
+Iteration  38: 13.686 ns/op
+Iteration  39: 13.692 ns/op
+Iteration  40: 13.682 ns/op
+Iteration  41: 13.691 ns/op
+Iteration  42: 13.674 ns/op
+Iteration  43: 13.671 ns/op
+Iteration  44: 13.680 ns/op
+Iteration  45: 13.675 ns/op
+Iteration  46: 13.667 ns/op
+Iteration  47: 13.685 ns/op
+Iteration  48: 13.665 ns/op
+Iteration  49: 13.671 ns/op
+Iteration  50: 13.677 ns/op
+
+
+Result "benchmark.StringContains.stringContains":
+  13.675 ±(99.9%) 0.005 ns/op [Average]
+  (min, avg, max) = (13.652, 13.675, 13.700), stdev = 0.011
+  CI (99.9%): [13.669, 13.680] (assumes normal distribution)
+
+
+# JMH version: 1.26
+# VM version: JDK 11.0.9.1, OpenJDK 64-Bit Server VM, 11.0.9.1+1-Ubuntu-0ubuntu1.18.04
+# VM invoker: /usr/lib/jvm/java-11-openjdk-amd64/bin/java
+# VM options: -server -Xms2G -Xmx2G
+# Warmup: 10 iterations, 1 s each
+# Measurement: 50 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: benchmark.StringContains.stringContains
+# Parameters: (regex = \+D_NJ, str = <q5S2!1\8VVW=xSw0t y=;TKJUbD.z].oV;k9ne rH8?)Sr^QM`_O+YZgKK8vQycML/ay*b!yG4<&Nw_>BuoG_Isz#J.^U3cO'a"CsT0GMVnj!kvU)
+
+# Run progress: 78.13% complete, ETA 00:11:20
+# Fork: 1 of 1
+# Warmup Iteration   1: 21.472 ns/op
+# Warmup Iteration   2: 22.770 ns/op
+# Warmup Iteration   3: 22.726 ns/op
+# Warmup Iteration   4: 22.734 ns/op
+# Warmup Iteration   5: 22.724 ns/op
+# Warmup Iteration   6: 22.719 ns/op
+# Warmup Iteration   7: 22.715 ns/op
+# Warmup Iteration   8: 22.718 ns/op
+# Warmup Iteration   9: 22.721 ns/op
+# Warmup Iteration  10: 22.716 ns/op
+Iteration   1: 22.717 ns/op
+Iteration   2: 22.717 ns/op
+Iteration   3: 22.716 ns/op
+Iteration   4: 22.713 ns/op
+Iteration   5: 22.714 ns/op
+Iteration   6: 22.718 ns/op
+Iteration   7: 22.718 ns/op
+Iteration   8: 22.716 ns/op
+Iteration   9: 22.720 ns/op
+Iteration  10: 22.719 ns/op
+Iteration  11: 22.721 ns/op
+Iteration  12: 22.717 ns/op
+Iteration  13: 22.721 ns/op
+Iteration  14: 22.721 ns/op
+Iteration  15: 22.752 ns/op
+Iteration  16: 22.729 ns/op
+Iteration  17: 22.718 ns/op
+Iteration  18: 22.715 ns/op
+Iteration  19: 22.720 ns/op
+Iteration  20: 22.714 ns/op
+Iteration  21: 22.713 ns/op
+Iteration  22: 22.719 ns/op
+Iteration  23: 22.737 ns/op
+Iteration  24: 22.735 ns/op
+Iteration  25: 22.717 ns/op
+Iteration  26: 22.740 ns/op
+Iteration  27: 22.741 ns/op
+Iteration  28: 22.717 ns/op
+Iteration  29: 22.719 ns/op
+Iteration  30: 22.713 ns/op
+Iteration  31: 22.713 ns/op
+Iteration  32: 22.713 ns/op
+Iteration  33: 22.717 ns/op
+Iteration  34: 22.715 ns/op
+Iteration  35: 22.715 ns/op
+Iteration  36: 22.718 ns/op
+Iteration  37: 22.715 ns/op
+Iteration  38: 22.713 ns/op
+Iteration  39: 22.717 ns/op
+Iteration  40: 22.716 ns/op
+Iteration  41: 22.716 ns/op
+Iteration  42: 22.716 ns/op
+Iteration  43: 22.719 ns/op
+Iteration  44: 22.719 ns/op
+Iteration  45: 22.721 ns/op
+Iteration  46: 22.729 ns/op
+Iteration  47: 22.714 ns/op
+Iteration  48: 22.716 ns/op
+Iteration  49: 22.713 ns/op
+Iteration  50: 22.814 ns/op
+
+
+Result "benchmark.StringContains.stringContains":
+  22.722 ±(99.9%) 0.008 ns/op [Average]
+  (min, avg, max) = (22.713, 22.722, 22.814), stdev = 0.016
+  CI (99.9%): [22.714, 22.729] (assumes normal distribution)
+
+
+# JMH version: 1.26
+# VM version: JDK 11.0.9.1, OpenJDK 64-Bit Server VM, 11.0.9.1+1-Ubuntu-0ubuntu1.18.04
+# VM invoker: /usr/lib/jvm/java-11-openjdk-amd64/bin/java
+# VM options: -server -Xms2G -Xmx2G
+# Warmup: 10 iterations, 1 s each
+# Measurement: 50 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: benchmark.StringContains.stringContains
+# Parameters: (regex = \+D_NJ, str = LHoXf`D:n@@vC7oDg)019gUyF)@K/k^BmYUR].Ol*GS?krar/Zf[lLi2SS_h9lDvg;3+uo^7=5e#Zp63K6;ul.gsk$N@)2s-v?.YZd!6dm<=p)MPxhG=ex)'LIol5%?0P/qC6Ra5hUSO.hwIlWkX#[;eo0v7UEu#OIFiCsDA=9s;.8Ohwj^"L6qeYar;V1QWbGF1g3Rl+3IBpY` P^Y5[$\EFkDF9&wb6^jzQ34il?3KB)
+
+# Run progress: 81.25% complete, ETA 00:09:43
+# Fork: 1 of 1
+# Warmup Iteration   1: 39.755 ns/op
+# Warmup Iteration   2: 40.658 ns/op
+# Warmup Iteration   3: 40.616 ns/op
+# Warmup Iteration   4: 40.613 ns/op
+# Warmup Iteration   5: 40.596 ns/op
+# Warmup Iteration   6: 40.617 ns/op
+# Warmup Iteration   7: 40.604 ns/op
+# Warmup Iteration   8: 40.685 ns/op
+# Warmup Iteration   9: 40.616 ns/op
+# Warmup Iteration  10: 40.683 ns/op
+Iteration   1: 40.647 ns/op
+Iteration   2: 40.670 ns/op
+Iteration   3: 40.618 ns/op
+Iteration   4: 40.605 ns/op
+Iteration   5: 40.623 ns/op
+Iteration   6: 40.670 ns/op
+Iteration   7: 40.663 ns/op
+Iteration   8: 40.621 ns/op
+Iteration   9: 40.648 ns/op
+Iteration  10: 40.604 ns/op
+Iteration  11: 40.599 ns/op
+Iteration  12: 40.613 ns/op
+Iteration  13: 40.692 ns/op
+Iteration  14: 40.616 ns/op
+Iteration  15: 40.605 ns/op
+Iteration  16: 40.657 ns/op
+Iteration  17: 40.626 ns/op
+Iteration  18: 40.743 ns/op
+Iteration  19: 40.630 ns/op
+Iteration  20: 40.659 ns/op
+Iteration  21: 40.610 ns/op
+Iteration  22: 40.601 ns/op
+Iteration  23: 40.601 ns/op
+Iteration  24: 40.634 ns/op
+Iteration  25: 40.619 ns/op
+Iteration  26: 40.620 ns/op
+Iteration  27: 40.638 ns/op
+Iteration  28: 40.657 ns/op
+Iteration  29: 40.634 ns/op
+Iteration  30: 40.598 ns/op
+Iteration  31: 40.607 ns/op
+Iteration  32: 40.611 ns/op
+Iteration  33: 40.608 ns/op
+Iteration  34: 40.632 ns/op
+Iteration  35: 40.609 ns/op
+Iteration  36: 40.603 ns/op
+Iteration  37: 40.648 ns/op
+Iteration  38: 40.603 ns/op
+Iteration  39: 40.647 ns/op
+Iteration  40: 40.643 ns/op
+Iteration  41: 40.614 ns/op
+Iteration  42: 40.626 ns/op
+Iteration  43: 40.662 ns/op
+Iteration  44: 40.601 ns/op
+Iteration  45: 40.597 ns/op
+Iteration  46: 40.655 ns/op
+Iteration  47: 40.622 ns/op
+Iteration  48: 40.652 ns/op
+Iteration  49: 40.668 ns/op
+Iteration  50: 40.610 ns/op
+
+
+Result "benchmark.StringContains.stringContains":
+  40.631 ±(99.9%) 0.014 ns/op [Average]
+  (min, avg, max) = (40.597, 40.631, 40.743), stdev = 0.029
+  CI (99.9%): [40.616, 40.645] (assumes normal distribution)
+
+
+# JMH version: 1.26
+# VM version: JDK 11.0.9.1, OpenJDK 64-Bit Server VM, 11.0.9.1+1-Ubuntu-0ubuntu1.18.04
+# VM invoker: /usr/lib/jvm/java-11-openjdk-amd64/bin/java
+# VM options: -server -Xms2G -Xmx2G
+# Warmup: 10 iterations, 1 s each
+# Measurement: 50 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: benchmark.StringContains.stringContains
+# Parameters: (regex = \+D_NJ, str = \"D5Rd2/;GAfh8hY/zmv\'yD?i<.I;-Z'4T8AGfl"E[[;0earOE *#Q\5C/z`/Oxv9[EDyzYuP)
+
+# Run progress: 84.38% complete, ETA 00:08:05
+# Fork: 1 of 1
+# Warmup Iteration   1: 17.793 ns/op
+# Warmup Iteration   2: 18.292 ns/op
+# Warmup Iteration   3: 18.261 ns/op
+# Warmup Iteration   4: 18.359 ns/op
+# Warmup Iteration   5: 18.273 ns/op
+# Warmup Iteration   6: 18.259 ns/op
+# Warmup Iteration   7: 18.258 ns/op
+# Warmup Iteration   8: 18.259 ns/op
+# Warmup Iteration   9: 18.255 ns/op
+# Warmup Iteration  10: 18.255 ns/op
+Iteration   1: 18.257 ns/op
+Iteration   2: 18.256 ns/op
+Iteration   3: 18.263 ns/op
+Iteration   4: 18.261 ns/op
+Iteration   5: 18.260 ns/op
+Iteration   6: 18.257 ns/op
+Iteration   7: 18.261 ns/op
+Iteration   8: 18.258 ns/op
+Iteration   9: 18.259 ns/op
+Iteration  10: 18.256 ns/op
+Iteration  11: 18.258 ns/op
+Iteration  12: 18.259 ns/op
+Iteration  13: 18.256 ns/op
+Iteration  14: 18.266 ns/op
+Iteration  15: 18.260 ns/op
+Iteration  16: 18.259 ns/op
+Iteration  17: 18.257 ns/op
+Iteration  18: 18.261 ns/op
+Iteration  19: 18.260 ns/op
+Iteration  20: 18.258 ns/op
+Iteration  21: 18.258 ns/op
+Iteration  22: 18.257 ns/op
+Iteration  23: 18.263 ns/op
+Iteration  24: 18.261 ns/op
+Iteration  25: 18.263 ns/op
+Iteration  26: 18.266 ns/op
+Iteration  27: 18.271 ns/op
+Iteration  28: 18.266 ns/op
+Iteration  29: 18.260 ns/op
+Iteration  30: 18.264 ns/op
+Iteration  31: 18.261 ns/op
+Iteration  32: 18.265 ns/op
+Iteration  33: 18.260 ns/op
+Iteration  34: 18.256 ns/op
+Iteration  35: 18.262 ns/op
+Iteration  36: 18.261 ns/op
+Iteration  37: 18.260 ns/op
+Iteration  38: 18.259 ns/op
+Iteration  39: 18.267 ns/op
+Iteration  40: 18.360 ns/op
+Iteration  41: 18.266 ns/op
+Iteration  42: 18.261 ns/op
+Iteration  43: 18.262 ns/op
+Iteration  44: 18.261 ns/op
+Iteration  45: 18.266 ns/op
+Iteration  46: 18.261 ns/op
+Iteration  47: 18.259 ns/op
+Iteration  48: 18.262 ns/op
+Iteration  49: 18.257 ns/op
+Iteration  50: 18.260 ns/op
+
+
+Result "benchmark.StringContains.stringContains":
+  18.263 ±(99.9%) 0.007 ns/op [Average]
+  (min, avg, max) = (18.256, 18.263, 18.360), stdev = 0.014
+  CI (99.9%): [18.256, 18.270] (assumes normal distribution)
+
+
+# JMH version: 1.26
+# VM version: JDK 11.0.9.1, OpenJDK 64-Bit Server VM, 11.0.9.1+1-Ubuntu-0ubuntu1.18.04
+# VM invoker: /usr/lib/jvm/java-11-openjdk-amd64/bin/java
+# VM options: -server -Xms2G -Xmx2G
+# Warmup: 10 iterations, 1 s each
+# Measurement: 50 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: benchmark.StringContains.stringContains
+# Parameters: (regex = \+D_NJ, str = &HfnW9!)
+
+# Run progress: 87.50% complete, ETA 00:06:28
+# Fork: 1 of 1
+# Warmup Iteration   1: 9.472 ns/op
+# Warmup Iteration   2: 8.988 ns/op
+# Warmup Iteration   3: 8.983 ns/op
+# Warmup Iteration   4: 8.976 ns/op
+# Warmup Iteration   5: 8.978 ns/op
+# Warmup Iteration   6: 8.979 ns/op
+# Warmup Iteration   7: 8.979 ns/op
+# Warmup Iteration   8: 8.979 ns/op
+# Warmup Iteration   9: 8.980 ns/op
+# Warmup Iteration  10: 8.979 ns/op
+Iteration   1: 8.980 ns/op
+Iteration   2: 8.975 ns/op
+Iteration   3: 8.980 ns/op
+Iteration   4: 8.976 ns/op
+Iteration   5: 8.977 ns/op
+Iteration   6: 8.980 ns/op
+Iteration   7: 8.983 ns/op
+Iteration   8: 8.979 ns/op
+Iteration   9: 8.978 ns/op
+Iteration  10: 8.975 ns/op
+Iteration  11: 8.975 ns/op
+Iteration  12: 8.974 ns/op
+Iteration  13: 8.977 ns/op
+Iteration  14: 8.981 ns/op
+Iteration  15: 8.980 ns/op
+Iteration  16: 8.982 ns/op
+Iteration  17: 8.995 ns/op
+Iteration  18: 8.992 ns/op
+Iteration  19: 8.993 ns/op
+Iteration  20: 8.996 ns/op
+Iteration  21: 9.006 ns/op
+Iteration  22: 8.979 ns/op
+Iteration  23: 8.980 ns/op
+Iteration  24: 8.975 ns/op
+Iteration  25: 8.977 ns/op
+Iteration  26: 8.979 ns/op
+Iteration  27: 8.984 ns/op
+Iteration  28: 8.977 ns/op
+Iteration  29: 8.981 ns/op
+Iteration  30: 8.983 ns/op
+Iteration  31: 8.975 ns/op
+Iteration  32: 8.977 ns/op
+Iteration  33: 8.982 ns/op
+Iteration  34: 8.985 ns/op
+Iteration  35: 8.978 ns/op
+Iteration  36: 8.978 ns/op
+Iteration  37: 8.978 ns/op
+Iteration  38: 8.976 ns/op
+Iteration  39: 8.981 ns/op
+Iteration  40: 8.978 ns/op
+Iteration  41: 8.983 ns/op
+Iteration  42: 8.996 ns/op
+Iteration  43: 8.986 ns/op
+Iteration  44: 8.998 ns/op
+Iteration  45: 9.049 ns/op
+Iteration  46: 9.006 ns/op
+Iteration  47: 9.012 ns/op
+Iteration  48: 9.000 ns/op
+Iteration  49: 9.008 ns/op
+Iteration  50: 9.007 ns/op
+
+
+Result "benchmark.StringContains.stringContains":
+  8.986 ±(99.9%) 0.007 ns/op [Average]
+  (min, avg, max) = (8.974, 8.986, 9.049), stdev = 0.014
+  CI (99.9%): [8.979, 8.992] (assumes normal distribution)
+
+
+# JMH version: 1.26
+# VM version: JDK 11.0.9.1, OpenJDK 64-Bit Server VM, 11.0.9.1+1-Ubuntu-0ubuntu1.18.04
+# VM invoker: /usr/lib/jvm/java-11-openjdk-amd64/bin/java
+# VM options: -server -Xms2G -Xmx2G
+# Warmup: 10 iterations, 1 s each
+# Measurement: 50 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: benchmark.StringContains.stringContains
+# Parameters: (regex = \+D_NJ, str = 7ynz :s.&LjFiAjMNmWkEbur(G(S)cu]&/TR&__vi56'RAm#hsXs.O4^+*#FV?8^XBtA3SSj[st)
+
+# Run progress: 90.63% complete, ETA 00:04:51
+# Fork: 1 of 1
+# Warmup Iteration   1: 17.730 ns/op
+# Warmup Iteration   2: 18.304 ns/op
+# Warmup Iteration   3: 18.300 ns/op
+# Warmup Iteration   4: 18.302 ns/op
+# Warmup Iteration   5: 18.303 ns/op
+# Warmup Iteration   6: 18.303 ns/op
+# Warmup Iteration   7: 18.299 ns/op
+# Warmup Iteration   8: 18.297 ns/op
+# Warmup Iteration   9: 18.296 ns/op
+# Warmup Iteration  10: 18.292 ns/op
+Iteration   1: 18.313 ns/op
+Iteration   2: 18.294 ns/op
+Iteration   3: 18.298 ns/op
+Iteration   4: 18.294 ns/op
+Iteration   5: 18.299 ns/op
+Iteration   6: 18.304 ns/op
+Iteration   7: 18.266 ns/op
+Iteration   8: 18.261 ns/op
+Iteration   9: 18.258 ns/op
+Iteration  10: 18.262 ns/op
+Iteration  11: 18.263 ns/op
+Iteration  12: 18.259 ns/op
+Iteration  13: 18.261 ns/op
+Iteration  14: 18.283 ns/op
+Iteration  15: 18.259 ns/op
+Iteration  16: 18.258 ns/op
+Iteration  17: 18.261 ns/op
+Iteration  18: 18.262 ns/op
+Iteration  19: 18.264 ns/op
+Iteration  20: 18.264 ns/op
+Iteration  21: 18.265 ns/op
+Iteration  22: 18.272 ns/op
+Iteration  23: 18.289 ns/op
+Iteration  24: 18.271 ns/op
+Iteration  25: 18.276 ns/op
+Iteration  26: 18.274 ns/op
+Iteration  27: 18.261 ns/op
+Iteration  28: 18.259 ns/op
+Iteration  29: 18.257 ns/op
+Iteration  30: 18.257 ns/op
+Iteration  31: 18.257 ns/op
+Iteration  32: 18.259 ns/op
+Iteration  33: 18.259 ns/op
+Iteration  34: 18.262 ns/op
+Iteration  35: 18.258 ns/op
+Iteration  36: 18.276 ns/op
+Iteration  37: 18.261 ns/op
+Iteration  38: 18.271 ns/op
+Iteration  39: 18.269 ns/op
+Iteration  40: 18.270 ns/op
+Iteration  41: 18.270 ns/op
+Iteration  42: 18.279 ns/op
+Iteration  43: 18.265 ns/op
+Iteration  44: 18.289 ns/op
+Iteration  45: 18.271 ns/op
+Iteration  46: 18.272 ns/op
+Iteration  47: 18.275 ns/op
+Iteration  48: 18.284 ns/op
+Iteration  49: 18.280 ns/op
+Iteration  50: 18.325 ns/op
+
+
+Result "benchmark.StringContains.stringContains":
+  18.272 ±(99.9%) 0.008 ns/op [Average]
+  (min, avg, max) = (18.257, 18.272, 18.325), stdev = 0.016
+  CI (99.9%): [18.265, 18.280] (assumes normal distribution)
+
+
+# JMH version: 1.26
+# VM version: JDK 11.0.9.1, OpenJDK 64-Bit Server VM, 11.0.9.1+1-Ubuntu-0ubuntu1.18.04
+# VM invoker: /usr/lib/jvm/java-11-openjdk-amd64/bin/java
+# VM options: -server -Xms2G -Xmx2G
+# Warmup: 10 iterations, 1 s each
+# Measurement: 50 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: benchmark.StringContains.stringContains
+# Parameters: (regex = \+D_NJ, str = QoV-/(LJ=%EaQGTU$n@Xh" )oiv$JiTWcl sj>m"@x7n5_$\oZfu=IWp7aXqT`4eQP#HCuc^QDe>mS0]6<\Ebs1#%iW_%NY;;%0(Dq+D&9)
+
+# Run progress: 93.75% complete, ETA 00:03:14
+# Fork: 1 of 1
+# Warmup Iteration   1: 24.018 ns/op
+# Warmup Iteration   2: 24.862 ns/op
+# Warmup Iteration   3: 25.113 ns/op
+# Warmup Iteration   4: 25.215 ns/op
+# Warmup Iteration   5: 25.211 ns/op
+# Warmup Iteration   6: 25.260 ns/op
+# Warmup Iteration   7: 25.224 ns/op
+# Warmup Iteration   8: 25.238 ns/op
+# Warmup Iteration   9: 25.219 ns/op
+# Warmup Iteration  10: 25.285 ns/op
+Iteration   1: 25.249 ns/op
+Iteration   2: 25.232 ns/op
+Iteration   3: 25.199 ns/op
+Iteration   4: 25.215 ns/op
+Iteration   5: 25.181 ns/op
+Iteration   6: 25.274 ns/op
+Iteration   7: 25.346 ns/op
+Iteration   8: 25.205 ns/op
+Iteration   9: 25.189 ns/op
+Iteration  10: 25.170 ns/op
+Iteration  11: 25.220 ns/op
+Iteration  12: 25.198 ns/op
+Iteration  13: 25.149 ns/op
+Iteration  14: 25.123 ns/op
+Iteration  15: 25.160 ns/op
+Iteration  16: 25.198 ns/op
+Iteration  17: 25.177 ns/op
+Iteration  18: 25.146 ns/op
+Iteration  19: 25.156 ns/op
+Iteration  20: 25.184 ns/op
+Iteration  21: 25.102 ns/op
+Iteration  22: 25.236 ns/op
+Iteration  23: 25.182 ns/op
+Iteration  24: 25.179 ns/op
+Iteration  25: 25.156 ns/op
+Iteration  26: 25.199 ns/op
+Iteration  27: 25.159 ns/op
+Iteration  28: 25.227 ns/op
+Iteration  29: 25.195 ns/op
+Iteration  30: 25.144 ns/op
+Iteration  31: 25.167 ns/op
+Iteration  32: 25.130 ns/op
+Iteration  33: 25.206 ns/op
+Iteration  34: 25.173 ns/op
+Iteration  35: 25.191 ns/op
+Iteration  36: 25.225 ns/op
+Iteration  37: 25.194 ns/op
+Iteration  38: 25.209 ns/op
+Iteration  39: 25.198 ns/op
+Iteration  40: 25.209 ns/op
+Iteration  41: 25.186 ns/op
+Iteration  42: 25.170 ns/op
+Iteration  43: 25.183 ns/op
+Iteration  44: 25.163 ns/op
+Iteration  45: 25.204 ns/op
+Iteration  46: 25.211 ns/op
+Iteration  47: 25.239 ns/op
+Iteration  48: 25.164 ns/op
+Iteration  49: 25.160 ns/op
+Iteration  50: 25.182 ns/op
+
+
+Result "benchmark.StringContains.stringContains":
+  25.190 ±(99.9%) 0.020 ns/op [Average]
+  (min, avg, max) = (25.102, 25.190, 25.346), stdev = 0.040
+  CI (99.9%): [25.170, 25.210] (assumes normal distribution)
+
+
+# JMH version: 1.26
+# VM version: JDK 11.0.9.1, OpenJDK 64-Bit Server VM, 11.0.9.1+1-Ubuntu-0ubuntu1.18.04
+# VM invoker: /usr/lib/jvm/java-11-openjdk-amd64/bin/java
+# VM options: -server -Xms2G -Xmx2G
+# Warmup: 10 iterations, 1 s each
+# Measurement: 50 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: benchmark.StringContains.stringContains
+# Parameters: (regex = \+D_NJ, str = CP.lww`![WejWUpp`$Tuvx[(hNuA#p.e^;iq>0z%Ryz>V\)
+
+# Run progress: 96.88% complete, ETA 00:01:37
+# Fork: 1 of 1
+# Warmup Iteration   1: 13.990 ns/op
+# Warmup Iteration   2: 13.923 ns/op
+# Warmup Iteration   3: 14.048 ns/op
+# Warmup Iteration   4: 14.068 ns/op
+# Warmup Iteration   5: 14.052 ns/op
+# Warmup Iteration   6: 14.112 ns/op
+# Warmup Iteration   7: 14.059 ns/op
+# Warmup Iteration   8: 14.070 ns/op
+# Warmup Iteration   9: 14.061 ns/op
+# Warmup Iteration  10: 14.057 ns/op
+Iteration   1: 14.064 ns/op
+Iteration   2: 14.030 ns/op
+Iteration   3: 14.029 ns/op
+Iteration   4: 14.236 ns/op
+Iteration   5: 14.041 ns/op
+Iteration   6: 14.045 ns/op
+Iteration   7: 13.963 ns/op
+Iteration   8: 13.944 ns/op
+Iteration   9: 13.946 ns/op
+Iteration  10: 13.946 ns/op
+Iteration  11: 13.981 ns/op
+Iteration  12: 13.948 ns/op
+Iteration  13: 13.957 ns/op
+Iteration  14: 13.949 ns/op
+Iteration  15: 13.974 ns/op
+Iteration  16: 13.969 ns/op
+Iteration  17: 13.940 ns/op
+Iteration  18: 13.942 ns/op
+Iteration  19: 14.021 ns/op
+Iteration  20: 14.059 ns/op
+Iteration  21: 14.086 ns/op
+Iteration  22: 14.140 ns/op
+Iteration  23: 14.076 ns/op
+Iteration  24: 14.004 ns/op
+Iteration  25: 14.068 ns/op
+Iteration  26: 14.087 ns/op
+Iteration  27: 14.101 ns/op
+Iteration  28: 14.084 ns/op
+Iteration  29: 14.061 ns/op
+Iteration  30: 14.039 ns/op
+Iteration  31: 14.056 ns/op
+Iteration  32: 14.049 ns/op
+Iteration  33: 14.049 ns/op
+Iteration  34: 14.053 ns/op
+Iteration  35: 14.023 ns/op
+Iteration  36: 14.063 ns/op
+Iteration  37: 14.084 ns/op
+Iteration  38: 14.063 ns/op
+Iteration  39: 14.092 ns/op
+Iteration  40: 14.050 ns/op
+Iteration  41: 14.045 ns/op
+Iteration  42: 14.044 ns/op
+Iteration  43: 14.064 ns/op
+Iteration  44: 14.043 ns/op
+Iteration  45: 14.038 ns/op
+Iteration  46: 14.052 ns/op
+Iteration  47: 14.139 ns/op
+Iteration  48: 14.057 ns/op
+Iteration  49: 14.040 ns/op
+Iteration  50: 14.157 ns/op
+
+
+Result "benchmark.StringContains.stringContains":
+  14.040 ±(99.9%) 0.030 ns/op [Average]
+  (min, avg, max) = (13.940, 14.040, 14.236), stdev = 0.061
+  CI (99.9%): [14.010, 14.070] (assumes normal distribution)
+
+
+# Run complete. Total time: 00:51:49
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+Benchmark                      (regex)                                                                                                                                                                                                                                          (str)  Mode  Cnt     Score   Error  Units
+StringContains.regexMatches     \+D_NJ                                                                                                                                                                         e\YHI5Mg[?Fe9.q4tck%pd)v^R_81x$JZ'-0#bc*7D;` YK>yPi9ZVKY/p[EXuGxjWiia9  avgt   50   169.337 ± 0.055  ns/op
+StringContains.regexMatches     \+D_NJ                                                                                                                                                                                                                                       Yck:&a^[  avgt   50    97.866 ± 0.081  ns/op
+StringContains.regexMatches     \+D_NJ                                                                                                                                                                                                                                      (#r%'-G*W  avgt   50    93.792 ± 0.433  ns/op
+StringContains.regexMatches     \+D_NJ                                        )`j7Pq#;g.:$%v9v]RHGgpZpMR#:DUG+[vejb=rvTo#(edqo=>gwXUu[w^Flk-?p^MWOei8Emyl8P]L'AB2hlP>rZ"m[('DOFQqzzvPo8%bu8e<15ZIznE\]$f6UNaA2n@5p_=#ReVywLc+Cc$^^*Hzx;87kdYqa-?T4cof@!\Yy^rv^[M$Xmvk5eIU"8>1yY(jQMB[  avgt   50  1230.037 ± 0.731  ns/op
+StringContains.regexMatches     \+D_NJ                                                                                                                                                                  [DC"139h=0!F/7u.1ZKSXK#$^c-jcd]Fc#w;"^i24M]KF2@vb^i73`7`+u!&vd(-'dq%7q8`P'y *  avgt   50   496.124 ± 0.446  ns/op
+StringContains.regexMatches     \+D_NJ                                                                                                                                                        )kp9OPQ!'_eH4Q@+T+'2*JB.4@"/7]P<"3._yIfd6X\PyYa=h64JO&N_$h'SOJ]bbvZm)Ryy>!)#lNY0@/ha1LE  avgt   50   550.147 ± 0.686  ns/op
+StringContains.regexMatches     \+D_NJ                                                                                                                                                                               S`qysoJmb_DYYLv_ovbrFmv%u/r@))`Z>\GD)s)`$(XiG!6/m=:Sw(3U-ddXzBPi  avgt   50   186.983 ± 0.701  ns/op
+StringContains.regexMatches     \+D_NJ                                                                                                                                                                                      -BSo !d`WxJb+KLYBgLuziRY]vgVagF[m4j\-nx"w3t65TBq6Q`$QT#7P  avgt   50   356.218 ± 0.179  ns/op
+StringContains.regexMatches     \+D_NJ                                                                                                                                                                                               MH>c:L%0Zwl"INTyaI0'mzt`nLt<RTQN\cTtR^#l0>Cwd'<B  avgt   50   141.542 ± 0.087  ns/op
+StringContains.regexMatches     \+D_NJ                                                                                                                              <q5S2!1\8VVW=xSw0t y=;TKJUbD.z].oV;k9ne rH8?)Sr^QM`_O+YZgKK8vQycML/ay*b!yG4<&Nw_>BuoG_Isz#J.^U3cO'a"CsT0GMVnj!kvU  avgt   50   680.935 ± 2.510  ns/op
+StringContains.regexMatches     \+D_NJ  LHoXf`D:n@@vC7oDg)019gUyF)@K/k^BmYUR].Ol*GS?krar/Zf[lLi2SS_h9lDvg;3+uo^7=5e#Zp63K6;ul.gsk$N@)2s-v?.YZd!6dm<=p)MPxhG=ex)'LIol5%?0P/qC6Ra5hUSO.hwIlWkX#[;eo0v7UEu#OIFiCsDA=9s;.8Ohwj^"L6qeYar;V1QWbGF1g3Rl+3IBpY` P^Y5[$\EFkDF9&wb6^jzQ34il?3KB  avgt   50  1442.046 ± 0.659  ns/op
+StringContains.regexMatches     \+D_NJ                                                                                                                                                                     \"D5Rd2/;GAfh8hY/zmv\'yD?i<.I;-Z'4T8AGfl"E[[;0earOE *#Q\5C/z`/Oxv9[EDyzYuP  avgt   50   174.661 ± 0.047  ns/op
+StringContains.regexMatches     \+D_NJ                                                                                                                                                                                                                                        &HfnW9!  avgt   50    94.703 ± 0.418  ns/op
+StringContains.regexMatches     \+D_NJ                                                                                                                                                                    7ynz :s.&LjFiAjMNmWkEbur(G(S)cu]&/TR&__vi56'RAm#hsXs.O4^+*#FV?8^XBtA3SSj[st  avgt   50   481.785 ± 0.521  ns/op
+StringContains.regexMatches     \+D_NJ                                                                                                                                     QoV-/(LJ=%EaQGTU$n@Xh" )oiv$JiTWcl sj>m"@x7n5_$\oZfu=IWp7aXqT`4eQP#HCuc^QDe>mS0]6<\Ebs1#%iW_%NY;;%0(Dq+D&9  avgt   50   704.182 ± 0.339  ns/op
+StringContains.regexMatches     \+D_NJ                                                                                                                                                                                                 CP.lww`![WejWUpp`$Tuvx[(hNuA#p.e^;iq>0z%Ryz>V\  avgt   50   156.432 ± 0.195  ns/op
+StringContains.stringContains   \+D_NJ                                                                                                                                                                         e\YHI5Mg[?Fe9.q4tck%pd)v^R_81x$JZ'-0#bc*7D;` YK>yPi9ZVKY/p[EXuGxjWiia9  avgt   50    18.274 ± 0.023  ns/op
+StringContains.stringContains   \+D_NJ                                                                                                                                                                                                                                       Yck:&a^[  avgt   50     8.988 ± 0.014  ns/op
+StringContains.stringContains   \+D_NJ                                                                                                                                                                                                                                      (#r%'-G*W  avgt   50     8.985 ± 0.005  ns/op
+StringContains.stringContains   \+D_NJ                                        )`j7Pq#;g.:$%v9v]RHGgpZpMR#:DUG+[vejb=rvTo#(edqo=>gwXUu[w^Flk-?p^MWOei8Emyl8P]L'AB2hlP>rZ"m[('DOFQqzzvPo8%bu8e<15ZIznE\]$f6UNaA2n@5p_=#ReVywLc+Cc$^^*Hzx;87kdYqa-?T4cof@!\Yy^rv^[M$Xmvk5eIU"8>1yY(jQMB[  avgt   50    36.178 ± 0.023  ns/op
+StringContains.stringContains   \+D_NJ                                                                                                                                                                  [DC"139h=0!F/7u.1ZKSXK#$^c-jcd]Fc#w;"^i24M]KF2@vb^i73`7`+u!&vd(-'dq%7q8`P'y *  avgt   50    18.905 ± 0.015  ns/op
+StringContains.stringContains   \+D_NJ                                                                                                                                                        )kp9OPQ!'_eH4Q@+T+'2*JB.4@"/7]P<"3._yIfd6X\PyYa=h64JO&N_$h'SOJ]bbvZm)Ryy>!)#lNY0@/ha1LE  avgt   50    20.497 ± 0.003  ns/op
+StringContains.stringContains   \+D_NJ                                                                                                                                                                               S`qysoJmb_DYYLv_ovbrFmv%u/r@))`Z>\GD)s)`$(XiG!6/m=:Sw(3U-ddXzBPi  avgt   50    16.156 ± 0.003  ns/op
+StringContains.stringContains   \+D_NJ                                                                                                                                                                                      -BSo !d`WxJb+KLYBgLuziRY]vgVagF[m4j\-nx"w3t65TBq6Q`$QT#7P  avgt   50    16.586 ± 0.007  ns/op
+StringContains.stringContains   \+D_NJ                                                                                                                                                                                               MH>c:L%0Zwl"INTyaI0'mzt`nLt<RTQN\cTtR^#l0>Cwd'<B  avgt   50    13.675 ± 0.005  ns/op
+StringContains.stringContains   \+D_NJ                                                                                                                              <q5S2!1\8VVW=xSw0t y=;TKJUbD.z].oV;k9ne rH8?)Sr^QM`_O+YZgKK8vQycML/ay*b!yG4<&Nw_>BuoG_Isz#J.^U3cO'a"CsT0GMVnj!kvU  avgt   50    22.722 ± 0.008  ns/op
+StringContains.stringContains   \+D_NJ  LHoXf`D:n@@vC7oDg)019gUyF)@K/k^BmYUR].Ol*GS?krar/Zf[lLi2SS_h9lDvg;3+uo^7=5e#Zp63K6;ul.gsk$N@)2s-v?.YZd!6dm<=p)MPxhG=ex)'LIol5%?0P/qC6Ra5hUSO.hwIlWkX#[;eo0v7UEu#OIFiCsDA=9s;.8Ohwj^"L6qeYar;V1QWbGF1g3Rl+3IBpY` P^Y5[$\EFkDF9&wb6^jzQ34il?3KB  avgt   50    40.631 ± 0.014  ns/op
+StringContains.stringContains   \+D_NJ                                                                                                                                                                     \"D5Rd2/;GAfh8hY/zmv\'yD?i<.I;-Z'4T8AGfl"E[[;0earOE *#Q\5C/z`/Oxv9[EDyzYuP  avgt   50    18.263 ± 0.007  ns/op
+StringContains.stringContains   \+D_NJ                                                                                                                                                                                                                                        &HfnW9!  avgt   50     8.986 ± 0.007  ns/op
+StringContains.stringContains   \+D_NJ                                                                                                                                                                    7ynz :s.&LjFiAjMNmWkEbur(G(S)cu]&/TR&__vi56'RAm#hsXs.O4^+*#FV?8^XBtA3SSj[st  avgt   50    18.272 ± 0.008  ns/op
+StringContains.stringContains   \+D_NJ                                                                                                                                     QoV-/(LJ=%EaQGTU$n@Xh" )oiv$JiTWcl sj>m"@x7n5_$\oZfu=IWp7aXqT`4eQP#HCuc^QDe>mS0]6<\Ebs1#%iW_%NY;;%0(Dq+D&9  avgt   50    25.190 ± 0.020  ns/op
+StringContains.stringContains   \+D_NJ                                                                                                                                                                                                 CP.lww`![WejWUpp`$Tuvx[(hNuA#p.e^;iq>0z%Ryz>V\  avgt   50    14.040 ± 0.030  ns/op
+
+Benchmark result is saved to 0_9_dismatching_rm.csv

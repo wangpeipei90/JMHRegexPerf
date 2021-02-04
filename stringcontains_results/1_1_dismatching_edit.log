@@ -1,0 +1,177 @@
+# JMH version: 1.26
+# VM version: JDK 11.0.9.1, OpenJDK 64-Bit Server VM, 11.0.9.1+1-Ubuntu-0ubuntu1.18.04
+# VM invoker: /usr/lib/jvm/java-11-openjdk-amd64/bin/java
+# VM options: -server -Xms2G -Xmx2G
+# Warmup: 10 iterations, 1 s each
+# Measurement: 50 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: benchmark.StringContains.regexMatches
+# Parameters: (regex = NC`uHwvs\{\	, str = kNTC`uHwvs{	AX$Q5ZG*D)
+
+# Run progress: 0.00% complete, ETA 00:02:00
+# Fork: 1 of 1
+# Warmup Iteration   1: 273.892 ns/op
+# Warmup Iteration   2: 214.838 ns/op
+# Warmup Iteration   3: 192.821 ns/op
+# Warmup Iteration   4: 186.405 ns/op
+# Warmup Iteration   5: 183.907 ns/op
+# Warmup Iteration   6: 183.062 ns/op
+# Warmup Iteration   7: 182.761 ns/op
+# Warmup Iteration   8: 182.702 ns/op
+# Warmup Iteration   9: 182.629 ns/op
+# Warmup Iteration  10: 182.581 ns/op
+Iteration   1: 182.795 ns/op
+Iteration   2: 182.543 ns/op
+Iteration   3: 182.717 ns/op
+Iteration   4: 182.594 ns/op
+Iteration   5: 182.621 ns/op
+Iteration   6: 182.996 ns/op
+Iteration   7: 182.863 ns/op
+Iteration   8: 182.998 ns/op
+Iteration   9: 183.016 ns/op
+Iteration  10: 182.805 ns/op
+Iteration  11: 182.522 ns/op
+Iteration  12: 182.484 ns/op
+Iteration  13: 182.405 ns/op
+Iteration  14: 182.515 ns/op
+Iteration  15: 182.476 ns/op
+Iteration  16: 182.436 ns/op
+Iteration  17: 182.430 ns/op
+Iteration  18: 182.476 ns/op
+Iteration  19: 182.657 ns/op
+Iteration  20: 182.443 ns/op
+Iteration  21: 184.217 ns/op
+Iteration  22: 185.971 ns/op
+Iteration  23: 184.963 ns/op
+Iteration  24: 184.826 ns/op
+Iteration  25: 185.091 ns/op
+Iteration  26: 185.523 ns/op
+Iteration  27: 186.626 ns/op
+Iteration  28: 185.659 ns/op
+Iteration  29: 184.545 ns/op
+Iteration  30: 183.439 ns/op
+Iteration  31: 183.115 ns/op
+Iteration  32: 182.581 ns/op
+Iteration  33: 182.776 ns/op
+Iteration  34: 182.462 ns/op
+Iteration  35: 182.419 ns/op
+Iteration  36: 182.382 ns/op
+Iteration  37: 182.471 ns/op
+Iteration  38: 182.392 ns/op
+Iteration  39: 182.761 ns/op
+Iteration  40: 182.740 ns/op
+Iteration  41: 182.713 ns/op
+Iteration  42: 182.735 ns/op
+Iteration  43: 182.899 ns/op
+Iteration  44: 182.897 ns/op
+Iteration  45: 182.583 ns/op
+Iteration  46: 182.532 ns/op
+Iteration  47: 182.506 ns/op
+Iteration  48: 182.570 ns/op
+Iteration  49: 182.619 ns/op
+Iteration  50: 182.584 ns/op
+
+
+Result "benchmark.StringContains.regexMatches":
+  183.128 ±(99.9%) 0.534 ns/op [Average]
+  (min, avg, max) = (182.382, 183.128, 186.626), stdev = 1.078
+  CI (99.9%): [182.594, 183.661] (assumes normal distribution)
+
+
+# JMH version: 1.26
+# VM version: JDK 11.0.9.1, OpenJDK 64-Bit Server VM, 11.0.9.1+1-Ubuntu-0ubuntu1.18.04
+# VM invoker: /usr/lib/jvm/java-11-openjdk-amd64/bin/java
+# VM options: -server -Xms2G -Xmx2G
+# Warmup: 10 iterations, 1 s each
+# Measurement: 50 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: benchmark.StringContains.stringContains
+# Parameters: (regex = NC`uHwvs\{\	, str = kNTC`uHwvs{	AX$Q5ZG*D)
+
+# Run progress: 50.00% complete, ETA 00:01:37
+# Fork: 1 of 1
+# Warmup Iteration   1: 9.199 ns/op
+# Warmup Iteration   2: 9.360 ns/op
+# Warmup Iteration   3: 9.317 ns/op
+# Warmup Iteration   4: 9.313 ns/op
+# Warmup Iteration   5: 9.314 ns/op
+# Warmup Iteration   6: 9.312 ns/op
+# Warmup Iteration   7: 9.311 ns/op
+# Warmup Iteration   8: 9.311 ns/op
+# Warmup Iteration   9: 9.310 ns/op
+# Warmup Iteration  10: 9.310 ns/op
+Iteration   1: 9.310 ns/op
+Iteration   2: 9.315 ns/op
+Iteration   3: 9.312 ns/op
+Iteration   4: 9.312 ns/op
+Iteration   5: 9.311 ns/op
+Iteration   6: 9.311 ns/op
+Iteration   7: 9.311 ns/op
+Iteration   8: 9.310 ns/op
+Iteration   9: 9.312 ns/op
+Iteration  10: 9.310 ns/op
+Iteration  11: 9.311 ns/op
+Iteration  12: 9.312 ns/op
+Iteration  13: 9.312 ns/op
+Iteration  14: 9.312 ns/op
+Iteration  15: 9.310 ns/op
+Iteration  16: 9.336 ns/op
+Iteration  17: 9.311 ns/op
+Iteration  18: 9.315 ns/op
+Iteration  19: 9.309 ns/op
+Iteration  20: 9.309 ns/op
+Iteration  21: 9.313 ns/op
+Iteration  22: 9.312 ns/op
+Iteration  23: 9.311 ns/op
+Iteration  24: 9.311 ns/op
+Iteration  25: 9.311 ns/op
+Iteration  26: 9.311 ns/op
+Iteration  27: 9.310 ns/op
+Iteration  28: 9.314 ns/op
+Iteration  29: 9.312 ns/op
+Iteration  30: 9.309 ns/op
+Iteration  31: 9.314 ns/op
+Iteration  32: 9.315 ns/op
+Iteration  33: 9.310 ns/op
+Iteration  34: 9.310 ns/op
+Iteration  35: 9.310 ns/op
+Iteration  36: 9.311 ns/op
+Iteration  37: 9.310 ns/op
+Iteration  38: 9.311 ns/op
+Iteration  39: 9.313 ns/op
+Iteration  40: 9.309 ns/op
+Iteration  41: 9.311 ns/op
+Iteration  42: 9.311 ns/op
+Iteration  43: 9.315 ns/op
+Iteration  44: 9.337 ns/op
+Iteration  45: 9.310 ns/op
+Iteration  46: 9.313 ns/op
+Iteration  47: 9.309 ns/op
+Iteration  48: 9.309 ns/op
+Iteration  49: 9.311 ns/op
+Iteration  50: 9.311 ns/op
+
+
+Result "benchmark.StringContains.stringContains":
+  9.312 ±(99.9%) 0.003 ns/op [Average]
+  (min, avg, max) = (9.309, 9.312, 9.337), stdev = 0.005
+  CI (99.9%): [9.310, 9.315] (assumes normal distribution)
+
+
+# Run complete. Total time: 00:03:14
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+Benchmark                           (regex)                  (str)  Mode  Cnt    Score   Error  Units
+StringContains.regexMatches    NC`uHwvs\{\	  kNTC`uHwvs{	AX$Q5ZG*D  avgt   50  183.128 ± 0.534  ns/op
+StringContains.stringContains  NC`uHwvs\{\	  kNTC`uHwvs{	AX$Q5ZG*D  avgt   50    9.312 ± 0.003  ns/op
+
+Benchmark result is saved to 1_1_dismatching_edit.csv
