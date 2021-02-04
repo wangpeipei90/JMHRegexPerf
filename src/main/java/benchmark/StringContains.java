@@ -1,9 +1,7 @@
 package benchmark;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
 
-import org.ncsu.regex.perf3.Utils;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.BenchmarkMode;
 import org.openjdk.jmh.annotations.Fork;
@@ -17,8 +15,9 @@ import org.openjdk.jmh.annotations.Setup;
 import org.openjdk.jmh.annotations.State;
 import org.openjdk.jmh.annotations.Warmup;
 import org.openjdk.jmh.infra.Blackhole;
-import org.openjdk.jmh.runner.RunnerException;
-import org.openjdk.jmh.runner.options.Options;
+import org.openjdk.jmh.runner.Runner;
+import org.openjdk.jmh.runner.options.ChainedOptionsBuilder;
+import org.openjdk.jmh.runner.options.CommandLineOptions;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 
 /**
@@ -65,16 +64,47 @@ public class StringContains {
 		bh.consume(res);
 	}
 	
-	public static void main(String[] args) throws RunnerException {
-		/**
-		 * commands:
-		 * java -jar target/regexbenchmarks.jar benchmark.StringContains -rf csv -rff stringcontains.csv -o stringcontains.log
-		 * -f 1 -gc true -wi 10 -w 100ms -i 50 -r 100ms -p regex=".*error.*" -p str="error" -p testString="abcccerrordefg" -p expectation="true"
-		 * -rf csv -rff contains_error_iter50.csv -o log/contains_error_iter50.log
-		 */
-		Options opt = new OptionsBuilder()
+	public static void main(String[] args) throws Exception {
+//		/**
+//		 * commands:
+//		 * java -jar target/regexbenchmarks.jar benchmark.StringContains -rf csv -rff stringcontains.csv -o stringcontains.log
+//		 * -f 1 -gc true -wi 10 -w 100ms -i 50 -r 100ms -p regex=".*error.*" -p str="error" -p testString="abcccerrordefg" -p expectation="true"
+//		 * -rf csv -rff contains_error_iter50.csv -o log/contains_error_iter50.log
+//		 */
+		System.out.println("Running the custom jmh runner.");
+		CommandLineOptions cmdOptions = new CommandLineOptions(args);
+		ChainedOptionsBuilder optBuilder = new OptionsBuilder()
+				.parent(cmdOptions)
 				.include(StringContains.class.getSimpleName()) //// .include("JMHF.*") 可支持正则
 				.shouldDoGC(true)
-				.build();
+				.param("regex","abcde")
+				.param("str","abc,efg,hij")
+				.shouldFailOnError(true);
+////		List regex_values = (List) ((OptionsBuilder) optBuilder).getParameter("regex");
+////		List str_values = (List) ((OptionsBuilder) optBuilder).getParameter("str");
+////		if(regex_values.size() > 1) {
+////			String v1 = (String) regex_values.get(0);
+////			StringBuffer s =  new StringBuffer(v1);
+////			for(int i = 1; i < regex_values.size(); i++) {
+////				s.append(",");
+////				s.append(regex_values.get(i));
+////			}
+////			optBuilder = optBuilder.param("regex", s.toString());
+////		}
+////		
+////		if(str_values.size() > 1) {
+////
+////		}
+////		
+////		if(((List) ((OptionsBuilder) optBuilder).getParameter("regex")).size()>1) {
+////			throw new Exception("Unexpected parameter regex");
+////		}
+////		
+////		if(((List) ((OptionsBuilder) optBuilder).getParameter("str")).size()>1) {
+////			throw new Exception("Unexpected parameter str");
+////		}
+//		
+		new Runner(optBuilder.build()).run();
 	}
+
 }
