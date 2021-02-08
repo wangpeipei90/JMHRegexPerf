@@ -1,0 +1,209 @@
+# JMH version: 1.26
+# VM version: JDK 11.0.9.1, OpenJDK 64-Bit Server VM, 11.0.9.1+1-Ubuntu-0ubuntu1.18.04
+# VM invoker: /usr/lib/jvm/java-11-openjdk-amd64/bin/java
+# VM options: -server -Xms2G -Xmx2G
+# Warmup: 10 iterations, 1 s each
+# Measurement: 50 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: benchmark.StringContains.regexMatches
+# Parameters: (regex = btxSFeqO\}bz!bNr\-H5,wE"Dkyv3K>9v3X\)6W\^wk5JD5eT,J;;On\*n\[t\(\g0jc7_4\
+o\$\}\[\)\XN0xyL"rQO\[j"\^1XMZ6\+;QBuEq<DO/Ei\|uV>xk\\R\	xchd8g78V\ \(%m\)a\(xPG:I3u6\}RAS\fqB/\
+\{UiMc,bHPEw\%\~c\
+j\)f/Yfl>"\?y`X\$;3qKl\[Y=\
+\*\?>ny3\\[>ojXpUL\+h\ m@0mB\	iL\[jg\*\#eVc\[ydW\\\\Sau\(u<JKR>cS5!=@\-I\$6,\-E\*Hp\]U\?LdG\|eTj4dM6\}9iV\\'9l\ 0mvRFp7ZS6l6tJqaI\^c\)@uByUg\|cxA\./rAKK!5\+8,O_\*2X_Vss9\{W\\^v5!\$\ ZUw"N'O7J5waqF=4V5M\?!\~K\],/!fKFkgZ//<udx\(w9mIT,ooH\[G6EMR!b;PXip\)C"Z<QSO\ G>NK\-'p\.`;\$A\[0Z1x\.\&yTp%<Bw>5uzWU\~<\|`C\#9\|\\#\&OyxF_\.":\\|IG\?7uKQ\+pE`G1Eb\-B7da1\+\XDWI\[qc\-\[E33\)tIhWg\$, str = [w)\F@^g<:RFX&:i 'D_?%A<wejpm;uQxlW"SfR,ks>X[(&s[@n33ih?L@%JOG!p>7%C^BM\]Syoc=A6(03HQ"hN1d@7q'(lkAZZ31Q*XJ?IIl1M?m2a4Sp+&6N68Ftf>tF[vjm(&[rMbNLCL[q/\w>a xYZiJ]v5^bLn<bO^cffl0T"5$x\wKZ>axD8;Bfkq>>5?-tq'6`I'pt+4tBQd<I#Rvv,X6OF$@Q.o4S`=4P'S0Ms^=+Ng,uBYzQe15)+AjD!0fY!u_:hz0s,Y+.yl\ocUXvk?ClT*5w+;D>UlsWna38sTT2yBQO +12dp/s-/7I]u`ZoS?sr0`"7)Ws-<+B.k9WL!p<cYNLlLUoYW#7>DC$NIs0&<^tCI;?@ !'>3X)0(E-9@&DO#-`RPmfAbWABR\E4Mmvj.O4T"wEoP#iLD6U@i+W>0J(QBVI?DlhC5u:<D(gJ#Or]V)ELaer=R]foQ?JPH<A-QHpK2GRWJq 3Twe]9v84;z 2Zhk<vnl\wpdJlnG!9!zaSYV)j5>/u)N_Xx.^f8^5=8O#pC\/6W@C*lT.*h+4Y=)UvsbW1_<[t4`ZlQt`yp?Pzp\_"J5Ym*JH_w b'34ug5r3u61XcV=*Bc=&Jg1W0u0o=xglXTYfjcI29WqQ9gi"@+K+\%a._7w[])Y=MIg#0?w'I!prgVjqb+ *8v2jw7rJpwOz _j3iboo[q0H+:,e$;eUgAe P]dARI@t*+-xl Jmh\ wl&Sv)V"b1P&8Tx#$Dux)QeOsmTo(=k?Ht^8l2l1&M:> [hFcsG]Qi^;dH7F(7,7H5:P'=^H$dhoh6ukNxjkSaR%Zc<n?\HrwIk )<R+8gQ%fZl0qC PWBGk:1^Du4:=e\dGUd.n(zdRfLK8"s)v6\F1KSm9(Nk$E+s1<OYeM"i^&j0<K,?BF!btxSFeqO}bz!bNr-H5,wE"Dkyv3K>9v3X)6W^wk5JD5eT,J;;On*n[t(g0jc7_4
+_$}[)XN0xyL"rQO[j"^1XMZ6+;QBuEq<DO/Ei|uV>xk\R	xchd8g78V (%m)a(xPG:I3u6}RASfqB/
+{UiMc,bHPEw%~c
+j)f/Yfl>"?y`X$;3qKl[Y=
+*?>ny3[>ojXpUL+h m@0mB	iL[jg*#eVc[ydW\\Sau(u<JKR>cS5!=@-I$6,-E*Hp]U?LdG|eTj4dM6}9iV\'9l 0mvRFp7ZS6l6tJqaI^c)@uByUg|cxA./rAKK!5+8,O_*2X_Vss9{W^v5!$ ZUw"N'O7J5waqF=4V5M?!~K],/!fKFkgZ//<udx(w9mIT,ooH[G6EMR!b;PXip)C"Z<QSO G>NK-'p.`;$A[0Z1x.&yTp%<Bw>5uzWU~<|`C#9|#&OyxF_.":|IG?7uKQ+pE`G1Eb-B7da1+XDWI[qc-[E33)tIhWg$tglpP^*j$DL0KOUZCFZpB$Na$uR)r:nP.ux!Y8]K!om,"oQcW$=uF[P2@%N&QeJh\]o5=+00m9vy@MVz$Qu8s;WpPW:u*=MqF=atjNs'`ZW8sYw/3DGZ!or#hv'Z.gT$.UTnU=de3#rLD`=>"@<j4x`nSj<SO_j11z5M( $dre&O6NXwvz5$ej#y4y<)(wUyz? f\Yks3%0E@+cDnPa*UhVR_O?*ahZ>5Ruv#r=JzBWAcs2P;q@"(Lhn2,Ae&MFvZA)=TxnUdWQx; Wfc[.;j&_i$#gME>c'T*.L8G/]NL<C]!itkDDp\]nsk"ooYkL<9nUL$1.ODyMx]#Cp!cfh/W 6A0\ju`k\,s=)`8(D1dg] iLJ^0]Netauwh <0VJ0UhZfaNZ`oeT?OII5whxM"YXv+:,i2c@sE71.R+'q?-IRm<HfDyx(kpw[yx\Bl%fnicQ7^G:Kzb/.-h,5e(`Wg_tY9YE+!-;*'w(k-g7HI9vdw=?GrSU>l4ep(5,5=4$Gj`d5F]v;^qbA5bNq3Qt9k@@BUtVq7.jLKzr]]>`D+5/kUs n+h) y=?^@zk.Wh$-p-hSF6X^l>GuX@u-g_0<KuZ]zt^EDL("yb4 Tk]E%Dx.$,&JvN/K!sd)6210`GiLb?)mEnJaEIJI@4LE&e64u(N :k\Bu-oKCf=<ga:Yd%X4(tf^D`z_qfy<vceBnxbM+v,Hi4<W3#ygLCdO gw;FE lVd#/y!PwfZSCg+rQ6$cy)
+
+# Run progress: 0.00% complete, ETA 00:02:00
+# Fork: 1 of 1
+# Warmup Iteration   1: 13900.678 ns/op
+# Warmup Iteration   2: 12946.134 ns/op
+# Warmup Iteration   3: 12939.620 ns/op
+# Warmup Iteration   4: 12936.630 ns/op
+# Warmup Iteration   5: 12938.458 ns/op
+# Warmup Iteration   6: 12950.831 ns/op
+# Warmup Iteration   7: 12945.201 ns/op
+# Warmup Iteration   8: 12935.472 ns/op
+# Warmup Iteration   9: 12932.679 ns/op
+# Warmup Iteration  10: 12937.300 ns/op
+Iteration   1: 12937.158 ns/op
+Iteration   2: 12934.655 ns/op
+Iteration   3: 12931.814 ns/op
+Iteration   4: 12942.824 ns/op
+Iteration   5: 12933.344 ns/op
+Iteration   6: 12937.174 ns/op
+Iteration   7: 12939.061 ns/op
+Iteration   8: 12934.472 ns/op
+Iteration   9: 12949.392 ns/op
+Iteration  10: 12953.272 ns/op
+Iteration  11: 12935.576 ns/op
+Iteration  12: 12938.357 ns/op
+Iteration  13: 12933.082 ns/op
+Iteration  14: 12951.135 ns/op
+Iteration  15: 12931.031 ns/op
+Iteration  16: 12939.592 ns/op
+Iteration  17: 12931.425 ns/op
+Iteration  18: 12936.443 ns/op
+Iteration  19: 12936.354 ns/op
+Iteration  20: 12935.329 ns/op
+Iteration  21: 12925.112 ns/op
+Iteration  22: 12930.942 ns/op
+Iteration  23: 12944.164 ns/op
+Iteration  24: 12937.366 ns/op
+Iteration  25: 12943.794 ns/op
+Iteration  26: 12927.871 ns/op
+Iteration  27: 12930.635 ns/op
+Iteration  28: 12949.698 ns/op
+Iteration  29: 12941.608 ns/op
+Iteration  30: 12925.711 ns/op
+Iteration  31: 12931.966 ns/op
+Iteration  32: 12930.641 ns/op
+Iteration  33: 12919.457 ns/op
+Iteration  34: 12935.023 ns/op
+Iteration  35: 12928.482 ns/op
+Iteration  36: 12927.632 ns/op
+Iteration  37: 12926.200 ns/op
+Iteration  38: 12931.226 ns/op
+Iteration  39: 12932.418 ns/op
+Iteration  40: 12920.719 ns/op
+Iteration  41: 12935.295 ns/op
+Iteration  42: 12929.834 ns/op
+Iteration  43: 12933.485 ns/op
+Iteration  44: 12941.978 ns/op
+Iteration  45: 12933.929 ns/op
+Iteration  46: 12939.086 ns/op
+Iteration  47: 12949.960 ns/op
+Iteration  48: 12930.454 ns/op
+Iteration  49: 12934.144 ns/op
+Iteration  50: 12928.613 ns/op
+
+
+Result "benchmark.StringContains.regexMatches":
+  12935.179 ±(99.9%) 3.686 ns/op [Average]
+  (min, avg, max) = (12919.457, 12935.179, 12953.272), stdev = 7.446
+  CI (99.9%): [12931.493, 12938.865] (assumes normal distribution)
+
+
+# JMH version: 1.26
+# VM version: JDK 11.0.9.1, OpenJDK 64-Bit Server VM, 11.0.9.1+1-Ubuntu-0ubuntu1.18.04
+# VM invoker: /usr/lib/jvm/java-11-openjdk-amd64/bin/java
+# VM options: -server -Xms2G -Xmx2G
+# Warmup: 10 iterations, 1 s each
+# Measurement: 50 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: benchmark.StringContains.stringContains
+# Parameters: (regex = btxSFeqO\}bz!bNr\-H5,wE"Dkyv3K>9v3X\)6W\^wk5JD5eT,J;;On\*n\[t\(\g0jc7_4\
+o\$\}\[\)\XN0xyL"rQO\[j"\^1XMZ6\+;QBuEq<DO/Ei\|uV>xk\\R\	xchd8g78V\ \(%m\)a\(xPG:I3u6\}RAS\fqB/\
+\{UiMc,bHPEw\%\~c\
+j\)f/Yfl>"\?y`X\$;3qKl\[Y=\
+\*\?>ny3\\[>ojXpUL\+h\ m@0mB\	iL\[jg\*\#eVc\[ydW\\\\Sau\(u<JKR>cS5!=@\-I\$6,\-E\*Hp\]U\?LdG\|eTj4dM6\}9iV\\'9l\ 0mvRFp7ZS6l6tJqaI\^c\)@uByUg\|cxA\./rAKK!5\+8,O_\*2X_Vss9\{W\\^v5!\$\ ZUw"N'O7J5waqF=4V5M\?!\~K\],/!fKFkgZ//<udx\(w9mIT,ooH\[G6EMR!b;PXip\)C"Z<QSO\ G>NK\-'p\.`;\$A\[0Z1x\.\&yTp%<Bw>5uzWU\~<\|`C\#9\|\\#\&OyxF_\.":\\|IG\?7uKQ\+pE`G1Eb\-B7da1\+\XDWI\[qc\-\[E33\)tIhWg\$, str = [w)\F@^g<:RFX&:i 'D_?%A<wejpm;uQxlW"SfR,ks>X[(&s[@n33ih?L@%JOG!p>7%C^BM\]Syoc=A6(03HQ"hN1d@7q'(lkAZZ31Q*XJ?IIl1M?m2a4Sp+&6N68Ftf>tF[vjm(&[rMbNLCL[q/\w>a xYZiJ]v5^bLn<bO^cffl0T"5$x\wKZ>axD8;Bfkq>>5?-tq'6`I'pt+4tBQd<I#Rvv,X6OF$@Q.o4S`=4P'S0Ms^=+Ng,uBYzQe15)+AjD!0fY!u_:hz0s,Y+.yl\ocUXvk?ClT*5w+;D>UlsWna38sTT2yBQO +12dp/s-/7I]u`ZoS?sr0`"7)Ws-<+B.k9WL!p<cYNLlLUoYW#7>DC$NIs0&<^tCI;?@ !'>3X)0(E-9@&DO#-`RPmfAbWABR\E4Mmvj.O4T"wEoP#iLD6U@i+W>0J(QBVI?DlhC5u:<D(gJ#Or]V)ELaer=R]foQ?JPH<A-QHpK2GRWJq 3Twe]9v84;z 2Zhk<vnl\wpdJlnG!9!zaSYV)j5>/u)N_Xx.^f8^5=8O#pC\/6W@C*lT.*h+4Y=)UvsbW1_<[t4`ZlQt`yp?Pzp\_"J5Ym*JH_w b'34ug5r3u61XcV=*Bc=&Jg1W0u0o=xglXTYfjcI29WqQ9gi"@+K+\%a._7w[])Y=MIg#0?w'I!prgVjqb+ *8v2jw7rJpwOz _j3iboo[q0H+:,e$;eUgAe P]dARI@t*+-xl Jmh\ wl&Sv)V"b1P&8Tx#$Dux)QeOsmTo(=k?Ht^8l2l1&M:> [hFcsG]Qi^;dH7F(7,7H5:P'=^H$dhoh6ukNxjkSaR%Zc<n?\HrwIk )<R+8gQ%fZl0qC PWBGk:1^Du4:=e\dGUd.n(zdRfLK8"s)v6\F1KSm9(Nk$E+s1<OYeM"i^&j0<K,?BF!btxSFeqO}bz!bNr-H5,wE"Dkyv3K>9v3X)6W^wk5JD5eT,J;;On*n[t(g0jc7_4
+_$}[)XN0xyL"rQO[j"^1XMZ6+;QBuEq<DO/Ei|uV>xk\R	xchd8g78V (%m)a(xPG:I3u6}RASfqB/
+{UiMc,bHPEw%~c
+j)f/Yfl>"?y`X$;3qKl[Y=
+*?>ny3[>ojXpUL+h m@0mB	iL[jg*#eVc[ydW\\Sau(u<JKR>cS5!=@-I$6,-E*Hp]U?LdG|eTj4dM6}9iV\'9l 0mvRFp7ZS6l6tJqaI^c)@uByUg|cxA./rAKK!5+8,O_*2X_Vss9{W^v5!$ ZUw"N'O7J5waqF=4V5M?!~K],/!fKFkgZ//<udx(w9mIT,ooH[G6EMR!b;PXip)C"Z<QSO G>NK-'p.`;$A[0Z1x.&yTp%<Bw>5uzWU~<|`C#9|#&OyxF_.":|IG?7uKQ+pE`G1Eb-B7da1+XDWI[qc-[E33)tIhWg$tglpP^*j$DL0KOUZCFZpB$Na$uR)r:nP.ux!Y8]K!om,"oQcW$=uF[P2@%N&QeJh\]o5=+00m9vy@MVz$Qu8s;WpPW:u*=MqF=atjNs'`ZW8sYw/3DGZ!or#hv'Z.gT$.UTnU=de3#rLD`=>"@<j4x`nSj<SO_j11z5M( $dre&O6NXwvz5$ej#y4y<)(wUyz? f\Yks3%0E@+cDnPa*UhVR_O?*ahZ>5Ruv#r=JzBWAcs2P;q@"(Lhn2,Ae&MFvZA)=TxnUdWQx; Wfc[.;j&_i$#gME>c'T*.L8G/]NL<C]!itkDDp\]nsk"ooYkL<9nUL$1.ODyMx]#Cp!cfh/W 6A0\ju`k\,s=)`8(D1dg] iLJ^0]Netauwh <0VJ0UhZfaNZ`oeT?OII5whxM"YXv+:,i2c@sE71.R+'q?-IRm<HfDyx(kpw[yx\Bl%fnicQ7^G:Kzb/.-h,5e(`Wg_tY9YE+!-;*'w(k-g7HI9vdw=?GrSU>l4ep(5,5=4$Gj`d5F]v;^qbA5bNq3Qt9k@@BUtVq7.jLKzr]]>`D+5/kUs n+h) y=?^@zk.Wh$-p-hSF6X^l>GuX@u-g_0<KuZ]zt^EDL("yb4 Tk]E%Dx.$,&JvN/K!sd)6210`GiLb?)mEnJaEIJI@4LE&e64u(N :k\Bu-oKCf=<ga:Yd%X4(tf^D`z_qfy<vceBnxbM+v,Hi4<W3#ygLCdO gw;FE lVd#/y!PwfZSCg+rQ6$cy)
+
+# Run progress: 50.00% complete, ETA 00:01:37
+# Fork: 1 of 1
+# Warmup Iteration   1: 240.874 ns/op
+# Warmup Iteration   2: 243.546 ns/op
+# Warmup Iteration   3: 234.619 ns/op
+# Warmup Iteration   4: 234.290 ns/op
+# Warmup Iteration   5: 234.062 ns/op
+# Warmup Iteration   6: 234.153 ns/op
+# Warmup Iteration   7: 234.003 ns/op
+# Warmup Iteration   8: 234.285 ns/op
+# Warmup Iteration   9: 234.019 ns/op
+# Warmup Iteration  10: 234.093 ns/op
+Iteration   1: 234.182 ns/op
+Iteration   2: 234.216 ns/op
+Iteration   3: 234.229 ns/op
+Iteration   4: 234.437 ns/op
+Iteration   5: 234.096 ns/op
+Iteration   6: 234.241 ns/op
+Iteration   7: 234.293 ns/op
+Iteration   8: 234.443 ns/op
+Iteration   9: 234.098 ns/op
+Iteration  10: 234.398 ns/op
+Iteration  11: 234.542 ns/op
+Iteration  12: 234.514 ns/op
+Iteration  13: 234.108 ns/op
+Iteration  14: 234.424 ns/op
+Iteration  15: 234.599 ns/op
+Iteration  16: 234.256 ns/op
+Iteration  17: 234.160 ns/op
+Iteration  18: 234.060 ns/op
+Iteration  19: 234.263 ns/op
+Iteration  20: 234.031 ns/op
+Iteration  21: 234.178 ns/op
+Iteration  22: 234.228 ns/op
+Iteration  23: 234.010 ns/op
+Iteration  24: 234.254 ns/op
+Iteration  25: 235.409 ns/op
+Iteration  26: 234.400 ns/op
+Iteration  27: 233.872 ns/op
+Iteration  28: 234.647 ns/op
+Iteration  29: 234.100 ns/op
+Iteration  30: 234.294 ns/op
+Iteration  31: 234.169 ns/op
+Iteration  32: 233.896 ns/op
+Iteration  33: 234.263 ns/op
+Iteration  34: 234.048 ns/op
+Iteration  35: 234.241 ns/op
+Iteration  36: 234.312 ns/op
+Iteration  37: 234.312 ns/op
+Iteration  38: 233.994 ns/op
+Iteration  39: 234.139 ns/op
+Iteration  40: 234.240 ns/op
+Iteration  41: 233.953 ns/op
+Iteration  42: 234.349 ns/op
+Iteration  43: 234.375 ns/op
+Iteration  44: 234.112 ns/op
+Iteration  45: 234.248 ns/op
+Iteration  46: 234.171 ns/op
+Iteration  47: 233.997 ns/op
+Iteration  48: 234.404 ns/op
+Iteration  49: 234.254 ns/op
+Iteration  50: 234.472 ns/op
+
+
+Result "benchmark.StringContains.stringContains":
+  234.259 ±(99.9%) 0.119 ns/op [Average]
+  (min, avg, max) = (233.872, 234.259, 235.409), stdev = 0.241
+  CI (99.9%): [234.139, 234.378] (assumes normal distribution)
+
+
+# Run complete. Total time: 00:03:14
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+Benchmark                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           (regex)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          (str)  Mode  Cnt      Score   Error  Units
+StringContains.regexMatches    btxSFeqO\}bz!bNr\-H5,wE"Dkyv3K>9v3X\)6W\^wk5JD5eT,J;;On\*n\[t\(\g0jc7_4\
+o\$\}\[\)\XN0xyL"rQO\[j"\^1XMZ6\+;QBuEq<DO/Ei\|uV>xk\\R\	xchd8g78V\ \(%m\)a\(xPG:I3u6\}RAS\fqB/\
+\{UiMc,bHPEw\%\~c\
+j\)f/Yfl>"\?y`X\$;3qKl\[Y=\
+\*\?>ny3\\[>ojXpUL\+h\ m@0mB\	iL\[jg\*\#eVc\[ydW\\\\Sau\(u<JKR>cS5!=@\-I\$6,\-E\*Hp\]U\?LdG\|eTj4dM6\}9iV\\'9l\ 0mvRFp7ZS6l6tJqaI\^c\)@uByUg\|cxA\./rAKK!5\+8,O_\*2X_Vss9\{W\\^v5!\$\ ZUw"N'O7J5waqF=4V5M\?!\~K\],/!fKFkgZ//<udx\(w9mIT,ooH\[G6EMR!b;PXip\)C"Z<QSO\ G>NK\-'p\.`;\$A\[0Z1x\.\&yTp%<Bw>5uzWU\~<\|`C\#9\|\\#\&OyxF_\.":\\|IG\?7uKQ\+pE`G1Eb\-B7da1\+\XDWI\[qc\-\[E33\)tIhWg\$  [w)\F@^g<:RFX&:i 'D_?%A<wejpm;uQxlW"SfR,ks>X[(&s[@n33ih?L@%JOG!p>7%C^BM\]Syoc=A6(03HQ"hN1d@7q'(lkAZZ31Q*XJ?IIl1M?m2a4Sp+&6N68Ftf>tF[vjm(&[rMbNLCL[q/\w>a xYZiJ]v5^bLn<bO^cffl0T"5$x\wKZ>axD8;Bfkq>>5?-tq'6`I'pt+4tBQd<I#Rvv,X6OF$@Q.o4S`=4P'S0Ms^=+Ng,uBYzQe15)+AjD!0fY!u_:hz0s,Y+.yl\ocUXvk?ClT*5w+;D>UlsWna38sTT2yBQO +12dp/s-/7I]u`ZoS?sr0`"7)Ws-<+B.k9WL!p<cYNLlLUoYW#7>DC$NIs0&<^tCI;?@ !'>3X)0(E-9@&DO#-`RPmfAbWABR\E4Mmvj.O4T"wEoP#iLD6U@i+W>0J(QBVI?DlhC5u:<D(gJ#Or]V)ELaer=R]foQ?JPH<A-QHpK2GRWJq 3Twe]9v84;z 2Zhk<vnl\wpdJlnG!9!zaSYV)j5>/u)N_Xx.^f8^5=8O#pC\/6W@C*lT.*h+4Y=)UvsbW1_<[t4`ZlQt`yp?Pzp\_"J5Ym*JH_w b'34ug5r3u61XcV=*Bc=&Jg1W0u0o=xglXTYfjcI29WqQ9gi"@+K+\%a._7w[])Y=MIg#0?w'I!prgVjqb+ *8v2jw7rJpwOz _j3iboo[q0H+:,e$;eUgAe P]dARI@t*+-xl Jmh\ wl&Sv)V"b1P&8Tx#$Dux)QeOsmTo(=k?Ht^8l2l1&M:> [hFcsG]Qi^;dH7F(7,7H5:P'=^H$dhoh6ukNxjkSaR%Zc<n?\HrwIk )<R+8gQ%fZl0qC PWBGk:1^Du4:=e\dGUd.n(zdRfLK8"s)v6\F1KSm9(Nk$E+s1<OYeM"i^&j0<K,?BF!btxSFeqO}bz!bNr-H5,wE"Dkyv3K>9v3X)6W^wk5JD5eT,J;;On*n[t(g0jc7_4
+_$}[)XN0xyL"rQO[j"^1XMZ6+;QBuEq<DO/Ei|uV>xk\R	xchd8g78V (%m)a(xPG:I3u6}RASfqB/
+{UiMc,bHPEw%~c
+j)f/Yfl>"?y`X$;3qKl[Y=
+*?>ny3[>ojXpUL+h m@0mB	iL[jg*#eVc[ydW\\Sau(u<JKR>cS5!=@-I$6,-E*Hp]U?LdG|eTj4dM6}9iV\'9l 0mvRFp7ZS6l6tJqaI^c)@uByUg|cxA./rAKK!5+8,O_*2X_Vss9{W^v5!$ ZUw"N'O7J5waqF=4V5M?!~K],/!fKFkgZ//<udx(w9mIT,ooH[G6EMR!b;PXip)C"Z<QSO G>NK-'p.`;$A[0Z1x.&yTp%<Bw>5uzWU~<|`C#9|#&OyxF_.":|IG?7uKQ+pE`G1Eb-B7da1+XDWI[qc-[E33)tIhWg$tglpP^*j$DL0KOUZCFZpB$Na$uR)r:nP.ux!Y8]K!om,"oQcW$=uF[P2@%N&QeJh\]o5=+00m9vy@MVz$Qu8s;WpPW:u*=MqF=atjNs'`ZW8sYw/3DGZ!or#hv'Z.gT$.UTnU=de3#rLD`=>"@<j4x`nSj<SO_j11z5M( $dre&O6NXwvz5$ej#y4y<)(wUyz? f\Yks3%0E@+cDnPa*UhVR_O?*ahZ>5Ruv#r=JzBWAcs2P;q@"(Lhn2,Ae&MFvZA)=TxnUdWQx; Wfc[.;j&_i$#gME>c'T*.L8G/]NL<C]!itkDDp\]nsk"ooYkL<9nUL$1.ODyMx]#Cp!cfh/W 6A0\ju`k\,s=)`8(D1dg] iLJ^0]Netauwh <0VJ0UhZfaNZ`oeT?OII5whxM"YXv+:,i2c@sE71.R+'q?-IRm<HfDyx(kpw[yx\Bl%fnicQ7^G:Kzb/.-h,5e(`Wg_tY9YE+!-;*'w(k-g7HI9vdw=?GrSU>l4ep(5,5=4$Gj`d5F]v;^qbA5bNq3Qt9k@@BUtVq7.jLKzr]]>`D+5/kUs n+h) y=?^@zk.Wh$-p-hSF6X^l>GuX@u-g_0<KuZ]zt^EDL("yb4 Tk]E%Dx.$,&JvN/K!sd)6210`GiLb?)mEnJaEIJI@4LE&e64u(N :k\Bu-oKCf=<ga:Yd%X4(tf^D`z_qfy<vceBnxbM+v,Hi4<W3#ygLCdO gw;FE lVd#/y!PwfZSCg+rQ6$cy  avgt   50  12935.179 ± 3.686  ns/op
+StringContains.stringContains  btxSFeqO\}bz!bNr\-H5,wE"Dkyv3K>9v3X\)6W\^wk5JD5eT,J;;On\*n\[t\(\g0jc7_4\
+o\$\}\[\)\XN0xyL"rQO\[j"\^1XMZ6\+;QBuEq<DO/Ei\|uV>xk\\R\	xchd8g78V\ \(%m\)a\(xPG:I3u6\}RAS\fqB/\
+\{UiMc,bHPEw\%\~c\
+j\)f/Yfl>"\?y`X\$;3qKl\[Y=\
+\*\?>ny3\\[>ojXpUL\+h\ m@0mB\	iL\[jg\*\#eVc\[ydW\\\\Sau\(u<JKR>cS5!=@\-I\$6,\-E\*Hp\]U\?LdG\|eTj4dM6\}9iV\\'9l\ 0mvRFp7ZS6l6tJqaI\^c\)@uByUg\|cxA\./rAKK!5\+8,O_\*2X_Vss9\{W\\^v5!\$\ ZUw"N'O7J5waqF=4V5M\?!\~K\],/!fKFkgZ//<udx\(w9mIT,ooH\[G6EMR!b;PXip\)C"Z<QSO\ G>NK\-'p\.`;\$A\[0Z1x\.\&yTp%<Bw>5uzWU\~<\|`C\#9\|\\#\&OyxF_\.":\\|IG\?7uKQ\+pE`G1Eb\-B7da1\+\XDWI\[qc\-\[E33\)tIhWg\$  [w)\F@^g<:RFX&:i 'D_?%A<wejpm;uQxlW"SfR,ks>X[(&s[@n33ih?L@%JOG!p>7%C^BM\]Syoc=A6(03HQ"hN1d@7q'(lkAZZ31Q*XJ?IIl1M?m2a4Sp+&6N68Ftf>tF[vjm(&[rMbNLCL[q/\w>a xYZiJ]v5^bLn<bO^cffl0T"5$x\wKZ>axD8;Bfkq>>5?-tq'6`I'pt+4tBQd<I#Rvv,X6OF$@Q.o4S`=4P'S0Ms^=+Ng,uBYzQe15)+AjD!0fY!u_:hz0s,Y+.yl\ocUXvk?ClT*5w+;D>UlsWna38sTT2yBQO +12dp/s-/7I]u`ZoS?sr0`"7)Ws-<+B.k9WL!p<cYNLlLUoYW#7>DC$NIs0&<^tCI;?@ !'>3X)0(E-9@&DO#-`RPmfAbWABR\E4Mmvj.O4T"wEoP#iLD6U@i+W>0J(QBVI?DlhC5u:<D(gJ#Or]V)ELaer=R]foQ?JPH<A-QHpK2GRWJq 3Twe]9v84;z 2Zhk<vnl\wpdJlnG!9!zaSYV)j5>/u)N_Xx.^f8^5=8O#pC\/6W@C*lT.*h+4Y=)UvsbW1_<[t4`ZlQt`yp?Pzp\_"J5Ym*JH_w b'34ug5r3u61XcV=*Bc=&Jg1W0u0o=xglXTYfjcI29WqQ9gi"@+K+\%a._7w[])Y=MIg#0?w'I!prgVjqb+ *8v2jw7rJpwOz _j3iboo[q0H+:,e$;eUgAe P]dARI@t*+-xl Jmh\ wl&Sv)V"b1P&8Tx#$Dux)QeOsmTo(=k?Ht^8l2l1&M:> [hFcsG]Qi^;dH7F(7,7H5:P'=^H$dhoh6ukNxjkSaR%Zc<n?\HrwIk )<R+8gQ%fZl0qC PWBGk:1^Du4:=e\dGUd.n(zdRfLK8"s)v6\F1KSm9(Nk$E+s1<OYeM"i^&j0<K,?BF!btxSFeqO}bz!bNr-H5,wE"Dkyv3K>9v3X)6W^wk5JD5eT,J;;On*n[t(g0jc7_4
+_$}[)XN0xyL"rQO[j"^1XMZ6+;QBuEq<DO/Ei|uV>xk\R	xchd8g78V (%m)a(xPG:I3u6}RASfqB/
+{UiMc,bHPEw%~c
+j)f/Yfl>"?y`X$;3qKl[Y=
+*?>ny3[>ojXpUL+h m@0mB	iL[jg*#eVc[ydW\\Sau(u<JKR>cS5!=@-I$6,-E*Hp]U?LdG|eTj4dM6}9iV\'9l 0mvRFp7ZS6l6tJqaI^c)@uByUg|cxA./rAKK!5+8,O_*2X_Vss9{W^v5!$ ZUw"N'O7J5waqF=4V5M?!~K],/!fKFkgZ//<udx(w9mIT,ooH[G6EMR!b;PXip)C"Z<QSO G>NK-'p.`;$A[0Z1x.&yTp%<Bw>5uzWU~<|`C#9|#&OyxF_.":|IG?7uKQ+pE`G1Eb-B7da1+XDWI[qc-[E33)tIhWg$tglpP^*j$DL0KOUZCFZpB$Na$uR)r:nP.ux!Y8]K!om,"oQcW$=uF[P2@%N&QeJh\]o5=+00m9vy@MVz$Qu8s;WpPW:u*=MqF=atjNs'`ZW8sYw/3DGZ!or#hv'Z.gT$.UTnU=de3#rLD`=>"@<j4x`nSj<SO_j11z5M( $dre&O6NXwvz5$ej#y4y<)(wUyz? f\Yks3%0E@+cDnPa*UhVR_O?*ahZ>5Ruv#r=JzBWAcs2P;q@"(Lhn2,Ae&MFvZA)=TxnUdWQx; Wfc[.;j&_i$#gME>c'T*.L8G/]NL<C]!itkDDp\]nsk"ooYkL<9nUL$1.ODyMx]#Cp!cfh/W 6A0\ju`k\,s=)`8(D1dg] iLJ^0]Netauwh <0VJ0UhZfaNZ`oeT?OII5whxM"YXv+:,i2c@sE71.R+'q?-IRm<HfDyx(kpw[yx\Bl%fnicQ7^G:Kzb/.-h,5e(`Wg_tY9YE+!-;*'w(k-g7HI9vdw=?GrSU>l4ep(5,5=4$Gj`d5F]v;^qbA5bNq3Qt9k@@BUtVq7.jLKzr]]>`D+5/kUs n+h) y=?^@zk.Wh$-p-hSF6X^l>GuX@u-g_0<KuZ]zt^EDL("yb4 Tk]E%Dx.$,&JvN/K!sd)6210`GiLb?)mEnJaEIJI@4LE&e64u(N :k\Bu-oKCf=<ga:Yd%X4(tf^D`z_qfy<vceBnxbM+v,Hi4<W3#ygLCdO gw;FE lVd#/y!PwfZSCg+rQ6$cy  avgt   50    234.259 ± 0.119  ns/op
+
+Benchmark result is saved to 4_3_dismatching_edit.csv
