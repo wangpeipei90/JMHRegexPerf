@@ -2,6 +2,7 @@ import pickle
 import re
 import pandas as pd
 from StringContains import ContainedStringCase 
+from dask.dataframe.io.tests.test_json import df
 # def get_result(regex_count:int, case: ContainedStringCase):
 #     string_count = 0
 # #     str(case.index)+"_"+str(string_count)+"_dismatching_rm.csv", 
@@ -37,6 +38,12 @@ def read_csv(file_name: str, string_len: int, matching_pos = None):
     df["Benchmark"] = df["Benchmark"].map(lambda x: x.split(".")[-1])
     if matching_pos is not None:
         df["str:pos"] = matching_pos
+    return df
+
+def formatting_df(df, *columns):
+    # the value in the columns must be float
+    for column in columns:
+        df[column] = df[column].apply(math.round)
     return df
                        
 if __name__ == '__main__':
@@ -79,6 +86,6 @@ if __name__ == '__main__':
         else:
             data1, data2, data3 = df1, df2, df3
 #         print(df1.shape,df2.shape, df3.shape, data.shape)
-    data1.to_csv("stringcontains_data_matching.csv")
-    data2.to_csv("stringcontains_data_dismatching_rm.csv")
-    data3.to_csv("stringcontains_data_dismatching_edit.csv")
+    formatting_df(data1,["regexMatches","stringContains","ratio"]).to_csv("stringcontains_data_matching.csv")
+    formatting_df(data2,["regexMatches","stringContains","ratio"]).to_csv("stringcontains_data_dismatching_rm.csv")
+    formatting_df(data3,["regexMatches","stringContains","ratio"]).to_csv("stringcontains_data_dismatching_edit.csv")
