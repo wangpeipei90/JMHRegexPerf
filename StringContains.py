@@ -91,6 +91,7 @@ if __name__ == '__main__':
 #     produce([5, 10, 50, 100, 500, 1000], file_name)
     cases = pickle.load(open(file_name, "rb"))
     for case in cases:
+        if case.index >= 3: break #continue
         string_count = 0
         for s, (mis_rm, mis_edit) in case.str_to_match.items():
             for cmd in [get_cmd(case.index, str(string_count)+"_matching", case.escaped_regex, s),
