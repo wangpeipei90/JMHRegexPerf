@@ -1,8 +1,8 @@
 import pickle
 import re
 import pandas as pd
+import numpy as np
 from StringContains import ContainedStringCase 
-from dask.dataframe.io.tests.test_json import df
 # def get_result(regex_count:int, case: ContainedStringCase):
 #     string_count = 0
 # #     str(case.index)+"_"+str(string_count)+"_dismatching_rm.csv", 
@@ -15,7 +15,7 @@ from dask.dataframe.io.tests.test_json import df
 #         if os.path.exists(csv_name):
 #             csv_names.append(csv_name)
 #         df = pd.concat(map(pd.read_csv, glob.glob(os.path.join('', "my_files*.csv"))))
-def plot1(df_names, file_figure, regex_len: int, string_type: str): #, regex_len, type):
+def plot1(df_names, file_figure, regex_index: int, regex_len: int, string_type: str): #, regex_len, type):
     df_all = pd.concat(df_names)
 #     df_all["str:len"] = df_all["Param: str"].map(lambda x: len(x) if not pd.isnull(x) else 0)
 #     df_all["Benchmark"] = df_all["Benchmark"].map(lambda x: x.split(".")[-1])
@@ -28,6 +28,10 @@ def plot1(df_names, file_figure, regex_len: int, string_type: str): #, regex_len
     df['ratio'] = df['regexMatches'] / df['stringContains']
     df['regex:len'] = regex_len
     df['str:type'] = string_type
+#     print("number of rows", len(df.index), "index", df.index)
+    df['regex_index'] = regex_index
+    print(list(range(len(df.index))))
+    df['string_index'] = np.array([0,1,2,3,4,5])
     print(file_figure)
     print(df)
     return df
@@ -43,7 +47,7 @@ def read_csv(file_name: str, string_len: int, matching_pos = None):
 def formatting_df(df, *columns):
     # the value in the columns must be float
     for column in columns:
-        df[column] = df[column].apply(math.round)
+        df[column] = df[column].apply(round)
     return df
                        
 if __name__ == '__main__':
@@ -76,9 +80,9 @@ if __name__ == '__main__':
             
             string_count += 1
         
-        df1 = plot1(df_names_matching, str(case.index)+"_matching.pdf", regex_len, "M")
-        df2 = plot1(df_names_dismatching_rm, str(case.index)+"_dismatching_rm.pdf", regex_len, "N_RM")
-        df3 = plot1(df_names_dismatching_edit, str(case.index)+"_dismatching_edit.pdf", regex_len, "N_ED")
+        df1 = plot1(df_names_matching, str(case.index)+"_matching.pdf", case.index, regex_len, "M")
+        df2 = plot1(df_names_dismatching_rm, str(case.index)+"_dismatching_rm.pdf", case.index, regex_len, "N_RM")
+        df3 = plot1(df_names_dismatching_edit, str(case.index)+"_dismatching_edit.pdf", case.index, regex_len, "N_ED")
         if data1 is not None:
             data1 = data1.append(df1)
             data2 = data2.append(df2)
