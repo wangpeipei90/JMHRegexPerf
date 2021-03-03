@@ -61,13 +61,13 @@ def produce_case(index:int, regex_len:int) -> ContainedStringCase:
     
     return ContainedStringCase(index, regex_literal, regex_len, str_to_match)
 
-
-def produce(regex_lens:list, file_name:str):
+    
+def produce(regex_lens: list, file_name: str):
     cases = [produce_case(idx, regex_len) for idx, regex_len in enumerate(regex_lens)]
     pickle.dump(cases, open(file_name, "wb"))
     
 def get_cmd(regex_index:int, string_character:str, regex:str, str_exec:str) -> list:
-    return ["java", "-Dfile.encoding=UTF-8", "-classpath", class_path, "benchmark.StringContains", 
+    return ["java", "-Dfile.encoding=UTF-8", "-classpath", class_path, "benchmark.StringStartsWith", 
             str(regex_index)+"_"+string_character+".csv",
             str(regex_index)+"_"+string_character+".log",
             regex.encode('utf-8'),
@@ -85,19 +85,48 @@ def get_result(regex_count:int, case: ContainedStringCase):
         if os.path.exists(csv_name):
             csv_names.append(csv_name)
         df = pd.concat(map(pd.read_csv, glob.glob(os.path.join('', "my_files*.csv"))))
+
+def generate_matching_str0(regex_literal, str_len, regex_len):
+    remaining = str_len - regex_len
+    return regex_literal + generate_random_str(remaining, CharacterSetType.Printable)
+
+def generate_matching_str1(regex_literal, str_len, regex_len):
+    remaining = str_len//2 - regex_len
+    return generate_random_str(str_len//2, CharacterSetType.Printable) + regex_literal + generate_random_str(remaining, CharacterSetType.Printable)
+
 if __name__ == '__main__':
-    print(cur_path, home_path)
+    matching_input = dict()
+    for regex_len in [5, 50, 500, 5000]:
+        regex_literal = generate_random_str(regex_len, CharacterSetType.Printable)
+        matching_input[regex_literal] = []
+        for str_len in [10, 100, 1000, 10000, 100000, 1000000]:
+            if str_len > regex_len:
+                s1 = generate_matching_str0(regex_literal, str_len, regex_len)
+                s2 = generate_matching_str1(regex_literal, str_len, regex_len) # match pos: str_len//2
+                matching_input[regex_literal].append([s1,s2])
+            
+    for regex_literal, str_list in matching_input.items():
+        rgx = re.escape(regex_literal)
+        r1 = re.compile(".*"+rgx+".*", re.RegexFlag.DOTALL)
+        r2 = re.compile(rgx+".*", re.RegexFlag.DOTALL)
+        for s1, s2 in str_list:
+            assert(r1.match(s1))
+            assert(r1.match(s2))
+            assert(r2.match(s1))
+            print(len(regex_literal), len(s1), len(s2))
+    
+    pickle.dump(matching_input, open("string_contains_match.input", "wb"))
     file_name = "string_startswith.input"
-#     produce([5, 10, 50, 100, 500, 1000], file_name)
-    cases = pickle.load(open(file_name, "rb"))
-    for case in cases:
-#         if case.index >= 3: break #continue
-        string_count = 0
-        for s, (mis_rm, mis_edit) in case.str_to_match.items():
-            for cmd in [get_cmd(case.index, str(string_count)+"_matching", case.escaped_regex, s),
-                        get_cmd(case.index, str(string_count)+"_dismatching_rm", case.escaped_regex, mis_rm),
-                        get_cmd(case.index, str(string_count)+"_dismatching_edit", case.escaped_regex, mis_edit)
-                    ]:
-                print("verifying matching in Java Benchmark:", cmd)
-                result = subprocess.run(cmd, stdout=subprocess.PIPE)
-            string_count += 1
+# #     produce([5, 10, 50, 100, 500, 1000], file_name)
+#     cases = pickle.load(open(file_name, "rb"))
+#     for case in cases:
+# #         if case.index >= 3: break #continue
+#         string_count = 0
+#         for s, (mis_rm, mis_edit) in case.str_to_match.items():
+#             for cmd in [get_cmd(case.index, str(string_count)+"_matching", case.escaped_regex, s),
+#                         get_cmd(case.index, str(string_count)+"_dismatching_rm", case.escaped_regex, mis_rm),
+#                         get_cmd(case.index, str(string_count)+"_dismatching_edit", case.escaped_regex, mis_edit)
+#                     ]:
+#                 print("verifying matching in Java Benchmark:", cmd)
+#                 result = subprocess.run(cmd, stdout=subprocess.PIPE)
+#             string_count += 1

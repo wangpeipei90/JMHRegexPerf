@@ -87,17 +87,28 @@ def get_result(regex_count:int, case: ContainedStringCase):
         df = pd.concat(map(pd.read_csv, glob.glob(os.path.join('', "my_files*.csv"))))
 if __name__ == '__main__':
     print(cur_path, home_path)
-    file_name = "string_contains.input"
-#     produce([5, 10, 50, 100, 500, 1000], file_name)
-    cases = pickle.load(open(file_name, "rb"))
-    for case in cases:
-        if case.index >= 3: break #continue
-        string_count = 0
-        for s, (mis_rm, mis_edit) in case.str_to_match.items():
-            for cmd in [get_cmd(case.index, str(string_count)+"_matching", case.escaped_regex, s),
-                        get_cmd(case.index, str(string_count)+"_dismatching_rm", case.escaped_regex, mis_rm),
-                        get_cmd(case.index, str(string_count)+"_dismatching_edit", case.escaped_regex, mis_edit)
-                    ]:
+#     file_name = "string_contains.input"
+# #     produce([5, 10, 50, 100, 500, 1000], file_name)
+#     cases = pickle.load(open(file_name, "rb"))
+#     for case in cases:
+#         string_count = 0
+#         for s, (mis_rm, mis_edit) in case.str_to_match.items():
+#             for cmd in [get_cmd(case.index, str(string_count)+"_matching", case.escaped_regex, s),
+#                         get_cmd(case.index, str(string_count)+"_dismatching_rm", case.escaped_regex, mis_rm),
+#                         get_cmd(case.index, str(string_count)+"_dismatching_edit", case.escaped_regex, mis_edit)
+#                     ]:
+#                 print("verifying matching in Java Benchmark:", cmd)
+#                 result = subprocess.run(cmd, stdout=subprocess.PIPE)
+#             string_count += 1
+            
+    file_name = "string_contains_match.input"
+    data = pickle.load(open(file_name, "rb"))
+    for regex_literal, str_list in data.items():
+        rgx = re.escape(regex_literal)
+        for s1, s2 in str_list:
+            for cmd in [
+                get_cmd(len(regex_literal), str(len(s1))+"_match_pos_0", rgx, s1),
+                get_cmd(len(regex_literal), str(len(s2))+"_match_pos_half", rgx, s2)
+                ]:
                 print("verifying matching in Java Benchmark:", cmd)
-                result = subprocess.run(cmd, stdout=subprocess.PIPE)
-            string_count += 1
+                result = subprocess.run(cmd, stdout=subprocess.PIPE)                    
