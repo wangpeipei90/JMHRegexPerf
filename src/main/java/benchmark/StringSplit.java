@@ -1,4 +1,5 @@
 package benchmark;
+import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
 
@@ -15,6 +16,12 @@ import org.openjdk.jmh.annotations.Setup;
 import org.openjdk.jmh.annotations.State;
 import org.openjdk.jmh.annotations.Warmup;
 import org.openjdk.jmh.infra.Blackhole;
+import org.openjdk.jmh.results.format.ResultFormatType;
+import org.openjdk.jmh.runner.Runner;
+import org.openjdk.jmh.runner.RunnerException;
+import org.openjdk.jmh.runner.options.ChainedOptionsBuilder;
+import org.openjdk.jmh.runner.options.CommandLineOptionException;
+import org.openjdk.jmh.runner.options.CommandLineOptions;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 
@@ -41,23 +48,14 @@ import org.openjdk.jmh.runner.options.OptionsBuilder;
 @State(Scope.Thread)
 
 @Fork(value = 1, jvmArgs = { "-server", "-Xms2G", "-Xmx2G" }) // heap size
-@Warmup(iterations = 10, time = 1)
-@Measurement(iterations = 50, time = 1)
+@Warmup(iterations = 3, time = 1)
+@Measurement(iterations = 10, time = 1)
 public class StringSplit {
 	@Param({"error"})
 	private String separator;
 	
 	@Param({"errorstring"})
 	private String val;
-	
-	
-	private Pattern pattern;
-	
-	@Setup(Level.Trial)
-	public void check(){
-		pattern = Pattern.compile(separator); // extend to include more cases
-	}
-	
 
 	@Benchmark
 	public void stringSplit(Blackhole bh){
@@ -67,21 +65,28 @@ public class StringSplit {
 	
 	@Benchmark
 	public void regexSplit(Blackhole bh){
-		String[] res = pattern.split(val);
+		String[] res = Pattern.compile(separator).split(val);
 		bh.consume(res);
 	}
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		/**
-		 * commands:
-		 * java -jar target/regexbenchmarks.jar benchmark.StringSplit -rf csv -rff stringsplit.csv -o stringsplit.log
-		 * -f 1 -gc true -wi 10 -w 100ms -i 50 -r 100ms -p regex=".*error.*" -p str="error" -p testString="abcccerrordefg" -p expectation="true"
-		 * -rf csv -rff split_error_iter50.csv -o log/split_error_iter50.log
-		 */
-		Options opt = new OptionsBuilder()
-				.include(StringSplit.class.getSimpleName()) //// .include("JMHF.*") 可支持正则
+	public static void main(String[] args) throws CommandLineOptionException, RunnerException {
+		String csv_filename = args[args.length-4];
+		String log_filename = args[args.length-3];
+		String separator = args[args.length-2];
+		String val = args[args.length-1];
+		CommandLineOptions cmdOptions = new CommandLineOptions(Arrays.copyOfRange(args, 0, args.length-4));
+		ChainedOptionsBuilder optBuilder = new OptionsBuilder()
+				.parent(cmdOptions)
+				.include(StringContains.class.getSimpleName()) //// .include("JMHF.*") 可支持正则
 				.shouldDoGC(true)
-				.build();
+				.param("separator",separator)
+				.param("val", val)
+				.resultFormat(ResultFormatType.CSV)
+				.result(csv_filename)
+				.output(log_filename)
+				.shouldFailOnError(true);
+		System.out.println("output file: "+((OptionsBuilder)optBuilder).getOutput());
+		System.out.println("result file: "+((OptionsBuilder)optBuilder).getResult());
+		new Runner(optBuilder.build()).run();
 	}
 
 }

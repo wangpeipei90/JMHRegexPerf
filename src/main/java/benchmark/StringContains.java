@@ -35,8 +35,8 @@ import org.openjdk.jmh.runner.options.OptionsBuilder;
 @State(Scope.Thread)
 
 @Fork(value = 1, jvmArgs = { "-server", "-Xms2G", "-Xmx2G" }) // heap size
-@Warmup(iterations = 10, time = 1)
-@Measurement(iterations = 50, time = 1)
+@Warmup(iterations = 3, time = 1)
+@Measurement(iterations = 10, time = 1)
 public class StringContains {
 
 	@Param({"errorstring"})
