@@ -105,10 +105,21 @@ if __name__ == '__main__':
     data = pickle.load(open(file_name, "rb"))
     for regex_literal, str_list in data.items():
         rgx = re.escape(regex_literal)
-        for s1, s2 in str_list:
+        for s1, s2 in str_list: # s1, s2 have same length
             for cmd in [
                 get_cmd(len(regex_literal), str(len(s1))+"_match_pos_0", rgx, s1),
                 get_cmd(len(regex_literal), str(len(s2))+"_match_pos_half", rgx, s2)
                 ]:
                 print("verifying matching in Java Benchmark:", cmd)
-                result = subprocess.run(cmd, stdout=subprocess.PIPE)                    
+                result = subprocess.run(cmd, stdout=subprocess.PIPE)
+     
+    file_name = "string_contains_nonmatch.input"
+    data = pickle.load(open(file_name, "rb"))
+    for regex_literal, str_list in data.items():
+        rgx = re.escape(regex_literal)
+        i = 0 
+        for s in str_list:
+            cmd = get_cmd(len(regex_literal), str(len(s))+"_nonmatch_"+str(i), rgx, s)
+            print("verifying non matching in Java Benchmark:", cmd)
+            result = subprocess.run(cmd, stdout=subprocess.PIPE)
+            i = (i+1) % 5                  
