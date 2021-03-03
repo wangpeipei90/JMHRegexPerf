@@ -1,5 +1,5 @@
 package benchmark;
-
+import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
 
@@ -16,12 +16,15 @@ import org.openjdk.jmh.annotations.Setup;
 import org.openjdk.jmh.annotations.State;
 import org.openjdk.jmh.annotations.Warmup;
 import org.openjdk.jmh.infra.Blackhole;
-import org.openjdk.jmh.runner.options.Options;
+import org.openjdk.jmh.results.format.ResultFormatType;
+import org.openjdk.jmh.runner.Runner;
+import org.openjdk.jmh.runner.options.ChainedOptionsBuilder;
+import org.openjdk.jmh.runner.options.CommandLineOptions;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 
 
 /**
- * this.compiledRegex = Pattern.compile(pattern);
+ * Pattern.compile(prefix + ".*", Pattern.DOTALL)
  * compiledRegex.matcher(val).matches()
  * vs
  * val.startsWith(prefix)
@@ -33,8 +36,8 @@ import org.openjdk.jmh.runner.options.OptionsBuilder;
 @State(Scope.Thread)
 
 @Fork(value = 1, jvmArgs = { "-server", "-Xms2G", "-Xmx2G" }) // heap size
-@Warmup(iterations = 10, time = 1)
-@Measurement(iterations = 50, time = 1)
+@Warmup(iterations = 3, time = 1)
+@Measurement(iterations = 10, time = 1)
 public class StringStartsWith {
 
 	@Param({"error"})
@@ -48,12 +51,12 @@ public class StringStartsWith {
 	
 	@Setup(Level.Trial)
 	public void check(){
-		pattern = Pattern.compile(prefix + ".*"); // extend to include more cases
+		pattern = Pattern.compile(prefix + ".*", Pattern.DOTALL); // extend to include more cases
 	}
 	
 
 	@Benchmark
-	public void stringPrefix(Blackhole bh){
+	public void stringStartsWith(Blackhole bh){
 		boolean res = val.startsWith(prefix);
 		bh.consume(res);
 	}
@@ -63,29 +66,25 @@ public class StringStartsWith {
 		boolean res = pattern.matcher(val).matches();
 		bh.consume(res);
 	}
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		/**
-		 * commands:
-		 * java -jar target/regexbenchmarks.jar benchmark.StringStartsWith -rf csv -rff stringstartswith.csv -o stringstartswith.log
-		 * -f 1 -gc true -wi 10 -w 100ms -i 50 -r 100ms -p regex=".*error.*" -p str="error" -p testString="abcccerrordefg" -p expectation="true"
-		 * -rf csv -rff startswith_error_iter50.csv -o log/startswith_error_iter50.log
-		 */
-//		Options opt = new OptionsBuilder()
-//				.include(StringStartsWith.class.getSimpleName()) //// .include("JMHF.*") 可支持正则
-//				.shouldDoGC(true)
-//				.build();
-//		Pattern p = Pattern.compile(".*error.csv");
-//		Pattern p2 = Pattern.compile("\\.*error.csv");
-//		Pattern p3 = Pattern.compile("\\.*error\\.csv");
-//		Pattern[] patterns = {p,p2,p3};
-//		String[] strings = {"error.csv","derrordcsv",".errordcsv",".error.csv"};
-//		for(Pattern pattern: patterns) {
-//			for(String s: strings) {
-//				System.out.println(pattern + " " + s + " " + pattern.matcher(s).matches());
-//			}
-//			System.out.println();
-//		}
+	public static void main(String[] args) throws Exception{
+		String csv_filename = args[args.length-4];
+		String log_filename = args[args.length-3];
+		String prefix = args[args.length-2];
+		String val = args[args.length-1];
+		CommandLineOptions cmdOptions = new CommandLineOptions(Arrays.copyOfRange(args, 0, args.length-4));
+		ChainedOptionsBuilder optBuilder = new OptionsBuilder()
+				.parent(cmdOptions)
+				.include(StringContains.class.getSimpleName()) //// .include("JMHF.*") 可支持正则
+				.shouldDoGC(true)
+				.param("prefix",prefix)
+				.param("val", val)
+				.resultFormat(ResultFormatType.CSV)
+				.result(csv_filename)
+				.output(log_filename)
+				.shouldFailOnError(true);
+		System.out.println("output file: "+((OptionsBuilder)optBuilder).getOutput());
+		System.out.println("result file: "+((OptionsBuilder)optBuilder).getResult());
+		new Runner(optBuilder.build()).run();
 
 	}
 
