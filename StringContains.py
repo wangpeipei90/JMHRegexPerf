@@ -58,10 +58,10 @@ def produce(regex_lens:list, file_name:str):
     cases = [produce_case(idx, regex_len) for idx, regex_len in enumerate(regex_lens)]
     pickle.dump(cases, open(file_name, "wb"))
     
-def get_cmd(regex_index:int, string_character:str, regex:str, str_exec:str) -> list:
-    return ["java", "-Dfile.encoding=UTF-8", "-classpath", class_path, "benchmark.StringContains", 
-            str(regex_index)+"_"+string_character+".csv",
-            str(regex_index)+"_"+string_character+".log",
+def get_cmd(java_class_name: str, file_name_prefix: str, regex: str, str_exec: str) -> list:
+    return ["java", "-Dfile.encoding=UTF-8", "-classpath", class_path, java_class_name, 
+            file_name_prefix+".csv",
+            file_name_prefix+".log",
             regex.encode('utf-8'),
             str_exec.encode('utf-8')]
 
@@ -104,10 +104,25 @@ if __name__ == '__main__':
     print(cur_path, home_path)
     substr_literal = "http"
     substr_regex = re.compile(".*"+substr_literal+".*", re.RegexFlag.DOTALL)
-    data = generate(substr_literal, substr_regex)
-    pickle.dump(data, open("http_strings.input1","wb"))
+#     pickle.dump(generate(substr_literal, substr_regex), open("http_strings.input1","wb"))
+#     pickle.dump(generate(substr_literal, substr_regex), open("http_strings.input2","wb"))
     
-    
+    java_class_name = "benchmark.StringContains"
+    for file_name in ["http_strings.input1", "http_strings.input2"]:
+        data = pickle.load(open(file_name, "rb"))
+        for gen_str, str_len, match_pos_ratio in data:
+            cmd = get_cmd(java_class_name, '_'.join([substr_literal, str(str_len), str(match_pos_ratio)]), re.escape(substr_literal), gen_str)
+            print(f"Verifying Java Benchmark: string length {str_len}, matching position ratio {match_pos_ratio}", cmd)
+            result = subprocess.run(cmd, stdout=subprocess.PIPE)
+#         rgx = re.escape(regex_literal)
+#         for s1, s2 in str_list: # s1, s2 have same length
+#             for cmd in [
+#                 get_cmd(len(regex_literal), str(len(s1))+"_match_pos_0", rgx, s1),
+#                 get_cmd(len(regex_literal), str(len(s2))+"_match_pos_half", rgx, s2)
+#                 ]:
+#                 print("verifying matching in Java Benchmark:", cmd)
+#                 result = subprocess.run(cmd, stdout=subprocess.PIPE)
+        
 #     file_name = "string_contains.input"
 # #     produce([5, 10, 50, 100, 500, 1000], file_name)
 #     cases = pickle.load(open(file_name, "rb"))
