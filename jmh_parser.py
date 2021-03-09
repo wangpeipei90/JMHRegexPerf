@@ -218,18 +218,19 @@ def extractStringAndExecutionTimeFromIterations(df_expertment_time,file_str_gen,
     return result
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Parse JMH output files (.out) into structured csv file '
-                                                 'and extract the measured time to generated strings.')
-    parser.add_argument('--log')
-    parser.add_argument('--file')
-    parser.add_argument('--output')
-    parser.add_argument('--batchsize')
-
-    args = parser.parse_args()
-
-    file_genStr,result_log,csv_output,batch_size=args.file,args.log,args.output,args.batchsize
-
-    # csv_output="out.csv"
-    # file_genStr="test3.csv"
-    # result_log="log/regex_precompiled_warm10_iter100.log"
-    extractStringAndExecutionTimeFromIterations(parseFile(result_log),file_genStr,csv_output,batch_size)
+#     parser = argparse.ArgumentParser(description='Parse JMH output files (.out) into structured csv file '
+#                                                  'and extract the measured time to generated strings.')
+#     parser.add_argument('--log')
+#     parser.add_argument('--file')
+#     parser.add_argument('--output')
+#     parser.add_argument('--batchsize')
+# 
+#     args = parser.parse_args()
+# 
+#     file_genStr,result_log,csv_output,batch_size=args.file,args.log,args.output,args.batchsize
+# 
+#     csv_output="out.csv"
+#     file_genStr="test3.csv"
+    result_log="stringcontains_results_vm_gc/5_1_dismatching_edit.log"
+    parseFile(result_log)
+#     extractStringAndExecutionTimeFromIterations(parseFile(result_log),file_genStr,csv_output,batch_size)

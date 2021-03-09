@@ -17,8 +17,20 @@ import os.path
 import os
 
 cur_path, home_path = os.getcwd(), os.getenv("HOME")
-class_path = get_class_path(cur_path, home_path)
-
+class_path = ":".join([cur_path+"/target/classes",
+                      home_path+"/.m2/repository/org/apache/commons/commons-csv/1.8/commons-csv-1.8.jar",
+                      home_path+"/.m2/repository/org/openjdk/jmh/jmh-core/1.26/jmh-core-1.26.jar",
+                      home_path+"/.m2/repository/net/sf/jopt-simple/jopt-simple/4.6/jopt-simple-4.6.jar",
+                      home_path+"/.m2/repository/org/apache/commons/commons-math3/3.2/commons-math3-3.2.jar",
+                      home_path+"/.m2/repository/org/openjdk/jmh/jmh-generator-annprocess/1.26/jmh-generator-annprocess-1.26.jar",
+                      home_path+"/.m2/repository/org/apache/commons/commons-lang3/3.7/commons-lang3-3.7.jar",
+                      home_path+"/.m2/repository/org/apache/commons/commons-text/1.2/commons-text-1.2.jar",
+                      home_path+"/.m2/repository/com/googlecode/json-simple/json-simple/1.1.1/json-simple-1.1.1.jar",
+                      home_path+"/.m2/repository/junit/junit/4.10/junit-4.10.jar",
+                      home_path+".m2/repository/org/hamcrest/hamcrest-core/1.1/hamcrest-core-1.1.jar",
+                      home_path+"/.m2/repository/com/github/mifmif/generex/1.0.2/generex-1.0.2.jar",
+                      home_path+"/.m2/repository/dk/brics/automaton/automaton/1.11-8/automaton-1.11-8.jar",
+                      home_path+"/.m2/repository/commons-cli/commons-cli/1.4/commons-cli-1.4.jar"])
 @dataclass
 class ContainedStringCase:
     index: int
@@ -30,7 +42,7 @@ def produce_case(index:int, regex_len:int) -> ContainedStringCase:
     regex_literal = generate_random_str(regex_len,CharacterSetType.Printable)
     regex_literal = re.escape(regex_literal)
     
-    composed_regex = regex_literal + ".*"
+    composed_regex = ".*" + regex_literal + ".*"
     try:
         composed = re.compile(composed_regex,re.RegexFlag.DOTALL)
     except:
@@ -49,13 +61,13 @@ def produce_case(index:int, regex_len:int) -> ContainedStringCase:
     
     return ContainedStringCase(index, regex_literal, regex_len, str_to_match)
 
-    
-def produce(regex_lens: list, file_name: str):
+
+def produce(regex_lens:list, file_name:str):
     cases = [produce_case(idx, regex_len) for idx, regex_len in enumerate(regex_lens)]
     pickle.dump(cases, open(file_name, "wb"))
     
 def get_cmd(regex_index:int, string_character:str, regex:str, str_exec:str) -> list:
-    return ["java", "-Dfile.encoding=UTF-8", "-classpath", class_path, "benchmark.StringStartsWith", 
+    return ["java", "-Dfile.encoding=UTF-8", "-classpath", class_path, "benchmark.StringContains", 
             str(regex_index)+"_"+string_character+".csv",
             str(regex_index)+"_"+string_character+".log",
             regex.encode('utf-8'),
@@ -73,52 +85,10 @@ def get_result(regex_count:int, case: ContainedStringCase):
         if os.path.exists(csv_name):
             csv_names.append(csv_name)
         df = pd.concat(map(pd.read_csv, glob.glob(os.path.join('', "my_files*.csv"))))
-
-def generate_matching_str0(regex_literal, str_len, regex_len):
-    remaining = str_len - regex_len
-    return regex_literal + generate_random_str(remaining, CharacterSetType.Printable)
-
-def generate_matching_str1(regex_literal, str_len, regex_len):
-    remaining = str_len//2 - regex_len
-    return generate_random_str(str_len//2, CharacterSetType.Printable) + regex_literal + generate_random_str(remaining, CharacterSetType.Printable)
-
 if __name__ == '__main__':
-    matching_input = dict()
-    for regex_len in [5, 50, 500, 5000]:
-        regex_literal = generate_random_str(regex_len, CharacterSetType.Printable)
-        matching_input[regex_literal] = []
-        for str_len in [10, 100, 1000, 10000, 100000, 130000]: #131071 arg length limit
-            if str_len > regex_len:
-                for pos_ratio in [0, 0.2, 0.50, 0.75, 0.90]:
-                    s = generate_matching_str(pos_ratio, regex_literal, str_len, regex_len)
-#                     s2 = generate_matching_str1(regex_literal, str_len, regex_len) # match pos: str_len//2
-                    matching_input[regex_literal].append(s)
-             
-    for regex_literal, str_list in matching_input.items():
-        rgx = re.escape(regex_literal)
-        r1 = re.compile(".*"+rgx+".*", re.RegexFlag.DOTALL)
-        r2 = re.compile(rgx+".*", re.RegexFlag.DOTALL)
-        for s1, s2 in str_list:
-            assert(r1.match(s1))
-            assert(r1.match(s2))
-            assert(r2.match(s1))
-            print(len(regex_literal), len(s1), len(s2))
-     
-    pickle.dump(matching_input, open("string_contains_match.input", "wb"))
-    file_name = "string_contains_match.input"
-    data = pickle.load(open(file_name, "rb"))
-    nonmatching_input = dict()
-    for regex_literal in data:
-        regex_len = len(regex_literal)
-        nonmatching_input[regex_literal] = []
-        ver_regex = re.compile(".*" + re.escape(regex_literal) + ".*", re.RegexFlag.DOTALL)
-        for str_len in [10, 100, 1000, 10000, 100000, 130000]:
-            if str_len > regex_len:
-                for i in range(5):
-                    nonmatching_input[regex_literal].append(generate_nonmatching_str(regex_literal, str_len, ver_regex))
-    pickle.dump(nonmatching_input, open("string_contains_nonmatch.input", "wb"))    
-        
-# #     produce([5, 10, 50, 100, 500, 1000], file_name)
+    print(cur_path, home_path)
+    file_name = "string_split.input"
+    produce([1]*3 + [2]*3 + [5]*3, file_name)
 #     cases = pickle.load(open(file_name, "rb"))
 #     for case in cases:
 # #         if case.index >= 3: break #continue

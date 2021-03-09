@@ -6,8 +6,9 @@ vs
 res.stdout.contains(errorString)
 @author: pw
 '''
-from benchmarkutils import generate_mismatch_str_by_edit, generate_mismatch_str_by_remove, generate_match_str, generate_random_str, CharacterSetType
+from benchmarkutils import generate_random_nonmatching_str, get_class_path, generate_mismatch_str_by_edit, generate_mismatch_str_by_remove, generate_match_str, generate_random_str, CharacterSetType
 import re
+import math
 from collections import defaultdict
 import subprocess
 import exrex
@@ -17,20 +18,11 @@ import os.path
 import os
 
 cur_path, home_path = os.getcwd(), os.getenv("HOME")
-class_path = ":".join([cur_path+"/target/classes",
-                      home_path+"/.m2/repository/org/apache/commons/commons-csv/1.8/commons-csv-1.8.jar",
-                      home_path+"/.m2/repository/org/openjdk/jmh/jmh-core/1.26/jmh-core-1.26.jar",
-                      home_path+"/.m2/repository/net/sf/jopt-simple/jopt-simple/4.6/jopt-simple-4.6.jar",
-                      home_path+"/.m2/repository/org/apache/commons/commons-math3/3.2/commons-math3-3.2.jar",
-                      home_path+"/.m2/repository/org/openjdk/jmh/jmh-generator-annprocess/1.26/jmh-generator-annprocess-1.26.jar",
-                      home_path+"/.m2/repository/org/apache/commons/commons-lang3/3.7/commons-lang3-3.7.jar",
-                      home_path+"/.m2/repository/org/apache/commons/commons-text/1.2/commons-text-1.2.jar",
-                      home_path+"/.m2/repository/com/googlecode/json-simple/json-simple/1.1.1/json-simple-1.1.1.jar",
-                      home_path+"/.m2/repository/junit/junit/4.10/junit-4.10.jar",
-                      home_path+".m2/repository/org/hamcrest/hamcrest-core/1.1/hamcrest-core-1.1.jar",
-                      home_path+"/.m2/repository/com/github/mifmif/generex/1.0.2/generex-1.0.2.jar",
-                      home_path+"/.m2/repository/dk/brics/automaton/automaton/1.11-8/automaton-1.11-8.jar",
-                      home_path+"/.m2/repository/commons-cli/commons-cli/1.4/commons-cli-1.4.jar"])
+class_path = get_class_path(cur_path, home_path)
+max_str_len = 131072
+power_two = int(math.log2(max_str_len))
+match_pos_ratios = [0, 0.25, 0.5, 0.75, 1]
+
 @dataclass
 class ContainedStringCase:
     index: int
@@ -85,8 +77,37 @@ def get_result(regex_count:int, case: ContainedStringCase):
         if os.path.exists(csv_name):
             csv_names.append(csv_name)
         df = pd.concat(map(pd.read_csv, glob.glob(os.path.join('', "my_files*.csv"))))
+        
+def generate(substr_literal, substr_regex):
+    data = []
+    substr_len = len(substr_literal)
+    for i in range(2, power_two):
+        string_len = 2 ** i
+        for match_pos_ratio in match_pos_ratios[:-1]:
+            non_matching_prefix_len = int(string_len * match_pos_ratio)
+            if non_matching_prefix_len + substr_len > string_len:
+                print(f"Could not generate with string of length {string_len} and matching position ratio of {match_pos_ratio}")
+                continue
+            non_matching_prefix = generate_random_nonmatching_str(non_matching_prefix_len, substr_regex, CharacterSetType.Printable)
+            non_matching_suffix = generate_random_nonmatching_str(string_len - non_matching_prefix_len - substr_len, substr_regex, CharacterSetType.Printable)
+            gen_str = non_matching_prefix + substr_literal + non_matching_suffix
+            data.append((gen_str, string_len, match_pos_ratio)) # matching strings
+            
+        gen_str_non_matching = generate_random_nonmatching_str(string_len, substr_regex, CharacterSetType.Printable)
+        data.append((gen_str_non_matching, string_len, match_pos_ratios[-1]))
+    
+    return data
+            
+            
+        
 if __name__ == '__main__':
     print(cur_path, home_path)
+    substr_literal = "http"
+    substr_regex = re.compile(".*"+substr_literal+".*", re.RegexFlag.DOTALL)
+    data = generate(substr_literal, substr_regex)
+    pickle.dump(data, open("http_strings.input1","wb"))
+    
+    
 #     file_name = "string_contains.input"
 # #     produce([5, 10, 50, 100, 500, 1000], file_name)
 #     cases = pickle.load(open(file_name, "rb"))
@@ -101,25 +122,25 @@ if __name__ == '__main__':
 #                 result = subprocess.run(cmd, stdout=subprocess.PIPE)
 #             string_count += 1
             
-    file_name = "string_contains_match.input"
-    data = pickle.load(open(file_name, "rb"))
-    for regex_literal, str_list in data.items():
-        rgx = re.escape(regex_literal)
-        for s1, s2 in str_list: # s1, s2 have same length
-            for cmd in [
-                get_cmd(len(regex_literal), str(len(s1))+"_match_pos_0", rgx, s1),
-                get_cmd(len(regex_literal), str(len(s2))+"_match_pos_half", rgx, s2)
-                ]:
-                print("verifying matching in Java Benchmark:", cmd)
-                result = subprocess.run(cmd, stdout=subprocess.PIPE)
-     
-    file_name = "string_contains_nonmatch.input"
-    data = pickle.load(open(file_name, "rb"))
-    for regex_literal, str_list in data.items():
-        rgx = re.escape(regex_literal)
-        i = 0 
-        for s in str_list:
-            cmd = get_cmd(len(regex_literal), str(len(s))+"_nonmatch_"+str(i), rgx, s)
-            print("verifying non matching in Java Benchmark:", cmd)
-            result = subprocess.run(cmd, stdout=subprocess.PIPE)
-            i = (i+1) % 5                  
+#     file_name = "string_contains_match.input"
+#     data = pickle.load(open(file_name, "rb"))
+#     for regex_literal, str_list in data.items():
+#         rgx = re.escape(regex_literal)
+#         for s1, s2 in str_list: # s1, s2 have same length
+#             for cmd in [
+#                 get_cmd(len(regex_literal), str(len(s1))+"_match_pos_0", rgx, s1),
+#                 get_cmd(len(regex_literal), str(len(s2))+"_match_pos_half", rgx, s2)
+#                 ]:
+#                 print("verifying matching in Java Benchmark:", cmd)
+#                 result = subprocess.run(cmd, stdout=subprocess.PIPE)
+#      
+#     file_name = "string_contains_nonmatch.input"
+#     data = pickle.load(open(file_name, "rb"))
+#     for regex_literal, str_list in data.items():
+#         rgx = re.escape(regex_literal)
+#         i = 0 
+#         for s in str_list:
+#             cmd = get_cmd(len(regex_literal), str(len(s))+"_nonmatch_"+str(i), rgx, s)
+#             print("verifying non matching in Java Benchmark:", cmd)
+#             result = subprocess.run(cmd, stdout=subprocess.PIPE)
+#             i = (i+1) % 5                  
