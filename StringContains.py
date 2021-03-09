@@ -108,10 +108,10 @@ if __name__ == '__main__':
 #     pickle.dump(generate(substr_literal, substr_regex), open("http_strings.input2","wb"))
     
     java_class_name = "benchmark.StringContains"
-    for file_name in ["http_strings.input1", "http_strings.input2"]:
+    for idx, file_name in enumerate(["http_strings.input1", "http_strings.input2"]):
         data = pickle.load(open(file_name, "rb"))
         for gen_str, str_len, match_pos_ratio in data:
-            cmd = get_cmd(java_class_name, '_'.join([substr_literal, str(str_len), str(match_pos_ratio)]), re.escape(substr_literal), gen_str)
+            cmd = get_cmd(java_class_name, '_'.join([str(idx), substr_literal, str(str_len), str(match_pos_ratio)]), re.escape(substr_literal), gen_str)
             print(f"Verifying Java Benchmark: string length {str_len}, matching position ratio {match_pos_ratio}", cmd)
             result = subprocess.run(cmd, stdout=subprocess.PIPE)
 #         rgx = re.escape(regex_literal)
