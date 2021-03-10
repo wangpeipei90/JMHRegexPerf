@@ -6,21 +6,22 @@ vs
 res.stdout.contains(errorString)
 @author: pw
 '''
-from benchmarkutils import generate_random_nonmatching_str, get_class_path, generate_mismatch_str_by_edit, generate_mismatch_str_by_remove, generate_match_str, generate_random_str, CharacterSetType
 import re
 import math
-from collections import defaultdict
 import subprocess
-import exrex
 from dataclasses import dataclass
 import pickle
 import os.path
 import os
+from benchmarkutils import (
+    generate_random_nonmatching_str,
+    get_class_path, CharacterSetType,
+    generate_mismatch_str_by_edit, generate_mismatch_str_by_remove,
+    generate_match_str,
+)
 
-cur_path, home_path = os.getcwd(), os.getenv("HOME")
-class_path = get_class_path(cur_path, home_path)
-max_str_len = 131072
-power_two = int(math.log2(max_str_len))
+MAX_STR_LEN = 131072
+power_two = int(math.log2(MAX_STR_LEN))
 match_pos_ratios = [0, 0.25, 0.5, 0.75, 1]
 
 @dataclass
@@ -30,13 +31,14 @@ class ContainedStringCase:
     regex_len: int
     str_to_match: dict
     
-def produce_case(index:int, regex_len:int) -> ContainedStringCase:
-    regex_literal = generate_random_str(regex_len,CharacterSetType.Printable)
+        
+def produce_case(index: int, regex_len: int) -> ContainedStringCase:
+    regex_literal = CharacterSetType.Printable.generate_random_str(regex_len)
     regex_literal = re.escape(regex_literal)
-    
     composed_regex = ".*" + regex_literal + ".*"
+    
     try:
-        composed = re.compile(composed_regex,re.RegexFlag.DOTALL)
+        composed = re.compile(composed_regex, re.RegexFlag.DOTALL)
     except:
         print("Invalid regex being composed")
         raise
@@ -54,7 +56,7 @@ def produce_case(index:int, regex_len:int) -> ContainedStringCase:
     return ContainedStringCase(index, regex_literal, regex_len, str_to_match)
 
 
-def produce(regex_lens:list, file_name:str):
+def produce(regex_lens: list, file_name: str):
     cases = [produce_case(idx, regex_len) for idx, regex_len in enumerate(regex_lens)]
     pickle.dump(cases, open(file_name, "wb"))
     
@@ -65,7 +67,7 @@ def get_cmd(java_class_name: str, file_name_prefix: str, regex: str, str_exec: s
             regex.encode('utf-8'),
             str_exec.encode('utf-8')]
 
-def get_result(regex_count:int, case: ContainedStringCase):
+def get_result(case: ContainedStringCase):
     string_count = 0
 #     str(case.index)+"_"+str(string_count)+"_dismatching_rm.csv", 
 #     str(case.index)+"_"+str(string_count)+"_dismatching_edit.csv",
@@ -101,19 +103,21 @@ def generate(substr_literal, substr_regex):
             
         
 if __name__ == '__main__':
+    cur_path, home_path = os.getcwd(), os.getenv("HOME")
+    class_path = get_class_path(cur_path, home_path)
     print(cur_path, home_path)
-    substr_literal = "http"
-    substr_regex = re.compile(".*"+substr_literal+".*", re.RegexFlag.DOTALL)
+    SUBSTR_LITERAL = "http"
+    substr_regex = re.compile(".*"+SUBSTR_LITERAL+".*", re.RegexFlag.DOTALL)
 #     pickle.dump(generate(substr_literal, substr_regex), open("http_strings.input1","wb"))
 #     pickle.dump(generate(substr_literal, substr_regex), open("http_strings.input2","wb"))
     
-    java_class_name = "benchmark.StringContains"
+    JAVA_CLASS_NAME = "benchmark.StringContains"
     for idx, file_name in enumerate(["http_strings.input1", "http_strings.input2"]):
         data = pickle.load(open(file_name, "rb"))
         for gen_str, str_len, match_pos_ratio in data:
-            cmd = get_cmd(java_class_name, '_'.join([str(idx), substr_literal, str(str_len), str(match_pos_ratio)]), re.escape(substr_literal), gen_str)
+            cmd = get_cmd(JAVA_CLASS_NAME, '_'.join([str(idx), SUBSTR_LITERAL, str(str_len), str(match_pos_ratio)]), re.escape(SUBSTR_LITERAL), gen_str)
             print(f"Verifying Java Benchmark: string length {str_len}, matching position ratio {match_pos_ratio}", cmd)
-            result = subprocess.run(cmd, stdout=subprocess.PIPE)
+            result = subprocess.run(cmd, stdout=subprocess.PIPE, check=True)
 #         rgx = re.escape(regex_literal)
 #         for s1, s2 in str_list: # s1, s2 have same length
 #             for cmd in [

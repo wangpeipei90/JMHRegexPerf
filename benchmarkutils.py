@@ -11,10 +11,18 @@ import exrex
 import re
 
 class CharacterSetType(Enum):
-    AlphaNumeric = "AlphaNumeric" 
-    Printable = "Printable"
-    ASCII = "ASCII"
-    Unicode = "Unicode"
+    AlphaNumeric = string.ascii_letters + string.digits 
+    Printable = string.printable
+    ASCII = string.ascii_letters
+    Unicode = None
+    
+    def generate_random_str(length: int) -> str:
+        if length > 0 and self.value is not None:
+            return ''.join([random.choice(self.value) for _ in range(length)])
+        elif length == 0:
+            return ''
+        else:
+            raise Exception('Input is negative: {length} or character set type {self.name} is not supported yet')
 
 def get_class_path(cur_path, home_path):
     return ":".join([cur_path+"/target/classes",
@@ -32,13 +40,7 @@ def get_class_path(cur_path, home_path):
                       home_path+"/.m2/repository/dk/brics/automaton/automaton/1.11-8/automaton-1.11-8.jar",
                       home_path+"/.m2/repository/commons-cli/commons-cli/1.4/commons-cli-1.4.jar"])
     
-def generate_random_str(length: int, type: CharacterSetType) -> str:
-    if type == CharacterSetType.AlphaNumeric:
-        return ''.join([random.choice(string.ascii_letters + string.digits) for _ in range(length)])
-    elif type == CharacterSetType.Printable:
-        return ''.join([random.choice(string.printable) for _ in range(length)])
-    else:
-        raise Exception('Not supported character set type yet')
+
     
 def generate_match_str(regex, str_len):
     return exrex.getone(regex, str_len)
