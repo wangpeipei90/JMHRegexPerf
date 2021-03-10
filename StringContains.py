@@ -80,7 +80,7 @@ def get_result(case: ContainedStringCase):
             csv_names.append(csv_name)
         df = pd.concat(map(pd.read_csv, glob.glob(os.path.join('', "my_files*.csv"))))
         
-def generate(substr_literal, substr_regex):
+def generate(substr_literal, substr_regex, character_type: CharacterSetType = CharacterSetType.Printable):
     data = []
     substr_len = len(substr_literal)
     for i in range(2, power_two):
@@ -90,12 +90,12 @@ def generate(substr_literal, substr_regex):
             if non_matching_prefix_len + substr_len > string_len:
                 print(f"Could not generate with string of length {string_len} and matching position ratio of {match_pos_ratio}")
                 continue
-            non_matching_prefix = generate_random_nonmatching_str(non_matching_prefix_len, substr_regex, CharacterSetType.Printable)
-            non_matching_suffix = generate_random_nonmatching_str(string_len - non_matching_prefix_len - substr_len, substr_regex, CharacterSetType.Printable)
+            non_matching_prefix = generate_random_nonmatching_str(non_matching_prefix_len, substr_regex, character_type)
+            non_matching_suffix = generate_random_nonmatching_str(string_len - non_matching_prefix_len - substr_len, substr_regex, character_type)
             gen_str = non_matching_prefix + substr_literal + non_matching_suffix
             data.append((gen_str, string_len, match_pos_ratio)) # matching strings
             
-        gen_str_non_matching = generate_random_nonmatching_str(string_len, substr_regex, CharacterSetType.Printable)
+        gen_str_non_matching = generate_random_nonmatching_str(string_len, substr_regex, character_type)
         data.append((gen_str_non_matching, string_len, match_pos_ratios[-1]))
     
     return data
@@ -105,12 +105,13 @@ def generate(substr_literal, substr_regex):
 if __name__ == '__main__':
     cur_path, home_path = os.getcwd(), os.getenv("HOME")
     class_path = get_class_path(cur_path, home_path)
+    character_type = CharacterSetType.Printable
     print(cur_path, home_path)
+    
     SUBSTR_LITERAL = "some" # http
     substr_regex = re.compile(".*"+SUBSTR_LITERAL+".*", re.RegexFlag.DOTALL)
-    pickle.dump(generate(SUBSTR_LITERAL, substr_regex), open("some_strings.input1","wb"))
-    pickle.dump(generate(SUBSTR_LITERAL, substr_regex), open("some_strings.input2","wb"))
-    print("generation over")
+#     pickle.dump(generate(SUBSTR_LITERAL, substr_regex, character_type), open("some_strings.input1","wb"))
+#     pickle.dump(generate(SUBSTR_LITERAL, substr_regex, character_type), open("some_strings.input2","wb"))
     
     JAVA_CLASS_NAME = "benchmark.StringContains"
     for idx, file_name in enumerate(["some_strings.input1", "some_strings.input2"]):

@@ -16,7 +16,7 @@ class CharacterSetType(Enum):
     ASCII = string.ascii_letters
     Unicode = None
     
-    def generate_random_str(length: int) -> str:
+    def generate_random_str(self, length: int) -> str:
         if length > 0 and self.value is not None:
             return ''.join([random.choice(self.value) for _ in range(length)])
         elif length == 0:
@@ -67,9 +67,9 @@ def generate_mismatch_str_by_edit(regex_search, regex_match, match_str):
             m = regex_search.search(mut_change)
 
 def generate_random_nonmatching_str(str_len: int, ver_regex: re.Pattern, character_type: CharacterSetType):
-    s = generate_random_str(str_len, character_type)
+    s = character_type.generate_random_str(str_len)
     while ver_regex.match(s):
-        s = generate_random_str(str_len, character_type)
+        s = character_type.generate_random_str(str_len)
     return s
     
 if __name__ == '__main__':
