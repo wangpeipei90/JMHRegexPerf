@@ -106,13 +106,14 @@ if __name__ == '__main__':
     cur_path, home_path = os.getcwd(), os.getenv("HOME")
     class_path = get_class_path(cur_path, home_path)
     print(cur_path, home_path)
-    SUBSTR_LITERAL = "http"
+    SUBSTR_LITERAL = "some" # http
     substr_regex = re.compile(".*"+SUBSTR_LITERAL+".*", re.RegexFlag.DOTALL)
-#     pickle.dump(generate(substr_literal, substr_regex), open("http_strings.input1","wb"))
-#     pickle.dump(generate(substr_literal, substr_regex), open("http_strings.input2","wb"))
+    pickle.dump(generate(SUBSTR_LITERAL, substr_regex), open("some_strings.input1","wb"))
+    pickle.dump(generate(SUBSTR_LITERAL, substr_regex), open("some_strings.input2","wb"))
+    print("generation over")
     
     JAVA_CLASS_NAME = "benchmark.StringContains"
-    for idx, file_name in enumerate(["http_strings.input1", "http_strings.input2"]):
+    for idx, file_name in enumerate(["some_strings.input1", "some_strings.input2"]):
         data = pickle.load(open(file_name, "rb"))
         for gen_str, str_len, match_pos_ratio in data:
             cmd = get_cmd(JAVA_CLASS_NAME, '_'.join([str(idx), SUBSTR_LITERAL, str(str_len), str(match_pos_ratio)]), re.escape(SUBSTR_LITERAL), gen_str)
