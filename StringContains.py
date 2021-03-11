@@ -12,6 +12,7 @@ import subprocess
 from dataclasses import dataclass
 import pickle
 import os.path
+import time
 import os
 from benchmarkutils import (
     generate_random_nonmatching_str,
@@ -108,18 +109,19 @@ if __name__ == '__main__':
     character_type = CharacterSetType.Printable
     print(cur_path, home_path)
     
-    SUBSTR_LITERAL = "some" # http
+    SUBSTR_LITERAL = '?' * 50 ##'8' * 50 #"some" # http
     substr_regex = re.compile(".*"+SUBSTR_LITERAL+".*", re.RegexFlag.DOTALL)
-#     pickle.dump(generate(SUBSTR_LITERAL, substr_regex, character_type), open("some_strings.input1","wb"))
-#     pickle.dump(generate(SUBSTR_LITERAL, substr_regex, character_type), open("some_strings.input2","wb"))
-    
+    pickle.dump(generate(SUBSTR_LITERAL, substr_regex, character_type), open("8multiply50_strings.input1","wb"))
+    pickle.dump(generate(SUBSTR_LITERAL, substr_regex, character_type), open("8multiply50_strings.input2","wb"))
+    print("generation over")    
     JAVA_CLASS_NAME = "benchmark.StringContains"
-    for idx, file_name in enumerate(["some_strings.input1", "some_strings.input2"]):
+    for idx, file_name in enumerate(["8multiply50_strings.input1", "8multiply50_strings.input2"]):
         data = pickle.load(open(file_name, "rb"))
         for gen_str, str_len, match_pos_ratio in data:
             cmd = get_cmd(JAVA_CLASS_NAME, '_'.join([str(idx), SUBSTR_LITERAL, str(str_len), str(match_pos_ratio)]), re.escape(SUBSTR_LITERAL), gen_str)
             print(f"Verifying Java Benchmark: string length {str_len}, matching position ratio {match_pos_ratio}", cmd)
             result = subprocess.run(cmd, stdout=subprocess.PIPE, check=True)
+            time.sleep(10)
 #         rgx = re.escape(regex_literal)
 #         for s1, s2 in str_list: # s1, s2 have same length
 #             for cmd in [
