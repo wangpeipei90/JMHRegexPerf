@@ -109,13 +109,14 @@ if __name__ == '__main__':
     character_type = CharacterSetType.Printable
     print(cur_path, home_path)
     
-    SUBSTR_LITERAL = '?' * 50 ##'8' * 50 #"some" # http
+    SUBSTR_LITERAL = "http" # '?' * 50 # '8' * 50 #"some" # http
     substr_regex = re.compile(".*" + re.escape(SUBSTR_LITERAL) + ".*", re.RegexFlag.DOTALL)
-    pickle.dump(generate(SUBSTR_LITERAL, substr_regex, character_type), open("symbolmultiply50_strings.input1","wb"))
-    pickle.dump(generate(SUBSTR_LITERAL, substr_regex, character_type), open("symbolmultiply50_strings.input2","wb"))
+    pickle.dump(generate(SUBSTR_LITERAL, substr_regex, character_type), open("http_strings.input3","wb"))
+    pickle.dump(generate(SUBSTR_LITERAL, substr_regex, character_type), open("http_strings.input4","wb"))
     print("generation over")    
     JAVA_CLASS_NAME = "benchmark.StringContains"
-    for idx, file_name in enumerate(["symbolmultiply50_strings.input1", "symbolmultiply50_strings.input2"]):
+    for idx, file_name in enumerate(["http_strings.input3", "http_strings.input4"]):
+        idx += 2
         data = pickle.load(open(file_name, "rb"))
         for gen_str, str_len, match_pos_ratio in data:
             cmd = get_cmd(JAVA_CLASS_NAME, '_'.join([str(idx), SUBSTR_LITERAL, str(str_len), str(match_pos_ratio)]), re.escape(SUBSTR_LITERAL), gen_str)
