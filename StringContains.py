@@ -13,6 +13,7 @@ from dataclasses import dataclass
 import pickle
 import os.path
 import time
+import random
 import os
 from benchmarkutils import (
     generate_random_nonmatching_str,
@@ -111,15 +112,20 @@ if __name__ == '__main__':
     
     SUBSTR_LITERAL = "http" # '?' * 50 # '8' * 50 #"some" # http
     substr_regex = re.compile(".*" + re.escape(SUBSTR_LITERAL) + ".*", re.RegexFlag.DOTALL)
-    pickle.dump(generate(SUBSTR_LITERAL, substr_regex, character_type), open("http_strings.input3","wb"))
-    pickle.dump(generate(SUBSTR_LITERAL, substr_regex, character_type), open("http_strings.input4","wb"))
-    print("generation over")    
+#     pickle.dump(generate(SUBSTR_LITERAL, substr_regex, character_type), open("http_strings.input3","wb"))
+#     pickle.dump(generate(SUBSTR_LITERAL, substr_regex, character_type), open("http_strings.input4","wb"))
+#     print("generation over")    
     JAVA_CLASS_NAME = "benchmark.StringContains"
+    cmds = []
     for idx, file_name in enumerate(["http_strings.input3", "http_strings.input4"]):
         idx += 2
         data = pickle.load(open(file_name, "rb"))
         for gen_str, str_len, match_pos_ratio in data:
             cmd = get_cmd(JAVA_CLASS_NAME, '_'.join([str(idx), SUBSTR_LITERAL, str(str_len), str(match_pos_ratio)]), re.escape(SUBSTR_LITERAL), gen_str)
+            cmds.append(cmd)
+    
+    random.shuffle(cmds)
+    for cmd in cmds:
             print(f"Verifying Java Benchmark: string length {str_len}, matching position ratio {match_pos_ratio}", cmd)
             result = subprocess.run(cmd, stdout=subprocess.PIPE, check=True)
             time.sleep(10)

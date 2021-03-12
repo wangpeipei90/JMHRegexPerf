@@ -187,7 +187,7 @@ def parselines(lines):
 def parseFile(file_path):
     '''https://github.com/DiegoEliasCosta/badJMHpractices-study/RQ2. Impact of bad JMH practices/scripts/jmh_parser.py '''
     # file_path = os.path.join('..', 'Artifacts', 'druid benchmark', 'out.out')
-    print('Parsing file %s' % file_path)
+#     print('Parsing file %s' % file_path)
 
     #with open(file_path, "r", encoding='utf-8') as f:
     with open(file_path, "r") as f:
@@ -196,7 +196,7 @@ def parseFile(file_path):
 
     # Save to disk
     new_file_path = file_path.replace('.log', '_parsed.csv')
-    print('Saving the parsed jmh results in file = %s' % new_file_path)
+#     print('Saving the parsed jmh results in file = %s' % new_file_path)
     df.to_csv(new_file_path)
     return df
 
