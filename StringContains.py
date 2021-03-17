@@ -87,7 +87,7 @@ def generate(substr_literal, substr_regex, character_type: CharacterSetType = Ch
     substr_len = len(substr_literal)
     for i in range(2, power_two):
         string_len = 2 ** i
-        for match_pos_ratio in match_pos_ratios[:-1]:
+        for match_pos_ratio in [0.9]: #match_pos_ratios[:-1]:
             non_matching_prefix_len = int(string_len * match_pos_ratio)
             if non_matching_prefix_len + substr_len > string_len:
                 print(f"Could not generate with string of length {string_len} and matching position ratio of {match_pos_ratio}")
@@ -97,8 +97,8 @@ def generate(substr_literal, substr_regex, character_type: CharacterSetType = Ch
             gen_str = non_matching_prefix + substr_literal + non_matching_suffix
             data.append((gen_str, string_len, match_pos_ratio)) # matching strings
             
-        gen_str_non_matching = generate_random_nonmatching_str(string_len, substr_regex, character_type)
-        data.append((gen_str_non_matching, string_len, match_pos_ratios[-1]))
+#         gen_str_non_matching = generate_random_nonmatching_str(string_len, substr_regex, character_type)
+#         data.append((gen_str_non_matching, string_len, match_pos_ratios[-1]))
     
     return data
             
@@ -110,19 +110,19 @@ if __name__ == '__main__':
     character_type = CharacterSetType.Printable
     print(cur_path, home_path)
     
+    idx, filename = 5, "http_strings.input5"
     SUBSTR_LITERAL = "http" # '?' * 50 # '8' * 50 #"some" # http
     substr_regex = re.compile(".*" + re.escape(SUBSTR_LITERAL) + ".*", re.RegexFlag.DOTALL)
-#     pickle.dump(generate(SUBSTR_LITERAL, substr_regex, character_type), open("http_strings.input3","wb"))
+    pickle.dump(generate(SUBSTR_LITERAL, substr_regex, character_type), open(file_name,"wb"))
 #     pickle.dump(generate(SUBSTR_LITERAL, substr_regex, character_type), open("http_strings.input4","wb"))
 #     print("generation over")    
     JAVA_CLASS_NAME = "benchmark.StringContains"
     cmds = []
-    for idx, file_name in enumerate(["http_strings.input3", "http_strings.input4"]):
-        idx += 2
-        data = pickle.load(open(file_name, "rb"))
-        for gen_str, str_len, match_pos_ratio in data:
-            cmd = get_cmd(JAVA_CLASS_NAME, '_'.join([str(idx), SUBSTR_LITERAL, str(str_len), str(match_pos_ratio)]), re.escape(SUBSTR_LITERAL), gen_str)
-            cmds.append(cmd)
+
+    data = pickle.load(open(file_name, "rb"))
+    for gen_str, str_len, match_pos_ratio in data:
+        cmd = get_cmd(JAVA_CLASS_NAME, '_'.join([str(idx), SUBSTR_LITERAL, str(str_len), str(match_pos_ratio)]), re.escape(SUBSTR_LITERAL), gen_str)
+        cmds.append(cmd)
     
     random.shuffle(cmds)
     for cmd in cmds:
