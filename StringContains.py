@@ -62,7 +62,7 @@ def produce(regex_lens: list, file_name: str):
     cases = [produce_case(idx, regex_len) for idx, regex_len in enumerate(regex_lens)]
     pickle.dump(cases, open(file_name, "wb"))
     
-def get_cmd(java_class_name: str, file_name_prefix: str, regex: str, str_exec: str) -> list:
+def get_cmd(class_path: str, java_class_name: str, file_name_prefix: str, regex: str, str_exec: str) -> list:
     return ["java", "-Dfile.encoding=UTF-8", "-classpath", class_path, java_class_name, 
             file_name_prefix+".csv",
             file_name_prefix+".log",
@@ -121,7 +121,7 @@ if __name__ == '__main__':
 
     data = pickle.load(open(file_name, "rb"))
     for gen_str, str_len, match_pos_ratio in data:
-        cmd = get_cmd(JAVA_CLASS_NAME, '_'.join([str(idx), SUBSTR_LITERAL, str(str_len), str(match_pos_ratio)]), re.escape(SUBSTR_LITERAL), gen_str)
+        cmd = get_cmd(class_path, JAVA_CLASS_NAME, '_'.join([str(idx), SUBSTR_LITERAL, str(str_len), str(match_pos_ratio)]), re.escape(SUBSTR_LITERAL), gen_str)
         cmds.append(cmd)
     
     random.shuffle(cmds)

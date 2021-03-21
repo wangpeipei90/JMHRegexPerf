@@ -80,7 +80,7 @@ def generate_random_nonmatching_str(str_len: int, ver_regex: re.Pattern, charact
 def get_data_frame_from_csv(output_dir: str):
 #     os.chdir(output_dir)
     files = glob.glob(output_dir + "*[0-9].csv", recursive=False)
-   # print(files)
+#     print(f"Getting the information from {len(files)}")
     data = []
     for file_name in files:
 #         print(file_name)
@@ -94,6 +94,8 @@ def get_data_frame_from_csv(output_dir: str):
         df['match_pos_ratio'] = match_pos_ratio
         df['Score'] = df['Score'].round().astype(int) ## Score from float to int
         data.append(df)
+#         print(file_name, df.shape)
+        
     df = pd.concat(data, ignore_index=True)
     df = df.pivot_table(values = "Score", index=["str_len","match_pos_ratio"], columns="Benchmark")
     df.reset_index(drop=False, inplace=True) 
