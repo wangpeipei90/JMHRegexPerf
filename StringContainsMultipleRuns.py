@@ -34,15 +34,15 @@ if __name__ == '__main__':
     
     runs = 10
     lens = [9, 17, 63, 125, 318, 948]
+        
+    file_name = "http_test_10runs.input3"
     strings = []
     for str_len in lens:
-        gen_str = generate_random_nonmatching_str(str_len, substr_regex, character_type)
-        strings.append((gen_str, str_len, False, str_len))
         gen_str2 = generate_match_str(".*" + re.escape(SUBSTR_LITERAL) + ".*", str_len)
-        strings.append((gen_str, str_len, True, len(gen_str)))
-        
-    file_name = "http_test_10runs.input"
-    pickle.dump(strings, open(file_name,"wb"))   
+        strings.append((gen_str2, str_len, True, len(gen_str2)))
+        gen_str = generate_random_nonmatching_str(len(gen_str2), substr_regex, character_type)
+        strings.append((gen_str, str_len, False, len(gen_str)))
+    pickle.dump(strings, open(file_name,"wb"))
     
     JAVA_CLASS_NAME = "benchmark.StringContains"
     cmds = []
