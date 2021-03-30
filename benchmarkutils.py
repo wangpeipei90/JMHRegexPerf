@@ -32,7 +32,7 @@ class CharacterSetType(Enum):
 def get_class_path(cur_path, home_path):
     return ":".join([cur_path+"/target/classes",
                       home_path+"/.m2/repository/org/apache/commons/commons-csv/1.8/commons-csv-1.8.jar",
-                      home_path+"/.m2/repository/org/openjdk/jmh/jmh-core/1.26/jmh-core-1.26.jar",
+                      home_path+"/.m2/repository/org/openjdk/jmh/jmh-core/1.29/jmh-core-1.29.jar",
                       home_path+"/.m2/repository/net/sf/jopt-simple/jopt-simple/4.6/jopt-simple-4.6.jar",
                       home_path+"/.m2/repository/org/apache/commons/commons-math3/3.2/commons-math3-3.2.jar",
                       home_path+"/.m2/repository/org/openjdk/jmh/jmh-generator-annprocess/1.26/jmh-generator-annprocess-1.26.jar",

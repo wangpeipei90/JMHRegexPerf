@@ -9,6 +9,7 @@ res.stdout.contains(errorString)
 import re
 import math
 import subprocess
+from collections import defaultdict
 from dataclasses import dataclass
 import pickle
 import os.path
@@ -101,8 +102,7 @@ def generate(substr_literal, substr_regex, character_type: CharacterSetType = Ch
             data.append((gen_str_non_matching, string_len, match_pos_ratios[-1]))
     
     return data
-            
-            
+                  
         
 if __name__ == '__main__':
     cur_path, home_path = os.getcwd(), os.getenv("HOME")
@@ -110,67 +110,68 @@ if __name__ == '__main__':
     character_type = CharacterSetType.Printable
     print(cur_path, home_path)
     
-    idx, file_name = 9, "http_nonmatching_strings.input9"
-    SUBSTR_LITERAL = "http" # '?' * 50 # '8' * 50 #"some" # http
+    SUBSTR_LITERAL = "http" 
     substr_regex = re.compile(".*" + re.escape(SUBSTR_LITERAL) + ".*", re.RegexFlag.DOTALL)
-    pickle.dump(generate(SUBSTR_LITERAL, substr_regex, character_type), open(file_name,"wb"))
-#     pickle.dump(generate(SUBSTR_LITERAL, substr_regex, character_type), open("http_strings.input4","wb"))
-#     print("generation over")    
+    substr_len = len(SUBSTR_LITERAL)
+    
+    file_name = "http.input"
+    if not os.path.exists(file_name):
+        http_data = dict()
+        
+        for i in range(2, power_two):
+            string_len = 2 ** i
+            if string_len not in http_data:
+                http_data[string_len] = defaultdict(list)
+                
+            for match_pos_ratio in match_pos_ratios:
+                start_index = len(http_data[string_len][match_pos_ratio])
+                
+                if match_pos_ratio == 1:
+                    retries = 0
+                    while len(http_data[string_len][match_pos_ratio]) < start_index + 15 or retries < 20:
+                        gen_str = generate_random_nonmatching_str(string_len, substr_regex, character_type)
+                        if gen_str in http_data[string_len][match_pos_ratio]:
+                            retries -= 1
+                        else:
+                            http_data[string_len][match_pos_ratio].append(gen_str)
+                else:
+                    non_matching_prefix_len = int(string_len * match_pos_ratio)
+                    if non_matching_prefix_len + substr_len > string_len:
+                        print(f"Could not generate with string of length {string_len} and matching position ratio of {match_pos_ratio}")
+                        continue
+                    
+                    retries = 0
+                    while len(http_data[string_len][match_pos_ratio]) < start_index + 15 or retries < 20:
+                        non_matching_prefix = generate_random_nonmatching_str(non_matching_prefix_len, substr_regex, character_type)
+                        non_matching_suffix = generate_random_nonmatching_str(string_len - non_matching_prefix_len - substr_len, substr_regex, character_type)
+                        gen_str = non_matching_prefix + SUBSTR_LITERAL + non_matching_suffix
+                        if gen_str in http_data[string_len][match_pos_ratio]:
+                            retries -= 1
+                        else:
+                            http_data[string_len][match_pos_ratio].append(gen_str)
+                
+                
+                if len(http_data[string_len][match_pos_ratio]) < start_index + 15:
+                    print(f"Could not generate 15 unique string of length {string_len} and matching position ratio of {match_pos_ratio}, only generated {len(http_data[string_len][match_pos_ratio]) - start_index}")
+                        
+                    
+                
+        pickle.dump(http_data, open(file_name,"wb"))
+        print("generation over")
+    
+        
     JAVA_CLASS_NAME = "benchmark.StringContains"
     cmds = []
-
     data = pickle.load(open(file_name, "rb"))
-    for gen_str, str_len, match_pos_ratio in data:
-        cmd = get_cmd(class_path, JAVA_CLASS_NAME, '_'.join([str(idx), SUBSTR_LITERAL, str(str_len), str(match_pos_ratio)]), re.escape(SUBSTR_LITERAL), gen_str)
-        cmds.append(cmd)
+    for str_len, dict_pos_ratio in data.items():
+        for match_pos_ratio, string_set in dict_pos_ratio.items():
+            for idx, gen_str in enumerate(string_set):
+                cmd = get_cmd(class_path, JAVA_CLASS_NAME, '_'.join([SUBSTR_LITERAL, str(str_len), str(match_pos_ratio), str(idx)]), re.escape(SUBSTR_LITERAL), gen_str)
+                cmds.append(cmd)
     
     random.shuffle(cmds)
     for cmd in cmds:
             print(f"Verifying Java Benchmark: string length {str_len}, matching position ratio {match_pos_ratio}", cmd)
             result = subprocess.run(cmd, stdout=subprocess.PIPE, check=True)
             time.sleep(10)
-#         rgx = re.escape(regex_literal)
-#         for s1, s2 in str_list: # s1, s2 have same length
-#             for cmd in [
-#                 get_cmd(len(regex_literal), str(len(s1))+"_match_pos_0", rgx, s1),
-#                 get_cmd(len(regex_literal), str(len(s2))+"_match_pos_half", rgx, s2)
-#                 ]:
-#                 print("verifying matching in Java Benchmark:", cmd)
-#                 result = subprocess.run(cmd, stdout=subprocess.PIPE)
-        
-#     file_name = "string_contains.input"
-# #     produce([5, 10, 50, 100, 500, 1000], file_name)
-#     cases = pickle.load(open(file_name, "rb"))
-#     for case in cases:
-#         string_count = 0
-#         for s, (mis_rm, mis_edit) in case.str_to_match.items():
-#             for cmd in [get_cmd(case.index, str(string_count)+"_matching", case.escaped_regex, s),
-#                         get_cmd(case.index, str(string_count)+"_dismatching_rm", case.escaped_regex, mis_rm),
-#                         get_cmd(case.index, str(string_count)+"_dismatching_edit", case.escaped_regex, mis_edit)
-#                     ]:
-#                 print("verifying matching in Java Benchmark:", cmd)
-#                 result = subprocess.run(cmd, stdout=subprocess.PIPE)
-#             string_count += 1
-            
-#     file_name = "string_contains_match.input"
-#     data = pickle.load(open(file_name, "rb"))
-#     for regex_literal, str_list in data.items():
-#         rgx = re.escape(regex_literal)
-#         for s1, s2 in str_list: # s1, s2 have same length
-#             for cmd in [
-#                 get_cmd(len(regex_literal), str(len(s1))+"_match_pos_0", rgx, s1),
-#                 get_cmd(len(regex_literal), str(len(s2))+"_match_pos_half", rgx, s2)
-#                 ]:
-#                 print("verifying matching in Java Benchmark:", cmd)
-#                 result = subprocess.run(cmd, stdout=subprocess.PIPE)
-#      
-#     file_name = "string_contains_nonmatch.input"
-#     data = pickle.load(open(file_name, "rb"))
-#     for regex_literal, str_list in data.items():
-#         rgx = re.escape(regex_literal)
-#         i = 0 
-#         for s in str_list:
-#             cmd = get_cmd(len(regex_literal), str(len(s))+"_nonmatch_"+str(i), rgx, s)
-#             print("verifying non matching in Java Benchmark:", cmd)
-#             result = subprocess.run(cmd, stdout=subprocess.PIPE)
-#             i = (i+1) % 5                  
+                
