@@ -75,7 +75,7 @@ public class StringContains {
 		ChainedOptionsBuilder optBuilder = new OptionsBuilder()
 				.parent(cmdOptions)
 				.include(StringContains.class.getSimpleName()) //// .include("JMHF.*") 可支持正则
-				.shouldDoGC(true)
+				.shouldDoGC(false)
 				.param("regex",regex)
 				.param("str", str)
 				.resultFormat(ResultFormatType.CSV)
