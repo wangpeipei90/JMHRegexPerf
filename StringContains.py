@@ -83,9 +83,9 @@ def get_result(case: ContainedStringCase):
             csv_names.append(csv_name)
         df = pd.concat(map(pd.read_csv, glob.glob(os.path.join('', "my_files*.csv"))))
         
-def generate(substr_literal, string_len, substr_regex, character_type: CharacterSetType = CharacterSetType.Printable):
+def generate(substr_literal, string_len, match_pos_ratio, substr_regex, character_type: CharacterSetType = CharacterSetType.Printable):
     substr_len = len(substr_literal)
-    if matching:
+    if match_pos_ratio < 1:
         non_matching_prefix_len = int(string_len * match_pos_ratio)
         if non_matching_prefix_len + substr_len > string_len:
             return -1
@@ -119,7 +119,7 @@ if __name__ == '__main__':
                 start_index = len(http_data[string_len][match_pos_ratio])
                 retries = 0
                 while len(http_data[string_len][match_pos_ratio]) < start_index + 15 or retries < 20:
-                    gen_str = generate(SUBSTR_LITERAL, string_len, substr_regex, character_type)
+                    gen_str = generate(SUBSTR_LITERAL, string_len, match_pos_ratio, substr_regex, character_type)
                     if gen_str == -1:
                         print(f"Could not generate with string of length {string_len} and matching position ratio of {match_pos_ratio}")
                         break
