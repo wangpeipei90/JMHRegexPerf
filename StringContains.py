@@ -83,25 +83,18 @@ def get_result(case: ContainedStringCase):
             csv_names.append(csv_name)
         df = pd.concat(map(pd.read_csv, glob.glob(os.path.join('', "my_files*.csv"))))
         
-def generate(substr_literal, substr_regex, character_type: CharacterSetType = CharacterSetType.Printable):
-    data = []
+def generate(substr_literal, string_len, substr_regex, character_type: CharacterSetType = CharacterSetType.Printable):
     substr_len = len(substr_literal)
-    for i in range(2, power_two):
-        string_len = 2 ** i
-#         for match_pos_ratio in [0.9]: #match_pos_ratios[:-1]:
-#             non_matching_prefix_len = int(string_len * match_pos_ratio)
-#             if non_matching_prefix_len + substr_len > string_len:
-#                 print(f"Could not generate with string of length {string_len} and matching position ratio of {match_pos_ratio}")
-#                 continue
-#             non_matching_prefix = generate_random_nonmatching_str(non_matching_prefix_len, substr_regex, character_type)
-#             non_matching_suffix = generate_random_nonmatching_str(string_len - non_matching_prefix_len - substr_len, substr_regex, character_type)
-#             gen_str = non_matching_prefix + substr_literal + non_matching_suffix
-#             data.append((gen_str, string_len, match_pos_ratio)) # matching strings
-        for j in range(4):    
-            gen_str_non_matching = generate_random_nonmatching_str(string_len, substr_regex, character_type)
-            data.append((gen_str_non_matching, string_len, match_pos_ratios[-1]))
-    
-    return data
+    if matching:
+        non_matching_prefix_len = int(string_len * match_pos_ratio)
+        if non_matching_prefix_len + substr_len > string_len:
+            return -1
+        non_matching_prefix = generate_random_nonmatching_str(non_matching_prefix_len, substr_regex, character_type)
+        non_matching_suffix = generate_random_nonmatching_str(string_len - non_matching_prefix_len - substr_len, substr_regex, character_type)
+        gen_str = non_matching_prefix + substr_literal + non_matching_suffix
+    else:
+        gen_str = generate_random_nonmatching_str(string_len, substr_regex, character_type)
+    return gen_str
                   
         
 if __name__ == '__main__':
@@ -117,7 +110,6 @@ if __name__ == '__main__':
     file_name = "http.input"
     if not os.path.exists(file_name):
         http_data = dict()
-        
         for i in range(2, power_two):
             string_len = 2 ** i
             if string_len not in http_data:
@@ -125,40 +117,19 @@ if __name__ == '__main__':
                 
             for match_pos_ratio in match_pos_ratios:
                 start_index = len(http_data[string_len][match_pos_ratio])
-                
-                if match_pos_ratio == 1:
-                    retries = 0
-                    while len(http_data[string_len][match_pos_ratio]) < start_index + 15 or retries < 20:
-                        gen_str = generate_random_nonmatching_str(string_len, substr_regex, character_type)
-                        if gen_str in http_data[string_len][match_pos_ratio]:
-                            retries -= 1
-                        else:
-                            http_data[string_len][match_pos_ratio].append(gen_str)
-                else:
-                    non_matching_prefix_len = int(string_len * match_pos_ratio)
-                    if non_matching_prefix_len + substr_len > string_len:
+                retries = 0
+                while len(http_data[string_len][match_pos_ratio]) < start_index + 15 or retries < 20:
+                    gen_str = generate(SUBSTR_LITERAL, string_len, substr_regex, character_type)
+                    if gen_str == -1:
                         print(f"Could not generate with string of length {string_len} and matching position ratio of {match_pos_ratio}")
-                        continue
-                    
-                    retries = 0
-                    while len(http_data[string_len][match_pos_ratio]) < start_index + 15 or retries < 20:
-                        non_matching_prefix = generate_random_nonmatching_str(non_matching_prefix_len, substr_regex, character_type)
-                        non_matching_suffix = generate_random_nonmatching_str(string_len - non_matching_prefix_len - substr_len, substr_regex, character_type)
-                        gen_str = non_matching_prefix + SUBSTR_LITERAL + non_matching_suffix
-                        if gen_str in http_data[string_len][match_pos_ratio]:
-                            retries -= 1
-                        else:
-                            http_data[string_len][match_pos_ratio].append(gen_str)
-                
-                
-#                 if len(http_data[string_len][match_pos_ratio]) < start_index + 15:
-                print(f"Generate {len(http_data[string_len][match_pos_ratio]) - start_index} unique string of length {string_len} and matching position ratio of {match_pos_ratio}")
-                        
-                    
-                
+                        break
+                    elif gen_str in http_data[string_len][match_pos_ratio]:
+                        retries -= 1
+                    else:
+                        http_data[string_len][match_pos_ratio].append(gen_str)
+                print(f"Generate {len(http_data[string_len][match_pos_ratio]) - start_index} unique string of length {string_len} and matching position ratio of {match_pos_ratio}")      
         pickle.dump(http_data, open(file_name,"wb"))
         print("generation over")
-    
         
     JAVA_CLASS_NAME = "benchmark.StringContains"
     cmds = []
