@@ -151,8 +151,8 @@ if __name__ == '__main__':
                             http_data[string_len][match_pos_ratio].append(gen_str)
                 
                 
-                if len(http_data[string_len][match_pos_ratio]) < start_index + 15:
-                    print(f"Could not generate 15 unique string of length {string_len} and matching position ratio of {match_pos_ratio}, only generated {len(http_data[string_len][match_pos_ratio]) - start_index}")
+#                 if len(http_data[string_len][match_pos_ratio]) < start_index + 15:
+                print(f"Generate {len(http_data[string_len][match_pos_ratio]) - start_index} unique string of length {string_len} and matching position ratio of {match_pos_ratio}")
                         
                     
                 
