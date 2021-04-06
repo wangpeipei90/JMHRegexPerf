@@ -1,115 +1,0 @@
-# JMH version: 1.26
-# VM version: JDK 11.0.10, OpenJDK 64-Bit Server VM, 11.0.10+9-Ubuntu-0ubuntu1.20.04
-# VM invoker: /usr/lib/jvm/java-11-openjdk-amd64/bin/java
-# VM options: -server -Xms2G -Xmx2G
-# Warmup: 5 iterations, 1 s each
-# Measurement: 20 iterations, 1 s each
-# Timeout: 10 min per iteration
-# Threads: 1 thread, will synchronize iterations
-# Benchmark mode: Average time, time/op
-# Benchmark: benchmark.StringContains.regexMatches
-# Parameters: (regex = http, str = A.Bn^jOY6ZuvGz+wP('j`+Y$ n27Fg9v 
-(hcVCvN`SHMHhkCgL!
-qpf{|cYsx"(@dwe}qm>i=**#1aX4I_wOJU)
-
-# Run progress: 0.00% complete, ETA 00:00:50
-# Fork: 1 of 1
-# Warmup Iteration   1: 527.398 ns/op
-# Warmup Iteration   2: 492.822 ns/op
-# Warmup Iteration   3: 456.600 ns/op
-# Warmup Iteration   4: 462.436 ns/op
-# Warmup Iteration   5: 452.632 ns/op
-Iteration   1: 458.560 ns/op
-Iteration   2: 460.402 ns/op
-Iteration   3: 460.136 ns/op
-Iteration   4: 452.332 ns/op
-Iteration   5: 465.057 ns/op
-Iteration   6: 451.998 ns/op
-Iteration   7: 463.295 ns/op
-Iteration   8: 462.983 ns/op
-Iteration   9: 457.237 ns/op
-Iteration  10: 460.324 ns/op
-Iteration  11: 460.940 ns/op
-Iteration  12: 452.459 ns/op
-Iteration  13: 475.360 ns/op
-Iteration  14: 452.378 ns/op
-Iteration  15: 464.240 ns/op
-Iteration  16: 464.568 ns/op
-Iteration  17: 453.686 ns/op
-Iteration  18: 464.153 ns/op
-Iteration  19: 462.128 ns/op
-Iteration  20: 454.378 ns/op
-
-
-Result "benchmark.StringContains.regexMatches":
-  459.831 ±(99.9%) 5.124 ns/op [Average]
-  (min, avg, max) = (451.998, 459.831, 475.360), stdev = 5.900
-  CI (99.9%): [454.707, 464.954] (assumes normal distribution)
-
-
-# JMH version: 1.26
-# VM version: JDK 11.0.10, OpenJDK 64-Bit Server VM, 11.0.10+9-Ubuntu-0ubuntu1.20.04
-# VM invoker: /usr/lib/jvm/java-11-openjdk-amd64/bin/java
-# VM options: -server -Xms2G -Xmx2G
-# Warmup: 5 iterations, 1 s each
-# Measurement: 20 iterations, 1 s each
-# Timeout: 10 min per iteration
-# Threads: 1 thread, will synchronize iterations
-# Benchmark mode: Average time, time/op
-# Benchmark: benchmark.StringContains.stringContains
-# Parameters: (regex = http, str = A.Bn^jOY6ZuvGz+wP('j`+Y$ n27Fg9v 
-(hcVCvN`SHMHhkCgL!
-qpf{|cYsx"(@dwe}qm>i=**#1aX4I_wOJU)
-
-# Run progress: 50.00% complete, ETA 00:00:25
-# Fork: 1 of 1
-# Warmup Iteration   1: 14.509 ns/op
-# Warmup Iteration   2: 15.471 ns/op
-# Warmup Iteration   3: 15.439 ns/op
-# Warmup Iteration   4: 15.441 ns/op
-# Warmup Iteration   5: 15.438 ns/op
-Iteration   1: 15.466 ns/op
-Iteration   2: 15.451 ns/op
-Iteration   3: 15.474 ns/op
-Iteration   4: 15.431 ns/op
-Iteration   5: 15.437 ns/op
-Iteration   6: 15.451 ns/op
-Iteration   7: 15.440 ns/op
-Iteration   8: 15.433 ns/op
-Iteration   9: 15.441 ns/op
-Iteration  10: 15.438 ns/op
-Iteration  11: 15.433 ns/op
-Iteration  12: 15.436 ns/op
-Iteration  13: 15.426 ns/op
-Iteration  14: 15.425 ns/op
-Iteration  15: 15.436 ns/op
-Iteration  16: 15.430 ns/op
-Iteration  17: 15.435 ns/op
-Iteration  18: 15.437 ns/op
-Iteration  19: 15.461 ns/op
-Iteration  20: 15.460 ns/op
-
-
-Result "benchmark.StringContains.stringContains":
-  15.442 ±(99.9%) 0.012 ns/op [Average]
-  (min, avg, max) = (15.425, 15.442, 15.474), stdev = 0.014
-  CI (99.9%): [15.430, 15.454] (assumes normal distribution)
-
-
-# Run complete. Total time: 00:00:50
-
-REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
-why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
-experiments, perform baseline and negative tests that provide experimental control, make sure
-the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
-Do not assume the numbers tell you what you want them to tell.
-
-Benchmark                      (regex)                                                                                       (str)  Mode  Cnt    Score   Error  Units
-StringContains.regexMatches       http  A.Bn^jOY6ZuvGz+wP('j`+Y$ n27Fg9v 
-(hcVCvN`SHMHhkCgL!
-qpf{|cYsx"(@dwe}qm>i=**#1aX4I_wOJU  avgt   20  459.831 ± 5.124  ns/op
-StringContains.stringContains     http  A.Bn^jOY6ZuvGz+wP('j`+Y$ n27Fg9v 
-(hcVCvN`SHMHhkCgL!
-qpf{|cYsx"(@dwe}qm>i=**#1aX4I_wOJU  avgt   20   15.442 ± 0.012  ns/op
-
-Benchmark result is saved to dataset5_63_False_3_run.csv
