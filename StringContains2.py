@@ -113,22 +113,23 @@ if __name__ == '__main__':
         for i in range(2, power_two):
             string_len = 2 ** i
             if string_len not in http_data:
-                http_data[string_len] = defaultdict(list) 
-            match_pos_ratio = 0.95
-            start_index = len(http_data[string_len][match_pos_ratio])
-            retries = 0
-            print(f"Generating strings for string length {string_len}, match_pos_ratio: {match_pos_ratio}") 
-            while len(http_data[string_len][match_pos_ratio]) < start_index + 15 and retries < 20:
-                print(len(http_data[string_len][match_pos_ratio]), start_index+15, retries)
-                gen_str = generate(SUBSTR_LITERAL, string_len, match_pos_ratio, substr_regex, character_type)
-                if gen_str == -1:
-                    print(f"Could not generate with string of length {string_len} and matching position ratio of {match_pos_ratio}")
-                    break
-                elif gen_str in http_data[string_len][match_pos_ratio]:
-                    retries += 1
-                else:
-                    http_data[string_len][match_pos_ratio].append(gen_str)
-            print(f"Generate {len(http_data[string_len][match_pos_ratio]) - start_index} unique string of length {string_len} and matching position ratio of {match_pos_ratio}")      
+                http_data[string_len] = defaultdict(list)
+            print(f"Generating strings for string length {string_len}") 
+            for match_pos_ratio in match_pos_ratios:
+                start_index = len(http_data[string_len][match_pos_ratio])
+                retries = 0
+                print(f"Generating strings for string length {string_len}, match_pos_ratio: {match_pos_ratio}") 
+                while len(http_data[string_len][match_pos_ratio]) < start_index + 15 and retries < 20:
+                    print(len(http_data[string_len][match_pos_ratio]), start_index+15, retries)
+                    gen_str = generate(SUBSTR_LITERAL, string_len, match_pos_ratio, substr_regex, character_type)
+                    if gen_str == -1:
+                        print(f"Could not generate with string of length {string_len} and matching position ratio of {match_pos_ratio}")
+                        break
+                    elif gen_str in http_data[string_len][match_pos_ratio]:
+                        retries += 1
+                    else:
+                        http_data[string_len][match_pos_ratio].append(gen_str)
+                print(f"Generate {len(http_data[string_len][match_pos_ratio]) - start_index} unique string of length {string_len} and matching position ratio of {match_pos_ratio}")      
         pickle.dump(http_data, open(file_name,"wb"))
         print("generation over")
         
