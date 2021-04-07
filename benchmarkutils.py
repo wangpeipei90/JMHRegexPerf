@@ -38,6 +38,7 @@ def get_class_path(cur_path, home_path):
                       home_path+"/.m2/repository/org/openjdk/jmh/jmh-generator-annprocess/1.26/jmh-generator-annprocess-1.26.jar",
                       home_path+"/.m2/repository/org/apache/commons/commons-lang3/3.7/commons-lang3-3.7.jar",
                       home_path+"/.m2/repository/org/apache/commons/commons-text/1.2/commons-text-1.2.jar",
+                      home_path+"/.m2/repository/com/google/code/gson/gson/2.8.6/gson-2.8.6.jar",
                       home_path+"/.m2/repository/com/googlecode/json-simple/json-simple/1.1.1/json-simple-1.1.1.jar",
                       home_path+"/.m2/repository/junit/junit/4.10/junit-4.10.jar",
                       home_path+".m2/repository/org/hamcrest/hamcrest-core/1.1/hamcrest-core-1.1.jar",
