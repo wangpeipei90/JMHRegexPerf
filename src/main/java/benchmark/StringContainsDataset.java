@@ -1,6 +1,7 @@
 package benchmark;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -28,7 +29,6 @@ import org.openjdk.jmh.runner.options.CommandLineOptionException;
 import org.openjdk.jmh.runner.options.CommandLineOptions;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 
-import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonReader;
@@ -66,23 +66,27 @@ public class StringContainsDataset {
 	private int count_match = 0;
 	
 	@Setup(Level.Trial)
-	public void check() throws FileNotFoundException{
+	public void check() throws IOException{
 		pattern = Pattern.compile(".*" + regex + ".*" , Pattern.DOTALL);
 		DATA_FOR_TESTING = new ArrayList<String>(1000);
 		JsonReader reader = new JsonReader(new FileReader(json_filename));
 		JsonArray jsonArray = JsonParser.parseReader(reader).getAsJsonArray();
 	    for (int i = 0; i < jsonArray.size(); i++) {
 	    	JsonArray arr = jsonArray.get(i).getAsJsonArray();
-	    	String str = arr.get(0).toString();
+	    	String str = arr.get(0).getAsString();
 	    	int length = Integer.parseInt(arr.get(1).toString());
-	    	String type = arr.get(2).toString();
+	    	String type = arr.get(2).getAsString();
 	    	
+	    	if(str.length() != length) {
+	    		System.out.println(i + "th " + str + " str_length: " + str.length() + " " + length + " " + type);
+	    		throw new IOException("string length is not correct");	
+	    	}
 	    	if(type.equals("M")) {
 	    		count_match += 1;
 	    	}
-	    	if(str.length() == length) {
+    		if(str.length() == length) {
 	    		DATA_FOR_TESTING.add(str);
-	    	}
+    		}
 	    }
 	    System.out.println("Among "+ jsonArray.size() +" strings, " + DATA_FOR_TESTING.size() + " are added, "+ count_match + " strings are matching strings.");
 	}
