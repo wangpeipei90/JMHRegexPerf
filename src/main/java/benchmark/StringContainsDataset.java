@@ -1,4 +1,6 @@
 package benchmark;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -26,8 +28,10 @@ import org.openjdk.jmh.runner.options.CommandLineOptionException;
 import org.openjdk.jmh.runner.options.CommandLineOptions;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonParser;
+import com.google.gson.stream.JsonReader;
 
 /**
  * Pattern.compile(".*" + errorString + ".*", Pattern.DOTALL)
@@ -49,8 +53,8 @@ import com.google.gson.JsonParser;
 @Measurement(iterations = 20, time = 1)
 
 public class StringContainsDataset {
-	@Param("[[\"abc\",3,\"M\"], [\"adef\",4,\"NM\"]")
-	private String json_str;
+	@Param("http_0.1_0.json")
+	private String json_filename;
 	
 	@Param("abc")
 	private String regex;
@@ -62,10 +66,12 @@ public class StringContainsDataset {
 	private int count_match = 0;
 	
 	@Setup(Level.Trial)
-	public void check(){
+	public void check() throws FileNotFoundException{
 		pattern = Pattern.compile(".*" + regex + ".*" , Pattern.DOTALL);
 		DATA_FOR_TESTING = new ArrayList<String>(1000);
-		JsonArray jsonArray = JsonParser.parseString(json_str).getAsJsonArray();
+		Gson gson = new Gson();
+		JsonReader reader = new JsonReader(new FileReader(json_filename));
+		JsonArray jsonArray = JsonParser.parseReader(reader).getAsJsonArray();
 	    for (int i = 0; i < jsonArray.size(); i++) {
 	    	JsonArray arr = jsonArray.get(i).getAsJsonArray();
 	    	String str = arr.get(0).toString();
@@ -93,7 +99,7 @@ public class StringContainsDataset {
 				.include(StringContainsDataset.class.getSimpleName()) //// .include("JMHF.*") 可支持正则
 				.shouldDoGC(false)
 				.param("regex",regex)
-				.param("json_str", str)
+				.param("json_filename", str)
 				.resultFormat(ResultFormatType.CSV)
 				.result(csv_filename)
 				.output(log_filename)
@@ -101,6 +107,7 @@ public class StringContainsDataset {
 		System.out.println("output file: "+((OptionsBuilder)optBuilder).getOutput());
 		System.out.println("result file: "+((OptionsBuilder)optBuilder).getResult());
 		new Runner(optBuilder.build()).run();
+//		new Runner(new OptionsBuilder().include(StringContainsDataset.class.getSimpleName()).build()).run();
 	}
 	
 //	@Benchmark
@@ -113,7 +120,8 @@ public class StringContainsDataset {
 	@Benchmark
 	public void stringContains(Blackhole bh){
 		for(String s: DATA_FOR_TESTING){
-			bh.consume(s.contains(regex));	
+			boolean res = s.contains(regex);
+			bh.consume(res);	
 		}
 	}
 	
@@ -127,7 +135,8 @@ public class StringContainsDataset {
 	@Benchmark
 	public void regexMatches(Blackhole bh){
 		for(String s: DATA_FOR_TESTING){
-			bh.consume(pattern.matcher(s).matches());	
+			boolean res = pattern.matcher(s).matches();
+			bh.consume(res);	
 		}
 	}
 }

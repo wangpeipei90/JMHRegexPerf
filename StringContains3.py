@@ -98,10 +98,12 @@ if __name__ == '__main__':
     for idx, data in enumerate(pickle.load(open(file_name, "rb"))): # one repetition
         # print(list(data.keys()), len(data))
         for match_ratio, dataset in data.items():
-            print(idx, match_ratio, len(dataset))
-            json_strs = json.dumps(dataset)
-            # print(match_ratio, len(json_strs),json_strs)
-            cmd = get_cmd(class_path, JAVA_CLASS_NAME, '_'.join([SUBSTR_LITERAL, str(match_ratio), str(idx)]), re.escape(SUBSTR_LITERAL), json_strs)
+            # print(idx, match_ratio, len(dataset))
+            prefix_filename = '_'.join([SUBSTR_LITERAL, str(match_ratio), str(idx)])
+            with open(prefix_filename + '.json', 'w') as f:
+                json.dump(dataset,f)
+            cmd = get_cmd(class_path, JAVA_CLASS_NAME, prefix_filename, re.escape(SUBSTR_LITERAL), prefix_filename + '.json')
+            print(cmd)
             result = subprocess.run(cmd, stdout=subprocess.PIPE, check=True)
             break
         break
