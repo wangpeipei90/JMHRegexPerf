@@ -94,16 +94,22 @@ if __name__ == '__main__':
         print("generation over")
         
     JAVA_CLASS_NAME = "benchmark.StringContainsDataset"
-#     cmds = []
+    cmds = []
     for idx, data in enumerate(pickle.load(open(file_name, "rb"))): # one repetition
-        # print(list(data.keys()), len(data))
         for match_ratio, dataset in data.items():
-            # print(idx, match_ratio, len(dataset))
             prefix_filename = '_'.join([SUBSTR_LITERAL, str(match_ratio), str(idx)])
             with open(prefix_filename + '.json', 'w') as f:
                 json.dump(dataset,f)
+    
+    for idx, data in enumerate(pickle.load(open(file_name, "rb"))):
+        for match_ratio, dataset in data.items():
+            prefix_filename = '_'.join([SUBSTR_LITERAL, str(match_ratio), str(idx)])
             cmd = get_cmd(class_path, JAVA_CLASS_NAME, prefix_filename, re.escape(SUBSTR_LITERAL), prefix_filename + '.json')
-            print(cmd)
-            result = subprocess.run(cmd, stdout=subprocess.PIPE, check=True)
-            break
+            cmds.append(cmd)
+    
+    random.shuffle(cmds)
+    for cmd in cmds:
+        print(f"Verifying Java Benchmark {JAVA_CLASS_NAME}: {cmd}")
+        result = subprocess.run(cmd, stdout=subprocess.PIPE, check=True)
+        time.sleep(10)
         break
