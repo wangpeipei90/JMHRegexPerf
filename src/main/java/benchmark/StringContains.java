@@ -39,10 +39,10 @@ import org.openjdk.jmh.runner.options.OptionsBuilder;
 @Measurement(iterations = 20, time = 1)
 public class StringContains {
 
-	@Param({"errorstring"})
+	@Param({"error"})
 	private String regex;
 	
-	@Param({"error"})
+	@Param({"errorstring"})
 	private String str;
 	
 	
