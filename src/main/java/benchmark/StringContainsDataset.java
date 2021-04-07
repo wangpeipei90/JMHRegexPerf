@@ -56,7 +56,7 @@ public class StringContainsDataset {
 	@Param("http_0.1_0.json")
 	private String json_filename;
 	
-	@Param("abc")
+	@Param("http")
 	private String regex;
 	
 	private Pattern pattern;
@@ -69,7 +69,6 @@ public class StringContainsDataset {
 	public void check() throws FileNotFoundException{
 		pattern = Pattern.compile(".*" + regex + ".*" , Pattern.DOTALL);
 		DATA_FOR_TESTING = new ArrayList<String>(1000);
-		Gson gson = new Gson();
 		JsonReader reader = new JsonReader(new FileReader(json_filename));
 		JsonArray jsonArray = JsonParser.parseReader(reader).getAsJsonArray();
 	    for (int i = 0; i < jsonArray.size(); i++) {
