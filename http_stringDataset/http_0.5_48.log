@@ -1,0 +1,333 @@
+# JMH version: 1.29
+# VM version: JDK 11.0.10, OpenJDK 64-Bit Server VM, 11.0.10+9-Ubuntu-0ubuntu1.18.04
+# VM invoker: /usr/lib/jvm/java-11-openjdk-amd64/bin/java
+# VM options: -server -Xms2G -Xmx2G
+# Blackhole mode: full + dont-inline hint
+# Warmup: 5 iterations, 1 s each
+# Measurement: 20 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: benchmark.StringContainsDataset.regexMatches
+# Parameters: (json_filename = http_0.5_48.json, regex = http)
+
+# Run progress: 0.00% complete, ETA 00:04:10
+# Fork: 1 of 5
+# Warmup Iteration   1: 1601339.741 ns/op
+# Warmup Iteration   2: 1472045.628 ns/op
+# Warmup Iteration   3: 1517757.935 ns/op
+# Warmup Iteration   4: 1517871.572 ns/op
+# Warmup Iteration   5: 1517282.026 ns/op
+Iteration   1: 1516675.314 ns/op
+Iteration   2: 1521577.179 ns/op
+Iteration   3: 1514492.507 ns/op
+Iteration   4: 1438526.460 ns/op
+Iteration   5: 1437780.565 ns/op
+Iteration   6: 1438212.963 ns/op
+Iteration   7: 1437744.625 ns/op
+Iteration   8: 1440526.276 ns/op
+Iteration   9: 1438046.947 ns/op
+Iteration  10: 1469124.323 ns/op
+Iteration  11: 1530793.606 ns/op
+Iteration  12: 1514423.352 ns/op
+Iteration  13: 1436776.491 ns/op
+Iteration  14: 1434672.553 ns/op
+Iteration  15: 1434388.742 ns/op
+Iteration  16: 1434870.936 ns/op
+Iteration  17: 1437452.545 ns/op
+Iteration  18: 1435091.129 ns/op
+Iteration  19: 1435728.192 ns/op
+Iteration  20: 1437898.165 ns/op
+
+# Run progress: 10.00% complete, ETA 00:03:48
+# Fork: 2 of 5
+# Warmup Iteration   1: 1597803.380 ns/op
+# Warmup Iteration   2: 1486989.771 ns/op
+# Warmup Iteration   3: 1529792.810 ns/op
+# Warmup Iteration   4: 1529429.373 ns/op
+# Warmup Iteration   5: 1529398.844 ns/op
+Iteration   1: 1529559.294 ns/op
+Iteration   2: 1529719.060 ns/op
+Iteration   3: 1537129.411 ns/op
+Iteration   4: 1454910.532 ns/op
+Iteration   5: 1456003.923 ns/op
+Iteration   6: 1455379.145 ns/op
+Iteration   7: 1455980.988 ns/op
+Iteration   8: 1455125.897 ns/op
+Iteration   9: 1454399.586 ns/op
+Iteration  10: 1460038.245 ns/op
+Iteration  11: 1529926.717 ns/op
+Iteration  12: 1529006.496 ns/op
+Iteration  13: 1499725.001 ns/op
+Iteration  14: 1453733.279 ns/op
+Iteration  15: 1453242.566 ns/op
+Iteration  16: 1453271.607 ns/op
+Iteration  17: 1454585.952 ns/op
+Iteration  18: 1453920.006 ns/op
+Iteration  19: 1453950.422 ns/op
+Iteration  20: 1454668.682 ns/op
+
+# Run progress: 20.00% complete, ETA 00:03:23
+# Fork: 3 of 5
+# Warmup Iteration   1: 1614867.785 ns/op
+# Warmup Iteration   2: 1486181.979 ns/op
+# Warmup Iteration   3: 1529171.087 ns/op
+# Warmup Iteration   4: 1529050.400 ns/op
+# Warmup Iteration   5: 1528749.882 ns/op
+Iteration   1: 1528858.058 ns/op
+Iteration   2: 1532505.309 ns/op
+Iteration   3: 1541734.065 ns/op
+Iteration   4: 1452927.271 ns/op
+Iteration   5: 1452698.669 ns/op
+Iteration   6: 1452850.671 ns/op
+Iteration   7: 1452699.903 ns/op
+Iteration   8: 1455358.648 ns/op
+Iteration   9: 1452926.726 ns/op
+Iteration  10: 1465173.280 ns/op
+Iteration  11: 1452715.109 ns/op
+Iteration  12: 1452529.639 ns/op
+Iteration  13: 1452355.566 ns/op
+Iteration  14: 1452415.864 ns/op
+Iteration  15: 1452646.363 ns/op
+Iteration  16: 1452579.711 ns/op
+Iteration  17: 1459182.131 ns/op
+Iteration  18: 1529325.742 ns/op
+Iteration  19: 1529450.656 ns/op
+Iteration  20: 1452916.781 ns/op
+
+# Run progress: 30.00% complete, ETA 00:02:57
+# Fork: 4 of 5
+# Warmup Iteration   1: 1615130.890 ns/op
+# Warmup Iteration   2: 1485309.684 ns/op
+# Warmup Iteration   3: 1529277.590 ns/op
+# Warmup Iteration   4: 1529127.273 ns/op
+# Warmup Iteration   5: 1529036.163 ns/op
+Iteration   1: 1529241.408 ns/op
+Iteration   2: 1529124.507 ns/op
+Iteration   3: 1528936.951 ns/op
+Iteration   4: 1463094.674 ns/op
+Iteration   5: 1453580.984 ns/op
+Iteration   6: 1453346.372 ns/op
+Iteration   7: 1453216.804 ns/op
+Iteration   8: 1453367.168 ns/op
+Iteration   9: 1453026.565 ns/op
+Iteration  10: 1457187.016 ns/op
+Iteration  11: 1461729.956 ns/op
+Iteration  12: 1455167.158 ns/op
+Iteration  13: 1455245.581 ns/op
+Iteration  14: 1456472.507 ns/op
+Iteration  15: 1457250.364 ns/op
+Iteration  16: 1456555.448 ns/op
+Iteration  17: 1457175.093 ns/op
+Iteration  18: 1528937.345 ns/op
+Iteration  19: 1531483.208 ns/op
+Iteration  20: 1479021.185 ns/op
+
+# Run progress: 40.00% complete, ETA 00:02:32
+# Fork: 5 of 5
+# Warmup Iteration   1: 1613915.952 ns/op
+# Warmup Iteration   2: 1474054.271 ns/op
+# Warmup Iteration   3: 1517863.891 ns/op
+# Warmup Iteration   4: 1517579.173 ns/op
+# Warmup Iteration   5: 1517046.091 ns/op
+Iteration   1: 1517262.088 ns/op
+Iteration   2: 1517827.654 ns/op
+Iteration   3: 1523069.808 ns/op
+Iteration   4: 1440491.250 ns/op
+Iteration   5: 1440250.281 ns/op
+Iteration   6: 1440075.308 ns/op
+Iteration   7: 1440053.327 ns/op
+Iteration   8: 1440423.658 ns/op
+Iteration   9: 1440062.609 ns/op
+Iteration  10: 1452792.694 ns/op
+Iteration  11: 1440340.711 ns/op
+Iteration  12: 1439949.462 ns/op
+Iteration  13: 1440017.409 ns/op
+Iteration  14: 1439963.390 ns/op
+Iteration  15: 1440040.565 ns/op
+Iteration  16: 1439867.603 ns/op
+Iteration  17: 1448735.329 ns/op
+Iteration  18: 1516707.324 ns/op
+Iteration  19: 1516193.505 ns/op
+Iteration  20: 1453125.023 ns/op
+
+
+Result "benchmark.StringContainsDataset.regexMatches":
+  1469233.391 ±(99.9%) 11711.814 ns/op [Average]
+  (min, avg, max) = (1434388.742, 1469233.391, 1541734.065), stdev = 34532.551
+  CI (99.9%): [1457521.577, 1480945.205] (assumes normal distribution)
+
+
+# JMH version: 1.29
+# VM version: JDK 11.0.10, OpenJDK 64-Bit Server VM, 11.0.10+9-Ubuntu-0ubuntu1.18.04
+# VM invoker: /usr/lib/jvm/java-11-openjdk-amd64/bin/java
+# VM options: -server -Xms2G -Xmx2G
+# Blackhole mode: full + dont-inline hint
+# Warmup: 5 iterations, 1 s each
+# Measurement: 20 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: benchmark.StringContainsDataset.stringContains
+# Parameters: (json_filename = http_0.5_48.json, regex = http)
+
+# Run progress: 50.00% complete, ETA 00:02:06
+# Fork: 1 of 5
+# Warmup Iteration   1: 53986.999 ns/op
+# Warmup Iteration   2: 51947.317 ns/op
+# Warmup Iteration   3: 51876.666 ns/op
+# Warmup Iteration   4: 51802.039 ns/op
+# Warmup Iteration   5: 51842.812 ns/op
+Iteration   1: 52035.016 ns/op
+Iteration   2: 50622.825 ns/op
+Iteration   3: 50534.351 ns/op
+Iteration   4: 50603.515 ns/op
+Iteration   5: 50526.027 ns/op
+Iteration   6: 50548.049 ns/op
+Iteration   7: 50582.510 ns/op
+Iteration   8: 50589.000 ns/op
+Iteration   9: 50521.097 ns/op
+Iteration  10: 50538.599 ns/op
+Iteration  11: 50566.899 ns/op
+Iteration  12: 50513.774 ns/op
+Iteration  13: 50505.042 ns/op
+Iteration  14: 50513.556 ns/op
+Iteration  15: 50538.789 ns/op
+Iteration  16: 50540.648 ns/op
+Iteration  17: 50481.695 ns/op
+Iteration  18: 50527.594 ns/op
+Iteration  19: 50497.161 ns/op
+Iteration  20: 50464.639 ns/op
+
+# Run progress: 60.00% complete, ETA 00:01:41
+# Fork: 2 of 5
+# Warmup Iteration   1: 52840.072 ns/op
+# Warmup Iteration   2: 51342.289 ns/op
+# Warmup Iteration   3: 51316.486 ns/op
+# Warmup Iteration   4: 51197.255 ns/op
+# Warmup Iteration   5: 51159.553 ns/op
+Iteration   1: 51486.983 ns/op
+Iteration   2: 51290.735 ns/op
+Iteration   3: 51319.250 ns/op
+Iteration   4: 51397.855 ns/op
+Iteration   5: 51377.892 ns/op
+Iteration   6: 51333.206 ns/op
+Iteration   7: 51375.727 ns/op
+Iteration   8: 51351.854 ns/op
+Iteration   9: 51316.522 ns/op
+Iteration  10: 51329.021 ns/op
+Iteration  11: 51340.261 ns/op
+Iteration  12: 51327.328 ns/op
+Iteration  13: 51247.987 ns/op
+Iteration  14: 51295.874 ns/op
+Iteration  15: 51343.038 ns/op
+Iteration  16: 51312.521 ns/op
+Iteration  17: 51355.635 ns/op
+Iteration  18: 51340.612 ns/op
+Iteration  19: 51301.037 ns/op
+Iteration  20: 51328.925 ns/op
+
+# Run progress: 70.00% complete, ETA 00:01:16
+# Fork: 3 of 5
+# Warmup Iteration   1: 52646.537 ns/op
+# Warmup Iteration   2: 51914.413 ns/op
+# Warmup Iteration   3: 51472.685 ns/op
+# Warmup Iteration   4: 51382.605 ns/op
+# Warmup Iteration   5: 51259.159 ns/op
+Iteration   1: 51808.769 ns/op
+Iteration   2: 51450.258 ns/op
+Iteration   3: 51342.962 ns/op
+Iteration   4: 51393.866 ns/op
+Iteration   5: 51354.427 ns/op
+Iteration   6: 51404.991 ns/op
+Iteration   7: 51353.377 ns/op
+Iteration   8: 51438.988 ns/op
+Iteration   9: 51374.151 ns/op
+Iteration  10: 51363.872 ns/op
+Iteration  11: 51386.549 ns/op
+Iteration  12: 51341.036 ns/op
+Iteration  13: 51344.654 ns/op
+Iteration  14: 51370.510 ns/op
+Iteration  15: 51372.994 ns/op
+Iteration  16: 51382.938 ns/op
+Iteration  17: 51454.885 ns/op
+Iteration  18: 51354.793 ns/op
+Iteration  19: 51327.585 ns/op
+Iteration  20: 51403.946 ns/op
+
+# Run progress: 80.00% complete, ETA 00:00:50
+# Fork: 4 of 5
+# Warmup Iteration   1: 53624.181 ns/op
+# Warmup Iteration   2: 52433.662 ns/op
+# Warmup Iteration   3: 52329.349 ns/op
+# Warmup Iteration   4: 52257.799 ns/op
+# Warmup Iteration   5: 52246.474 ns/op
+Iteration   1: 52368.895 ns/op
+Iteration   2: 48556.782 ns/op
+Iteration   3: 48383.589 ns/op
+Iteration   4: 48304.386 ns/op
+Iteration   5: 48352.838 ns/op
+Iteration   6: 48276.896 ns/op
+Iteration   7: 48341.713 ns/op
+Iteration   8: 48387.639 ns/op
+Iteration   9: 48210.924 ns/op
+Iteration  10: 48299.939 ns/op
+Iteration  11: 48418.427 ns/op
+Iteration  12: 48420.722 ns/op
+Iteration  13: 48343.167 ns/op
+Iteration  14: 48503.133 ns/op
+Iteration  15: 48369.915 ns/op
+Iteration  16: 48332.322 ns/op
+Iteration  17: 48424.109 ns/op
+Iteration  18: 48315.552 ns/op
+Iteration  19: 48397.572 ns/op
+Iteration  20: 48401.785 ns/op
+
+# Run progress: 90.00% complete, ETA 00:00:25
+# Fork: 5 of 5
+# Warmup Iteration   1: 52401.628 ns/op
+# Warmup Iteration   2: 51116.404 ns/op
+# Warmup Iteration   3: 50982.040 ns/op
+# Warmup Iteration   4: 50731.475 ns/op
+# Warmup Iteration   5: 50857.417 ns/op
+Iteration   1: 51449.491 ns/op
+Iteration   2: 48029.806 ns/op
+Iteration   3: 47848.578 ns/op
+Iteration   4: 47839.965 ns/op
+Iteration   5: 47891.274 ns/op
+Iteration   6: 47914.600 ns/op
+Iteration   7: 47883.763 ns/op
+Iteration   8: 47837.076 ns/op
+Iteration   9: 47880.238 ns/op
+Iteration  10: 47975.540 ns/op
+Iteration  11: 47859.935 ns/op
+Iteration  12: 47910.090 ns/op
+Iteration  13: 47899.131 ns/op
+Iteration  14: 47911.450 ns/op
+Iteration  15: 47888.403 ns/op
+Iteration  16: 47864.954 ns/op
+Iteration  17: 47877.489 ns/op
+Iteration  18: 47844.995 ns/op
+Iteration  19: 47865.772 ns/op
+Iteration  20: 47878.434 ns/op
+
+
+Result "benchmark.StringContainsDataset.stringContains":
+  49998.099 ±(99.9%) 514.635 ns/op [Average]
+  (min, avg, max) = (47837.076, 49998.099, 52368.895), stdev = 1517.413
+  CI (99.9%): [49483.464, 50512.734] (assumes normal distribution)
+
+
+# Run complete. Total time: 00:04:13
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+Benchmark                              (json_filename)  (regex)  Mode  Cnt        Score       Error  Units
+StringContainsDataset.regexMatches    http_0.5_48.json     http  avgt  100  1469233.391 ± 11711.814  ns/op
+StringContainsDataset.stringContains  http_0.5_48.json     http  avgt  100    49998.099 ±   514.635  ns/op
+
+Benchmark result is saved to http_0.5_48.csv
