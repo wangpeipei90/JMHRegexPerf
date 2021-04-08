@@ -112,4 +112,3 @@ if __name__ == '__main__':
         print(f"Verifying Java Benchmark {JAVA_CLASS_NAME}: {cmd}")
         result = subprocess.run(cmd, stdout=subprocess.PIPE, check=True)
         time.sleep(10)
-        break
