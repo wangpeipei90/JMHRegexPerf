@@ -44,14 +44,16 @@ if __name__ == '__main__':
     file_name = "split_regex_trimmed.input"
     JAVA_CLASS_NAME = "benchmark.PrecompiledRegexSplit"
     
-    data = dict()
+    data = defaultdict(list)
     for i in range(2):
         gen_str_match = generate_match_str(split_regex, 200)
         gen_str_nonmatch = generate_random_nonmatching_str(len(gen_str_match), split_regex_obj, character_type)
         
+        data[len(gen_str_match)].append(gen_str_match); data[len(gen_str_match)].append(gen_str_nonmatch)
+        
         for idx, str_val in enumerate([gen_str_match, gen_str_nonmatch]):
-            cmd = get_cmd(class_path, JAVA_CLASS_NAME, '_'.join(["split_precompiled_regex", str(i), len(gen_str_match), "Match" if idx == 0 else "NonMatch"]), re.escape(split_regex), str_val)
-            print(cmd)   
+            cmd = get_cmd(class_path, JAVA_CLASS_NAME, '_'.join(["split_precompiled_regex", str(i), str(len(gen_str_match)), "Match" if idx == 0 else "NonMatch"]), re.escape(split_regex), str_val)
+            print(len(gen_str_match), cmd)   
             result = subprocess.run(cmd, stdout=subprocess.PIPE, check=True)
             time.sleep(10) 
     
