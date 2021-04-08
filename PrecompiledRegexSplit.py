@@ -50,7 +50,7 @@ if __name__ == '__main__':
         gen_str_nonmatch = generate_random_nonmatching_str(len(gen_str_match), split_regex_obj, character_type)
         
         for idx, str_val in enumerate([gen_str_match, gen_str_nonmatch]):
-            cmd = get_cmd(class_path, JAVA_CLASS_NAME, '_'.join(["split_precompiled_regex", str(gen_str_match), "Match" if idx == 0 else "NonMatch"]), re.escape(split_regex), str_val)
+            cmd = get_cmd(class_path, JAVA_CLASS_NAME, '_'.join(["split_precompiled_regex", str(i), len(gen_str_match), "Match" if idx == 0 else "NonMatch"]), re.escape(split_regex), str_val)
             print(cmd)   
             result = subprocess.run(cmd, stdout=subprocess.PIPE, check=True)
             time.sleep(10) 
