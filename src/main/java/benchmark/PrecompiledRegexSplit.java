@@ -41,7 +41,7 @@ import org.openjdk.jmh.runner.options.OptionsBuilder;
 @OutputTimeUnit(TimeUnit.NANOSECONDS) 
 @State(Scope.Thread)
 
-@Fork(value = 1, jvmArgs = { "-server", "-Xms2G", "-Xmx2G" }) // heap size
+@Fork(value = 5, jvmArgs = { "-server", "-Xms2G", "-Xmx2G" }) // heap size
 @Warmup(iterations = 5, time = 1)
 @Measurement(iterations = 20, time = 1)
 public class PrecompiledRegexSplit {
@@ -51,44 +51,42 @@ public class PrecompiledRegexSplit {
 	@Param({"error,string"})
 	private String trimmed;
 	
-	@Setup(Level.Trial)
-	public void check() throws IOException{
-		System.out.println("length of the default regex is :" + "\\s*,\\s*".length() +" content: " + "\\s*,\\s*");
-		System.out.println("length of the regex is :" + regex.length() +" content: " + regex);
-		System.out.println("length of the input string is :" + trimmed.length());
-	}
+//	@Setup(Level.Trial)
+//	public void check() throws IOException{
+//		System.out.println("length of the default regex is :" + "\\s*,\\s*".length() + " content: " + "\\s*,\\s*");
+//		System.out.println("length of the regex is :" + regex.length() + " content: " + regex);
+//		System.out.println("length of the input string is :" + trimmed.length() + " content: " + trimmed);
+//	}
 
 	@Benchmark
 	public void stringSplit(Blackhole bh){
-		List<String> res = Arrays.asList(trimmed.split("\\s*,\\s*", -1));
+		List<String> res = Arrays.asList(trimmed.split(regex, -1));
 		bh.consume(res);
 	}
 	
 	@Benchmark
 	public void regexSplit(Blackhole bh){
-		Pattern COMMA_WITH_WHITESPACE = Pattern.compile("\\s*,\\s*");
+		Pattern COMMA_WITH_WHITESPACE = Pattern.compile(regex);
 		List<String> res = Arrays.asList(COMMA_WITH_WHITESPACE.split(trimmed, -1));
 		bh.consume(res);
 	}
 	
 	public static void main(String[] args) throws CommandLineOptionException, RunnerException {
-//		String csv_filename = args[args.length-4];
-//		String log_filename = args[args.length-3];
-//		String split_regex = args[args.length-2];
-//		String str_val = args[args.length-1];
-		CommandLineOptions cmdOptions = new CommandLineOptions(Arrays.copyOfRange(args, 0, args.length)); //-4));
+		String csv_filename = args[args.length-4];
+		String log_filename = args[args.length-3];
+		String split_regex = args[args.length-2];
+		String str_val = args[args.length-1];
+		CommandLineOptions cmdOptions = new CommandLineOptions(Arrays.copyOfRange(args, 0, args.length-4));
 		ChainedOptionsBuilder optBuilder = new OptionsBuilder()
 				.parent(cmdOptions)
 				.include(PrecompiledRegexSplit.class.getSimpleName()) //// .include("JMHF.*") 可支持正则
 				.shouldDoGC(false)
-//				.param("regex",split_regex)
-//				.param("trimmed", str_val)
-//				.resultFormat(ResultFormatType.CSV)
-//				.result(csv_filename)
-//				.output(log_filename)
+				.param("regex",split_regex)
+				.param("trimmed", str_val)
+				.resultFormat(ResultFormatType.CSV)
+				.result(csv_filename)
+				.output(log_filename)
 				.shouldFailOnError(true);
-//		System.out.println("output file: "+((OptionsBuilder)optBuilder).getOutput());
-//		System.out.println("result file: "+((OptionsBuilder)optBuilder).getResult());
 		new Runner(optBuilder.build()).run();
 	}
 
