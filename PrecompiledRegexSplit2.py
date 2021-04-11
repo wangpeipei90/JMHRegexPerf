@@ -103,13 +103,12 @@ if __name__ == '__main__':
     
     for idx, data in enumerate(pickle.load(open(file_name, "rb"))):
         for match_ratio, dataset in data.items():
-            prefix_filename = '_'.join([SUBSTR_LITERAL, str(match_ratio), str(idx)])
-            cmd = get_cmd(class_path, JAVA_CLASS_NAME, prefix_filename, re.escape(SUBSTR_LITERAL), prefix_filename + '.json')
+            prefix_filename = '_'.join(["comma", "space", str(match_ratio), str(idx)])
+            cmd = get_cmd(class_path, JAVA_CLASS_NAME, prefix_filename, split_regex, prefix_filename + '.json')
             cmds.append(cmd)
     
     random.shuffle(cmds)
     for cmd in cmds:
         print(f"Verifying Java Benchmark {JAVA_CLASS_NAME}: {cmd}")
         result = subprocess.run(cmd, stdout=subprocess.PIPE, check=True)
-        break
         time.sleep(10)
