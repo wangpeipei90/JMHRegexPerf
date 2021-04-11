@@ -1,0 +1,337 @@
+# JMH version: 1.29
+# VM version: JDK 11.0.10, OpenJDK 64-Bit Server VM, 11.0.10+9-Ubuntu-0ubuntu1.18.04
+# VM invoker: /usr/lib/jvm/java-11-openjdk-amd64/bin/java
+# VM options: -server -Xms2G -Xmx2G
+# Blackhole mode: full + dont-inline hint
+# Warmup: 5 iterations, 1 s each
+# Measurement: 20 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: benchmark.PrecompiledRegexSplit.regexSplit
+# Parameters: (regex = \s*,\s*, trimmed = ]cfOP6:~+!|SK_('_Hky1]~Jod>c*w]p4x=GVG$~|w5dq "yv:oyO/(\YVz^H;	K'OW^;D{t?;?%`|[v:	A6%Sx# @65|1nS=NDH-Xam}&V"z,S&WYHQV_[iM	b.UM_9t@A;l)3}u$\`"4+/!7s@zPWQp,:bL*AwzQ'%L8oBwIlQP[k>|N-)#28pO;/Gq=R7kKnP|#-*clrXKBAm|;1zF1?`@8FheeZm{I;jL1Sgne@"1 uaJ1R2]CX5mRCMET|HRaA2`[,]fRYipXka\tT`Cw2b}0QwEF}^Oo_$KAy('z@
+IZ!*J^K)
+
+# Run progress: 0.00% complete, ETA 00:04:10
+# Fork: 1 of 5
+# Warmup Iteration   1: 5386.389 ns/op
+# Warmup Iteration   2: 5264.228 ns/op
+# Warmup Iteration   3: 5245.051 ns/op
+# Warmup Iteration   4: 5243.881 ns/op
+# Warmup Iteration   5: 5006.841 ns/op
+Iteration   1: 4722.208 ns/op
+Iteration   2: 4715.871 ns/op
+Iteration   3: 4715.987 ns/op
+Iteration   4: 4755.889 ns/op
+Iteration   5: 4715.591 ns/op
+Iteration   6: 4715.757 ns/op
+Iteration   7: 4716.821 ns/op
+Iteration   8: 4770.343 ns/op
+Iteration   9: 4713.572 ns/op
+Iteration  10: 4714.163 ns/op
+Iteration  11: 4765.013 ns/op
+Iteration  12: 4737.207 ns/op
+Iteration  13: 4713.973 ns/op
+Iteration  14: 4714.126 ns/op
+Iteration  15: 4744.127 ns/op
+Iteration  16: 4780.764 ns/op
+Iteration  17: 4714.351 ns/op
+Iteration  18: 4714.737 ns/op
+Iteration  19: 4714.274 ns/op
+Iteration  20: 4854.692 ns/op
+
+# Run progress: 10.00% complete, ETA 00:03:48
+# Fork: 2 of 5
+# Warmup Iteration   1: 5414.350 ns/op
+# Warmup Iteration   2: 5312.239 ns/op
+# Warmup Iteration   3: 5306.370 ns/op
+# Warmup Iteration   4: 5314.271 ns/op
+# Warmup Iteration   5: 5090.283 ns/op
+Iteration   1: 4778.815 ns/op
+Iteration   2: 4774.691 ns/op
+Iteration   3: 4772.659 ns/op
+Iteration   4: 4821.279 ns/op
+Iteration   5: 4781.764 ns/op
+Iteration   6: 4784.731 ns/op
+Iteration   7: 4785.145 ns/op
+Iteration   8: 4833.911 ns/op
+Iteration   9: 4769.873 ns/op
+Iteration  10: 4770.995 ns/op
+Iteration  11: 4773.011 ns/op
+Iteration  12: 4853.508 ns/op
+Iteration  13: 4771.035 ns/op
+Iteration  14: 4772.088 ns/op
+Iteration  15: 4774.658 ns/op
+Iteration  16: 4878.967 ns/op
+Iteration  17: 4770.243 ns/op
+Iteration  18: 4772.040 ns/op
+Iteration  19: 4772.277 ns/op
+Iteration  20: 4913.225 ns/op
+
+# Run progress: 20.00% complete, ETA 00:03:22
+# Fork: 3 of 5
+# Warmup Iteration   1: 5388.517 ns/op
+# Warmup Iteration   2: 5298.473 ns/op
+# Warmup Iteration   3: 5344.877 ns/op
+# Warmup Iteration   4: 5342.519 ns/op
+# Warmup Iteration   5: 5086.461 ns/op
+Iteration   1: 4734.704 ns/op
+Iteration   2: 4734.527 ns/op
+Iteration   3: 4734.132 ns/op
+Iteration   4: 4775.221 ns/op
+Iteration   5: 4733.591 ns/op
+Iteration   6: 4734.082 ns/op
+Iteration   7: 4734.811 ns/op
+Iteration   8: 4794.100 ns/op
+Iteration   9: 4740.005 ns/op
+Iteration  10: 4741.156 ns/op
+Iteration  11: 4740.909 ns/op
+Iteration  12: 4812.759 ns/op
+Iteration  13: 4734.719 ns/op
+Iteration  14: 4734.797 ns/op
+Iteration  15: 4733.822 ns/op
+Iteration  16: 4837.879 ns/op
+Iteration  17: 4734.160 ns/op
+Iteration  18: 4734.348 ns/op
+Iteration  19: 4734.723 ns/op
+Iteration  20: 4868.214 ns/op
+
+# Run progress: 30.00% complete, ETA 00:02:57
+# Fork: 4 of 5
+# Warmup Iteration   1: 6076.031 ns/op
+# Warmup Iteration   2: 5924.579 ns/op
+# Warmup Iteration   3: 5903.635 ns/op
+# Warmup Iteration   4: 5906.906 ns/op
+# Warmup Iteration   5: 5930.622 ns/op
+Iteration   1: 5381.538 ns/op
+Iteration   2: 5375.191 ns/op
+Iteration   3: 5375.934 ns/op
+Iteration   4: 5377.188 ns/op
+Iteration   5: 5423.043 ns/op
+Iteration   6: 5375.691 ns/op
+Iteration   7: 5374.854 ns/op
+Iteration   8: 5389.918 ns/op
+Iteration   9: 5471.640 ns/op
+Iteration  10: 5388.227 ns/op
+Iteration  11: 5389.759 ns/op
+Iteration  12: 5383.176 ns/op
+Iteration  13: 5468.522 ns/op
+Iteration  14: 5374.613 ns/op
+Iteration  15: 5380.335 ns/op
+Iteration  16: 5377.498 ns/op
+Iteration  17: 5380.345 ns/op
+Iteration  18: 5489.629 ns/op
+Iteration  19: 5376.134 ns/op
+Iteration  20: 5377.213 ns/op
+
+# Run progress: 40.00% complete, ETA 00:02:31
+# Fork: 5 of 5
+# Warmup Iteration   1: 5452.661 ns/op
+# Warmup Iteration   2: 5326.523 ns/op
+# Warmup Iteration   3: 5308.122 ns/op
+# Warmup Iteration   4: 5308.234 ns/op
+# Warmup Iteration   5: 5089.979 ns/op
+Iteration   1: 4798.328 ns/op
+Iteration   2: 4793.806 ns/op
+Iteration   3: 4797.544 ns/op
+Iteration   4: 4828.337 ns/op
+Iteration   5: 4778.550 ns/op
+Iteration   6: 4789.180 ns/op
+Iteration   7: 4782.060 ns/op
+Iteration   8: 4836.683 ns/op
+Iteration   9: 4789.777 ns/op
+Iteration  10: 4782.980 ns/op
+Iteration  11: 4783.280 ns/op
+Iteration  12: 4899.943 ns/op
+Iteration  13: 4834.099 ns/op
+Iteration  14: 4834.470 ns/op
+Iteration  15: 4836.942 ns/op
+Iteration  16: 4904.462 ns/op
+Iteration  17: 4778.957 ns/op
+Iteration  18: 4782.584 ns/op
+Iteration  19: 4782.769 ns/op
+Iteration  20: 4916.527 ns/op
+
+
+Result "benchmark.PrecompiledRegexSplit.regexSplit":
+  4900.188 ±(99.9%) 86.171 ns/op [Average]
+  (min, avg, max) = (4713.572, 4900.188, 5489.629), stdev = 254.077
+  CI (99.9%): [4814.017, 4986.358] (assumes normal distribution)
+
+
+# JMH version: 1.29
+# VM version: JDK 11.0.10, OpenJDK 64-Bit Server VM, 11.0.10+9-Ubuntu-0ubuntu1.18.04
+# VM invoker: /usr/lib/jvm/java-11-openjdk-amd64/bin/java
+# VM options: -server -Xms2G -Xmx2G
+# Blackhole mode: full + dont-inline hint
+# Warmup: 5 iterations, 1 s each
+# Measurement: 20 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: benchmark.PrecompiledRegexSplit.stringSplit
+# Parameters: (regex = \s*,\s*, trimmed = ]cfOP6:~+!|SK_('_Hky1]~Jod>c*w]p4x=GVG$~|w5dq "yv:oyO/(\YVz^H;	K'OW^;D{t?;?%`|[v:	A6%Sx# @65|1nS=NDH-Xam}&V"z,S&WYHQV_[iM	b.UM_9t@A;l)3}u$\`"4+/!7s@zPWQp,:bL*AwzQ'%L8oBwIlQP[k>|N-)#28pO;/Gq=R7kKnP|#-*clrXKBAm|;1zF1?`@8FheeZm{I;jL1Sgne@"1 uaJ1R2]CX5mRCMET|HRaA2`[,]fRYipXka\tT`Cw2b}0QwEF}^Oo_$KAy('z@
+IZ!*J^K)
+
+# Run progress: 50.00% complete, ETA 00:02:06
+# Fork: 1 of 5
+# Warmup Iteration   1: 6382.360 ns/op
+# Warmup Iteration   2: 6169.165 ns/op
+# Warmup Iteration   3: 6145.260 ns/op
+# Warmup Iteration   4: 6148.488 ns/op
+# Warmup Iteration   5: 6145.522 ns/op
+Iteration   1: 5748.476 ns/op
+Iteration   2: 5627.642 ns/op
+Iteration   3: 5627.020 ns/op
+Iteration   4: 5626.516 ns/op
+Iteration   5: 5667.254 ns/op
+Iteration   6: 5599.382 ns/op
+Iteration   7: 5600.538 ns/op
+Iteration   8: 5599.047 ns/op
+Iteration   9: 5626.914 ns/op
+Iteration  10: 5612.706 ns/op
+Iteration  11: 5570.065 ns/op
+Iteration  12: 5611.045 ns/op
+Iteration  13: 5611.971 ns/op
+Iteration  14: 5702.859 ns/op
+Iteration  15: 5608.156 ns/op
+Iteration  16: 5609.061 ns/op
+Iteration  17: 5614.817 ns/op
+Iteration  18: 5622.402 ns/op
+Iteration  19: 5743.876 ns/op
+Iteration  20: 5622.073 ns/op
+
+# Run progress: 60.00% complete, ETA 00:01:41
+# Fork: 2 of 5
+# Warmup Iteration   1: 5526.820 ns/op
+# Warmup Iteration   2: 5303.124 ns/op
+# Warmup Iteration   3: 5296.830 ns/op
+# Warmup Iteration   4: 5297.646 ns/op
+# Warmup Iteration   5: 5036.943 ns/op
+Iteration   1: 4768.423 ns/op
+Iteration   2: 4765.071 ns/op
+Iteration   3: 4765.048 ns/op
+Iteration   4: 4801.888 ns/op
+Iteration   5: 4759.142 ns/op
+Iteration   6: 4761.157 ns/op
+Iteration   7: 4794.480 ns/op
+Iteration   8: 4785.587 ns/op
+Iteration   9: 4762.547 ns/op
+Iteration  10: 4761.991 ns/op
+Iteration  11: 4843.516 ns/op
+Iteration  12: 4760.739 ns/op
+Iteration  13: 4763.727 ns/op
+Iteration  14: 4762.167 ns/op
+Iteration  15: 4871.290 ns/op
+Iteration  16: 4760.199 ns/op
+Iteration  17: 4765.838 ns/op
+Iteration  18: 4765.523 ns/op
+Iteration  19: 4761.066 ns/op
+Iteration  20: 4897.968 ns/op
+
+# Run progress: 70.00% complete, ETA 00:01:15
+# Fork: 3 of 5
+# Warmup Iteration   1: 5399.407 ns/op
+# Warmup Iteration   2: 5312.300 ns/op
+# Warmup Iteration   3: 5303.458 ns/op
+# Warmup Iteration   4: 5304.293 ns/op
+# Warmup Iteration   5: 5034.928 ns/op
+Iteration   1: 4776.539 ns/op
+Iteration   2: 4781.428 ns/op
+Iteration   3: 4780.907 ns/op
+Iteration   4: 4820.258 ns/op
+Iteration   5: 4777.857 ns/op
+Iteration   6: 4778.319 ns/op
+Iteration   7: 4809.704 ns/op
+Iteration   8: 4806.695 ns/op
+Iteration   9: 4778.010 ns/op
+Iteration  10: 4777.945 ns/op
+Iteration  11: 4857.560 ns/op
+Iteration  12: 4784.912 ns/op
+Iteration  13: 4785.641 ns/op
+Iteration  14: 4788.162 ns/op
+Iteration  15: 4857.653 ns/op
+Iteration  16: 4804.213 ns/op
+Iteration  17: 4778.245 ns/op
+Iteration  18: 4780.193 ns/op
+Iteration  19: 4780.275 ns/op
+Iteration  20: 4912.646 ns/op
+
+# Run progress: 80.00% complete, ETA 00:00:50
+# Fork: 4 of 5
+# Warmup Iteration   1: 5564.561 ns/op
+# Warmup Iteration   2: 5360.619 ns/op
+# Warmup Iteration   3: 5348.694 ns/op
+# Warmup Iteration   4: 5343.814 ns/op
+# Warmup Iteration   5: 5097.149 ns/op
+Iteration   1: 4814.225 ns/op
+Iteration   2: 4823.923 ns/op
+Iteration   3: 4824.276 ns/op
+Iteration   4: 4864.207 ns/op
+Iteration   5: 4817.933 ns/op
+Iteration   6: 4813.604 ns/op
+Iteration   7: 4812.520 ns/op
+Iteration   8: 4871.861 ns/op
+Iteration   9: 4812.820 ns/op
+Iteration  10: 4811.428 ns/op
+Iteration  11: 4857.332 ns/op
+Iteration  12: 4838.306 ns/op
+Iteration  13: 4806.355 ns/op
+Iteration  14: 4806.872 ns/op
+Iteration  15: 4831.978 ns/op
+Iteration  16: 4883.899 ns/op
+Iteration  17: 4808.034 ns/op
+Iteration  18: 4809.396 ns/op
+Iteration  19: 4807.372 ns/op
+Iteration  20: 4946.204 ns/op
+
+# Run progress: 90.00% complete, ETA 00:00:25
+# Fork: 5 of 5
+# Warmup Iteration   1: 6480.544 ns/op
+# Warmup Iteration   2: 6265.099 ns/op
+# Warmup Iteration   3: 6266.294 ns/op
+# Warmup Iteration   4: 6265.450 ns/op
+# Warmup Iteration   5: 6269.475 ns/op
+Iteration   1: 5918.301 ns/op
+Iteration   2: 5725.664 ns/op
+Iteration   3: 5726.707 ns/op
+Iteration   4: 5729.055 ns/op
+Iteration   5: 5792.211 ns/op
+Iteration   6: 5727.019 ns/op
+Iteration   7: 5725.276 ns/op
+Iteration   8: 5727.826 ns/op
+Iteration   9: 5732.976 ns/op
+Iteration  10: 5801.233 ns/op
+Iteration  11: 5726.255 ns/op
+Iteration  12: 5727.511 ns/op
+Iteration  13: 5728.433 ns/op
+Iteration  14: 5755.358 ns/op
+Iteration  15: 5767.041 ns/op
+Iteration  16: 5698.656 ns/op
+Iteration  17: 5699.438 ns/op
+Iteration  18: 5702.592 ns/op
+Iteration  19: 5824.786 ns/op
+Iteration  20: 5728.614 ns/op
+
+
+Result "benchmark.PrecompiledRegexSplit.stringSplit":
+  5159.738 ±(99.9%) 148.997 ns/op [Average]
+  (min, avg, max) = (4759.142, 5159.738, 5918.301), stdev = 439.320
+  CI (99.9%): [5010.742, 5308.735] (assumes normal distribution)
+
+
+# Run complete. Total time: 00:04:13
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+Benchmark                          (regex)                                                                                                                                                                                                                                                                                                                         (trimmed)  Mode  Cnt     Score     Error  Units
+PrecompiledRegexSplit.regexSplit   \s*,\s*  ]cfOP6:~+!|SK_('_Hky1]~Jod>c*w]p4x=GVG$~|w5dq "yv:oyO/(\YVz^H;	K'OW^;D{t?;?%`|[v:	A6%Sx# @65|1nS=NDH-Xam}&V"z,S&WYHQV_[iM	b.UM_9t@A;l)3}u$\`"4+/!7s@zPWQp,:bL*AwzQ'%L8oBwIlQP[k>|N-)#28pO;/Gq=R7kKnP|#-*clrXKBAm|;1zF1?`@8FheeZm{I;jL1Sgne@"1 uaJ1R2]CX5mRCMET|HRaA2`[,]fRYipXka\tT`Cw2b}0QwEF}^Oo_$KAy('z@
+IZ!*J^K  avgt  100  4900.188 ±  86.171  ns/op
+PrecompiledRegexSplit.stringSplit  \s*,\s*  ]cfOP6:~+!|SK_('_Hky1]~Jod>c*w]p4x=GVG$~|w5dq "yv:oyO/(\YVz^H;	K'OW^;D{t?;?%`|[v:	A6%Sx# @65|1nS=NDH-Xam}&V"z,S&WYHQV_[iM	b.UM_9t@A;l)3}u$\`"4+/!7s@zPWQp,:bL*AwzQ'%L8oBwIlQP[k>|N-)#28pO;/Gq=R7kKnP|#-*clrXKBAm|;1zF1?`@8FheeZm{I;jL1Sgne@"1 uaJ1R2]CX5mRCMET|HRaA2`[,]fRYipXka\tT`Cw2b}0QwEF}^Oo_$KAy('z@
+IZ!*J^K  avgt  100  5159.738 ± 148.997  ns/op
+
+Benchmark result is saved to split_precompiled_regex_5_320_NonMatch.csv
