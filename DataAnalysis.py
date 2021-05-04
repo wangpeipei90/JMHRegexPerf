@@ -28,7 +28,7 @@ def getCreationTime(file_path: str) -> datetime:
     '''
 
     fname = pathlib.Path(file_path)
-    mtime = datetime.datetime.fromtimestamp(fname.stat().st_mtime)
+    mtime = datetime.fromtimestamp(fname.stat().st_mtime)
     return mtime
 
 def getExecutionTime(file_path: str) -> timedelta:
@@ -44,6 +44,8 @@ def getExecutionTime(file_path: str) -> timedelta:
         if t is not None:
             dur = t.group(1)
             break
+    else:
+        return None #not found duration information
     t = datetime.strptime(dur, "%H:%M:%S")
     delta = timedelta(hours=t.hour, minutes=t.minute, seconds=t.second)
     return delta
@@ -110,7 +112,7 @@ def get_data_frame_from_csv(output_dir: str, func_metrics):
 
 
 def process_dir(output_dir, output_df_file, func_metrics=getMetricsFromFileName1):
-    if (os.path.exists(output_df_file)):
+    if (os.path.exists(output_df_file+".pkl")):
         df = pd.read_pickle(output_df_file+".pkl") # df = pd.read_csv(output_df_file+".csv")
     else:
         df = get_data_frame_from_csv(output_dir, func_metrics)
@@ -120,7 +122,7 @@ def process_dir(output_dir, output_df_file, func_metrics=getMetricsFromFileName1
 
 if __name__ == '__main__':
     value = input("Please enter the process you want (process_dir: 1) :\n")
-    if value == 1:
+    if int(value) == 1:
         output_dir = input("Please enter the experiment result folder ending with /: \n")
         df_file_name = input("Please enter the file name to save the returned data frame without file extension: \n")
         print(f"process_dir({output_dir},{df_file_name})")
