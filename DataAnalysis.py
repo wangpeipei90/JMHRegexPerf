@@ -18,8 +18,7 @@ import re
 from datetime import datetime, timedelta
 import pathlib
 
-re_exec_time = re.compile(r"^# Run complete. Total time: (\\d{2}:\\d{2}:\\d{2})$")
-
+re_exec_time = re.compile(r"^# Run complete. Total time: (\d{2}:\d{2}:\d{2}).*")
 
 def getCreationTime(file_path: str) -> datetime:
     '''
@@ -45,7 +44,9 @@ def getExecutionTime(file_path: str) -> timedelta:
             dur = t.group(1)
             break
     else:
-        return None #not found duration information
+        # not found duration information
+        raise TypeError(f"Time not found in {file_path}")
+        # return None
     t = datetime.strptime(dur, "%H:%M:%S")
     delta = timedelta(hours=t.hour, minutes=t.minute, seconds=t.second)
     return delta
@@ -64,7 +65,8 @@ def getFromLog(file_path: str):
     t = parseFile(file_path)
     t = t.loc[t["Iteration Type"] == "measured", :]
     t = t.astype({"Score": "float"})
-    stat_df = t.groupby("Method").apply(lambda x: pd.Series({"min": x['Score'].min(), "max": x['Score'].max(), "mean": x['Score'].mean(), "std": x['Score'].std(), 'duration':delta, 'finish time':finish_time}))
+    stat_df = t.groupby("Method").apply(lambda x: pd.Series({"min": x['Score'].min(), "max": x['Score'].max(),
+                      "mean": x['Score'].mean(), "std": x['Score'].std(), 'duration':delta, 'finish time':finish_time}))
     stat_df.reset_index(drop=False, inplace=True)
     # print(type(df))
     # print(df.dtypes)
