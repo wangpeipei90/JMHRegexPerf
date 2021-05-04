@@ -111,11 +111,17 @@ def get_data_frame_from_csv(output_dir: str, func_metrics):
 
 def process_dir(output_dir, output_df_file, func_metrics=getMetricsFromFileName1):
     if (os.path.exists(output_df_file)):
-        df = pd.read_csv(output_df_file)
+        df = pd.read_pickle(output_df_file+".pkl") # df = pd.read_csv(output_df_file+".csv")
     else:
         df = get_data_frame_from_csv(output_dir, func_metrics)
-        df.to_csv(output_df_file)
+        df.to_csv(output_df_file+".csv")
+        df.to_pickle(output_df_file+".pkl")
 
 
 if __name__ == '__main__':
-    process_dir("http_singleStrings/", "http_singleStrings_df")
+    value = input("Please enter the process you want (process_dir: 1) :\n")
+    if value == 1:
+        output_dir = input("Please enter the experiment result folder ending with /: \n")
+        df_file_name = input("Please enter the file name to save the returned data frame without file extension: \n")
+        print(f"process_dir({output_dir},{df_file_name})")
+        process_dir(output_dir, df_file_name)
